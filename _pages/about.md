@@ -40,6 +40,15 @@ I specialize in working with **large datasets, predictive modeling, and visualiz
 
 ---
 
+
+## 🔬 Research Interests
+
+- **Public Health Informatics**: Using data science to improve healthcare access and policy decisions.  
+- **Economic Policy & Data Analytics**: Applying quantitative methods to assess the impact of economic reforms.  
+- **Machine Learning for Social Impact**: Leveraging AI-driven models to optimize policy implementation.  
+
+---
+
 ## 💼 Internships & Research Experience
 
 ### 🔹 **Data Science & Public Policy Intern**  
@@ -60,13 +69,6 @@ I specialize in working with **large datasets, predictive modeling, and visualiz
 - Developed **automated reporting pipelines** to improve data-driven decision-making.  
 - Designed **interactive visualizations** in **Tableau and Plotly** for strategic insights.
 
----
-
-## 🔬 Research Interests
-
-- **Public Health Informatics**: Using data science to improve healthcare access and policy decisions.  
-- **Economic Policy & Data Analytics**: Applying quantitative methods to assess the impact of economic reforms.  
-- **Machine Learning for Social Impact**: Leveraging AI-driven models to optimize policy implementation.  
 
 ---
 
