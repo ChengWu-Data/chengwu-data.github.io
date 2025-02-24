@@ -17,42 +17,56 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. Suspendisse condimentum, libero vel tempus mattis, risus risus vulputate libero, elementum fermentum mi neque vel nisl. Maecenas facilisis maximus dignissim. Curabitur mattis vulputate dui, tincidunt varius libero luctus eu. Mauris mauris nulla, scelerisque eget massa id, tincidunt congue felis. Sed convallis tempor ipsum rhoncus viverra. Pellentesque nulla orci, accumsan volutpat fringilla vitae, maximus sit amet tortor. Aliquam ultricies odio ut volutpat scelerisque. Donec nisl nisl, porttitor vitae pharetra quis, fringilla sed mi. Fusce pretium dolor ut aliquam consequat. Cras volutpat, tellus accumsan mattis molestie, nisl lacus tempus massa, nec malesuada tortor leo vel quam. Aliquam vel ex consectetur, vehicula leo nec, efficitur eros. Donec convallis non urna quis feugiat.
+I’m **Cheng Wu**, a senior at the **University of Illinois at Urbana-Champaign**, majoring in **Econometrics & Quantitative Economics** with a minor in **Data Science and Statistics**. My work focuses on **data-driven policy research**, **public health analytics**, and **machine learning applications** for social impact.  
 
-My research interest includes neural machine translation and computer vision. I have published more than 100 papers at the top international AI conferences with total <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'>google scholar citations <strong><span id='total_cit'>260000+</span></strong></a> (You can also use google scholar badge <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>).
+I specialize in working with **large datasets, predictive modeling, and visualization tools** to extract meaningful insights that drive real-world decisions. With experience spanning **public policy, health informatics, and economic analysis**, I aim to bridge the gap between **data science and policymaking** to create impactful solutions.
 
+📍 **Currently based in Champaign, IL, USA.**  
 
-# 🔥 News
-- *2022.02*: &nbsp;🎉🎉 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2022.02*: &nbsp;🎉🎉 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+---
 
-# 📝 Publications 
+## 🎓 Education
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">CVPR 2016</div><img src='images/500x300.png' alt="sym" width="100%"></div></div>
-<div class='paper-box-text' markdown="1">
+### **University of Illinois at Urbana-Champaign**  
+📅 *Expected Graduation: 2025*  
+📚 **B.S. in Econometrics & Quantitative Economics**  
+📊 **GPA: 3.85/4.00**  
+📌 **Minor: Data Science and Statistics**  
 
-[Deep Residual Learning for Image Recognition](https://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf)
+#### **📖 Relevant Coursework**
+- **Health & Public Policy**: Introduction to Epidemiology, Health Equity in the U.S., Contemporary Health, Health Care Systems  
+- **Data Science & Quantitative Methods**: Statistics and Probability, Data Science Discovery, Big Data Analytics, Data Science Exploration, Linear Algebra  
+- **Economics & Policy Analysis**: Economic Growth, Law and Economics, Economics of Poverty Alleviation, Economics of Innovation and Technology  
 
-**Kaiming He**, Xiangyu Zhang, Shaoqing Ren, Jian Sun
+---
 
-[**Project**](https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=DhtAFkwAAAAJ&citation_for_view=DhtAFkwAAAAJ:ALROH1vI_8AC) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-</div>
-</div>
+## 💼 Internships & Research Experience
 
-- [Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet](https://github.com), A, B, C, **CVPR 2020**
+### 🔹 **Data Science & Public Policy Intern**  
+📍 **United Nations Development Programme (UNDP)** | *Summer 2024*  
+- Developed **data-driven policy recommendations** for public health interventions using **WHO & CDC datasets**.  
+- Conducted **predictive modeling** to analyze the impact of healthcare infrastructure on pandemic response efficiency.  
+- Created **interactive dashboards** to visualize key findings and support policymakers in resource allocation.
 
-# 🎖 Honors and Awards
-- *2021.10* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2021.09* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+### 🔹 **Research Assistant (Health & Economic Policy)**  
+📍 **University of Illinois, Department of Economics** | *2023 - Present*  
+- Investigating the effects of **public health policies on economic mobility** using large-scale national datasets.  
+- Applied **machine learning models** to analyze the impact of **healthcare access** on economic disparities.  
+- Developed **data visualization tools** to communicate findings effectively to policy stakeholders.
 
-# 📖 Educations
-- *2019.06 - 2022.04 (now)*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2015.09 - 2019.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+### 🔹 **Data Science & Market Strategy Intern**  
+📍 **XYZ Corporation** | *Summer 2023*  
+- Built **predictive models** for consumer behavior analysis using **Python (Scikit-learn, Pandas)**.  
+- Developed **automated reporting pipelines** to improve data-driven decision-making.  
+- Designed **interactive visualizations** in **Tableau and Plotly** for strategic insights.
 
-# 💬 Invited Talks
-- *2021.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2021.03*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet.  \| [\[video\]](https://github.com/)
+---
 
-# 💻 Internships
-- *2019.05 - 2020.02*, [Lorem](https://github.com/), China.
+## 🔬 Research Interests
+
+- **Public Health Informatics**: Using data science to improve healthcare access and policy decisions.  
+- **Economic Policy & Data Analytics**: Applying quantitative methods to assess the impact of economic reforms.  
+- **Machine Learning for Social Impact**: Leveraging AI-driven models to optimize policy implementation.  
+
+---
+
