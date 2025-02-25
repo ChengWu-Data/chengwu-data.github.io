@@ -15,18 +15,18 @@
   />
 
   <style>
-    /* Let html & body fill the viewport height */
+    /* Full viewport height */
     html, body {
       height: 100%;
       margin: 0;
       padding: 0;
     }
 
-    /* Use Flexbox on body to arrange nav, hero, and footer */
+    /* Flexbox for alignment */
     body {
       display: flex;
       flex-direction: column;
-      background: #f3e8fd; /* Light purple background */
+      background: #f3e8fd; /* Light purple */
       color: #333;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     }
@@ -54,7 +54,7 @@
     }
     .nav .logo span {
       font-weight: 600;
-      color: #4b2a66; /* Darker purple text */
+      color: #4b2a66;
     }
     .nav .links a {
       margin-left: 1rem;
@@ -73,7 +73,7 @@
       flex-direction: column;
       align-items: center;
       max-width: 600px;
-      margin: 4rem auto;
+      margin: auto; /* Center content */
       text-align: center;
       flex-grow: 1;
     }
@@ -81,48 +81,45 @@
       height: 120px;
       width: 120px;
       border-radius: 50%;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       object-fit: cover;
     }
     .hero h1 {
       font-size: 2rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.7rem; /* Adjust spacing */
       color: #4b2a66;
     }
-    .hero .tagline {
-      font-size: 1.2rem;
+    .hero .subtitle {
+      font-size: 0.95rem; /* Reduce font size */
       color: #555;
-      margin-bottom: 2rem;
-      font-style: italic;
+      margin-bottom: 2rem; /* More space below text */
     }
 
-    /* Social Icons as Outline Buttons */
-    .icons {
+    /* Social Buttons */
+    .hero .icons {
       display: flex;
       gap: 1rem;
       justify-content: center;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
     }
-    .icon-button {
-      display: inline-flex;
+    .hero .icons a {
+      display: flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.6rem 1rem;
-      background-color: transparent;
-      color: #4b2a66;
-      border: 2px solid #4b2a66;
-      border-radius: 6px;
       text-decoration: none;
-      font-weight: 500;
-      transition: background-color 0.2s, color 0.2s, transform 0.2s;
+      color: #4b2a66;
+      font-size: 1rem;
+      padding: 8px 16px;
+      border: 2px solid #4b2a66;
+      border-radius: 8px;
+      transition: all 0.3s;
     }
-    .icon-button:hover {
-      background-color: #4b2a66;
+    .hero .icons a i {
+      font-size: 1.1rem;
+    }
+    .hero .icons a:hover {
+      background: #4b2a66;
       color: #fff;
-      transform: translateY(-2px);
-    }
-    .icon-button i {
-      font-size: 1.2rem;
     }
 
     /* Footer */
@@ -141,7 +138,7 @@
   <nav class="nav">
     <div class="logo">
       <img src="{{ site.baseurl }}/images/avatar.png" alt="Logo" />
-      <span>ChengW’s Hub</span>
+      <span>ChengW’s Hub</span> 
     </div>
     <div class="links">
       <a href="{{ site.baseurl }}/about/">About</a>
@@ -152,27 +149,36 @@
 
   <!-- Main Content (Hero) -->
   <main class="hero">
+    <!-- Large avatar -->
     <img src="{{ site.baseurl }}/images/avatar.png" alt="Avatar" class="avatar" />
+
+    <!-- Your Name -->
     <h1>Cheng Wu</h1>
-    <div class="tagline">Welcome back... there’s always more to explore in these corners of insight.</div>
+
+    <!-- Subtitle (Short Welcome Message) -->
+    <div class="subtitle">
+      <em>Welcome back... there’s always more to explore in these corners of insight.</em>
+    </div>
+
+    <!-- Social Links with Icons -->
     <div class="icons">
       {% if site.author.github %}
-      <a href="https://github.com/{{ site.author.github }}" class="icon-button" aria-label="GitHub">
-        <i class="fa-brands fa-github"></i>
-        <span>GitHub</span>
-      </a>
+        <a href="https://github.com/{{ site.author.github }}" class="icon-button">
+          <i class="fa-brands fa-github"></i>
+          <span>GitHub</span>
+        </a>
       {% endif %}
       {% if site.author.linkedin %}
-      <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" class="icon-button" aria-label="LinkedIn">
-        <i class="fa-brands fa-linkedin"></i>
-        <span>LinkedIn</span>
-      </a>
+        <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" class="icon-button">
+          <i class="fa-brands fa-linkedin"></i>
+          <span>LinkedIn</span>
+        </a>
       {% endif %}
       {% if site.author.email %}
-      <a href="mailto:{{ site.author.email }}" class="icon-button" aria-label="Email">
-        <i class="fa-solid fa-envelope"></i>
-        <span>Email</span>
-      </a>
+        <a href="mailto:{{ site.author.email }}" class="icon-button">
+          <i class="fa-solid fa-envelope"></i>
+          <span>Email</span>
+        </a>
       {% endif %}
     </div>
   </main>
