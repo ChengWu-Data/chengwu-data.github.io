@@ -112,8 +112,8 @@ author_profile: true
   </div>
   
   <style>
-  /* 让 CV 标题的 Icon 颜色变成白色 */
-  .cv-header h1 i {
+  /* 让下载按钮内的 Icon 变成白色 */
+  .cv-download-btn i {
     color: white !important;
   }
   </style>
