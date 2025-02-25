@@ -22,18 +22,21 @@ author_profile: true
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.2rem;
+  flex-wrap: nowrap;  /* 让内容保持在一行 */
+  gap: 12px; /* 适当调整间距 */
+  margin-bottom: 1rem;
 }
 
 /* Header title */
 .cv-header h1 {
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   font-weight: bold;
   color: #6d4195;
   display: flex;
   align-items: center;
   gap: 8px;
   margin: 0;
+  white-space: nowrap; /* 防止文本换行 */
 }
 
 /* Document Icon */
@@ -50,16 +53,18 @@ author_profile: true
   background: #6d4195;
   color: white;
   font-weight: bold;
-  padding: 8px 14px;
-  font-size: 0.95rem;
+  padding: 6px 12px;  /* 调整 padding 让按钮更紧凑 */
+  font-size: 0.9rem;  /* 适配小屏幕，避免过大换行 */
   border-radius: 6px;
   text-decoration: none;
   border: none;
   transition: background 0.3s, transform 0.2s;
+  white-space: nowrap;  /* 确保按钮文字不换行 */
 }
 
 .cv-download-btn i {
   font-size: 1.2rem;
+  color: white !important; /* 确保下载图标是白色 */
 }
 
 .cv-download-btn:hover {
@@ -84,18 +89,17 @@ author_profile: true
 /* Mobile adjustments */
 @media (max-width: 768px) {
   .cv-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .cv-download-btn {
-    margin-top: 0.8rem;
-    font-size: 0.9rem;
-    padding: 7px 12px;
+    flex-wrap: nowrap; /* 手机端也保持一行 */
+    gap: 10px;  /* 适当减少间距，防止换行 */
   }
 
   .cv-header h1 {
-    font-size: 1.5rem;
+    font-size: 1.4rem; /* 手机端稍微减小标题字体 */
+  }
+
+  .cv-download-btn {
+    font-size: 0.85rem; /* 让按钮更紧凑 */
+    padding: 5px 10px;
   }
 }
 </style>
@@ -110,13 +114,6 @@ author_profile: true
       <i class="fa-solid fa-download"></i> Download CV (PDF)
     </a>
   </div>
-  
-  <style>
-  /* 让下载按钮内的 Icon 变成白色 */
-  .cv-download-btn i {
-    color: white !important;
-  }
-  </style>
 
   <!-- PDF Preview -->
   <div class="iframe-wrapper">
