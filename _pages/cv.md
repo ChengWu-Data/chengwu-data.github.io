@@ -3,7 +3,7 @@ layout: default
 permalink: /cv/
 title: ""
 excerpt: "My academic and professional experience."
-author_profile: false
+author_profile: true
 ---
 
 <style>
