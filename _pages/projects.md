@@ -85,26 +85,16 @@ author_profile: true
   color: white;
 }
 
-/* Hidden Details */
-/* 隐藏项目详情，但保留布局空间 */
 /* Hidden Details - Ensure Spacing */
 .project-details {
   display: none;
   background: #fff;
-  padding: 1.5rem; /* 增加内边距，使内容更美观 */
+  padding: 1.5rem;
   margin-top: 1rem;
-  margin-bottom: 2rem; /* 增加底部间距，确保展开后不紧贴下面的 card */
+  margin-bottom: 2rem;
   border-radius: 6px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.1);
 }
-
-
-/* 当展开时，恢复 padding 和 max-height */
-.project-details.active {
-  max-height: 800px; /* 这里可以改成适合你内容的高度 */
-  padding: 1.2rem;
-}
-
 
 /* Preview Frame */
 .preview-frame {
@@ -159,11 +149,10 @@ author_profile: true
   background: #4a256d;
   border-color: #4a256d;
 }
-
 </style>
 
-<h1 style="text-align: center; color: #6d4195;">
-  &#128193; My Projects
+<h1 style="display: flex; align-items: center; font-size: 2rem; color: #6d4195; margin-bottom: 1.5rem; text-align: left;">
+  <i class="fa-solid fa-folder-open" style="margin-right: 10px;"></i> My Projects
 </h1>
 
 <!-- Project 1 -->
@@ -178,10 +167,7 @@ author_profile: true
 
 <!-- Hidden Details -->
 <div id="project1" class="project-details">
-  <!-- Embedded HTML Preview -->
   <iframe class="preview-frame" src="https://htmlpreview.github.io/?https://github.com/ChengWu-Data/Housing-Price-Prediction-An-Exploratory-Analysis/blob/8a49d8ae0d2514d014c7d304ea081a2002fbd0f4/Housing_Price_Prediction-AnExploratoryAnalysis.html"></iframe>
-
-  <!-- Small Buttons -->
   <div class="button-row">
     <a href="https://github.com/ChengWu-Data/Housing-Price-Prediction-An-Exploratory-Analysis.git" class="github-btn">
       <i class="fa-brands fa-github"></i> GitHub
@@ -192,41 +178,11 @@ author_profile: true
   </div>
 </div>
 
-<!-- Project 2 -->
-<div class="project-card">
-  <img src="{{ site.baseurl }}/images/project2.jpg" alt="Project Image" class="project-image">
-  <div class="project-content">
-    <div class="project-title">Socioeconomic Attributes and Crime: Analyzing Economic Factors in Crime Trends</div>
-    <p class="project-description">
-      Exploring the link between socioeconomic attributes and crime rates, this study uses data-driven analysis 
-      to investigate how economic conditions influence crime trends.
-    </p>
-    <button class="details-btn" onclick="toggleDetails('project2')">View Details</button>
-  </div>
-</div>
-
-<!-- Hidden Details -->
-<div id="project2" class="project-details">
-  <!-- Embedded PDF Preview -->
-  <iframe class="preview-frame" src="https://drive.google.com/file/d/1VjV4sNFC9NrD7N8A9QoP_Ss2yWV_5WkI/preview"></iframe>
-
-  <!-- View Online Button -->
-  <div class="button-row">
-    <a href="https://drive.google.com/file/d/1VjV4sNFC9NrD7N8A9QoP_Ss2yWV_5WkI/view?usp=sharing" class="html-btn">
-      <i class="fa-solid fa-file-pdf"></i> View Online
-    </a>
-  </div>
-</div>
-
-
 <script>
 function toggleDetails(id) {
   var details = document.getElementById(id);
-
   if (details.style.display === "none" || details.style.display === "") {
     details.style.display = "block";
-
-    // 让展开的部分有过渡效果
     details.style.opacity = 0;
     setTimeout(() => {
       details.style.opacity = 1;
@@ -239,8 +195,4 @@ function toggleDetails(id) {
     }, 200);
   }
 }
-
-
 </script>
-
-
