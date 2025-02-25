@@ -39,7 +39,7 @@
       padding: 0.75rem 1.5rem;
       background: #f3e8fd;
       border-bottom: 1px solid #e0c9fa;
-      flex-shrink: 0; /* Prevent nav from shrinking */
+      flex-shrink: 0;
     }
     .nav .logo {
       display: flex;
@@ -54,7 +54,7 @@
     }
     .nav .logo span {
       font-weight: 600;
-      color: #4b2a66; /* Darker purple text for contrast */
+      color: #4b2a66; /* Darker purple text */
     }
     .nav .links a {
       margin-left: 1rem;
@@ -67,15 +67,15 @@
       color: #2f1a42;
     }
 
-    /* Hero Section (main content) */
+    /* Hero Section */
     .hero {
       display: flex;
       flex-direction: column;
       align-items: center;
       max-width: 600px;
-      margin: 4rem auto;  /* space around hero content */
+      margin: 4rem auto;
       text-align: center;
-      flex-grow: 1;       /* Makes the hero section expand to push footer down */
+      flex-grow: 1;
     }
     .hero .avatar {
       height: 120px;
@@ -87,9 +87,10 @@
     .hero h1 {
       font-size: 2rem;
       margin-bottom: 0.5rem;
-      color: #4b2a66; /* Darker purple for the heading */
+      color: #4b2a66;
     }
-    .hero .subtitle {
+    .hero .tagline {
+      font-size: 1.2rem;
       color: #555;
       margin-bottom: 2rem;
       font-style: italic;
@@ -121,16 +122,16 @@
       transform: translateY(-2px);
     }
     .icon-button i {
-      font-size: 1.2rem; /* Slightly larger icon size */
+      font-size: 1.2rem;
     }
 
-    /* Footer pinned at bottom when content is short */
+    /* Footer */
     .footer {
-      margin-top: auto; /* Pushes footer to bottom */
+      margin-top: auto;
       text-align: center;
       color: #666;
       font-size: 0.9rem;
-      padding: 1rem 0; /* Optional padding in footer */
+      padding: 1rem 0;
       flex-shrink: 0;
     }
   </style>
@@ -139,7 +140,6 @@
   <!-- Top Navigation Bar -->
   <nav class="nav">
     <div class="logo">
-      <!-- Small image or icon for the site logo -->
       <img src="{{ site.baseurl }}/images/avatar.png" alt="Logo" />
       <span>ChengW’s Hub</span>
     </div>
@@ -152,32 +152,28 @@
 
   <!-- Main Content (Hero) -->
   <main class="hero">
-    <!-- Large avatar in the center -->
     <img src="{{ site.baseurl }}/images/avatar.png" alt="Avatar" class="avatar" />
-
-    <!-- Your Name -->
     <h1>Cheng Wu</h1>
-
-    <!-- Short, powerful motto/tagline -->
-    <div class="subtitle">"Transforming data into real-world impact."</div>
-
-    <!-- Social icon buttons (outline style) -->
+    <div class="tagline">Welcome back... there’s always more to explore in these corners of insight.</div>
     <div class="icons">
-      <!-- GitHub Button -->
-      <a href="https://github.com/ChengWu-Data" aria-label="GitHub" class="icon-button">
+      {% if site.author.github %}
+      <a href="https://github.com/{{ site.author.github }}" class="icon-button" aria-label="GitHub">
         <i class="fa-brands fa-github"></i>
         <span>GitHub</span>
       </a>
-      <!-- Email Button -->
-      <a href="mailto:datajourney.chengw@gmail.com" aria-label="Email" class="icon-button">
-        <i class="fa-solid fa-envelope"></i>
-        <span>Email</span>
-      </a>
-      <!-- LinkedIn Button -->
-      <a href="https://www.linkedin.com/in/cheng-wu-1ab27922a" aria-label="LinkedIn" class="icon-button">
+      {% endif %}
+      {% if site.author.linkedin %}
+      <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" class="icon-button" aria-label="LinkedIn">
         <i class="fa-brands fa-linkedin"></i>
         <span>LinkedIn</span>
       </a>
+      {% endif %}
+      {% if site.author.email %}
+      <a href="mailto:{{ site.author.email }}" class="icon-button" aria-label="Email">
+        <i class="fa-solid fa-envelope"></i>
+        <span>Email</span>
+      </a>
+      {% endif %}
     </div>
   </main>
 
