@@ -165,6 +165,32 @@ author_profile: true
   </div>
 </div>
 
+<!-- Project 2 -->
+<div class="project-card">
+  <img src="{{ site.baseurl }}/images/project2.jpg" alt="Project Image" class="project-image">
+  <div class="project-content">
+    <div class="project-title">Socioeconomic Attributes and Crime: Analyzing Economic Factors in Crime Trends</div>
+    <p class="project-description">
+      Exploring the link between socioeconomic attributes and crime rates, this study uses data-driven analysis 
+      to investigate how economic conditions influence crime trends.
+    </p>
+    <button class="details-btn" onclick="toggleDetails('project2')">View Details</button>
+  </div>
+</div>
+
+<!-- Hidden Details -->
+<div id="project2" class="project-details">
+  <!-- Embedded PDF Preview -->
+  <iframe class="preview-frame" src="https://drive.google.com/file/d/1VjV4sNFC9NrD7N8A9QoP_Ss2yWV_5WkI/preview"></iframe>
+
+  <!-- View Online Button -->
+  <div class="button-row">
+    <a href="https://drive.google.com/file/d/1VjV4sNFC9NrD7N8A9QoP_Ss2yWV_5WkI/view?usp=sharing" class="html-btn">
+      <i class="fa-solid fa-file-pdf"></i> View Online
+    </a>
+  </div>
+</div>
+
 <!-- Hidden Details -->
 <div id="project1" class="project-details">
   <iframe class="preview-frame" src="https://htmlpreview.github.io/?https://github.com/ChengWu-Data/Housing-Price-Prediction-An-Exploratory-Analysis/blob/8a49d8ae0d2514d014c7d304ea081a2002fbd0f4/Housing_Price_Prediction-AnExploratoryAnalysis.html"></iframe>
