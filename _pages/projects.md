@@ -86,14 +86,24 @@ author_profile: true
 }
 
 /* Hidden Details */
+/* 隐藏项目详情，但保留布局空间 */
 .project-details {
-  display: none;
+  max-height: 0;
+  overflow: hidden;
   background: #fff;
-  padding: 1.2rem;
+  padding: 0 1.2rem;
   margin-top: 1rem;
   border-radius: 6px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
 }
+
+/* 当展开时，恢复 padding 和 max-height */
+.project-details.active {
+  max-height: 800px; /* 这里可以改成适合你内容的高度 */
+  padding: 1.2rem;
+}
+
 
 /* Preview Frame */
 .preview-frame {
@@ -211,12 +221,14 @@ author_profile: true
 <script>
 function toggleDetails(id) {
   var details = document.getElementById(id);
-  if (details.style.display === "none" || details.style.display === "") {
-    details.style.display = "block";
+
+  if (details.classList.contains("active")) {
+    details.classList.remove("active");
   } else {
-    details.style.display = "none";
+    details.classList.add("active");
   }
 }
+
 </script>
 
 
