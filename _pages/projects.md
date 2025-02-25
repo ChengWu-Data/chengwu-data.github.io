@@ -87,16 +87,17 @@ author_profile: true
 
 /* Hidden Details */
 /* 隐藏项目详情，但保留布局空间 */
+/* Hidden Details - Ensure Spacing */
 .project-details {
-  max-height: 0;
-  overflow: hidden;
+  display: none;
   background: #fff;
-  padding: 0 1.2rem;
+  padding: 1.5rem; /* 增加内边距，使内容更美观 */
   margin-top: 1rem;
+  margin-bottom: 2rem; /* 增加底部间距，确保展开后不紧贴下面的 card */
   border-radius: 6px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-  transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
 }
+
 
 /* 当展开时，恢复 padding 和 max-height */
 .project-details.active {
@@ -222,12 +223,23 @@ author_profile: true
 function toggleDetails(id) {
   var details = document.getElementById(id);
 
-  if (details.classList.contains("active")) {
-    details.classList.remove("active");
+  if (details.style.display === "none" || details.style.display === "") {
+    details.style.display = "block";
+
+    // 让展开的部分有过渡效果
+    details.style.opacity = 0;
+    setTimeout(() => {
+      details.style.opacity = 1;
+      details.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
   } else {
-    details.classList.add("active");
+    details.style.opacity = 0;
+    setTimeout(() => {
+      details.style.display = "none";
+    }, 200);
   }
 }
+
 
 </script>
 
