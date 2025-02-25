@@ -5,29 +5,30 @@
   <title>{{ page.title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Font Awesome for icons -->
+  <!-- Updated Font Awesome CDN -->
   <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-  integrity="sha512-7nEVPLs+/2ts+TR3BOlUAXd1yi6dYpR2CTrB1WX0b9C1fBk5UQqBRM0xlOvXnEpV6onFZNzW+bS5xIl71jAzXg=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
-
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-7nEVPLs+/2ts+TR3BOlUAXd1yi6dYpR2CTrB1WX0b9C1fBk5UQqBRM0xlOvXnEpV6onFZNzW+bS5xIl71jAzXg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 
   <style>
-    /* Basic reset */
-    * {
-      box-sizing: border-box;
+    /* Let html & body fill the viewport height */
+    html, body {
+      height: 100%;
       margin: 0;
       padding: 0;
     }
 
-    /* Body with a purple background */
+    /* Use Flexbox on body to arrange nav, hero, and footer */
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      display: flex;
+      flex-direction: column;
       background: #f3e8fd; /* Light purple background */
       color: #333;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     }
 
     /* Navigation Bar */
@@ -36,8 +37,9 @@
       align-items: center;
       justify-content: space-between;
       padding: 0.75rem 1.5rem;
-      background: #f3e8fd; /* Matches body background, or pick a different purple */
-      border-bottom: 1px solid #e0c9fa; /* Subtle border */
+      background: #f3e8fd;
+      border-bottom: 1px solid #e0c9fa;
+      flex-shrink: 0; /* Prevent nav from shrinking */
     }
     .nav .logo {
       display: flex;
@@ -57,7 +59,7 @@
     .nav .links a {
       margin-left: 1rem;
       text-decoration: none;
-      color: #4b2a66; /* Darker purple text for nav links */
+      color: #4b2a66;
       font-weight: 500;
       transition: color 0.2s;
     }
@@ -65,14 +67,15 @@
       color: #2f1a42;
     }
 
-    /* Hero Section */
+    /* Hero Section (main content) */
     .hero {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin: 4rem auto;
       max-width: 600px;
+      margin: 4rem auto;  /* space around hero content */
       text-align: center;
+      flex-grow: 1;       /* This makes the hero section expand to push footer down */
     }
     .hero .avatar {
       height: 120px;
@@ -101,19 +104,21 @@
     .hero .icons a {
       text-decoration: none;
       color: #4b2a66; /* Purple icon color */
-      font-size: 1.5rem; /* Slightly larger icons */
+      font-size: 1.5rem;
       transition: color 0.2s;
     }
     .hero .icons a:hover {
-      color: #2f1a42; /* Darker on hover */
+      color: #2f1a42;
     }
 
-    /* Footer */
+    /* Footer pinned at bottom when content is short */
     .footer {
+      margin-top: auto; /* Pushes footer to bottom */
       text-align: center;
       color: #666;
-      margin-bottom: 2rem;
       font-size: 0.9rem;
+      padding: 1rem 0; /* Optional padding in footer */
+      flex-shrink: 0;
     }
   </style>
 </head>
@@ -124,7 +129,6 @@
       <!-- Small image or icon for the site logo -->
       <img src="{{ site.baseurl }}/images/avatar.png" alt="Logo" />
       <span>ChengW’s Hub</span> 
-      <!-- Replace 'ChengW’s Hub' with any name or logo text you want -->
     </div>
     <div class="links">
       <a href="{{ site.baseurl }}/about/">About</a>
@@ -144,22 +148,18 @@
     <!-- Short motto or tagline -->
     <div class="subtitle">"Data is the new oil — I'm here to refine it."</div>
 
-    <!-- Social icons/links row -->
+    <!-- Social icons/links row (Font Awesome) -->
     <div class="icons">
-  <!-- GitHub (Brand icon) -->
       <a href="https://github.com/ChengWu-Data" aria-label="GitHub">
         <i class="fa-brands fa-github"></i>
       </a>
-  <!-- Email (Solid icon) -->
       <a href="mailto:datajourney.chengw@gmail.com" aria-label="Email">
         <i class="fa-solid fa-envelope"></i>
       </a>
-  <!-- LinkedIn (Brand icon) -->
       <a href="https://www.linkedin.com/in/cheng-wu-1ab27922a" aria-label="LinkedIn">
         <i class="fa-brands fa-linkedin"></i>
       </a>
     </div>
-
   </main>
 
   <!-- Footer -->
