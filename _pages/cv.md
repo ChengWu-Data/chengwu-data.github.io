@@ -1,5 +1,6 @@
 ---
 permalink:  /cv/
+layout: default
 title: "Curriculum Vitae"
 excerpt: "My academic and professional experience."
 author_profile: false
