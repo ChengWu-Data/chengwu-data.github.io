@@ -7,7 +7,7 @@ author_profile: true
 ---
 
 <style>
-/* Main container for CV section */
+/* Main container */
 .cv-container {
   max-width: 900px;
   margin: 2rem auto;
@@ -17,44 +17,42 @@ author_profile: true
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* Header section: aligns title & button */
+/* Header section */
 .cv-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 
 /* Header title */
 .cv-header h1 {
-  font-size: 2rem;
+  font-size: 1.7rem;
+  font-weight: bold;
   color: #6d4195;
-  margin: 0;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  margin: 0;
 }
 
-/* Custom Folder Icon */
-.cv-header h1::before {
-  content: "\f07b"; /* FontAwesome folder icon */
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
+/* Document Icon */
+.cv-header i {
+  font-size: 1.5rem;
   color: #6d4195;
-  font-size: 1.8rem;
 }
 
-/* Download button styling */
+/* Download button */
 .cv-download-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background: #6d4195; /* Purple background */
+  gap: 6px;
+  background: #6d4195;
   color: white;
   font-weight: bold;
-  padding: 10px 16px;
-  font-size: 1rem;
-  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  border-radius: 6px;
   text-decoration: none;
   border: none;
   transition: background 0.3s, transform 0.2s;
@@ -65,18 +63,17 @@ author_profile: true
 }
 
 .cv-download-btn:hover {
-  background: #4b2a66; /* Slightly darker purple */
+  background: #4b2a66;
   transform: scale(1.05);
 }
 
-/* PDF iframe container */
+/* PDF iframe */
 .iframe-wrapper {
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
-/* PDF preview */
 .cv-preview {
   width: 100%;
   height: 600px;
@@ -89,24 +86,24 @@ author_profile: true
   .cv-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
-  }
-  
-  .cv-header h1 {
-    font-size: 1.6rem;
   }
 
   .cv-download-btn {
-    width: 100%;
-    justify-content: center;
+    margin-top: 0.8rem;
+    font-size: 0.9rem;
+    padding: 7px 12px;
+  }
+
+  .cv-header h1 {
+    font-size: 1.5rem;
   }
 }
 </style>
 
 <div class="cv-container">
-  <!-- Header with Title & Download Button -->
+  <!-- Header -->
   <div class="cv-header">
-    <h1>Curriculum Vitae</h1>
+    <h1><i class="fa-solid fa-file-lines"></i> Curriculum Vitae</h1>
     <a href="{{ site.baseurl }}/assets/resumes_v_final.pdf" class="cv-download-btn">
       <i class="fa-solid fa-download"></i> Download CV (PDF)
     </a>
