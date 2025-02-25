@@ -10,6 +10,9 @@ title                    : "Cheng Wu"
 description              : "Senior at UIUC majoring in Econometrics & Quantitative Economics with a minor in Data Science and Statistics. Passionate about leveraging data analysis, machine learning, and policy insights to drive impactful decision-making. Experienced in research, predictive modeling, and data-driven problem-solving."
 repository               : "ChengWu-Data/chengwu-data.github.io"
 google_scholar_stats_use_cdn : true
+baseurl: ""  # 确保它为空，避免错误的路径解析
+url: "https://chengwu-data.github.io"  # 你的 GitHub Pages 网址
+
 
 # google analytics
 google_analytics_id      :  # get google_analytics_id from https://analytics.google.com/analytics/
