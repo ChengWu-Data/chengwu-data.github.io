@@ -27,9 +27,21 @@ author_profile: true
 
 /* Header title */
 .cv-header h1 {
-  font-size: 1.8rem;
+  font-size: 2rem;
   color: #6d4195;
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Custom Folder Icon */
+.cv-header h1::before {
+  content: "\f07b"; /* FontAwesome folder icon */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #6d4195;
+  font-size: 1.8rem;
 }
 
 /* Download button styling */
@@ -71,12 +83,30 @@ author_profile: true
   border: none;
   border-radius: 8px;
 }
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .cv-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .cv-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .cv-download-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
 </style>
 
 <div class="cv-container">
   <!-- Header with Title & Download Button -->
   <div class="cv-header">
-    <h1>📄 Curriculum Vitae </h1>
+    <h1>Curriculum Vitae</h1>
     <a href="{{ site.baseurl }}/assets/resumes_v_final.pdf" class="cv-download-btn">
       <i class="fa-solid fa-download"></i> Download CV (PDF)
     </a>
