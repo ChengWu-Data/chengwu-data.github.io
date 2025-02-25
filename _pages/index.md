@@ -66,7 +66,7 @@ author_profile: false
 </style>
 
 <div class="profile-container">
-  <img src="/assets/images/avatar.png" alt="Cheng Wu" class="avatar">
+  <img src="images/avatar.png" alt="Cheng Wu" class="avatar">
   <h1>Cheng Wu</h1>
   <p>Data Science | Public Policy | Machine Learning</p>
 
