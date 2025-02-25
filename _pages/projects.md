@@ -3,10 +3,9 @@ layout: default
 permalink: /projects/
 title: "Projects"
 excerpt: "A collection of my research and professional projects."
-author_profile: false
+author_profile: true
 
 ---
-
 
 <style>
 /* General Page Styling */
@@ -59,24 +58,7 @@ author_profile: false
   margin-bottom: 1rem;
 }
 
-/* Details Button */
-.details-btn {
-  background: none;
-  color: #6d4195;
-  border: 2px solid #6d4195;
-  padding: 8px 12px;
-  font-weight: bold;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-}
-
-.details-btn:hover {
-  background: #6d4195;
-  color: white;
-}
-
-/* Hidden Details */
+/* Details Section */
 .project-details {
   display: none;
   background: #fff;
@@ -86,39 +68,37 @@ author_profile: false
   box-shadow: 0 3px 6px rgba(0,0,0,0.1);
 }
 
-/* GitHub & HTML Buttons */
+/* Preview Frame */
+.preview-frame {
+  width: 100%;
+  height: 450px;
+  border: none;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+}
+
+/* Small Buttons */
 .button-row {
-  margin-top: 1rem;
   display: flex;
-  gap: 1rem;
+  gap: 0.8rem;
 }
 
 .github-btn, .html-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
+  gap: 5px;
+  padding: 6px 10px;
+  font-size: 0.9rem;
   font-weight: bold;
   border-radius: 6px;
   text-decoration: none;
+  border: 2px solid #6d4195;
+  color: #6d4195;
 }
 
-.github-btn {
-  background: black;
-  color: white;
-}
-
-.github-btn:hover {
-  background: #333;
-}
-
-.html-btn {
+.github-btn:hover, .html-btn:hover {
   background: #6d4195;
   color: white;
-}
-
-.html-btn:hover {
-  background: #572e7a;
 }
 
 </style>
@@ -131,38 +111,23 @@ author_profile: false
   <div class="project-content">
     <div class="project-title">Housing Price Prediction: An Exploratory Analysis</div>
     <p class="project-description">Exploring the relationship between housing attributes and sale prices through extensive exploratory data analysis, visualization, and predictive modeling.</p>
-    <button class="details-btn" onclick="toggleDetails('project1')">View Details</button>    
-    <!-- Hidden Details -->
-    <!-- Hidden Details -->
-    <div id="project1" class="project-details">
-      <p><strong>📅 Project Duration:</strong> January 2025 – Present</p>
-      <p><strong>📝 Description:</strong> Identifies key factors affecting house prices using statistical analysis and machine learning.</p>
-      <p><strong>🛠 Technology Stack:</strong></p>
-      <ul>
-        <li>Python (Pandas, NumPy, Scikit-learn), SQL, Jupyter Notebook</li>
-        <li>Visualization: Plotly, Seaborn, Matplotlib, Tableau</li>
-        <li>Predictive Modeling: Statsmodels, Regression Analysis</li>
-        <li>Web Reports: R Markdown-generated HTML</li>
-      </ul>
-      <p><strong>🔑 Key Contributions:</strong></p>
-      <ul>
-        <li>Feature selection for key variables affecting house prices.</li>
-        <li>Interactive visualizations for geographic price distribution.</li>
-        <li>Data preprocessing and transformation for better modeling.</li>
-        <li>Exploratory model framework for price prediction.</li>
-      </ul>
-        <!-- Hidden Details -->
-    <!-- Hidden Details -->
-      <!-- Buttons -->
-      <div class="button-row">
-        <a href="https://github.com/ChengWu-Data/Housing-Price-Prediction-An-Exploratory-Analysis.git" class="github-btn">
-          <i class="fa-brands fa-github"></i> GitHub Repository
-        </a>
-        <a href="https://chengwu-data.github.io/Housing_Price_Prediction-AnExploratoryAnalysis.html" class="html-btn">
-          <i class="fa-solid fa-file"></i> View HTML Report
-        </a>
-      </div>
-    </div>
+    <button class="details-btn" onclick="toggleDetails('project1')">View Details</button>
+  </div>
+</div>
+
+<!-- Hidden Details -->
+<div id="project1" class="project-details">
+  <!-- Embedded HTML Preview -->
+  <iframe class="preview-frame" src="https://htmlpreview.github.io/?https://github.com/ChengWu-Data/Housing-Price-Prediction-An-Exploratory-Analysis/blob/8a49d8ae0d2514d014c7d304ea081a2002fbd0f4/Housing_Price_Prediction-AnExploratoryAnalysis.html"></iframe>
+
+  <!-- Small Buttons -->
+  <div class="button-row">
+    <a href="https://github.com/ChengWu-Data/Housing-Price-Prediction-An-Exploratory-Analysis.git" class="github-btn">
+      <i class="fa-brands fa-github"></i> GitHub
+    </a>
+    <a href="https://chengwu-data.github.io/Housing_Price_Prediction-AnExploratoryAnalysis.html" class="html-btn">
+      <i class="fa-solid fa-file"></i> View Page
+    </a>
   </div>
 </div>
 
