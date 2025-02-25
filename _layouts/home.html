@@ -159,24 +159,27 @@
     <div class="subtitle">
       Welcome back.. there's always more to explore in these corners of insight....
     </div>
+      
+      
+      <div class="icons">
+        {% if site.author.github %}
+          <a href="https://github.com/{{ site.author.github }}" aria-label="GitHub">
+              <i class="fa-brands fa-github"></i>
+          </a>
+        {% endif %}
+        {% if site.author.linkedin %}
+          <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" aria-label="LinkedIn">
+              <i class="fa-brands fa-linkedin"></i>
+          </a>
+        {% endif %}
+        {% if site.author.email %}
+          <a href="mailto:{{ site.author.email }}" aria-label="Email">
+              <i class="fa-solid fa-envelope"></i>
+          </a>
+        {% endif %}
+      </div>
 
-    <div class="icons">
-      {% if site.author.github %}
-        <a href="https://github.com/{{ site.author.github }}" aria-label="GitHub">
-          <i class="fa-brands fa-github"></i>
-        </a>
-      {% endif %}
-      {% if site.author.linkedin %}
-        <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" aria-label="LinkedIn">
-          <i class="fa-brands fa-linkedin"></i>
-        </a>
-      {% endif %}
-      {% if site.author.email %}
-        <a href="mailto:{{ site.author.email }}" aria-label="Email">
-          <i class="fa-solid fa-envelope"></i>
-        </a>
-      {% endif %}
-    </div>
+      
   </main>
 
   <!-- Favicon -->
