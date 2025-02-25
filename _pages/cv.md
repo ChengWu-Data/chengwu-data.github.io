@@ -17,60 +17,63 @@ author_profile: false
   box-shadow: 0 0 8px rgba(0,0,0,0.1);
 }
 
-.cv-container h1, 
-.cv-container h2, 
-.cv-container h3 {
-  margin-top: 1.2rem;
-  margin-bottom: 0.8rem;
+/* Headings and paragraphs */
+.cv-container h1 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
 }
-
 .cv-container p {
   line-height: 1.6;
   margin-bottom: 1rem;
 }
 
-/* Iframe styling */
-.iframe-wrapper {
-  margin: 1.5rem 0;
-  overflow: hidden;
-  border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-/* Download button styling */
+/* Download button wrapper (aligned to the left) */
 .cv-download-wrapper {
   text-align: left;
   margin-bottom: 1.5rem;
 }
 
+/* Minimal download button styling */
 .cv-download-btn {
   display: inline-block;
-  padding: 12px 18px;
-  background-color: #007acc;
-  color: #fff;
+  padding: 8px 16px;
+  background-color: #fff;
+  color: #333;
   text-decoration: none;
-  font-weight: bold;
-  border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: background 0.3s, transform 0.2s;
+  font-weight: 500;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: background-color 0.2s, transform 0.2s;
+}
+.cv-download-btn:hover {
+  background-color: #f1f1f1;
+  transform: translateY(-1px);
 }
 
-.cv-download-btn:hover {
-  background-color: #005fa3;
-  transform: translateY(-2px);
+/* Iframe wrapper for online preview */
+.iframe-wrapper {
+  margin: 1rem 0;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 </style>
 
 <div class="cv-container">
   <h1>Curriculum Vitae</h1>
 
-  <p>
-    Below is my most recent Curriculum Vitae, highlighting my academic background, research, 
-    and professional experience. You can preview it directly in your browser 
-    or download a high-quality PDF version.
-  </p>
+  <!-- Download Button (above the preview) -->
+  <div class="cv-download-wrapper">
+    <a
+      href="/assets/resumes%20v_final.pdf" 
+      download="Chengwu_CV.pdf" 
+      class="cv-download-btn">
+      Download PDF
+    </a>
+  </div>
 
-  <!-- IFRAME for online preview -->
+  <!-- Online Preview -->
   <div class="iframe-wrapper">
     <iframe
       src="https://drive.google.com/file/d/1h2T5wiRbZVjhjnDVjj_3m5KJigL6psA2/preview"
@@ -80,19 +83,8 @@ author_profile: false
     </iframe>
   </div>
 
-  <!-- Download button -->
-  <div class="cv-download-wrapper">
-    <a
-      href="/assets/resumes%20v_final.pdf"
-      download="Chengwu_CV.pdf"
-      class="cv-download-btn">
-      Download CV (PDF)
-    </a>
-  </div>
-
   <p>
-    If you have any questions, feel free to contact me at 
+    If you have any questions, feel free to contact me at
     <a href="mailto:datajourney.chengw@gmail.com">datajourney.chengw@gmail.com</a>.
   </p>
 </div>
-
