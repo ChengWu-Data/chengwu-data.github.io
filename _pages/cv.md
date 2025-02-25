@@ -36,22 +36,23 @@ author_profile: false
   margin-bottom: 1.5rem;
 }
 
-/* A fun, purple pill-shaped button */
+/* Outline-style, pill-shaped button */
 .cv-download-btn {
   display: inline-block;
   padding: 12px 24px;
-  background: linear-gradient(135deg, #9b59b6, #8e44ad);
-  color: #fff;
+  background: transparent;
+  color: #9b59b6;                /* Purple text */
   text-decoration: none;
   font-weight: bold;
-  border: none;
-  border-radius: 30px;            /* Pill shape */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
+  border: 2px solid #9b59b6;     /* Outline border */
+  border-radius: 30px;           /* Pill shape */
+  transition: background-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
-/* Hover effect for the button */
+/* Hover effect: fill with purple, white text */
 .cv-download-btn:hover {
+  background-color: #9b59b6;
+  color: #fff;
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
@@ -66,13 +67,13 @@ author_profile: false
 </style>
 
 <div class="cv-container">
-
   <!-- Download Button (above the preview) -->
   <div class="cv-download-wrapper">
     <a
-      href="/assets/resumes%20v_final.pdf" 
-      download="Chengwu_CV.pdf" 
-      class="cv-download-btn">
+      href="/assets/resumes%20v_final.pdf"
+      download="Chengwu_CV.pdf"
+      class="cv-download-btn"
+    >
       Download CV (PDF)
     </a>
   </div>
@@ -83,7 +84,8 @@ author_profile: false
       src="https://drive.google.com/file/d/1h2T5wiRbZVjhjnDVjj_3m5KJigL6psA2/preview"
       width="100%"
       height="600px"
-      frameborder="0">
+      frameborder="0"
+    >
     </iframe>
   </div>
 
