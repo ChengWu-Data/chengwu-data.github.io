@@ -89,8 +89,5 @@ author_profile: true
     </iframe>
   </div>
 
-  <p>
-    If you have any questions, feel free to contact me at
-    <a href="mailto:datajourney.chengw@gmail.com">datajourney.chengw@gmail.com</a>.
-  </p>
+ 
 </div>
