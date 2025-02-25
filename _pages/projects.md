@@ -151,7 +151,9 @@ author_profile: true
 
 </style>
 
-<h1 style="text-align: center; color: #6d4195;">📂 My Projects</h1>
+<h1 style="text-align: center; color: #6d4195;">
+  <i class="fa-solid fa-folder"></i> My Projects
+</h1>
 
 <!-- Project 1 -->
 <div class="project-card">
