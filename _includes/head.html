@@ -17,7 +17,10 @@
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
 
 <meta http-equiv="cleartype" content="on">
-<base target="_blank">
+
+<!-- ✅ FIX: Remove or modify this line -->
+<!-- <base target="_blank"> --> <!-- Removed to prevent new tab opening -->
+<base target="_self">  <!-- This ensures links open in the same tab -->
 
 <!-- Favicon -->
 <link rel="icon" type="image/png" sizes="32x32" href="{{ site.baseurl }}/images/favicon-32x32.png">
