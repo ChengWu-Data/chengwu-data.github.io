@@ -165,6 +165,22 @@ author_profile: true
   </div>
 </div>
 
+<!-- Hidden Details -->
+<div id="project1" class="project-details">
+  <!-- Embedded HTML Preview -->
+  <iframe class="preview-frame" src="https://htmlpreview.github.io/?https://github.com/ChengWu-Data/Housing-Price-Prediction-An-Exploratory-Analysis/blob/8a49d8ae0d2514d014c7d304ea081a2002fbd0f4/Housing_Price_Prediction-AnExploratoryAnalysis.html"></iframe>
+
+  <!-- Small Buttons -->
+  <div class="button-row">
+    <a href="https://github.com/ChengWu-Data/Housing-Price-Prediction-An-Exploratory-Analysis.git" class="github-btn">
+      <i class="fa-brands fa-github"></i> GitHub
+    </a>
+    <a href="https://chengwu-data.github.io/Housing_Price_Prediction-AnExploratoryAnalysis.html" class="html-btn">
+      <i class="fa-solid fa-file"></i> View Page
+    </a>
+  </div>
+</div>
+
 <!-- Project 2 -->
 <div class="project-card">
   <img src="{{ site.baseurl }}/images/project2.jpg" alt="Project Image" class="project-image">
@@ -191,24 +207,15 @@ author_profile: true
   </div>
 </div>
 
-<!-- Hidden Details -->
-<div id="project1" class="project-details">
-  <iframe class="preview-frame" src="https://htmlpreview.github.io/?https://github.com/ChengWu-Data/Housing-Price-Prediction-An-Exploratory-Analysis/blob/8a49d8ae0d2514d014c7d304ea081a2002fbd0f4/Housing_Price_Prediction-AnExploratoryAnalysis.html"></iframe>
-  <div class="button-row">
-    <a href="https://github.com/ChengWu-Data/Housing-Price-Prediction-An-Exploratory-Analysis.git" class="github-btn">
-      <i class="fa-brands fa-github"></i> GitHub
-    </a>
-    <a href="https://chengwu-data.github.io/Housing_Price_Prediction-AnExploratoryAnalysis.html" class="html-btn">
-      <i class="fa-solid fa-file"></i> View Page
-    </a>
-  </div>
-</div>
 
 <script>
 function toggleDetails(id) {
   var details = document.getElementById(id);
+
   if (details.style.display === "none" || details.style.display === "") {
     details.style.display = "block";
+
+    // 让展开的部分有过渡效果
     details.style.opacity = 0;
     setTimeout(() => {
       details.style.opacity = 1;
@@ -221,4 +228,8 @@ function toggleDetails(id) {
     }, 200);
   }
 }
+
+
 </script>
+
+
