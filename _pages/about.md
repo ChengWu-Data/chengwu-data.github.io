@@ -198,9 +198,30 @@ author_profile: true
 </div>
 
 <!-- Contact Section -->
+<!-- Contact Section -->
 <div class="section-container contact-section">
   <h2>📩 Get in Touch</h2>
   <p>If you have any questions, feel free to reach out:</p>
-  <a href="mailto:datajourney.chengw@gmail.com" class="outline-btn">Email Me</a>
+  <a href="mailto:datajourney.chengw@gmail.com" class="email-btn">Email Me</a>
 </div>
+
+<style>
+/* Styling for Email Button */
+.email-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  background: #6d4195; /* Purple background */
+  color: white; /* White text */
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 6px; /* Rounded corners */
+  transition: background 0.2s, transform 0.2s;
+}
+
+/* Hover effect */
+.email-btn:hover {
+  background: #572e7a; /* Darker purple */
+  transform: scale(1.05);
+}
+</style>
 
