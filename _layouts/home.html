@@ -92,9 +92,10 @@
     .hero .subtitle {
       color: #555;
       margin-bottom: 2rem;
+      font-style: italic;
     }
 
-    /* Social Icons as Buttons */
+    /* Social Icons as Outline Buttons */
     .icons {
       display: flex;
       gap: 1rem;
@@ -106,16 +107,17 @@
       align-items: center;
       gap: 0.5rem;
       padding: 0.6rem 1rem;
-      background-color: #4b2a66;
-      color: #fff;
-      border: none;
+      background-color: transparent;
+      color: #4b2a66;
+      border: 2px solid #4b2a66;
       border-radius: 6px;
       text-decoration: none;
       font-weight: 500;
-      transition: background-color 0.2s, transform 0.2s;
+      transition: background-color 0.2s, color 0.2s, transform 0.2s;
     }
     .icon-button:hover {
-      background-color: #2f1a42;
+      background-color: #4b2a66;
+      color: #fff;
       transform: translateY(-2px);
     }
     .icon-button i {
@@ -156,10 +158,10 @@
     <!-- Your Name -->
     <h1>Cheng Wu</h1>
 
-    <!-- Short motto or tagline -->
-    <div class="subtitle">"Data is the new oil — I'm here to refine it."</div>
+    <!-- Short, powerful motto/tagline -->
+    <div class="subtitle">"Transforming data into real-world impact."</div>
 
-    <!-- Social icon buttons -->
+    <!-- Social icon buttons (outline style) -->
     <div class="icons">
       <!-- GitHub Button -->
       <a href="https://github.com/ChengWu-Data" aria-label="GitHub" class="icon-button">
