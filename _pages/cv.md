@@ -103,11 +103,21 @@ author_profile: true
 <div class="cv-container">
   <!-- Header -->
   <div class="cv-header">
-    <h1><i class="fa-solid fa-file-lines"></i> Curriculum Vitae</h1>
+    <h1>
+      <i class="fa-solid fa-file-lines cv-icon"></i> Curriculum Vitae
+    </h1>
     <a href="{{ site.baseurl }}/assets/resumes_v_final.pdf" class="cv-download-btn">
       <i class="fa-solid fa-download"></i> Download CV (PDF)
     </a>
   </div>
+  
+  <style>
+/* 让 CV 标题的 Icon 颜色变成白色 */
+    .cv-header h1 .cv-icon {
+      color: white;
+    }
+  </style>
+
 
   <!-- PDF Preview -->
   <div class="iframe-wrapper">
