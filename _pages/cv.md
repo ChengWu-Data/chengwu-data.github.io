@@ -17,38 +17,43 @@ author_profile: false
   box-shadow: 0 0 8px rgba(0,0,0,0.1);
 }
 
-/* Headings and paragraphs */
 .cv-container h1 {
   margin-top: 0;
   margin-bottom: 1rem;
   font-size: 1.8rem;
+  text-align: left;
 }
+
+/* Minimal text styling */
 .cv-container p {
   line-height: 1.6;
   margin-bottom: 1rem;
 }
 
-/* Download button wrapper (aligned to the left) */
+/* Download button wrapper (above the preview) */
 .cv-download-wrapper {
   text-align: left;
   margin-bottom: 1.5rem;
 }
 
-/* Minimal download button styling */
+/* A fun, purple pill-shaped button */
 .cv-download-btn {
   display: inline-block;
-  padding: 8px 16px;
-  background-color: #fff;
-  color: #333;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #9b59b6, #8e44ad);
+  color: #fff;
   text-decoration: none;
-  font-weight: 500;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  transition: background-color 0.2s, transform 0.2s;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;            /* Pill shape */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
+
+/* Hover effect for the button */
 .cv-download-btn:hover {
-  background-color: #f1f1f1;
-  transform: translateY(-1px);
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
 /* Iframe wrapper for online preview */
@@ -69,11 +74,11 @@ author_profile: false
       href="/assets/resumes%20v_final.pdf" 
       download="Chengwu_CV.pdf" 
       class="cv-download-btn">
-      Download PDF
+      Download CV (PDF)
     </a>
   </div>
 
-  <!-- Online Preview -->
+  <!-- Online PDF Preview -->
   <div class="iframe-wrapper">
     <iframe
       src="https://drive.google.com/file/d/1h2T5wiRbZVjhjnDVjj_3m5KJigL6psA2/preview"
