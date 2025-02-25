@@ -183,7 +183,7 @@ author_profile: true
 
 <!-- Project 2 -->
 <div class="project-card">
-  <img src="{{ site.baseurl }}/images/project2.png" alt="Project Image" class="project-image">
+  <img src="{{ site.baseurl }}/images/project2.jpg" alt="Project Image" class="project-image">
   <div class="project-content">
     <div class="project-title">Socioeconomic Attributes and Crime: Analyzing Economic Factors in Crime Trends</div>
     <p class="project-description">
