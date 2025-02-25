@@ -98,7 +98,7 @@ author_profile: true
   }
 
   .cv-download-btn {
-    font-size: 0.85rem; /* 让按钮更紧凑 */
+    font-size: 0.8rem; /* 让按钮更紧凑 */
     padding: 5px 10px;
   }
 }
