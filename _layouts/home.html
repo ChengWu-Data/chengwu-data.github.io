@@ -22,7 +22,7 @@
       padding: 0;
     }
 
-    /* Flexbox for alignment */
+    /* Flexbox layout for body to keep footer at bottom */
     body {
       display: flex;
       flex-direction: column;
@@ -67,32 +67,37 @@
       color: #2f1a42;
     }
 
-    /* Hero Section */
+    /* Hero Section: Vertically centered content */
     .hero {
-      display: flex;
+      flex-grow: 1;                 /* Take remaining space */
+      display: flex;                /* Flex container */
       flex-direction: column;
-      align-items: center;
-      max-width: 600px;
-      margin: auto; /* Center content */
+      justify-content: center;      /* Vertically center */
+      align-items: center;          /* Horizontally center */
       text-align: center;
-      flex-grow: 1;
+      max-width: 600px;
+      width: 100%;
+      margin: 0 auto;              /* Center horizontally if narrower than 600px */
     }
     .hero .avatar {
       height: 120px;
       width: 120px;
       border-radius: 50%;
-      margin-bottom: 1.2rem;
       object-fit: cover;
+      margin-bottom: 1.5rem;        /* Spacing below avatar */
     }
     .hero h1 {
       font-size: 2rem;
-      margin-bottom: 0.7rem; /* Adjust spacing */
+      margin-bottom: 1.2rem;        /* Spacing below name */
       color: #4b2a66;
     }
     .hero .subtitle {
-      font-size: 0.95rem; /* Reduce font size */
+      font-size: 1rem;
       color: #555;
-      margin-bottom: 2rem; /* More space below text */
+      margin-bottom: 2rem;          /* Spacing below tagline */
+      max-width: 500px;
+      padding: 0 1rem;             /* Slight horizontal padding for narrower screens */
+      font-style: italic;
     }
 
     /* Social Buttons */
@@ -122,7 +127,7 @@
       color: #fff;
     }
 
-    /* Footer */
+    /* Footer pinned at bottom */
     .footer {
       margin-top: auto;
       text-align: center;
@@ -149,33 +154,29 @@
 
   <!-- Main Content (Hero) -->
   <main class="hero">
-    <!-- Large avatar -->
     <img src="{{ site.baseurl }}/images/avatar.png" alt="Avatar" class="avatar" />
 
-    <!-- Your Name -->
     <h1>Cheng Wu</h1>
 
-    <!-- Subtitle (Short Welcome Message) -->
     <div class="subtitle">
-      <em>Welcome back... there’s always more to explore in these corners of insight.</em>
+      Welcome back.. there's always more to explore in these corners of insight....
     </div>
 
-    <!-- Social Links with Icons -->
     <div class="icons">
       {% if site.author.github %}
-        <a href="https://github.com/{{ site.author.github }}" class="icon-button">
+        <a href="https://github.com/{{ site.author.github }}" aria-label="GitHub">
           <i class="fa-brands fa-github"></i>
           <span>GitHub</span>
         </a>
       {% endif %}
       {% if site.author.linkedin %}
-        <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" class="icon-button">
+        <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" aria-label="LinkedIn">
           <i class="fa-brands fa-linkedin"></i>
           <span>LinkedIn</span>
         </a>
       {% endif %}
       {% if site.author.email %}
-        <a href="mailto:{{ site.author.email }}" class="icon-button">
+        <a href="mailto:{{ site.author.email }}" aria-label="Email">
           <i class="fa-solid fa-envelope"></i>
           <span>Email</span>
         </a>
