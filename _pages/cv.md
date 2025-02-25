@@ -66,7 +66,6 @@ author_profile: false
 </style>
 
 <div class="cv-container">
-  <h1>Curriculum Vitae</h1>
 
   <!-- Download Button (above the preview) -->
   <div class="cv-download-wrapper">
