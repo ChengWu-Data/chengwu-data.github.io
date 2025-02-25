@@ -81,17 +81,34 @@ author_profile: true
   font-weight: bold;
   color: #6d4195;
 }
+
+/* Styling for About Me */
+.about-text {
+  color: #4b2a66; /* Purple highlight instead of bold */
+  font-weight: 600;
+}
 </style>
 
 <div class="section-container">
   <h2 class="section-header">About Me</h2>
   <p>
-    I’m Cheng Wu, a senior at the University of Illinois at Urbana-Champaign, majoring in **Econometrics & Quantitative Economics** with a minor in *Data Science and Statistics*. My work focuses on **data-driven policy research**, **public health analytics**, and **machine learning applications** for social impact.
+    I’m <span class="about-text">Cheng Wu</span>, a senior at the 
+    <span class="about-text">University of Illinois at Urbana-Champaign</span>, 
+    majoring in <span class="about-text">Econometrics & Quantitative Economics</span> 
+    with a minor in <span class="about-text">Data Science and Statistics</span>. 
+    My work focuses on <span class="about-text">data-driven policy research</span>, 
+    <span class="about-text">public health analytics</span>, and 
+    <span class="about-text">machine learning applications</span> for social impact.
   </p>
+  
   <p>
-    I specialize in working with large datasets, predictive modeling, and visualization tools to extract meaningful insights that drive real-world decisions. With experience spanning public policy, health informatics, and economic analysis, I aim to bridge the gap between data science and policymaking to create impactful solutions.
+    I specialize in working with large datasets, predictive modeling, and visualization tools to extract 
+    meaningful insights that drive real-world decisions. With experience spanning public policy, 
+    health informatics, and economic analysis, I aim to bridge the gap between data science 
+    and policymaking to create impactful solutions.
   </p>
-  <p>📍 Currently based in Champaign, IL, USA.</p>
+
+  <p>📍 <span class="about-text">Currently based in Champaign, IL, USA.</span></p>
 </div>
 
 <div class="section-container">
@@ -131,17 +148,29 @@ author_profile: true
       </ul>
     </div>
   </div>
+
+  <div class="entry">
+    <div class="entry-title">Strategic Initiatives & Community Empowerment - Lead Coordinator</div>
+    <div class="entry-details">Innovative Bloom Foundation | May 2019 - June 2024 | Shanghai, China</div>
+    <div class="entry-content">
+      <ul>
+        <li>Raised 20% success for 200+ remote students with predictive monitoring, interventions, curriculum, ‘at-risk’ clustering.</li>
+        <li>Boosted 30% artisan income, education, health in underserved communities via e-commerce platform with data analytics.</li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 <div class="section-container">
-  <h2 class="section-header"><i class="fas fa-microscope"></i> Research Experience</h2>
-  
+  <h2 class="section-header"><i class="fas fa-microscope"></i> Research Experience</h2>  
+
   <div class="entry">
     <div class="entry-title">Research Assistant - Economic Policy & Public Health</div>
     <div class="entry-details">University of Illinois | January 2024 - July 2024 | Champaign, IL</div>
     <div class="entry-content">
       <ul>
         <li>Investigated the effects of public health policies on economic mobility using large-scale national datasets.</li>
+        <li>Applied machine learning models to analyze the impact of healthcare access on economic disparities.</li>
       </ul>
     </div>
   </div>
@@ -155,15 +184,23 @@ author_profile: true
       </ul>
     </div>
   </div>
-</div>
 
-
-
-  <!-- Contact Section -->
-  <div class="card" style="text-align: center;">
-    <h2>📩 Get in Touch</h2>
-    <p>If you have any questions, feel free to reach out:</p>
-    <a href="mailto:datajourney.chengw@gmail.com" class="outline-btn">Email Me</a>
+  <div class="entry">
+    <div class="entry-title">Researcher - Public Health Policy & Critical Medicines Access</div>
+    <div class="entry-details">University of Illinois | April 2023 - December 2023</div>
+    <div class="entry-content">
+      <ul>
+        <li>Evaluated preventive health policies' impact on disease rates, mortality, healthcare costs.</li>
+        <li>Used predictive modeling to assess critical medicine shortages and their economic consequences.</li>
+      </ul>
+    </div>
   </div>
-
 </div>
+
+<!-- Contact Section -->
+<div class="section-container contact-section">
+  <h2>📩 Get in Touch</h2>
+  <p>If you have any questions, feel free to reach out:</p>
+  <a href="mailto:datajourney.chengw@gmail.com" class="outline-btn">Email Me</a>
+</div>
+
