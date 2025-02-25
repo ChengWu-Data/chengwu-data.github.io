@@ -152,7 +152,7 @@ author_profile: true
 </style>
 
 <h1 style="text-align: center; color: #6d4195;">
-  <i class="fa-solid fa-folder"></i> My Projects
+  &#128193; My Projects
 </h1>
 
 <!-- Project 1 -->
@@ -181,6 +181,33 @@ author_profile: true
   </div>
 </div>
 
+<!-- Project 2 -->
+<div class="project-card">
+  <img src="{{ site.baseurl }}/images/project2.png" alt="Project Image" class="project-image">
+  <div class="project-content">
+    <div class="project-title">Socioeconomic Attributes and Crime: Analyzing Economic Factors in Crime Trends</div>
+    <p class="project-description">
+      Exploring the link between socioeconomic attributes and crime rates, this study uses data-driven analysis 
+      to investigate how economic conditions influence crime trends.
+    </p>
+    <button class="details-btn" onclick="toggleDetails('project2')">View Details</button>
+  </div>
+</div>
+
+<!-- Hidden Details -->
+<div id="project2" class="project-details">
+  <!-- Embedded PDF Preview -->
+  <iframe class="preview-frame" src="https://drive.google.com/file/d/1VjV4sNFC9NrD7N8A9QoP_Ss2yWV_5WkI/preview"></iframe>
+
+  <!-- View Online Button -->
+  <div class="button-row">
+    <a href="https://drive.google.com/file/d/1VjV4sNFC9NrD7N8A9QoP_Ss2yWV_5WkI/view?usp=sharing" class="html-btn">
+      <i class="fa-solid fa-file-pdf"></i> View Online
+    </a>
+  </div>
+</div>
+
+
 <script>
 function toggleDetails(id) {
   var details = document.getElementById(id);
@@ -191,4 +218,5 @@ function toggleDetails(id) {
   }
 }
 </script>
+
 
