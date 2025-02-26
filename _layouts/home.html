@@ -134,45 +134,47 @@
     }
 
     /* 🔹 Language Toggle: Two Buttons in One Capsule */
+    /* 🔹 语言切换按钮：调整大小 & 位置 */
     .language-toggle {
-      position: fixed;
-      bottom: 20px;
+      position: absolute;
       right: 20px;
+      bottom: 50px; /* 提升按钮到和 © 2025 Cheng Wu 一行 */
       display: flex;
       align-items: center;
-      border-radius: 25px;
+      border-radius: 20px;
       overflow: hidden;
       border: 2px solid #6d4195;
+      font-size: 0.8rem; /* 缩小字体 */
+      transform: scale(0.75); /* 整体缩小按钮 */
     }
 
-    /* Left Button (English) */
+/* 英文按钮 */
     .lang-en {
       background: #6d4195;
       color: white;
-      padding: 10px 16px;
-      font-size: 0.9rem;
+      padding: 5px 12px;
       font-weight: bold;
       text-decoration: none;
       border-right: 2px solid #6d4195;
-      transition: background 0.3s, transform 0.2s;
+      transition: background 0.3s;
     }
     .lang-en:hover {
       background: #4b2a66;
     }
 
-    /* Right Button (Chinese) */
+/* 中文按钮 */
     .lang-zh {
       background: white;
       color: #6d4195;
-      padding: 10px 16px;
-      font-size: 0.9rem;
+      padding: 5px 12px;
       font-weight: bold;
       text-decoration: none;
-      transition: background 0.3s, transform 0.2s;
+      transition: background 0.3s;
     }
     .lang-zh:hover {
       background: #e0c9fa;
     }
+
 </style>
 
 </head>
