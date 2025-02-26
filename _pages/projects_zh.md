@@ -155,6 +155,11 @@ author_profile: true
   <i class="fa-solid fa-folder-open" style="margin-right: 10px;"></i> 我的研究项目
 </h1>
 
+<p style="font-size: 0.8rem; color: #777; text-align: center; margin-top: 1rem;">
+  ⚠️ 由于研究数据来源和学术需求，研究报告使用英文撰写。
+</p>
+
+
 <!-- 项目 1 -->
 <div class="project-card">
   <img src="{{ site.baseurl }}/images/project1.jpg" alt="Project Image" class="project-image">
@@ -204,9 +209,7 @@ author_profile: true
   </div>
 </div>
 
-<p style="font-size: 0.85rem; color: #777; text-align: center; margin-top: 1rem;">
-  ⚠️ 由于研究数据来源和学术需求，研究报告使用英文撰写。
-</p>
+
 
 <script>
 function toggleDetails(id) {
