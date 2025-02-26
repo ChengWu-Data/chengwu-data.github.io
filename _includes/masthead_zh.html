@@ -1,16 +1,51 @@
-<header class="masthead">
+<div class="masthead">
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
-        <a class="site-title" href="{{ site.baseurl }}/zh/">
-          <img src="{{ site.baseurl }}/images/notion2.png" alt="Logo" style="height: 32px; margin-right: 8px;"> 吴骋
-        </a>
+        <button><div class="navicon"></div></button>
         <ul class="visible-links">
-          <li><a href="{{ site.baseurl }}/zh/about/">关于我</a></li>
-          <li><a href="{{ site.baseurl }}/zh/cv/">简历</a></li>
-          <li><a href="{{ site.baseurl }}/zh/projects/">研究项目</a></li>
+          <!-- 头像导航 -->
+          <li class="masthead__menu-item masthead__menu-item--lg masthead__menu-home-item">
+            <a href="{{ site.baseurl }}/zh/">
+              <img src="{{ site.baseurl }}/images/notion2.png" alt="Home" class="nav-avatar">
+            </a>
+          </li>
+
+          <!-- 中文导航 -->
+          {% for link in site.data.navigation_zh.main %}
+            <li class="masthead__menu-item"><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {% endfor %}
         </ul>
+        <ul class="hidden-links hidden"></ul>
       </nav>
     </div>
   </div>
-</header>
+</div>
+
+<style>
+/* 头像样式 */
+.nav-avatar {
+  height: 32px;
+  width: 32px;
+  border-radius: 0;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+/* 确保导航栏样式一致 */
+.masthead {
+  background: #f3e8fd;
+  border-bottom: 1px solid #e0c9fa;
+}
+
+.masthead__menu-item a {
+  color: #4b2a66;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0.75rem;
+}
+
+.masthead__menu-item a:hover {
+  color: #2f1a42;
+}
+</style>
