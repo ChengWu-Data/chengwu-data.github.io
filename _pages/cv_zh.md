@@ -119,6 +119,6 @@ lang: "zh"
 
   <!-- PDF 预览 -->
   <div class="iframe-wrapper">
-    <iframe class="cv-preview" src=""></iframe>
+    <iframe class="cv-preview" src="https://drive.google.com/file/d/1RLJB4sthU-L81k0Yjpqg2cE6mCA0zS6K/view?usp=sharing"></iframe>
   </div>
 </div>
