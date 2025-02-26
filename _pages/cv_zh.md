@@ -4,6 +4,8 @@ permalink: /zh/cv/
 title: ""
 excerpt: "我的学术和职业经历。"
 author_profile: true
+lang: "zh"
+
 ---
 
 <style>
