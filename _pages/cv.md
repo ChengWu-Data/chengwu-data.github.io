@@ -7,7 +7,8 @@ author_profile: true
 ---
 
 <style>
-/* Main container */
+
+  /* Main container */
 .cv-container {
   max-width: 900px;
   margin: 2rem auto;
@@ -22,8 +23,8 @@ author_profile: true
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: nowrap;  /* 让内容保持在一行 */
-  gap: 12px; /* 适当调整间距 */
+  flex-wrap: nowrap;
+  gap: 12px;
   margin-bottom: 1rem;
 }
 
@@ -36,7 +37,7 @@ author_profile: true
   align-items: center;
   gap: 8px;
   margin: 0;
-  white-space: nowrap; /* 防止文本换行 */
+  white-space: nowrap;
 }
 
 /* Document Icon */
@@ -53,18 +54,18 @@ author_profile: true
   background: #6d4195;
   color: white;
   font-weight: bold;
-  padding: 6px 12px;  /* 调整 padding 让按钮更紧凑 */
-  font-size: 0.9rem;  /* 适配小屏幕，避免过大换行 */
+  padding: 6px 12px;
+  font-size: 0.9rem;
   border-radius: 6px;
   text-decoration: none;
   border: none;
   transition: background 0.3s, transform 0.2s;
-  white-space: nowrap;  /* 确保按钮文字不换行 */
+  white-space: nowrap;
 }
 
 .cv-download-btn i {
   font-size: 1.2rem;
-  color: white !important; /* 确保下载图标是白色 */
+  color: white !important;
 }
 
 .cv-download-btn:hover {
@@ -72,37 +73,40 @@ author_profile: true
   transform: scale(1.05);
 }
 
-/* PDF iframe */
+/* PDF Preview container */
 .iframe-wrapper {
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  text-align: center;
 }
 
-.cv-preview {
+/* PDF Canvas */
+#pdf-viewer {
   width: 100%;
-  height: 600px;
-  border: none;
+  max-width: 800px;
+  display: block;
+  margin: auto;
   border-radius: 8px;
 }
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
   .cv-header {
-    flex-wrap: nowrap; /* 手机端也保持一行 */
-    gap: 10px;  /* 适当减少间距，防止换行 */
+    flex-wrap: nowrap;
+    gap: 10px;
   }
 
   .cv-header h1 {
-    font-size: 1.4rem; /* 手机端稍微减小标题字体 */
+    font-size: 1.4rem;
   }
 
   .cv-download-btn {
-    font-size: 0.8rem; /* 让按钮更紧凑 */
+    font-size: 0.8rem;
     padding: 5px 10px;
   }
 }
-</style>
+
 
 <div class="cv-container">
   <!-- Header -->
@@ -113,11 +117,39 @@ author_profile: true
     <a href="{{ site.baseurl }}/assets/resumes v_final.pdf" class="cv-download-btn" download="Cheng Wu's CV.pdf">
       <i class="fa-solid fa-download"></i> Download CV (PDF)
     </a>
-
   </div>
 
-  <!-- PDF Preview -->
+  <!-- PDF Preview (Using PDF.js) -->
   <div class="iframe-wrapper">
-    <iframe class="cv-preview" src="https://drive.google.com/file/d/1h2T5wiRbZVjhjnDVjj_3m5KJigL6psA2/preview"></iframe>
+    <canvas id="pdf-viewer"></canvas>
   </div>
 </div>
+
+
+<!-- 引入 PDF.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var url = "{{ site.baseurl }}/assets/resumes v_final.pdf"; // PDF 文件路径
+
+    var loadingTask = pdfjsLib.getDocument(url);
+    loadingTask.promise.then(function(pdf) {
+      pdf.getPage(1).then(function(page) {
+        var scale = 1.5; // 调整缩放比例
+        var viewport = page.getViewport({ scale: scale });
+
+        var canvas = document.getElementById('pdf-viewer');
+        var context = canvas.getContext('2d');
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+
+        var renderContext = {
+          canvasContext: context,
+          viewport: viewport
+        };
+        page.render(renderContext);
+      });
+    });
+  });
+</script>
