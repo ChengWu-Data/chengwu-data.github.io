@@ -7,8 +7,7 @@ author_profile: true
 ---
 
 <style>
-
-  /* Main container */
+/* Main container */
 .cv-container {
   max-width: 900px;
   margin: 2rem auto;
@@ -106,7 +105,7 @@ author_profile: true
     padding: 5px 10px;
   }
 }
-
+</style>
 
 <div class="cv-container">
   <!-- Header -->
@@ -119,12 +118,11 @@ author_profile: true
     </a>
   </div>
 
-  <!-- PDF Preview (Using PDF.js) -->
+  <!-- PDF Preview -->
   <div class="iframe-wrapper">
     <canvas id="pdf-viewer"></canvas>
   </div>
 </div>
-
 
 <!-- 引入 PDF.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
