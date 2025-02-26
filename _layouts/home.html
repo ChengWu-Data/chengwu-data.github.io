@@ -63,36 +63,57 @@
       color: #2f1a42;
     }
 
+    /* Language Toggle Button */
+    .language-toggle {
+      display: flex;
+      align-items: center;
+    }
+    .language-toggle a {
+      display: inline-block;
+      padding: 8px 16px;
+      background: #6d4195;
+      color: white;
+      font-size: 0.9rem;
+      font-weight: bold;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .language-toggle a:hover {
+      background: #4b2a66;
+      transform: scale(1.05);
+    }
+
     /* Hero Section: Vertically centered content */
     .hero {
-      flex-grow: 1;                 /* Take remaining space */
-      display: flex;                /* Flex container */
+      flex-grow: 1;
+      display: flex;
       flex-direction: column;
-      justify-content: center;      /* Vertically center */
-      align-items: center;          /* Horizontally center */
+      justify-content: center;
+      align-items: center;
       text-align: center;
       max-width: 600px;
       width: 100%;
-      margin: 0 auto;              /* Center horizontally if narrower than 600px */
+      margin: 0 auto;
     }
     .hero .avatar {
       height: 120px;
       width: 120px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 1.5rem;        /* Spacing below avatar */
+      margin-bottom: 1.5rem;
     }
     .hero h1 {
       font-size: 2rem;
-      margin-bottom: 1.2rem;        /* Spacing below name */
+      margin-bottom: 1.2rem;
       color: #4b2a66;
     }
     .hero .subtitle {
       font-size: 1rem;
       color: #555;
-      margin-bottom: 2rem;          /* Spacing below tagline */
+      margin-bottom: 2rem;
       max-width: 500px;
-      padding: 0 1rem;             /* Slight horizontal padding for narrower screens */
+      padding: 0 1rem;
       font-style: italic;
     }
 
@@ -109,12 +130,12 @@
       justify-content: center;
       text-decoration: none;
       color: #4b2a66;
-      font-size: 2rem; /* 调大一点图标大小 */
+      font-size: 2rem;
       transition: all 0.3s;
     }
 
     .hero .icons a:hover {
-      color: #6d4195; /* 变深一点，增加 hover 效果 */
+      color: #6d4195;
     }
 
     .hero .icons a i {
@@ -149,6 +170,11 @@
       <a href="{{ site.baseurl }}/projects/">Projects</a>
       <a href="{{ site.baseurl }}/cv/">CV</a>
     </div>
+
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+      <a href="#" id="language-switch">🌍 EN | 中文</a>
+    </div>
   </nav>
 
   <!-- Main Content (Hero) -->
@@ -160,9 +186,8 @@
     <div class="subtitle">
       Welcome back.. there's always more to explore in these corners of insight....
     </div>
-      
-      
-      <div class="icons">
+
+    <div class="icons">
         {% if site.author.github %}
           <a href="https://github.com/{{ site.author.github }}" aria-label="GitHub">
               <i class="fa-brands fa-github"></i>
@@ -178,10 +203,26 @@
               <i class="fa-solid fa-envelope"></i>
           </a>
         {% endif %}
-      </div>
-
-      
+    </div>
   </main>
+
+  <!-- Language Toggle Script -->
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+      let lang = localStorage.getItem("language");
+      if (lang === "zh") {
+          window.location.href = "{{ site.baseurl }}/zh/";
+      }
+  });
+
+  document.getElementById("language-switch").addEventListener("click", function(e) {
+      e.preventDefault();
+      let currentLang = localStorage.getItem("language") || "en";
+      let newLang = (currentLang === "en") ? "zh" : "en";
+      localStorage.setItem("language", newLang);
+      window.location.href = (newLang === "zh") ? "{{ site.baseurl }}/zh/" : "{{ site.baseurl }}/";
+  });
+  </script>
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="{{ site.baseurl }}/images/favicon-32x32.png">
@@ -195,4 +236,3 @@
   </div>
 </body>
 </html>
-
