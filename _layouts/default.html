@@ -18,18 +18,35 @@
 
     <div id="main" role="main">
       {% include sidebar.html %}
-    
-      <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-        {% if page.title %}
-          <meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">
-        {% endif %}
-        <div class="page__inner-wrap">
-          <section class="page__content" itemprop="text">
-            {{ content }}
-          </section>
+
+      {% if page.author_profile %}
+          <div class="author-profile">
+            {% if page.lang == "zh" %}
+              {% assign author = site.author_zh %}
+            {% else %}
+              {% assign author = site.author %}
+            {% endif %}
+      
+            <img src="{{ author.avatar }}" alt="Avatar" class="avatar">
+            <h1>{{ author.name }}</h1>
+            <p>{{ author.bio }}</p>
+            <p>📍 {{ author.location }}</p>
+            <p>📧 <a href="mailto:{{ author.email }}">{{ author.email }}</a></p>
         </div>
-      </article>
-    </div>
+      {% endif %}
+
+      <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+          {% if page.title %}
+              <meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">
+          {% endif %}
+          <div class="page__inner-wrap">
+              <section class="page__content" itemprop="text">
+                {{ content }}
+              </section>
+            </div>
+         </article>
+      </div>
+
 
     {% include scripts.html %}
 
