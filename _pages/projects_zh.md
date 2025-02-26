@@ -202,14 +202,49 @@ lang: "zh"
 
 <!-- 详情 -->
 <div id="project2" class="project-details">
-  <iframe class="preview-frame" src="https://drive.google.com/file/d/1VjV4sNFC9NrD7N8A9QoP_Ss2yWV_5WkI/preview"></iframe>
+  <!-- PDF 本地预览 -->
+  <div class="iframe-wrapper">
+    <canvas id="pdf-viewer-project2"></canvas>
+  </div>
 
+  <!-- 按钮 -->
   <div class="button-row">
-    <a href="https://drive.google.com/file/d/1VjV4sNFC9NrD7N8A9QoP_Ss2yWV_5WkI/view?usp=sharing" class="html-btn">
+    <a href="{{ site.baseurl }}/assets/480.pdf" class="html-btn" download="项目2_研究报告.pdf">
+      <i class="fa-solid fa-download"></i> 下载 PDF
+    </a>
+    <a href="{{ site.baseurl }}/assets/480.pdf" class="html-btn" target="_blank">
       <i class="fa-solid fa-file-pdf"></i> 在线查看
     </a>
   </div>
 </div>
+
+<!-- 引入 PDF.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var url = "{{ site.baseurl }}/assets/480.pdf"; // 本地 PDF 地址
+
+    var loadingTask = pdfjsLib.getDocument(url);
+    loadingTask.promise.then(function(pdf) {
+      pdf.getPage(1).then(function(page) {
+        var scale = 1.5;
+        var viewport = page.getViewport({ scale: scale });
+
+        var canvas = document.getElementById('pdf-viewer-project2');
+        var context = canvas.getContext('2d');
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+
+        var renderContext = {
+          canvasContext: context,
+          viewport: viewport
+        };
+        page.render(renderContext);
+      });
+    });
+  });
+</script>
+
 
 
 
