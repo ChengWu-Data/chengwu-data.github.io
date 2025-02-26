@@ -19,9 +19,10 @@
     <div id="main" role="main">
       {% include sidebar.html %}
 
-      {% if page.author_profile %}
+      {% if page.author_profile and page.layout != "custom" %}
         {% include author-profile.html %}
       {% endif %}
+
 
       <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
           {% if page.title %}
