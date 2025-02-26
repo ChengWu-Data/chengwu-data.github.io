@@ -20,19 +20,7 @@
       {% include sidebar.html %}
 
       {% if page.author_profile %}
-          <div class="author-profile">
-            {% if page.lang == "zh" %}
-              {% assign author = site.author_zh %}
-            {% else %}
-              {% assign author = site.author %}
-            {% endif %}
-      
-            <img src="{{ author.avatar }}" alt="Avatar" class="avatar">
-            <h1>{{ author.name }}</h1>
-            <p>{{ author.bio }}</p>
-            <p>📍 {{ author.location }}</p>
-            <p>📧 <a href="mailto:{{ author.email }}">{{ author.email }}</a></p>
-        </div>
+        {% include author-profile.html %}
       {% endif %}
 
       <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
@@ -46,7 +34,6 @@
             </div>
          </article>
       </div>
-
 
     {% include scripts.html %}
 
