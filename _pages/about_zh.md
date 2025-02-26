@@ -117,7 +117,7 @@ author_profile: true
     <ul>
       <li><strong>计量经济学与数量经济学学士</strong></li>
       <li><em>辅修：数据科学与统计学</em></li>
-      <li>GPA：3.85/4.00 <span class="gpa-badge">优秀生名单</span></li>
+      <li>GPA：3.85/4.00 <span class="gpa-badge">院长名单</span></li>
     </ul>
   </div>
 </div>
@@ -137,7 +137,7 @@ author_profile: true
   </div>
 
   <div class="entry">
-    <div class="entry-title">数据科学实习生 - 机构金融</div>
+    <div class="entry-title">数据科学实习生 - 机构金融部</div>
     <div class="entry-details">浙商证券股份有限公司 | 2023 年 5 月 - 2023 年 9 月 | 中国杭州</div>
     <div class="entry-content">
       <ul>
@@ -197,7 +197,67 @@ author_profile: true
 
 <!-- 联系方式 -->
 <div class="section-container contact-section">
-  <h2>📩 联系我</h2>
-  <p>如果有任何问题，欢迎联系：</p>
-  <a href="mailto:datajourney.chengw@gmail.com" class="email-btn">发送邮件</a>
+  <div class="contact-card">
+    <h2>📩 联系我</h2>
+    <p>如果有任何问题或合作意向，欢迎随时联系！</p>
+    <a href="mailto:datajourney.chengw@gmail.com" class="email-btn">
+      <i class="fa-solid fa-envelope"></i> 发送邮件
+    </a>
+  </div>
 </div>
+
+<style>
+/* 联系方式卡片 */
+.contact-card {
+  background: #f3e8fd;
+  padding: 1.8rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.contact-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* 文字样式 */
+.contact-card h2 {
+  font-size: 1.6rem;
+  color: #6d4195;
+  margin-bottom: 0.8rem;
+}
+
+.contact-card p {
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+/* 邮件按钮 */
+.email-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  background: #6d4195;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 8px;
+  border: none;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.email-btn i {
+  font-size: 1.2rem;
+}
+
+.email-btn:hover {
+  background: #4b2a66;
+  transform: scale(1.05);
+}
+</style>
+
