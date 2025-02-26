@@ -110,7 +110,7 @@ author_profile: true
     <h1>
       <i class="fa-solid fa-file-lines"></i> Curriculum Vitae
     </h1>
-    <a href="{{ site.baseurl }}/assets/resumes_v_final.pdf" class="cv-download-btn">
+    <a href="{{ site.baseurl }}/assets/resumes v_final.pdf" class="cv-download-btn">
       <i class="fa-solid fa-download"></i> Download CV (PDF)
     </a>
   </div>
