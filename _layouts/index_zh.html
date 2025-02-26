@@ -57,7 +57,7 @@
       color: #2f1a42;
     }
 
-    /* 内容居中 */
+    /* 主要内容区域 */
     .hero {
       flex-grow: 1;
       display: flex;
@@ -74,11 +74,11 @@
       width: 120px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
     .hero h1 {
       font-size: 2rem;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;  /* 使标题稍微向上移动 */
       color: #4b2a66;
     }
     .hero .subtitle {
@@ -90,11 +90,37 @@
       font-style: italic;
     }
 
+    /* 统一社交图标的大小和对齐 */
+    .icons {
+      display: flex;
+      gap: 1.2rem;  /* 统一间距 */
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+
+    /* 确保图标大小一致 */
+    .icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #4b2a66;
+      font-size: 1.6rem; /* 统一大小 */
+      transition: all 0.3s;
+    }
+    .icons a i {
+      font-size: 1.4rem;
+    }
+    .icons a:hover {
+      color: #6d4195;
+    }
+
     /* 语言切换按钮 */
     .language-toggle {
       position: absolute;
       right: 20px;
-      bottom: 40px;
+      bottom: 60px;  /* 稍微上移 */
       display: flex;
       align-items: center;
       border-radius: 20px;
