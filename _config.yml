@@ -60,6 +60,17 @@ author:
   wikipedia        :
 
 
+# 中文作者信息
+author_zh:
+  name             : "吴骋"
+  avatar           : "/images/avatar.png"
+  bio              : "伊利诺伊大学香槟分校"
+  location         : "伊利诺伊州，美国"
+  email            : "datajourney.chengw@gmail.com"
+  github           : "ChengWu-Data"
+  linkedin         : "cheng-wu-1ab27922a"
+
+
 # Reading Files
 include:
   - .htaccess
