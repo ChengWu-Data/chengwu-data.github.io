@@ -5,7 +5,6 @@ title: ""
 excerpt: "我的学术和职业经历。"
 author_profile: true
 lang: "zh"
-
 ---
 
 <style>
@@ -24,8 +23,8 @@ lang: "zh"
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: nowrap;  /* 保持内容在一行 */
-  gap: 12px; /* 适当调整间距 */
+  flex-wrap: nowrap;
+  gap: 12px;
   margin-bottom: 1rem;
 }
 
@@ -38,7 +37,7 @@ lang: "zh"
   align-items: center;
   gap: 8px;
   margin: 0;
-  white-space: nowrap; /* 防止文本换行 */
+  white-space: nowrap;
 }
 
 /* 文档图标 */
@@ -55,18 +54,18 @@ lang: "zh"
   background: #6d4195;
   color: white;
   font-weight: bold;
-  padding: 6px 12px;  /* 调整 padding 让按钮更紧凑 */
-  font-size: 0.9rem;  /* 适配小屏幕，避免过大换行 */
+  padding: 6px 12px;
+  font-size: 0.9rem;
   border-radius: 6px;
   text-decoration: none;
   border: none;
   transition: background 0.3s, transform 0.2s;
-  white-space: nowrap;  /* 确保按钮文字不换行 */
+  white-space: nowrap;
 }
 
 .cv-download-btn i {
   font-size: 1.2rem;
-  color: white !important; /* 确保下载图标为白色 */
+  color: white !important;
 }
 
 .cv-download-btn:hover {
@@ -81,26 +80,26 @@ lang: "zh"
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
-.cv-preview {
+/* PDF 渲染 Canvas */
+#pdf-viewer {
   width: 100%;
-  height: 600px;
-  border: none;
+  max-width: 100%;
   border-radius: 8px;
 }
 
 /* 移动端适配 */
 @media (max-width: 768px) {
   .cv-header {
-    flex-wrap: nowrap; /* 手机端也保持一行 */
-    gap: 10px;  /* 适当减少间距，防止换行 */
+    flex-wrap: nowrap;
+    gap: 10px;
   }
 
   .cv-header h1 {
-    font-size: 1.4rem; /* 手机端稍微减小标题字体 */
+    font-size: 1.4rem;
   }
 
   .cv-download-btn {
-    font-size: 0.8rem; /* 让按钮更紧凑 */
+    font-size: 0.8rem;
     padding: 5px 10px;
   }
 }
@@ -115,11 +114,37 @@ lang: "zh"
     <a href="{{ site.baseurl }}/assets/resumes zh.pdf" class="cv-download-btn" download="吴骋的简历.pdf">
       <i class="fa-solid fa-download"></i> 下载简历（PDF）
     </a>
-
   </div>
 
   <!-- PDF 预览 -->
   <div class="iframe-wrapper">
-    <iframe class="cv-preview" src="https://drive.google.com/file/d/1RLJB4sthU-L81k0Yjpqg2cE6mCA0zS6K/preview"></iframe>
+    <canvas id="pdf-viewer"></canvas>
   </div>
 </div>
+
+<!-- 引入 PDF.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var url = "{{ site.baseurl }}/assets/resumes zh.pdf"; // 本地 PDF 地址
+
+    var loadingTask = pdfjsLib.getDocument(url);
+    loadingTask.promise.then(function(pdf) {
+      pdf.getPage(1).then(function(page) {
+        var scale = 1.5;
+        var viewport = page.getViewport({ scale: scale });
+
+        var canvas = document.getElementById('pdf-viewer');
+        var context = canvas.getContext('2d');
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+
+        var renderContext = {
+          canvasContext: context,
+          viewport: viewport
+        };
+        page.render(renderContext);
+      });
+    });
+  });
+</script>
