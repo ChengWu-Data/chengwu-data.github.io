@@ -201,10 +201,11 @@ lang: "zh"
 </div>
 
 <!-- 详情 -->
+<!-- 详情 -->
 <div id="project2" class="project-details">
   <!-- PDF 本地预览 -->
   <div class="iframe-wrapper">
-    <canvas id="pdf-viewer-project2"></canvas>
+    <canvas id="pdf-viewer-project2" class="pdf-canvas"></canvas>
   </div>
 
   <!-- 按钮 -->
@@ -218,6 +219,33 @@ lang: "zh"
   </div>
 </div>
 
+<!-- 调整 PDF.js 预览尺寸 -->
+<style>
+  .iframe-wrapper {
+    width: 100%;
+    max-width: 700px; /* 限制最大宽度，防止超出 */
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .pdf-canvas {
+    width: 100% !important;  /* 让 PDF 适应容器宽度 */
+    max-width: 600px; /* 限制最大宽度 */
+    height: auto; /* 保持比例 */
+    display: block;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .iframe-wrapper {
+      max-width: 100%; /* 让移动端适应屏幕 */
+    }
+    .pdf-canvas {
+      max-width: 100%; /* 确保 PDF 不会超出 */
+    }
+  }
+</style>
+
 <!-- 引入 PDF.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
 <script>
@@ -227,7 +255,7 @@ lang: "zh"
     var loadingTask = pdfjsLib.getDocument(url);
     loadingTask.promise.then(function(pdf) {
       pdf.getPage(1).then(function(page) {
-        var scale = 1.5;
+        var scale = 1.2; // 缩小比例，防止过大
         var viewport = page.getViewport({ scale: scale });
 
         var canvas = document.getElementById('pdf-viewer-project2');
@@ -244,6 +272,7 @@ lang: "zh"
     });
   });
 </script>
+
 
 
 
