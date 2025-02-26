@@ -146,8 +146,8 @@
     </div>
     <div class="links">
       <a href="{{ site.baseurl }}/zh/about/">关于我</a>
-      <a href="{{ site.baseurl }}/zh/projects/">研究项目</a>
       <a href="{{ site.baseurl }}/zh/cv/">简历</a>
+      <a href="{{ site.baseurl }}/zh/projects/">研究项目</a>
     </div>
   </nav>
 
@@ -158,29 +158,28 @@
     <h1>吴骋</h1>
 
     <div class="subtitle">
-      欢迎来到我的世界，希望您的每次探索都能发现新的惊喜。
+      欢迎来到我的世界...
     </div>
       
     <div class="icons">
-      {% if site.author.github %}
-        <a href="https://github.com/{{ site.author.github }}" aria-label="GitHub">
-            <i class="fa-brands fa-github"></i>
-        </a>
-      {% endif %}
-      {% if site.author.linkedin %}
-        <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" aria-label="LinkedIn">
-            <i class="fa-brands fa-linkedin"></i>
-        </a>
-      {% endif %}
-      {% if site.author.email %}
-        <a href="mailto:{{ site.author.email }}" aria-label="Email">
-            <i class="fa-solid fa-envelope"></i>
-        </a>
-      {% endif %}
+        {% if site.author.github %}
+          <a href="https://github.com/{{ site.author.github }}" aria-label="GitHub">
+              <i class="fa-brands fa-github"></i>
+          </a>
+        {% endif %}
+        {% if site.author.linkedin %}
+          <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" aria-label="LinkedIn">
+              <i class="fa-brands fa-linkedin"></i>
+          </a>
+        {% endif %}
+        {% if site.author.email %}
+          <a href="mailto:{{ site.author.email }}" aria-label="Email">
+              <i class="fa-solid fa-envelope"></i>
+          </a>
+        {% endif %}
     </div>
-
   </main>
-
+    
   <!-- 语言切换按钮 -->
   <div class="language-toggle">
     <a href="{{ site.baseurl }}/" class="lang-en">EN</a>
