@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    {% include head.html %}
+    {% include head/custom.html %}
+</head>
+
+<meta charset="UTF-8" />
+<title>吴骋</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    /* 保持样式不变 */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      background: #f3e8fd;
+      color: #333;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.5rem;
+      background: #f3e8fd;
+      border-bottom: 1px solid #e0c9fa;
+      flex-shrink: 0;
+    }
+    .nav .logo {
+      display: flex;
+      align-items: center;
+    }
+    .nav .logo img {
+      height: 32px;
+      width: 32px;
+      margin-right: 0.5rem;
+    }
+    .nav .logo span {
+      font-weight: 600;
+      color: #4b2a66;
+    }
+    .nav .links a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #4b2a66;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav .links a:hover {
+      color: #2f1a42;
+    }
+
+    /* 内容居中 */
+    .hero {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      max-width: 600px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .hero .avatar {
+      height: 120px;
+      width: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+      color: #4b2a66;
+    }
+    .hero .subtitle {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 2rem;
+      max-width: 500px;
+      padding: 0 1rem;
+      font-style: italic;
+    }
+
+    /* 语言切换按钮 */
+    .language-toggle {
+      position: absolute;
+      right: 20px;
+      bottom: 40px;
+      display: flex;
+      align-items: center;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 2px solid #6d4195;
+      font-size: 0.8rem;
+      transform: scale(0.75);
+    }
+    .lang-en {
+      background: white;
+      color: #6d4195;
+      padding: 5px 12px;
+      font-weight: bold;
+      text-decoration: none;
+      border-right: 2px solid #6d4195;
+    }
+    .lang-en:hover {
+      background: #e0c9fa;
+    }
+    .lang-zh {
+      background: #6d4195;
+      color: white;
+      padding: 5px 12px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .lang-zh:hover {
+      background: #4b2a66;
+    }
+
+    /* 页脚 */
+    .footer {
+      margin-top: auto;
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+      padding: 1rem 0;
+      flex-shrink: 0;
+    }
+</style>
+
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <nav class="nav">
+    <div class="logo">
+      <img src="{{ site.baseurl }}/images/notion2.png" alt="Logo" />
+      <span>Cheng</span> 
+    </div>
+    <div class="links">
+      <a href="{{ site.baseurl }}/zh/about/">关于我</a>
+      <a href="{{ site.baseurl }}/zh/projects/">研究项目</a>
+      <a href="{{ site.baseurl }}/zh/cv/">简历</a>
+    </div>
+  </nav>
+
+  <!-- 主要内容 -->
+  <main class="hero">
+    <img src="{{ site.baseurl }}/images/avatar.png" alt="Avatar" class="avatar" />
+
+    <h1>吴骋</h1>
+
+    <div class="subtitle">
+      欢迎来到我的世界，希望您的每次探索都能发现新的惊喜。
+    </div>
+      
+    <div class="icons">
+      {% if site.author.github %}
+        <a href="https://github.com/{{ site.author.github }}" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+        </a>
+      {% endif %}
+      {% if site.author.linkedin %}
+        <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin"></i>
+        </a>
+      {% endif %}
+      {% if site.author.email %}
+        <a href="mailto:{{ site.author.email }}" aria-label="Email">
+            <i class="fa-solid fa-envelope"></i>
+        </a>
+      {% endif %}
+    </div>
+
+  </main>
+
+  <!-- 语言切换按钮 -->
+  <div class="language-toggle">
+    <a href="{{ site.baseurl }}/" class="lang-en">EN</a>
+    <a href="{{ site.baseurl }}/zh/" class="lang-zh">中文</a>
+  </div>
+
+  <!-- 页脚 -->
+  <div class="footer">
+    © {{ "now" | date: "%Y" }} 吴骋
+  </div>
+</body>
+</html>
