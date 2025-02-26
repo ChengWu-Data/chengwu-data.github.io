@@ -4,6 +4,8 @@ permalink: /zh/projects/
 title: "研究项目"
 excerpt: "我的研究与专业项目合集。"
 author_profile: true
+lang: "zh"
+
 ---
 
 <style>
