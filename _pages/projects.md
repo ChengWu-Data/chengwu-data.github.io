@@ -175,7 +175,7 @@ author_profile: true
     <a href="https://github.com/ChengWu-Data/Housing-Price-Prediction-An-Exploratory-Analysis.git" class="github-btn">
       <i class="fa-brands fa-github"></i> GitHub
     </a>
-    <a href="https://chengwu-data.github.io/Housing_Price_Prediction-AnExploratoryAnalysis.html" class="html-btn">
+    <a href="{{ site.baseurl }}/assets/Housing_Price_Prediction-AnExploratoryAnalysis.html" class="html-btn">
       <i class="fa-solid fa-file"></i> View Page
     </a>
   </div>
