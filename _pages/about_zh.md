@@ -2,6 +2,8 @@
 layout: default
 permalink: /zh/about/
 author_profile: true
+lang: "zh"
+
 ---
 
 <style>
