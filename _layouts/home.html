@@ -210,7 +210,7 @@
   <script>
   document.addEventListener("DOMContentLoaded", function() {
       let lang = localStorage.getItem("language");
-      if (lang === "zh") {
+      if (lang === "zh" && window.location.pathname !== "/zh/") {
           window.location.href = "{{ site.baseurl }}/zh/";
       }
   });
@@ -220,15 +220,19 @@
       let currentLang = localStorage.getItem("language") || "en";
       let newLang = (currentLang === "en") ? "zh" : "en";
       localStorage.setItem("language", newLang);
-      window.location.href = (newLang === "zh") ? "{{ site.baseurl }}/zh/" : "{{ site.baseurl }}/";
+      
+      let newURL = (newLang === "zh") ? "{{ site.baseurl }}/zh/" : "{{ site.baseurl }}/";
+      fetch(newURL, { method: "HEAD" })
+          .then(response => {
+              if (response.ok) {
+                  window.location.href = newURL;
+              } else {
+                  alert("The Chinese version is not available yet.");
+              }
+          })
+          .catch(() => alert("The Chinese version is not available yet."));
   });
   </script>
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ site.baseurl }}/images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ site.baseurl }}/images/favicon-16x16.png">
-  <link rel="shortcut icon" href="{{ site.baseurl }}/images/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/images/apple-touch-icon.png">
 
   <!-- Footer -->
   <div class="footer">
@@ -236,4 +240,3 @@
   </div>
 </body>
 </html>
-
