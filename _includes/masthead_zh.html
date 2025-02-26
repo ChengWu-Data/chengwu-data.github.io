@@ -11,7 +11,7 @@
             </a>
           </li>
 
-          <!-- 确保正确加载 navigation_zh.yml -->
+          <!-- 中文导航 -->
           {% for link in site.data.navigation_zh.main %}
             <li class="masthead__menu-item">
               <a href="{{ site.baseurl }}{{ link.url }}">{{ link.title }}</a>
@@ -27,27 +27,59 @@
 <style>
 /* 头像样式 */
 .nav-avatar {
-  height: 32px;
-  width: 32px;
-  border-radius: 0;
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
   vertical-align: middle;
-  margin-left: 10px;
+  margin-right: 12px; /* 适当调整距离 */
 }
 
 /* 确保导航栏样式一致 */
 .masthead {
   background: #f3e8fd;
   border-bottom: 1px solid #e0c9fa;
+  padding: 0.75rem 1.5rem;
 }
 
+/* 导航菜单样式 */
+.masthead__menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 调整菜单项的间距 */
+.masthead__menu-item {
+  margin: 0 12px; /* 让菜单项之间有更合理的间距 */
+  font-size: 1rem; /* 字体大小适中 */
+}
+
+/* 菜单项样式 */
 .masthead__menu-item a {
   color: #4b2a66;
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
-  padding: 0.75rem;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
 }
 
+/* 鼠标悬停时的渐变效果 */
 .masthead__menu-item a:hover {
-  color: #2f1a42;
+  background: rgba(109, 65, 149, 0.15);
+  color: #4b2a66;
+}
+
+/* 响应式设计：小屏幕时自动换行居中 */
+@media (max-width: 768px) {
+  .masthead__menu {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .masthead__menu-item {
+    margin: 6px 0;
+  }
 }
 </style>
+
