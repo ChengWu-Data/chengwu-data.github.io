@@ -112,13 +112,15 @@ lang: "zh"
     <h1>
       <i class="fa-solid fa-file-lines"></i> 个人简历
     </h1>
-    <a href="{{ site.baseurl }}/assets/resumes zh.pdf" class="cv-download-btn">
+    <a href="{{ site.baseurl }}/assets/resumes zh.pdf" class="cv-download-btn" download="吴骋的简历.pdf">
       <i class="fa-solid fa-download"></i> 下载简历（PDF）
+    </a>
+
     </a>
   </div>
 
   <!-- PDF 预览 -->
   <div class="iframe-wrapper">
-    <iframe class="cv-preview" src="[https://drive.google.com/file/d/1RLJB4sthU-L81k0Yjpqg2cE6mCA0zS6K/view?usp=sharing](https://drive.google.com/file/d/1RLJB4sthU-L81k0Yjpqg2cE6mCA0zS6K/preview)"></iframe>
+    <iframe class="cv-preview" src="https://drive.google.com/file/d/1RLJB4sthU-L81k0Yjpqg2cE6mCA0zS6K/preview"></iframe>
   </div>
 </div>
