@@ -112,11 +112,9 @@
       font-size: 2rem;
       transition: all 0.3s;
     }
-
     .hero .icons a:hover {
       color: #6d4195;
     }
-
     .hero .icons a i {
       font-size: 1.4rem;
     }
@@ -135,27 +133,45 @@
       flex-shrink: 0;
     }
 
-    /* Language Toggle Button (Bottom Right) */
+    /* 🔹 Language Toggle: Two Buttons in One Capsule */
     .language-toggle {
       position: fixed;
       bottom: 20px;
       right: 20px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 10px 18px;
+      border-radius: 25px;
+      overflow: hidden;
+      border: 2px solid #6d4195;
+    }
+
+    /* Left Button (English) */
+    .lang-en {
       background: #6d4195;
       color: white;
+      padding: 10px 16px;
       font-size: 0.9rem;
       font-weight: bold;
-      border-radius: 25px;
+      text-decoration: none;
+      border-right: 2px solid #6d4195;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .lang-en:hover {
+      background: #4b2a66;
+    }
+
+    /* Right Button (Chinese) */
+    .lang-zh {
+      background: white;
+      color: #6d4195;
+      padding: 10px 16px;
+      font-size: 0.9rem;
+      font-weight: bold;
       text-decoration: none;
       transition: background 0.3s, transform 0.2s;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
     }
-    .language-toggle:hover {
-      background: #4b2a66;
-      transform: scale(1.05);
+    .lang-zh:hover {
+      background: #e0c9fa;
     }
 </style>
 
@@ -203,36 +219,11 @@
     </div>
   </main>
 
-  <!-- Language Toggle Button (Bottom Right) -->
-  <a href="#" id="language-switch" class="language-toggle">🌍 EN | 中文</a>
-
-  <!-- Language Toggle Script -->
-  <script>
-  document.addEventListener("DOMContentLoaded", function() {
-      let lang = localStorage.getItem("language");
-      if (lang === "zh" && window.location.pathname !== "/zh/") {
-          window.location.href = "{{ site.baseurl }}/zh/";
-      }
-  });
-
-  document.getElementById("language-switch").addEventListener("click", function(e) {
-      e.preventDefault();
-      let currentLang = localStorage.getItem("language") || "en";
-      let newLang = (currentLang === "en") ? "zh" : "en";
-      localStorage.setItem("language", newLang);
-      
-      let newURL = (newLang === "zh") ? "{{ site.baseurl }}/zh/" : "{{ site.baseurl }}/";
-      fetch(newURL, { method: "HEAD" })
-          .then(response => {
-              if (response.ok) {
-                  window.location.href = newURL;
-              } else {
-                  alert("The Chinese version is not available yet.");
-              }
-          })
-          .catch(() => alert("The Chinese version is not available yet."));
-  });
-  </script>
+  <!-- 🔹 Language Toggle Buttons -->
+  <div class="language-toggle">
+    <a href="{{ site.baseurl }}/" class="lang-en">EN</a>
+    <a href="{{ site.baseurl }}/zh/" class="lang-zh">中文</a>
+  </div>
 
   <!-- Footer -->
   <div class="footer">
@@ -240,3 +231,4 @@
   </div>
 </body>
 </html>
+
