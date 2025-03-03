@@ -274,6 +274,34 @@ lang: "zh"
 </script>
 
 
+<!-- Project 3: FollowerJP Final Project for Japanese Ikebana Course -->
+<div class="project-card">
+  <img src="{{ site.baseurl }}/images/project3.jpg" alt="Project Image" class="project-image">
+  <div class="project-content">
+    <div class="project-title">FollowerJP：我的日式插花课程作品网站</div>
+    <p class="project-description">
+      该网站是我为插花课程的期末项目开发的。它展示了多种先进的前端技术，包括复杂的 CSS 动画、交互式 JavaScript 效果、HTML5 背景音乐集成，以及自动适应暗/亮模式的响应式设计。该项目充分利用了 CSS3 转场效果、媒体查询、JavaScript 的动态 UI 增强以及 HTML5 音频 API，让读者能与我一同踏上插花之旅！<a href="https://github.com/ChengWu-Data/followerJP" target="_blank" style="color:#6d4195;">Github</a>.
+    </p>
+    <button class="details-btn" onclick="toggleDetails('project3')">View Details</button>
+  </div>
+</div>
+
+<!-- Hidden Details for Project 3 -->
+<div id="project3" class="project-details">
+  <!-- Photo Gallery: 5 Photos -->
+  <div class="photo-gallery">
+    <img src="{{ site.baseurl }}/images/followerJP_1.jpg" alt="FollowerJP Screenshot 1" class="project-photo">
+    <img src="{{ site.baseurl }}/images/followerJP_2.jpg" alt="FollowerJP Screenshot 2" class="project-photo">
+    <img src="{{ site.baseurl }}/images/followerJP_3.jpg" alt="FollowerJP Screenshot 3" class="project-photo">
+    <img src="{{ site.baseurl }}/images/followerJP_4.jpg" alt="FollowerJP Screenshot 4" class="project-photo">
+  </div>
+  <!-- Button Row -->
+  <div class="button-row">
+    <a href="https://chengwu-data.github.io/followerJP/" class="html-btn">
+      <i class="fa-solid fa-globe"></i> 访问我的网站
+    </a>
+  </div>
+</div>
 
 
 
