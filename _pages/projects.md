@@ -206,7 +206,7 @@ author_profile: true
   </div>
 </div>
 
-<!-- Project 3: FollowerJP Final Project for Japanese Ikebana Course -->
+<!-- Project 3: My Ikebana Portfolio Site -->
 <div class="project-card">
   <img src="{{ site.baseurl }}/images/project3.jpg" alt="Project Image" class="project-image">
   <div class="project-content">
