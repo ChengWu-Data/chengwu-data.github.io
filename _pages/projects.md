@@ -210,7 +210,7 @@ author_profile: true
 <div class="project-card">
   <img src="{{ site.baseurl }}/images/project3.jpg" alt="Project Image" class="project-image">
   <div class="project-content">
-    <div class="project-title">Final Project for Japanese Ikebana Course</div>
+    <div class="project-title">My Ikebana Portfolio Site</div>
     <p class="project-description">
       This website was developed as the final project for my Ikebana course. It showcases a wide range of advanced front-end techniques including complex CSS animations, interactive JavaScript effects, HTML5 background music integration, and a responsive design that automatically adapts to dark/light modes across different devices. The project leverages CSS3 transitions, media queries, dynamic UI enhancements with JavaScript, and the HTML5 audio API to allow readers to join me on my flower arranging journey!  <a href="https://github.com/ChengWu-Data/followerJP" target="_blank" style="color:#6d4195;">To GitHub</a>.
     </p>
