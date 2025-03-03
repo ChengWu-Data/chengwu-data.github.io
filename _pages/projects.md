@@ -206,13 +206,13 @@ author_profile: true
   </div>
 </div>
 
-<!-- Project 3: FollowerJP Website -->
+<!-- Project 3: FollowerJP Final Project for Japanese Ikebana Course -->
 <div class="project-card">
   <img src="{{ site.baseurl }}/images/project3.jpg" alt="Project Image" class="project-image">
   <div class="project-content">
-    <div class="project-title">FollowerJP: My Latest Website</div>
+    <div class="project-title">FollowerJP: Final Project for Japanese Ikebana Course</div>
     <p class="project-description">
-      Check out my self-built website, FollowerJP, where I share insights, updates, and my projects. Explore its dynamic design and user-friendly interface.
+      This website was developed as the final project for my Japanese Ikebana course. It showcases a wide range of advanced front-end techniques including complex CSS animations, interactive JavaScript effects, HTML5 background music integration, and a responsive design that automatically adapts to dark/light modes across different devices. The project leverages CSS3 transitions, media queries, dynamic UI enhancements with JavaScript, and the HTML5 audio API for an engaging user experience. For a detailed breakdown of the technical implementation, please refer to the <a href="https://github.com/ChengWu-Data/followerJP" target="_blank" style="color:#6d4195;">GitHub repository</a>.
     </p>
     <button class="details-btn" onclick="toggleDetails('project3')">View Details</button>
   </div>
@@ -220,8 +220,14 @@ author_profile: true
 
 <!-- Hidden Details for Project 3 -->
 <div id="project3" class="project-details">
-  <!-- Embedded Website Preview -->
-  <iframe class="preview-frame" src="https://chengwu-data.github.io/followerJP/"></iframe>
+  <!-- Photo Gallery: 5 Photos -->
+  <div class="photo-gallery">
+    <img src="{{ site.baseurl }}/images/followerJP_1.jpg" alt="FollowerJP Screenshot 1" class="project-photo">
+    <img src="{{ site.baseurl }}/images/followerJP_2.jpg" alt="FollowerJP Screenshot 2" class="project-photo">
+    <img src="{{ site.baseurl }}/images/followerJP_3.jpg" alt="FollowerJP Screenshot 3" class="project-photo">
+    <img src="{{ site.baseurl }}/images/followerJP_4.jpg" alt="FollowerJP Screenshot 4" class="project-photo">
+    <img src="{{ site.baseurl }}/images/followerJP_5.jpg" alt="FollowerJP Screenshot 5" class="project-photo">
+  </div>
   <!-- Button Row -->
   <div class="button-row">
     <a href="https://chengwu-data.github.io/followerJP/" class="html-btn">
