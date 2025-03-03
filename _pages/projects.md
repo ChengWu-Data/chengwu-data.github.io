@@ -212,7 +212,7 @@ author_profile: true
   <div class="project-content">
     <div class="project-title">FollowerJP: Final Project for Japanese Ikebana Course</div>
     <p class="project-description">
-      This website was developed as the final project for my Japanese Ikebana course. It showcases a wide range of advanced front-end techniques including complex CSS animations, interactive JavaScript effects, HTML5 background music integration, and a responsive design that automatically adapts to dark/light modes across different devices. The project leverages CSS3 transitions, media queries, dynamic UI enhancements with JavaScript, and the HTML5 audio API for an engaging user experience. For a detailed breakdown of the technical implementation, please refer to the <a href="https://github.com/ChengWu-Data/followerJP" target="_blank" style="color:#6d4195;">GitHub repository</a>.
+      This website was developed as the final project for my Ikebana course. It showcases a wide range of advanced front-end techniques including complex CSS animations, interactive JavaScript effects, HTML5 background music integration, and a responsive design that automatically adapts to dark/light modes across different devices. The project leverages CSS3 transitions, media queries, dynamic UI enhancements with JavaScript, and the HTML5 audio API to allow readers to join me on my flower arranging journey!  <a href="https://github.com/ChengWu-Data/followerJP" target="_blank" style="color:#6d4195;">To GitHub</a>.
     </p>
     <button class="details-btn" onclick="toggleDetails('project3')">View Details</button>
   </div>
@@ -226,7 +226,7 @@ author_profile: true
     <img src="{{ site.baseurl }}/images/followerJP_2.jpg" alt="FollowerJP Screenshot 2" class="project-photo">
     <img src="{{ site.baseurl }}/images/followerJP_3.jpg" alt="FollowerJP Screenshot 3" class="project-photo">
     <img src="{{ site.baseurl }}/images/followerJP_4.jpg" alt="FollowerJP Screenshot 4" class="project-photo">
-    <img src="{{ site.baseurl }}/images/followerJP_5.jpg" alt="FollowerJP Screenshot 5" class="project-photo">
+    
   </div>
   <!-- Button Row -->
   <div class="button-row">
