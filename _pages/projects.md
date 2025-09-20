@@ -161,7 +161,7 @@ author_profile: true
   <div class="project-content">
     <div class="project-title">Housing Price Prediction: An Exploratory Analysis</div>
     <p class="project-description">
-      Exploring the relationship between housing attributes and sale prices through extensive exploratory data analysis, visualization, and predictive modeling.
+      Built a housing price prediction pipeline using exploratory data analysis, feature engineering, and regression/ML models including Ridge, LASSO, Random Forest, and Group LASSO. The models achieved strong predictive accuracy while consistently identifying space, quality, and utility as the key drivers of value. Beyond forecasting, the project emphasized interpretability and stakeholder communication, showing how structured analysis can turn high-dimensional data into actionable insights for decision-making.
     </p>
     <button class="details-btn" onclick="toggleDetails('project1')">View Details</button>
   </div>
@@ -188,7 +188,7 @@ author_profile: true
   <div class="project-content">
     <div class="project-title">Socioeconomic Attributes and Crime: Analyzing Economic Factors in Crime Trends</div>
     <p class="project-description">
-      Exploring the link between socioeconomic attributes and crime rates, this study uses data-driven analysis to investigate how economic conditions influence crime trends.
+      Explored socioeconomic predictors of crime in San Francisco by combining large-scale crime data (913k+ records) with census tract indicators. Used fixed-effects regression, count models, and time-series forecasting to identify drivers of crime trends, with education and mobility emerging as strong factors. Beyond policy relevance, the project sharpened my ability to handle complex datasets, longitudinal analysis, and predictive modeling—transferable skills for business and financial analytics.
     </p>
     <button class="details-btn" onclick="toggleDetails('project2')">View Details</button>
   </div>
