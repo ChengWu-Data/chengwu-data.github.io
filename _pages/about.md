@@ -92,18 +92,17 @@ author_profile: true
 <div class="section-container">
   <h2 class="section-header">About Me</h2>
   <p>
-    I’m <span class="about-text">Cheng Wu</span>, a <span class="about-text">Business/Data Analyst</span> who focuses on practical, impact-oriented analytics.
-    I translate business questions into clean datasets, interpretable analysis, and dashboards that teams can use day-to-day.
+    I’m <span class="about-text">Cheng Wu</span>, a <span class="about-text">data and business analyst</span> who cares about how analysis translates into real-world decisions. 
+    With a background in <span class="about-text">econometrics and quantitative economics</span> from the University of Illinois Urbana-Champaign and current graduate studies in <span class="about-text">Data Science</span> at <span class="about-text">Columbia University</span>, I work at the intersection of quantitative rigor and practical outcomes.
   </p>
   <p>
-    I earned a B.S. in <span class="about-text">Econometrics & Quantitative Economics</span> (minor in <span class="about-text">Data Science & Statistics</span>) from UIUC,
-    and I’m now pursuing my M.S. in <span class="about-text">Data Science</span> at <span class="about-text">Columbia University</span>.
-    My interests span pricing & demand, cohorts & retention, KPI design, and lightweight causal evaluation for decision-making.
+    I’ve applied analytics across <span class="about-text">markets, finance, and social impact</span>. My work has helped managers improve pricing and demand planning, speed up financial reporting, and identify inequities in education systems. What motivates me most are questions without ready-made answers — problems where careful analysis can bring clarity and drive meaningful change.
   </p>
   <p>
-    Tooling: SQL, Python (pandas/NumPy/sklearn), and BI (Power BI/Tableau/Plotly). I prefer simple, explainable solutions that ship.
+    I focus on three things in my work: <span class="about-text">clarity in communication, rigor in method, and measurable impact in results.</span> 
   </p>
-  <p>📍 <span class="about-text">Currently based in New York, NY, USA.</span></p>
+  <p>📍 <span class="about-text">Focus areas</span>: market analytics, financial analysis, process improvement, education equity</p>
+  <p>📍 Tools: SQL, Python, BI dashboards (Power BI, Tableau, Plotly), Statistics / Econometrics</p>
 </div>
 
 <div class="section-container">
