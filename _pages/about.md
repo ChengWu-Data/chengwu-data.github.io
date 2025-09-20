@@ -157,7 +157,7 @@ author_profile: true
 </div>
 
 
- <div class="entry">
+<div class="entry">
   <div class="entry-title">Data Scientist Intern — Marketing Analytics</div>
   <div class="entry-details">Donglai Natural BioTech Co. Ltd. | June 2024 – September 2024 | Remote</div>
   <div class="entry-content">
