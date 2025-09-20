@@ -1,9 +1,3 @@
----
-layout: default
-permalink: /about/
-author_profile: true
----
-
 <style>
 /* General Styling */
 .page-content {
@@ -87,7 +81,17 @@ author_profile: true
   color: #4b2a66; /* Purple highlight instead of bold */
   font-weight: 600;
 }
+
+/* ---- 新增：让经历之间和段落之间更宽松 ---- */
+.entry {
+  margin-bottom: 2.5rem; /* 增加间距 */
+}
+
+.entry-content p {
+  margin-bottom: 1rem; /* 段落之间增加呼吸感 */
+}
 </style>
+
 
 <div class="section-container">
   <h2 class="section-header">About Me</h2>
@@ -144,7 +148,7 @@ author_profile: true
 
 
  <div class="entry">
-  <div class="entry-title">Data Analyst Intern — Institutional Finance</div>
+  <div class="entry-title">Data Analyst — Institutional Finance</div>
   <div class="entry-details">ZheShang Securities Co. Ltd. | May 2023 – September 2023 | Hangzhou, China</div>
   <div class="entry-content">
     <p>
@@ -157,21 +161,25 @@ author_profile: true
 </div>
 
 <div class="entry">
-  <div class="entry-title">Lead Coordinator — Strategic Initiatives & Community Empowerment</div>
+  <div class="entry-title">Data Analyst & Lead Coordinator — Inclusive Growth</div>
   <div class="entry-details">Innovative Bloom Foundation | May 2019 – June 2024 | Shanghai, China</div>
   <div class="entry-content">
     <p>
-      I began at the <span class="about-text">Innovative Bloom Foundation</span> as a volunteer math teacher for left-behind children in rural communities. Over time, I took on greater responsibility, moving from front-line teaching to coordinating programs and eventually leading data initiatives that shaped strategy and measurement.
+      My work with the <span class="about-text">Innovative Bloom Foundation</span> spanned five years, starting when I was still in high school. I first joined as a volunteer <span class="about-text">math teacher</span> for left-behind children in rural communities, but as I observed the deeper structural challenges these families faced, I began to take on broader responsibilities. Over time, I grew from front-line teaching to <span class="about-text">coordinating programs</span> and ultimately leading <span class="about-text">data initiatives</span> that shaped how the foundation measured and scaled its work.
     </p>
     <p>
-      My early focus was building trust with students and families; later, I began structuring <span class="about-text">survey and financial data into SQL datasets</span>, which opened the door to creating <span class="about-text">dashboards</span> that tracked education, food security, and health outcomes across villages. One of the most impactful projects was helping launch an <span class="about-text">e-commerce platform</span> for local artisans. I set up real-time monitoring to track sales and logistics, and within a year the platform was supporting <span class="about-text">15 families</span> and raising household income by about <span class="about-text">30%</span>.
+      My contribution became twofold: <span class="about-text">data analysis</span> and <span class="about-text">program coordination</span>. I started by structuring survey data — often messy, handwritten responses — into <span class="about-text">SQL datasets</span> that could be analyzed systematically. This opened the door to building <span class="about-text">dashboards</span> that tracked education access, food security, and health indicators across different villages.
     </p>
     <p>
-      By the time I became a lead coordinator, I was not only managing programs but also applying <span class="about-text">regression analysis</span> to benchmark outcomes and guide funding strategy. This five-year journey taught me how to grow with an organization: starting small, earning trust, and building systems that turned data into decisions.
+      One initiative I’m proud of was helping launch an <span class="about-text">e-commerce platform</span> for local artisans. I set up real-time monitoring to track sales and logistics, and within a year the platform was supporting <span class="about-text">15 families</span> and increasing artisan household income by about <span class="about-text">30%</span>. These numbers weren’t abstract; they meant that families could afford school fees or healthcare they previously struggled with.
+    </p>
+    <p>
+      I also applied <span class="about-text">regression analysis</span> to benchmark program outcomes, which guided funding decisions for future projects. Over time, I learned how to <span class="about-text">translate complex outcomes into metrics</span> that stakeholders could act on, ensuring that data wasn’t just collected, but used to design better interventions.
     </p>
   </div>
 </div>
 
+</div>
 
 
 
