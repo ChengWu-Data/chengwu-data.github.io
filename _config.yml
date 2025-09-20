@@ -24,8 +24,8 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 author:
   name             : "Cheng Wu"
   avatar           : "/images/avatar.png"
-  bio              : "University of Illinois Urbana-Champaign"
-  location         : "IL, USA"
+  bio              : "Columbia Engineering"
+  location         : "NY, USA"
   employer         :
   pubmed           : 
   googlescholar    : 
@@ -64,8 +64,8 @@ author:
 author_zh:
   name             : "吴骋"
   avatar           : "/images/avatar.png"
-  bio              : "伊利诺伊大学香槟分校"
-  location         : "伊利诺伊州，美国"
+  bio              : "哥伦比亚大学工程学院"
+  location         : "纽约，美国"
   email            : "datajourney.chengw@gmail.com"
   github           : "ChengWu-Data"
   linkedin         : "cheng-wu-1ab27922a"
