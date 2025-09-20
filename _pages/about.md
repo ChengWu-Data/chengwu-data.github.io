@@ -1,3 +1,9 @@
+---
+layout: default
+permalink: /about/
+author_profile: true
+---
+
 <style>
 /* General Styling */
 .page-content {
@@ -80,15 +86,6 @@
 .about-text {
   color: #4b2a66; /* Purple highlight instead of bold */
   font-weight: 600;
-}
-
-/* ---- 新增：让经历之间和段落之间更宽松 ---- */
-.entry {
-  margin-bottom: 2.5rem; /* 增加间距 */
-}
-
-.entry-content p {
-  margin-bottom: 1rem; /* 段落之间增加呼吸感 */
 }
 </style>
 
