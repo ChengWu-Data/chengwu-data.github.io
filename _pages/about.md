@@ -93,10 +93,12 @@ author_profile: true
   <h2 class="section-header">About Me</h2>
   <p>
     I’m <span class="about-text">Cheng Wu</span>, a <span class="about-text">data and business analyst</span> who cares about how analysis translates into real-world decisions. 
-    With a background in <span class="about-text">econometrics and quantitative economics</span> from the University of Illinois Urbana-Champaign and current graduate studies in <span class="about-text">Data Science</span> at <span class="about-text">Columbia University</span>, I work at the intersection of quantitative rigor and practical outcomes.
+  </p> 
+  <p>
+    With a background in <span class="about-text">econometrics and quantitative economics</span> from the <span class="about-text">University of Illinois Urbana-Champaign</span> and current graduate studies in <span class="about-text">Data Science</span> at <span class="about-text">Columbia University</span>, I work at the intersection of quantitative rigor and practical outcomes.
   </p>
   <p>
-    I’ve applied analytics across <span class="about-text">markets, finance, and social impact</span>. My work has helped managers improve pricing and demand planning, speed up financial reporting, and identify inequities in education systems. What motivates me most are questions without ready-made answers — problems where careful analysis can bring clarity and drive meaningful change.
+    I’ve applied analytics across <span class="about-text">Markets, Finance, and Social Impact</span>. My work has helped managers improve pricing and demand planning, speed up financial reporting, and identify inequities in education systems. What motivates me most are questions without ready-made answers — problems where careful analysis can bring clarity and drive meaningful change.
   </p>
   <p>
     I focus on three things in my work: <span class="about-text">clarity in communication, rigor in method, and measurable impact in results.</span> 
@@ -132,22 +134,26 @@ author_profile: true
     <div class="entry-details">Donglai Natural BioTech Co. Ltd. | June 2024 – September 2024 | Remote</div>
     <div class="entry-content">
       <p>
-        Worked across pricing and demand analytics: built customer cohorts (K-Means/DBSCAN), produced signals for inventory and promotion planning,
-        and summarized findings in lightweight dashboards for go-to-market teams.
+        Segmented customers into actionable cohorts (K-Means, DBSCAN) and linked outputs to inventory planning, improving forecast accuracy.
       </p>
+      <p>
+        Designed price optimization models and market-trend signals, raising order completion rates by 12%.
     </div>
   </div>
 
-  <div class="entry">
-    <div class="entry-title">Data Scientist Intern — Institutional Finance</div>
-    <div class="entry-details">ZheShang Securities Co. Ltd. | May 2023 – September 2023 | Hangzhou, China</div>
-    <div class="entry-content">
-      <p>
-        Supported screening of private-equity deals with multi-factor models and scenario analysis; standardized cross-team reporting in SQL/Excel/VBA
-        and delivered clear metrics for investment and risk reviews.
-      </p>
-    </div>
+ <div class="entry">
+  <div class="entry-title">Data Analyst Intern — Institutional Finance</div>
+  <div class="entry-details">ZheShang Securities Co. Ltd. | May 2023 – September 2023 | Hangzhou, China</div>
+  <div class="entry-content">
+    <p>
+      At <span class="about-text">ZheShang Securities</span>, I rotated into the <span class="about-text">institutional finance department</span>, where private equity and M&A deals were evaluated at a rapid pace. I was tasked with supporting the screening of <span class="about-text">over 20 transactions</span>, which meant diving into financial statements, market data, and regulatory filings. Using <span class="about-text">multi-factor regression</span> and <span class="about-text">scenario analysis</span>, I helped improve the accuracy of our investment evaluations by about <span class="about-text">25%</span> — a difference that directly influenced whether deals moved forward.
+    </p>
+    <p>
+      A big challenge was <span class="about-text">data fragmentation</span>: portfolio data lived in one system, accounting in another, and managers often spent hours reconciling them. I worked on integrating these into a <span class="about-text">unified SQL/VBA pipeline</span>, which cut reconciliation time by nearly a third and made reporting more reliable. Beyond the technical work, I designed <span class="about-text">scalable portfolio analytics frameworks</span> that benchmarked performance against market indices, which gave our risk team a more consistent way to track exposure. The <span class="about-text">BI dashboards</span> I built for real-time portfolio and risk metrics became a talking point in weekly meetings, giving senior managers timely visibility to adjust allocation strategies and communicate with stakeholders.
+    </p>
   </div>
+</div>
+
 
   <div class="entry">
     <div class="entry-title">Lead Coordinator — Strategic Initiatives & Community Empowerment</div>
