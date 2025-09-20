@@ -92,32 +92,33 @@ author_profile: true
 <div class="section-container">
   <h2 class="section-header">About Me</h2>
   <p>
-    I’m <span class="about-text">Cheng Wu</span>, a senior at the 
-    <span class="about-text">University of Illinois at Urbana-Champaign</span>, 
-    majoring in <span class="about-text">Econometrics & Quantitative Economics</span> 
-    with a minor in <span class="about-text">Data Science and Statistics</span>. 
-    My work focuses on <span class="about-text">data-driven policy research</span>, 
-    <span class="about-text">public health analytics</span>, and 
-    <span class="about-text">machine learning applications</span> for social impact.
+    I’m <span class="about-text">Cheng Wu</span>, a <span class="about-text">Business/Data Analyst</span> who focuses on practical, impact-oriented analytics.
+    I translate business questions into clean datasets, interpretable analysis, and dashboards that teams can use day-to-day.
   </p>
-  
   <p>
-    I specialize in working with large datasets, predictive modeling, and visualization tools to extract 
-    meaningful insights that drive real-world decisions. With experience spanning public policy, 
-    health informatics, and economic analysis, I aim to bridge the gap between data science 
-    and policymaking to create impactful solutions.
+    I earned a B.S. in <span class="about-text">Econometrics & Quantitative Economics</span> (minor in <span class="about-text">Data Science & Statistics</span>) from UIUC,
+    and I’m now pursuing my M.S. in <span class="about-text">Data Science</span> at <span class="about-text">Columbia University</span>.
+    My interests span pricing & demand, cohorts & retention, KPI design, and lightweight causal evaluation for decision-making.
   </p>
-
-  <p>📍 <span class="about-text">Currently based in Champaign, IL, USA.</span></p>
+  <p>
+    Tooling: SQL, Python (pandas/NumPy/sklearn), and BI (Power BI/Tableau/Plotly). I prefer simple, explainable solutions that ship.
+  </p>
+  <p>📍 <span class="about-text">Currently based in New York, NY, USA.</span></p>
 </div>
 
 <div class="section-container">
   <h2 class="section-header"><i class="fas fa-graduation-cap"></i> Education</h2>
+
+  <div class="entry">
+    <div class="entry-title">Columbia University</div>
+    <div class="entry-details">M.S. in Data Science &nbsp;|&nbsp; In Progress</div>
+  </div>
+
   <div class="entry">
     <div class="entry-title">University of Illinois at Urbana-Champaign</div>
-    <div class="entry-details">Expected Graduation: 2025</div>
+    <div class="entry-details">Graduated: 2025</div>
     <ul>
-      <li><strong>B.S. in Econometrics & Quantitative Economics</strong></li>
+      <li><strong>B.S. in Econometrics &amp; Quantitative Economics</strong></li>
       <li><em>Minor: Data Science and Statistics</em></li>
       <li>GPA: 3.85/4.00 <span class="gpa-badge">Dean's List</span></li>
     </ul>
@@ -126,78 +127,76 @@ author_profile: true
 
 <div class="section-container">
   <h2 class="section-header"><i class="fas fa-briefcase"></i> Professional Experience</h2>
-  
+
   <div class="entry">
-    <div class="entry-title">Data Scientist Intern - Marketing Strategies</div>
-    <div class="entry-details">Donglai Natural BioTech Co. Ltd. | June 2024 - September 2024 | Remote</div>
+    <div class="entry-title">Data Scientist Intern — Marketing Analytics</div>
+    <div class="entry-details">Donglai Natural BioTech Co. Ltd. | June 2024 – September 2024 | Remote</div>
     <div class="entry-content">
-      <ul>
-        <li>Boosted efficiency by 10%, streamlining inventory with parallel processing, customer profiling with K-Means, DBSCAN.</li>
-        <li>Raised 12% order completion with price optimization, trend analysis via regression, forecasting, price elasticity modeling.</li>
-      </ul>
+      <p>
+        Worked across pricing and demand analytics: built customer cohorts (K-Means/DBSCAN), produced signals for inventory and promotion planning,
+        and summarized findings in lightweight dashboards for go-to-market teams.
+      </p>
     </div>
   </div>
 
   <div class="entry">
-    <div class="entry-title">Data Scientist Intern - Institutional Finance</div>
-    <div class="entry-details">ZheShang Securities Co. Ltd. | May 2023 - September 2023 | Hangzhou, China</div>
+    <div class="entry-title">Data Scientist Intern — Institutional Finance</div>
+    <div class="entry-details">ZheShang Securities Co. Ltd. | May 2023 – September 2023 | Hangzhou, China</div>
     <div class="entry-content">
-      <ul>
-        <li>Predicted 25% better investments for 20+ private equity deals with Random Forest, Regression, Multivariate statistics.</li>
-        <li>Increased 15% cross-departmental data consistency, decision-making via auto-reporting, visuals with Excel, VBA, ETL.</li>
-      </ul>
+      <p>
+        Supported screening of private-equity deals with multi-factor models and scenario analysis; standardized cross-team reporting in SQL/Excel/VBA
+        and delivered clear metrics for investment and risk reviews.
+      </p>
     </div>
   </div>
 
   <div class="entry">
-    <div class="entry-title">Strategic Initiatives & Community Empowerment - Lead Coordinator</div>
-    <div class="entry-details">Innovative Bloom Foundation | May 2019 - June 2024 | Shanghai, China</div>
+    <div class="entry-title">Lead Coordinator — Strategic Initiatives & Community Empowerment</div>
+    <div class="entry-details">Innovative Bloom Foundation | May 2019 – June 2024 | Shanghai, China</div>
     <div class="entry-content">
-      <ul>
-        <li>Raised 20% success for 200+ remote students with predictive monitoring, interventions, curriculum, ‘at-risk’ clustering.</li>
-        <li>Boosted 30% artisan income, education, health in underserved communities via e-commerce platform with data analytics.</li>
-      </ul>
+      <p>
+        Led data work for education/health and artisan programs: defined outcome metrics, instrumented e-commerce telemetry,
+        and built simple dashboards that helped track progress and inform decisions.
+      </p>
     </div>
   </div>
 </div>
 
 <div class="section-container">
-  <h2 class="section-header"><i class="fas fa-microscope"></i> Research Experience</h2>  
+  <h2 class="section-header"><i class="fas fa-microscope"></i> Research Experience</h2>
 
   <div class="entry">
-    <div class="entry-title">Research Assistant - Economic Policy & Public Health</div>
-    <div class="entry-details">University of Illinois | January 2024 - July 2024 | Champaign, IL</div>
+    <div class="entry-title">Research Assistant — Economic Policy & Public Health</div>
+    <div class="entry-details">University of Illinois | January 2024 – July 2024 | Champaign, IL</div>
     <div class="entry-content">
-      <ul>
-        <li>Investigated the effects of public health policies on economic mobility using large-scale national datasets.</li>
-        <li>Applied machine learning models to analyze the impact of healthcare access on economic disparities.</li>
-      </ul>
+      <p>
+        Analyzed how public-health policies relate to mobility outcomes using national datasets; prepared clean analysis tables and visuals
+        and applied interpretable ML where useful.
+      </p>
     </div>
   </div>
 
   <div class="entry">
-    <div class="entry-title">Researcher - Educational Inequality & Economic Mobility</div>
-    <div class="entry-details">University of Illinois | January 2023 - Present</div>
+    <div class="entry-title">Researcher — Educational Inequality & Economic Mobility</div>
+    <div class="entry-details">University of Illinois | January 2023 – Present</div>
     <div class="entry-content">
-      <ul>
-        <li>Analyzed educational inequality – economic mobility impact with regression, PSM, with socio-economic controls.</li>
-      </ul>
+      <p>
+        Studied links between school resources and mobility using regression and PSM with socio-economic controls; produced concise write-ups for stakeholders.
+      </p>
     </div>
   </div>
 
   <div class="entry">
-    <div class="entry-title">Researcher - Public Health Policy & Critical Medicines Access</div>
-    <div class="entry-details">University of Illinois | April 2023 - December 2023</div>
+    <div class="entry-title">Researcher — Public Health Policy & Critical Medicines Access</div>
+    <div class="entry-details">University of Illinois | April 2023 – December 2023</div>
     <div class="entry-content">
-      <ul>
-        <li>Evaluated preventive health policies' impact on disease rates, mortality, healthcare costs.</li>
-        <li>Used predictive modeling to assess critical medicine shortages and their economic consequences.</li>
-      </ul>
+      <p>
+        Assessed preventive-care policy impacts and modeled risks of critical-medicine shortages; summarized results for planning and resource allocation.
+      </p>
     </div>
   </div>
 </div>
 
-<!-- Contact Section -->
 <!-- Contact Section -->
 <div class="section-container contact-section">
   <h2>📩 Get in Touch</h2>
@@ -224,4 +223,3 @@ author_profile: true
   transform: scale(1.05);
 }
 </style>
-
