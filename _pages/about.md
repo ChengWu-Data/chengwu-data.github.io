@@ -203,7 +203,7 @@ author_profile: true
   
  <div class="entry">
   <div class="entry-title">Research Assistant — Education Policy</div>
-  <div class="entry-details">UIUC | January 2024 – July 2024 | Champaign, IL</div>
+  <div class="entry-details">UIUC | January 2024 – July 2024 </div>
   <div class="entry-content">
     <p>
       🏫 As part of Professor Powers’ research group on <span class="about-text">childcare policy</span>, I contributed to a project evaluating how <span class="about-text">childcare grants</span> affect families’ economic outcomes. My role was to build the <span class="about-text">technical backbone</span>: integrating <span class="about-text">national surveys and administrative data in R</span>, ensuring accuracy through <span class="about-text">standardization and auto-validation</span>, and preparing reliable datasets.
