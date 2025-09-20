@@ -130,16 +130,18 @@ author_profile: true
   <h2 class="section-header"><i class="fas fa-briefcase"></i> Professional Experience</h2>
 
   <div class="entry">
-    <div class="entry-title">Data Scientist Intern — Marketing Analytics</div>
-    <div class="entry-details">Donglai Natural BioTech Co. Ltd. | June 2024 – September 2024 | Remote</div>
-    <div class="entry-content">
-      <p>
-        Segmented customers into actionable cohorts (K-Means, DBSCAN) and linked outputs to inventory planning, improving forecast accuracy.
-      </p>
-      <p>
-        Designed price optimization models and market-trend signals, raising order completion rates by 12%.
-    </div>
+  <div class="entry-title">Data Scientist Intern — Marketing Analytics</div>
+  <div class="entry-details">Donglai Natural BioTech Co. Ltd. | June 2024 – September 2024 | Remote</div>
+  <div class="entry-content">
+    <p>
+      At <span class="about-text">Donglai</span>, I joined the <span class="about-text">marketing strategies team</span> at a time when the company was struggling with <span class="about-text">forecasting demand</span> across dozens of product lines. My role started with <span class="about-text">customer segmentation</span>: I applied clustering models like <span class="about-text">K-Means</span> and <span class="about-text">DBSCAN</span> to uncover groups of buyers with distinct purchasing patterns. These clusters were directly connected to <span class="about-text">SQL-based ETL pipelines</span> for inventory planning, which meant my work could be tested quickly against real stock levels.
+    </p>
+    <p>
+      One highlight of the summer was building <span class="about-text">demand forecasting</span> and <span class="about-text">price elasticity models</span> that managers used to run “what if” scenarios. For example, we simulated price adjustments on seasonal products, which translated into a measurable <span class="about-text">12% increase in order completion rates</span>. I also spent weeks refining workflows with <span class="about-text">Spark</span> and <span class="about-text">Dask</span> to handle millions of transaction records; shaving <span class="about-text">40% off reporting latency</span> meant the team could react faster to market shifts. To make all of this accessible, I built <span class="about-text">interactive dashboards</span> in <span class="about-text">Plotly</span>, <span class="about-text">Dash</span>, and <span class="about-text">Power BI</span>. Watching non-technical managers click through predictive insights and immediately adjust their plans was one of the most rewarding moments of my internship.
+    </p>
   </div>
+</div>
+
 
  <div class="entry">
   <div class="entry-title">Data Analyst Intern — Institutional Finance</div>
@@ -155,17 +157,21 @@ author_profile: true
 </div>
 
 
-  <div class="entry">
-    <div class="entry-title">Lead Coordinator — Strategic Initiatives & Community Empowerment</div>
-    <div class="entry-details">Innovative Bloom Foundation | May 2019 – June 2024 | Shanghai, China</div>
-    <div class="entry-content">
-      <p>
-        Led data work for education/health and artisan programs: defined outcome metrics, instrumented e-commerce telemetry,
-        and built simple dashboards that helped track progress and inform decisions.
-      </p>
-    </div>
+ <div class="entry">
+  <div class="entry-title">Data Scientist Intern — Marketing Analytics</div>
+  <div class="entry-details">Donglai Natural BioTech Co. Ltd. | June 2024 – September 2024 | Remote</div>
+  <div class="entry-content">
+    <p>
+      At <span class="about-text">Donglai</span>, I joined the <span class="about-text">marketing strategies team</span> at a time when the company was struggling with <span class="about-text">forecasting demand</span> across dozens of product lines. My role started with <span class="about-text">customer segmentation</span>: I applied clustering models like <span class="about-text">K-Means</span> and <span class="about-text">DBSCAN</span> to uncover groups of buyers with distinct purchasing patterns. These clusters were directly connected to <span class="about-text">SQL-based ETL pipelines</span> for inventory planning, which meant my work could be tested quickly against real stock levels.
+    </p>
+    <p>
+      One highlight of the summer was building <span class="about-text">demand forecasting</span> and <span class="about-text">price elasticity models</span> that managers used to run “what if” scenarios. For example, we simulated price adjustments on seasonal products, which translated into a measurable <span class="about-text">12% increase in order completion rates</span>. I also spent weeks refining workflows with <span class="about-text">Spark</span> and <span class="about-text">Dask</span> to handle millions of transaction records; shaving <span class="about-text">40% off reporting latency</span> meant the team could react faster to market shifts. To make all of this accessible, I built <span class="about-text">interactive dashboards</span> in <span class="about-text">Plotly</span>, <span class="about-text">Dash</span>, and <span class="about-text">Power BI</span>. Watching non-technical managers click through predictive insights and immediately adjust their plans was one of the most rewarding moments of my internship.
+    </p>
   </div>
 </div>
+
+
+
 
 <div class="section-container">
   <h2 class="section-header"><i class="fas fa-microscope"></i> Research Experience</h2>
