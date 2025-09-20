@@ -182,47 +182,58 @@ author_profile: true
 
 <div class="section-container">
   <h2 class="section-header"><i class="fas fa-microscope"></i> Research Experience</h2>
-  
-  <div class="entry">
-    <div class="entry-title">Researcher — Educational Inequality & Intergenerational Poverty</div>
-    <div class="entry-details">University of Illinois | January 2023 – February 2025</div>
-    <div class="entry-content">
-      <p>
-        My interest in this research grew out of my work with Innovative Bloom Foundation, where I saw firsthand how disparities in resources shaped children’s opportunities. At Illinois, I turned that motivation into a formal project studying <span class="about-text">educational inequality and its intergenerational effects on mobility</span>. 
-      </p>
-      <p>
-        I applied <span class="about-text">regression analysis</span> and <span class="about-text">propensity score matching</span> with socio-economic controls to measure how differences in school resources influenced long-term outcomes. I also developed <span class="about-text">equity metrics</span> and concise briefs that highlighted geographic funding gaps, providing stakeholders with evidence for policy discussions.
-      </p>
-    </div>
-  </div>
-  
-  
-  <div class="entry">
-    <div class="entry-title">Research Assistant — Education Policy</div>
-    <div class="entry-details">University of Illinois | January 2024 – July 2024 | Champaign, IL</div>
-    <div class="entry-content">
-      <p>
-        As part of a faculty-led project on childcare policy, I focused on the technical side: integrating <span class="about-text">national surveys and administrative data</span>, standardizing formats, and building validation checks to ensure data quality. 
-      </p>
-      <p>
-        Using <span class="about-text">econometric methods</span> including DiD and IV, I helped isolate the effects of childcare grants on employment, income distribution, and child welfare. I also implemented <span class="about-text">feature-engineered regression models</span> and built <span class="about-text">interactive R Shiny dashboards</span> that simulated policy impacts in real time, enhancing engagement with both academic and policy audiences.
-      </p>
-    </div>
-  </div>
-  
-  <div class="entry">
-    <div class="entry-title">Researcher — Critical Medicines Access in Public Health Emergencies</div>
-    <div class="entry-details">University of Illinois | April 2023 – December 2023</div>
-    <div class="entry-content">
-      <p>
-        This project was deeply personal: my grandmother passed away during COVID-19 after being unable to access medicine or a hospital bed. That experience shaped my research focus on <span class="about-text">failures in critical medicine access during public health emergencies</span>. 
-      </p>
-      <p>
-        I evaluated the impact of preventive-care policies on disease rates and healthcare costs, and modeled shortage risks for essential medicines using <span class="about-text">predictive techniques</span>. The work resulted in <span class="about-text">decision-oriented summaries</span> that supported planning and resource allocation for crisis response.
-      </p>
-    </div>
-  </div>
 
+  <div class="entry">
+  <div class="entry-title">Researcher — Educational Inequality & Intergenerational Poverty</div>
+  <div class="entry-details">UIUC | January 2023 – February 2025</div>
+  <div class="entry-content">
+    <p>
+     🧑‍🏫My academic interest in <span class="about-text">inequality research</span> grew out of my five years with the <span class="about-text">Innovative Bloom Foundation</span>, where I worked directly with <span class="about-text">left-behind children</span> in rural China. Seeing how <span class="about-text">lack of funding and resources</span> limited opportunities made me want to study these issues with greater rigor.
+    </p>
+    <p>
+      At Illinois, I focused on quantifying how <span class="about-text">differences in school resources</span> shape <span class="about-text">intergenerational mobility</span>. I applied <span class="about-text">regression analysis</span> and <span class="about-text">propensity score matching (PSM)</span> with socio-economic controls, and engineered <span class="about-text">inequality metrics</span> such as <span class="about-text">funding disparities</span> and <span class="about-text">teacher-student ratios</span> by integrating <span class="about-text">national education and mobility datasets</span>. 
+    </p>
+    <p>
+      To make these insights accessible, I built <span class="about-text">dashboards</span> and <span class="about-text">automated reports</span> that highlighted <span class="about-text">geographic gaps</span>, providing evidence that <span class="about-text">policymakers</span> could use when designing support programs.
+    </p>
+  </div>
+</div>
+
+
+  
+ <div class="entry">
+  <div class="entry-title">Research Assistant — Education Policy</div>
+  <div class="entry-details">UIUC | January 2024 – July 2024 | Champaign, IL</div>
+  <div class="entry-content">
+    <p>
+      🏫As part of Professor Powers’ research group on <span class="about-text">childcare policy</span>, I contributed to a project evaluating how <span class="about-text">childcare grants</span> affect families’ economic outcomes. My role was to build the <span class="about-text">technical backbone</span>: integrating <span class="about-text">national surveys and administrative data in R</span>, ensuring accuracy through <span class="about-text">standardization and auto-validation</span>, and preparing reliable datasets.
+    </p>
+    <p>
+      Methodologically, I applied <span class="about-text">Difference-in-Differences (DiD)</span> and <span class="about-text">Instrumental Variables (IV)</span> to isolate the causal effects of childcare subsidies on <span class="about-text">employment</span>, <span class="about-text">income distribution</span>, and <span class="about-text">child welfare</span>. I also developed <span class="about-text">feature-engineered regression models</span> and created <span class="about-text">interactive R Shiny dashboards</span> that simulated policy impacts in real time, enabling both <span class="about-text">policymakers</span> and the <span class="about-text">public</span> to see how grant structures influenced family well-being.
+    </p>
+  </div>
+</div>
+
+
+  
+<div class="entry">
+  <div class="entry-title">Researcher — Critical Medicines Access in Public Health Emergencies</div>
+  <div class="entry-details">UIUC | April 2023 – December 2023</div>
+  <div class="entry-content">
+    <p>
+      This project was deeply personal: my <span class="about-text">grandmother passed away during COVID-19</span> after being unable to access medicine or a hospital bed. That loss motivated me to study why <span class="about-text">health systems fail during crises</span> and how <span class="about-text">data-driven methods</span> could help prevent similar tragedies. 
+    </p>
+    <p>
+      🏥I evaluated the impact of <span class="about-text">preventive health policies</span> on <span class="about-text">disease incidence</span>, <span class="about-text">mortality</span>, and <span class="about-text">healthcare costs</span>, applying <span class="about-text">quasi-experimental design</span> to isolate effects across demographics. To anticipate shortages, I engineered <span class="about-text">policy exposure scores</span> and <span class="about-text">health metrics</span> from <span class="about-text">WHO</span> and <span class="about-text">CDC datasets</span>, and trained <span class="about-text">predictive models (XGBoost, LSTM, clustering)</span> to identify high-risk populations and forecast long-term outcomes.
+    </p>
+    <p>
+      The results were delivered as <span class="about-text">decision-oriented dashboards and reports</span>, providing <span class="about-text">resource allocation insights</span> to improve resilience in future emergencies.
+    </p>
+  </div>
+</div>
+
+
+  </div>
 
 <!-- Contact Section -->
 <div class="section-container contact-section">
