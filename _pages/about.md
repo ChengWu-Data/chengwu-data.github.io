@@ -96,13 +96,13 @@ author_profile: true
     I’m <span class="about-text">Cheng Wu</span>, a <span class="about-text">data and business analyst</span> who cares about how analysis translates into real-world decisions. 
   </p> 
   <p>
-    With a background in <span class="about-text">econometrics and quantitative economics</span> from the <span class="about-text">University of Illinois Urbana-Champaign</span> and current graduate studies in <span class="about-text">Data Science</span> at <span class="about-text">Columbia University</span>, I work at the intersection of quantitative rigor and practical outcomes.
+    📚 With a background in <span class="about-text">econometrics and quantitative economics</span> from the <span class="about-text">University of Illinois Urbana-Champaign</span> and current graduate studies in <span class="about-text">Data Science</span> at <span class="about-text">Columbia University</span>, I work at the intersection of quantitative rigor and practical outcomes.
   </p>
   <p>
-    I’ve applied analytics across <span class="about-text">Markets, Finance, and Social Impact</span>. My work has helped managers improve pricing and demand planning, speed up financial reporting, and identify inequities in education systems. What motivates me most are questions without ready-made answers — problems where careful analysis can bring clarity and drive meaningful change.
+    💼 I’ve applied analytics across <span class="about-text">Markets, Finance, and Social Impact</span>. My work has helped managers improve pricing and demand planning, speed up financial reporting, and identify inequities in education systems. What motivates me most are questions without ready-made answers — problems where careful analysis can bring clarity and drive meaningful change.
   </p>
   <p>
-    I focus on three things in my work: <span class="about-text">clarity in communication, rigor in method, and measurable impact in results.</span> 
+    🎯 I focus on three things in my work: <span class="about-text">clarity in communication, rigor in method, and measurable impact in results.</span> 
   </p>
   <p>📍 <span class="about-text">Focus areas</span>: market analytics, financial analysis, process improvement, education equity</p>
   <p>📍 Tools: SQL, Python, BI dashboards (Power BI, Tableau, Plotly), Statistics / Econometrics</p>
@@ -168,7 +168,7 @@ author_profile: true
       My contribution became twofold: <span class="about-text">data analysis</span> and <span class="about-text">program coordination</span>. I started by structuring survey data — often messy, handwritten responses — into <span class="about-text">SQL datasets</span> that could be analyzed systematically. This opened the door to building <span class="about-text">dashboards</span> that tracked education access, food security, and health indicators across different villages.
     </p>
     <p>
-      One initiative I’m proud of was helping launch an <span class="about-text">e-commerce platform</span> for local artisans. I set up real-time monitoring to track sales and logistics, and within a year the platform was supporting <span class="about-text">15 families</span> and increasing artisan household income by about <span class="about-text">30%</span>. These numbers weren’t abstract; they meant that families could afford school fees or healthcare they previously struggled with.
+      😊 One initiative I’m proud of was helping launch an <span class="about-text">e-commerce platform</span> for local artisans. I set up real-time monitoring to track sales and logistics, and within a year the platform was supporting <span class="about-text">15 families</span> and increasing artisan household income by about <span class="about-text">30%</span>. These numbers weren’t abstract; they meant that families could afford school fees or healthcare they previously struggled with.
     </p>
     <p>
       I also applied <span class="about-text">regression analysis</span> to benchmark program outcomes, which guided funding decisions for future projects. Over time, I learned how to <span class="about-text">translate complex outcomes into metrics</span> that stakeholders could act on, ensuring that data wasn’t just collected, but used to design better interventions.
