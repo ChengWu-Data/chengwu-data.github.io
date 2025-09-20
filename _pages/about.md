@@ -182,49 +182,47 @@ author_profile: true
 
 <div class="section-container">
   <h2 class="section-header"><i class="fas fa-microscope"></i> Research Experience</h2>
- 
   
   <div class="entry">
-    <div class="entry-title">Researcher — Educational Inequality and Intergenerational Poverty</div>
+    <div class="entry-title">Researcher — Educational Inequality & Intergenerational Poverty</div>
     <div class="entry-details">University of Illinois | January 2023 – February 2025</div>
     <div class="entry-content">
       <p>
-        Analyzed how differences in school resources relate to long-term mobility using regression and propensity score matching.      
+        My interest in this research grew out of my work with Innovative Bloom Foundation, where I saw firsthand how disparities in resources shaped children’s opportunities. At Illinois, I turned that motivation into a formal project studying <span class="about-text">educational inequality and its intergenerational effects on mobility</span>. 
       </p>
       <p>
-        Built equity metrics and concise briefs that highlighted geographic funding gaps and informed policy discussions.
+        I applied <span class="about-text">regression analysis</span> and <span class="about-text">propensity score matching</span> with socio-economic controls to measure how differences in school resources influenced long-term outcomes. I also developed <span class="about-text">equity metrics</span> and concise briefs that highlighted geographic funding gaps, providing stakeholders with evidence for policy discussions.
+      </p>
+    </div>
+  </div>
+  
+  
+  <div class="entry">
+    <div class="entry-title">Research Assistant — Education Policy</div>
+    <div class="entry-details">University of Illinois | January 2024 – July 2024 | Champaign, IL</div>
+    <div class="entry-content">
+      <p>
+        As part of a faculty-led project on childcare policy, I focused on the technical side: integrating <span class="about-text">national surveys and administrative data</span>, standardizing formats, and building validation checks to ensure data quality. 
+      </p>
+      <p>
+        Using <span class="about-text">econometric methods</span> including DiD and IV, I helped isolate the effects of childcare grants on employment, income distribution, and child welfare. I also implemented <span class="about-text">feature-engineered regression models</span> and built <span class="about-text">interactive R Shiny dashboards</span> that simulated policy impacts in real time, enhancing engagement with both academic and policy audiences.
       </p>
     </div>
   </div>
   
   <div class="entry">
-    <div class="entry-title">Research Assistant — Economic Policy & Public Health</div>
-    <div class="entry-details">University of Illinois | January 2024 – July 2024 | Champaign, IL</div>
-    <div class="entry-content">
-      <p>
-        Linked policy interventions to mobility outcomes using national datasets; produced reproducible tables and visuals for stakeholders.
-      </p>
-      <p>
-        Applied interpretable modeling where useful to validate findings and keep implications decision-focused.
-      </p>
-    </div>
-  </div>
-
-
-
-  <div class="entry">
-    <div class="entry-title">Researcher — Critical Medicines Access in Public Health Emergencies: Failures and Solutions </div>
+    <div class="entry-title">Researcher — Critical Medicines Access in Public Health Emergencies</div>
     <div class="entry-details">University of Illinois | April 2023 – December 2023</div>
     <div class="entry-content">
       <p>
-        Evaluated preventive-care policy impacts and estimated shortage risk for critical medicines.
+        This project was deeply personal: my grandmother passed away during COVID-19 after being unable to access medicine or a hospital bed. That experience shaped my research focus on <span class="about-text">failures in critical medicine access during public health emergencies</span>. 
       </p>
       <p>
-        Delivered short, decision-oriented summaries to support planning and resource allocation.
+        I evaluated the impact of preventive-care policies on disease rates and healthcare costs, and modeled shortage risks for essential medicines using <span class="about-text">predictive techniques</span>. The work resulted in <span class="about-text">decision-oriented summaries</span> that supported planning and resource allocation for crisis response.
       </p>
     </div>
   </div>
-</div>
+
 
 <!-- Contact Section -->
 <div class="section-container contact-section">
