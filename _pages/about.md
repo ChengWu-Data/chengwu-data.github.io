@@ -36,7 +36,7 @@ author_profile: true
 
 /* Spacing between entries */
 .entry {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
 }
 
 /* Job & Research Titles */
