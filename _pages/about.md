@@ -104,8 +104,8 @@ author_profile: true
   <p>
     🎯 I focus on three things in my work: <span class="about-text">clarity in communication, rigor in method, and measurable impact in results.</span> 
   </p>
-  <p>📍 <span class="about-text">Focus areas</span>: market analytics, financial analysis, process improvement, education equity</p>
-  <p>📍 Tools: SQL, Python, BI dashboards (Power BI, Tableau, Plotly), Statistics / Econometrics</p>
+  <p><span class="about-text">Focus areas</span>: market analytics, financial analysis, process improvement, education equity</p>
+  <p>📍 <span class="about-text">Toolss</span>: SQL, Python, BI dashboards (Power BI, Tableau, Plotly), Statistics / Econometrics</p>
 </div>
 
 <div class="section-container">
@@ -168,7 +168,7 @@ author_profile: true
       My contribution became twofold: <span class="about-text">data analysis</span> and <span class="about-text">program coordination</span>. I started by structuring survey data — often messy, handwritten responses — into <span class="about-text">SQL datasets</span> that could be analyzed systematically. This opened the door to building <span class="about-text">dashboards</span> that tracked education access, food security, and health indicators across different villages.
     </p>
     <p>
-      😊 One initiative I’m proud of was helping launch an <span class="about-text">e-commerce platform</span> for local artisans. I set up real-time monitoring to track sales and logistics, and within a year the platform was supporting <span class="about-text">15 families</span> and increasing artisan household income by about <span class="about-text">30%</span>. These numbers weren’t abstract; they meant that families could afford school fees or healthcare they previously struggled with.
+      😎One initiative I’m proud of was helping launch an <span class="about-text">e-commerce platform</span> for local artisans. I set up real-time monitoring to track sales and logistics, and within a year the platform was supporting <span class="about-text">15 families</span> and increasing artisan household income by about <span class="about-text">30%</span>. These numbers weren’t abstract; they meant that families could afford school fees or healthcare they previously struggled with.
     </p>
     <p>
       I also applied <span class="about-text">regression analysis</span> to benchmark program outcomes, which guided funding decisions for future projects. Over time, I learned how to <span class="about-text">translate complex outcomes into metrics</span> that stakeholders could act on, ensuring that data wasn’t just collected, but used to design better interventions.
@@ -182,34 +182,45 @@ author_profile: true
 
 <div class="section-container">
   <h2 class="section-header"><i class="fas fa-microscope"></i> Research Experience</h2>
-
+ 
+  
+  <div class="entry">
+    <div class="entry-title">Researcher — Educational Inequality and Intergenerational Poverty</div>
+    <div class="entry-details">University of Illinois | January 2023 – February 2025</div>
+    <div class="entry-content">
+      <p>
+        Analyzed how differences in school resources relate to long-term mobility using regression and propensity score matching.      
+      </p>
+      <p>
+        Built equity metrics and concise briefs that highlighted geographic funding gaps and informed policy discussions.
+      </p>
+    </div>
+  </div>
+  
   <div class="entry">
     <div class="entry-title">Research Assistant — Economic Policy & Public Health</div>
     <div class="entry-details">University of Illinois | January 2024 – July 2024 | Champaign, IL</div>
     <div class="entry-content">
       <p>
-        Analyzed how public-health policies relate to mobility outcomes using national datasets; prepared clean analysis tables and visuals
-        and applied interpretable ML where useful.
+        Linked policy interventions to mobility outcomes using national datasets; produced reproducible tables and visuals for stakeholders.
       </p>
-    </div>
-  </div>
-
-  <div class="entry">
-    <div class="entry-title">Researcher — Educational Inequality & Economic Mobility</div>
-    <div class="entry-details">University of Illinois | January 2023 – Present</div>
-    <div class="entry-content">
       <p>
-        Studied links between school resources and mobility using regression and PSM with socio-economic controls; produced concise write-ups for stakeholders.
+        Applied interpretable modeling where useful to validate findings and keep implications decision-focused.
       </p>
     </div>
   </div>
 
+
+
   <div class="entry">
-    <div class="entry-title">Researcher — Public Health Policy & Critical Medicines Access</div>
+    <div class="entry-title">Researcher — Critical Medicines Access in Public Health Emergencies: Failures and Solutions </div>
     <div class="entry-details">University of Illinois | April 2023 – December 2023</div>
     <div class="entry-content">
       <p>
-        Assessed preventive-care policy impacts and modeled risks of critical-medicine shortages; summarized results for planning and resource allocation.
+        Evaluated preventive-care policy impacts and estimated shortage risk for critical medicines.
+      </p>
+      <p>
+        Delivered short, decision-oriented summaries to support planning and resource allocation.
       </p>
     </div>
   </div>
