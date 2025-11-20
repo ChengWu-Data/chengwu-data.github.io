@@ -155,6 +155,44 @@ author_profile: true
   <i class="fa-solid fa-folder-open" style="margin-right: 10px;"></i> My Projects
 </h1>
 
+<!-- Project 0: Exponential Smoothing FX Trend Strategy -->
+<div class="project-card">
+  <img src="{{ site.baseurl }}/images/project_fx.jpg" alt="FX Project Image" class="project-image">
+  
+  <div class="project-content">
+    <div class="project-title">FX Trend Strategy using Exponential Smoothing</div>
+    <p class="project-description">
+      A fully reproducible quantitative research project analyzing USD/CAD trend persistence using dual exponential smoothing filters. 
+      I built a complete forecasting and trading pipeline: signal engineering, α–β parameter tuning, long/short asymmetry testing, 
+      buffer and deceleration exit experiments, backtesting, Sharpe evaluation, and trade-level accuracy modeling.  
+      This project demonstrates my capabilities in <strong>quantitative analysis, data science workflow design, 
+      mathematical modeling, statistical reasoning, and technical communication</strong>.
+    </p>
+
+    <button class="details-btn" onclick="toggleDetails('project_fx')">View Details</button>
+  </div>
+</div>
+
+<!-- Hidden Details for FX Project -->
+<div id="project_fx" class="project-details">
+  <!-- Embedded PDF Preview -->
+  <iframe class="preview-frame" src="https://drive.google.com/file/d/1waRGZB_vFinXPfDzRqbshjq4p5y41fQI/preview"></iframe>
+
+  <!-- Buttons -->
+  <div class="button-row">
+    <a href="https://github.com/ChengWu-Data/Exponential-Smoothing-Trend-Strategy-with-Parameter-Tuning-Exit-Rules" 
+       class="github-btn" target="_blank">
+      <i class="fa-brands fa-github"></i> GitHub
+    </a>
+
+    <a href="https://drive.google.com/file/d/1waRGZB_vFinXPfDzRqbshjq4p5y41fQI/view?usp=sharing" 
+       class="html-btn" target="_blank">
+      <i class="fa-solid fa-file-pdf"></i> View Report
+    </a>
+  </div>
+</div>
+
+
 <!-- Project 1 -->
 <div class="project-card">
   <img src="{{ site.baseurl }}/images/project1.jpg" alt="Project Image" class="project-image">
