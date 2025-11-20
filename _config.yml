@@ -29,7 +29,7 @@ author:
   employer         :
   pubmed           : 
   googlescholar    : 
-  email            : "datajourney.chengw@gmail.com"
+  email            : "cheng.w@columbia.edu"
   researchgate     :  # e.g., "https://www.researchgate.net/profile/yourprofile"
   uri              :
   bitbucket        :
@@ -66,7 +66,7 @@ author_zh:
   avatar           : "/images/avatar.png"
   bio              : "哥伦比亚大学工程学院"
   location         : "纽约，美国"
-  email            : "datajourney.chengw@gmail.com"
+  email            : "cheng.w@columbia.edu"
   github           : "ChengWu-Data"
   linkedin         : "cheng-wu-1ab27922a"
 
