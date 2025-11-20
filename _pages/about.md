@@ -130,6 +130,20 @@ author_profile: true
 <div class="section-container">
   <h2 class="section-header"><i class="fas fa-briefcase"></i> Professional Experience</h2>
 
+
+<div class="entry">
+  <div class="entry-title">Data Analyst — Supply Chain Compliance & Operations</div>
+  <div class="entry-details">Tarte Cosmetics | October 2025 – Present | New York, NY</div>
+  <div class="entry-content">
+    <p>
+      At <span class="about-text">Tarte</span>, I work across compliance and supply-chain analytics to streamline import/export auditing and improve traceability for global product launches. My work focuses on <span class="about-text">HTS classification, NAV data integration, and 7501 entry audits</span>, ensuring product metadata aligns with customs regulations and internal SKU catalogs.
+    </p>
+    <p>
+      I build workflows that reconcile TOR lists, COO records, and duty valuations against shipment entries, reducing manual review time and improving consistency across regulatory filings. I'm also designing an automated pipeline that flags discrepancies in <span class="about-text">valuation, commodity codes, and shipment attributes</span> before clearance, helping minimize compliance risks and reporting delays.
+    </p>
+  </div>
+</div>
+
   <div class="entry">
   <div class="entry-title">Data Scientist Intern — Marketing Analytics</div>
   <div class="entry-details">Donglai Natural BioTech Co. Ltd. | June 2024 – September 2024 | Remote</div>
