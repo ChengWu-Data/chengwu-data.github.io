@@ -122,7 +122,7 @@ author_profile: true
     <ul>
       <li><strong>B.S. in Econometrics &amp; Quantitative Economics</strong></li>
       <li><em>Minor: Data Science and Statistics</em></li>
-      <li>GPA: 3.85/4.00 <span class="gpa-badge">Dean's List</span></li>
+      <li>GPA: 3.9/4.0 <span class="gpa-badge">Dean's List</span></li>
     </ul>
   </div>
 </div>
