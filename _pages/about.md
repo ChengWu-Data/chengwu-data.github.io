@@ -253,7 +253,7 @@ author_profile: true
 <div class="section-container contact-section">
   <h2>📩 Get in Touch</h2>
   <p>If you have any questions, feel free to reach out:</p>
-  <a href="mailto:datajourney.chengw@gmail.com" class="email-btn">Email Me</a>
+  <a href="mailto:cheng.w@columbia.edu" class="email-btn">Email Me</a>
 </div>
 
 <style>
