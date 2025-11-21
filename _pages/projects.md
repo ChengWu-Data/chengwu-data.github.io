@@ -223,32 +223,73 @@ author_profile: true
 
 
 
-<!-- Project 1 -->
+<!-- Project 1: Housing Price Prediction -->
 <div class="project-card">
-  <img src="{{ site.baseurl }}/images/project1.jpg" alt="Project Image" class="project-image">
+  <img src="{{ site.baseurl }}/images/project1.jpg" alt="Housing Project Image" class="project-image">
+  
   <div class="project-content">
     <div class="project-title">Housing Price Prediction: An Exploratory Analysis</div>
     <p class="project-description">
-      Built a housing price prediction pipeline using exploratory data analysis, feature engineering, and regression/ML models including Ridge, LASSO, Random Forest, and Group LASSO. The models achieved strong predictive accuracy while consistently identifying space, quality, and utility as the key drivers of value. Beyond forecasting, the project emphasized interpretability and stakeholder communication, showing how structured analysis can turn high-dimensional data into actionable insights for decision-making.
+      Built a housing price prediction pipeline using exploratory data analysis, feature engineering, and regression/ML models including Ridge, LASSO, Random Forest, and Group LASSO. 
+      The models achieved strong predictive accuracy while consistently identifying space, quality, and utility as the key drivers of value. 
+      Beyond forecasting, the project emphasized interpretability and stakeholder communication — turning high-dimensional data into actionable insights for decisions.
     </p>
+
     <button class="details-btn" onclick="toggleDetails('project1')">View Details</button>
   </div>
 </div>
 
 <!-- Hidden Details for Project 1 -->
 <div id="project1" class="project-details">
-  <!-- Embedded HTML Preview -->
+
+  <!-- 🔥 Summary Section -->
+  <div class="project-summary" style="background:#faf7ff; padding:1.5rem; border-radius:8px; margin-bottom:1.5rem; border-left:4px solid #6d4195;">
+    <h2 style="color:#6d4195;">📌 Project Summary</h2>
+
+    <p><strong>Objective:</strong> Build an interpretable housing analytics pipeline that identifies economic drivers of value — not just produce a black-box prediction model.</p>
+
+    <p><strong>Methodology:</strong> Starting from the full Ames dataset (80+ variables), we:</p>
+    <ul>
+      <li>Separated <strong>numeric vs categorical</strong> features & re-classified ordinal variables (<code>OverallQual</code>, <code>MoSold</code>)</li>
+      <li>Used <strong>correlation + effect size (η²)</strong> to evaluate predictor strength</li>
+      <li>Applied <strong>adjusted GVIF</strong> to control multicollinearity</li>
+      <li>Built <strong>interactive visualizations</strong>: heatmaps, neighborhood maps, STL trend decomposition</li>
+    </ul>
+
+    <p><strong>Key Insights:</strong></p>
+    <ul>
+      <li><strong>Space & construction quality are the dominant drivers</strong> (<code>GrLivArea</code>, <code>TotalBsmtSF</code>, <code>OverallQual</code>)</li>
+      <li><strong>Neighborhood effects persist even after controlling for features</strong></li>
+      <li><strong>Garage & exterior finishing add second-tier but significant value</strong></li>
+      <li><strong>Time-series structure aligns with macro events</strong> (e.g., subprime crisis, tax credits)</li>
+    </ul>
+
+    <p><strong>What this demonstrates:</strong></p>
+    <ul>
+      <li>Ability to turn raw municipal data into <strong>decision-oriented insights</strong></li>
+      <li>Bridging <strong>EDA → feature engineering → modeling → communication</strong></li>
+      <li>Transferable to pricing, risk modeling, and applied analytics pipelines</li>
+    </ul>
+
+    <p style="font-style:italic; color:#444;">Full interactive analysis available below.</p>
+  </div>
+
+  <!-- 🔽 Embedded HTML Preview -->
   <iframe class="preview-frame" src="https://htmlpreview.github.io/?https://github.com/ChengWu-Data/Housing-Price-Prediction-An-Exploratory-Analysis/blob/8a49d8ae0d2514d014c7d304ea081a2002fbd0f4/Housing_Price_Prediction-AnExploratoryAnalysis.html"></iframe>
-  <!-- Small Buttons -->
+
+  <!-- 🔗 Buttons -->
   <div class="button-row">
-    <a href="https://github.com/ChengWu-Data/Housing-Price-Prediction-An-Exploratory-Analysis.git" class="github-btn">
+    <a href="https://github.com/ChengWu-Data/Housing-Price-Prediction-An-Exploratory-Analysis.git" class="github-btn" target="_blank">
       <i class="fa-brands fa-github"></i> GitHub
     </a>
-    <a href="{{ site.baseurl }}/assets/Housing_Price_Prediction-AnExploratoryAnalysis.html" class="html-btn">
+    <a href="{{ site.baseurl }}/assets/Housing_Price_Prediction-AnExploratoryAnalysis.html" class="html-btn" target="_blank">
       <i class="fa-solid fa-file"></i> View Page
     </a>
   </div>
+
 </div>
+
+
 
 <!-- Project 2 -->
 <div class="project-card">
