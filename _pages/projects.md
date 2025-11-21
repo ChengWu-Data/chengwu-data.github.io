@@ -351,14 +351,15 @@ author_profile: true
   </div>
 
 </div>
-
-<!-- Project 3: My Ikebana Portfolio Site -->
+<!-- Project 3: Ikebana Portfolio Site -->
 <div class="project-card">
-  <img src="{{ site.baseurl }}/images/project3.jpg" alt="Project Image" class="project-image">
+  <img src="{{ site.baseurl }}/images/project3.jpg" alt="Ikebana Site Image" class="project-image">
   <div class="project-content">
-    <div class="project-title">My Ikebana Portfolio Site</div>
+    <div class="project-title">Ikebana Portfolio — Immersive Front-End Microsite</div>
     <p class="project-description">
-      This website was developed as the final project for my Ikebana course. It showcases a wide range of advanced front-end techniques including complex CSS animations, interactive JavaScript effects, HTML5 background music integration, and a responsive design that automatically adapts to dark/light modes across different devices. The project leverages CSS3 transitions, media queries, dynamic UI enhancements with JavaScript, and the HTML5 audio API to allow readers to join me on my flower arranging journey!  <a href="https://github.com/ChengWu-Data/followerJP" target="_blank" style="color:#6d4195;">To GitHub</a>.
+      A handcrafted, single-page microsite that turns my Ikebana course portfolio into an immersive digital experience. 
+      Built from scratch (no frameworks) with responsive layout, CSS animations, JavaScript-driven interactions, and background audio integration, 
+      this project reflects my attention to detail in <strong>UX, visual hierarchy, and front-end systems thinking</strong> rather than just static pages.
     </p>
     <button class="details-btn" onclick="toggleDetails('project3')">View Details</button>
   </div>
@@ -366,18 +367,47 @@ author_profile: true
 
 <!-- Hidden Details for Project 3 -->
 <div id="project3" class="project-details">
-  <!-- Photo Gallery: 5 Photos -->
+
+  <!-- 🔥 Summary Section -->
+  <div class="project-summary" style="background:#faf7ff; padding:1.5rem; border-radius:8px; margin-bottom:1.5rem; border-left:4px solid #6d4195;">
+    <h2 style="color:#6d4195;">📌 Project Summary</h2>
+
+    <p><strong>Objective:</strong> Design and implement a small, self-contained web experience that presents Ikebana work 
+    in a way that feels more like a product than a static gallery — with smooth transitions, responsive layout, and ambient audio.</p>
+
+    <p><strong>What I built:</strong></p>
+    <ul>
+      <li>A fully responsive single-page site that adapts to different screen sizes and dark/light environments</li>
+      <li>Custom <strong>CSS animation system</strong> (entrance transitions, hover states, text reveals) without external libraries</li>
+      <li>JavaScript controllers for <strong>navigation, scroll-based effects, and HTML5 audio playback</strong></li>
+      <li>A layout that balances photography, text, and whitespace so the site reads like a curated story rather than a code demo</li>
+    </ul>
+
+    <p><strong>Why it matters for my broader work:</strong></p>
+    <ul>
+      <li>Shows I can go from <strong>concept → UX structure → visual design → implementation</strong> on my own</li>
+      <li>Reinforces skills that are directly reusable for <strong>analytics dashboards, internal tools, and stakeholder-facing UIs</strong></li>
+      <li>Demonstrates that I care about the last mile of data/insights — <strong>how people actually experience what we build</strong></li>
+    </ul>
+
+    <p style="font-style:italic; color:#444;">Below are selected screenshots from the live site.</p>
+  </div>
+
+  <!-- 📸 Photo Gallery -->
   <div class="photo-gallery">
     <img src="{{ site.baseurl }}/images/followerJP_1.jpg" alt="FollowerJP Screenshot 1" class="project-photo">
     <img src="{{ site.baseurl }}/images/followerJP_2.jpg" alt="FollowerJP Screenshot 2" class="project-photo">
     <img src="{{ site.baseurl }}/images/followerJP_3.jpg" alt="FollowerJP Screenshot 3" class="project-photo">
     <img src="{{ site.baseurl }}/images/followerJP_4.jpg" alt="FollowerJP Screenshot 4" class="project-photo">
-    
   </div>
-  <!-- Button Row -->
+
+  <!-- 🔗 Button Row -->
   <div class="button-row">
-    <a href="https://chengwu-data.github.io/followerJP/" class="html-btn">
+    <a href="https://chengwu-data.github.io/followerJP/" class="html-btn" target="_blank">
       <i class="fa-solid fa-globe"></i> Visit Website
+    </a>
+    <a href="https://github.com/ChengWu-Data/followerJP" class="github-btn" target="_blank">
+      <i class="fa-brands fa-github"></i> GitHub
     </a>
   </div>
 </div>
