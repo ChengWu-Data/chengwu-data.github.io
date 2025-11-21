@@ -155,12 +155,32 @@ author_profile: true
   <i class="fa-solid fa-folder-open" style="margin-right: 10px;"></i> My Projects
 </h1>
 
+
 <!-- Project 0: Exponential Smoothing FX Trend Strategy -->
+<div class="project-card">
+  <img src="{{ site.baseurl }}/images/project_fx.jpg" alt="FX Project Image" class="project-image">
+  
+  <div class="project-content">
+    <div class="project-title">FX Trend Strategy using Exponential Smoothing</div>
+    <p class="project-description">
+      A fully reproducible quantitative research project analyzing USD/CAD trend persistence using dual exponential smoothing filters. 
+      I built a complete forecasting and trading pipeline: signal engineering, α–β parameter tuning, long/short asymmetry testing, 
+      buffer and deceleration exit experiments, backtesting, Sharpe evaluation, and trade-level accuracy modeling.  
+      This project demonstrates my capabilities in <strong>quantitative analysis, data science workflow design, 
+      mathematical modeling, statistical reasoning, and technical communication</strong>.
+    </p>
+
+    <button class="details-btn" onclick="toggleDetails('project_fx')">View Details</button>
+  </div>
+</div>
+
+<!-- Hidden Details for FX Project -->
 <div id="project_fx" class="project-details">
 
   <!-- 🔥 Summary Section -->
-  <div class="project-summary">
+  <div class="project-summary" style="background:#faf7ff; padding:1.5rem; border-radius:8px; margin-bottom:1.5rem; border-left:4px solid #6d4195;">
     <h2 style="color:#6d4195;">📌 Project Summary</h2>
+
     <p><strong>Objective:</strong> Build a trend-following FX trading system for USD/CAD using dual exponential smoothing filters (ESα, ESβ) and evaluate long/short symmetry, parameter sensitivity, and exit logic.</p>
 
     <p><strong>Methodology:</strong> Designed full pipeline including parameter grid search, regime-specific performance evaluation, trade-level accuracy analysis, and experiments on buffer thresholds and deceleration-based exits.</p>
@@ -199,6 +219,8 @@ author_profile: true
   </div>
 
 </div>
+
+
 
 
 <!-- Project 1 -->
