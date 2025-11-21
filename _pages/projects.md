@@ -357,7 +357,7 @@ author_profile: true
 </div>
 
 
-</div>
+
 <!-- Project 3: Ikebana Portfolio Site -->
 <div class="project-card">
   <img src="{{ site.baseurl }}/images/project3.jpg" alt="Ikebana Site Image" class="project-image">
