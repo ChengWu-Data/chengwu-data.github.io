@@ -302,7 +302,6 @@ author_profile: true
     <button class="details-btn" onclick="toggleDetails('project2')">View Details</button>
   </div>
 </div>
-
 <!-- Hidden Details for Project 2 -->
 <div id="project2" class="project-details">
 
@@ -345,10 +344,18 @@ author_profile: true
 
   <!-- 🔗 BUTTONS -->
   <div class="button-row">
-    <a href="https://drive.google.com/file/d/1VjV4sNFC9NrD7N8A9QoP_Ss2yWV_5WkI/view?usp=sharing" class="html-btn">
+    <a href="https://github.com/ChengWu-Data/sf-crime-socioeconomic-analysis" 
+       class="github-btn" target="_blank">
+      <i class="fa-brands fa-github"></i> GitHub
+    </a>
+    <a href="https://drive.google.com/file/d/1VjV4sNFC9NrD7N8A9QoP_Ss2yWV_5WkI/view?usp=sharing" 
+       class="html-btn" target="_blank">
       <i class="fa-solid fa-file-pdf"></i> View Report
     </a>
   </div>
+
+</div>
+
 
 </div>
 <!-- Project 3: Ikebana Portfolio Site -->
