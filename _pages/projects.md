@@ -306,8 +306,10 @@ author_profile: true
 <div id="project2" class="project-details">
 
   <!-- 🔥 Summary Section -->
-  <div class="project-summary">
+  
+<div class="project-summary" style="background:#faf7ff; padding:1.5rem; border-radius:8px; margin-bottom:1.5rem; border-left:4px solid #6d4195;">
     <h2 style="color:#6d4195;">📌 Project Summary</h2>
+
 
     <p><strong>Objective:</strong> Quantify whether crime patterns are driven by economic factors such as inequality, unemployment, transit patterns, and demographic changes.</p>
 
