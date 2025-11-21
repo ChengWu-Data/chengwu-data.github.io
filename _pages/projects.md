@@ -156,40 +156,48 @@ author_profile: true
 </h1>
 
 <!-- Project 0: Exponential Smoothing FX Trend Strategy -->
-<div class="project-card">
-  <img src="{{ site.baseurl }}/images/project_fx.jpg" alt="FX Project Image" class="project-image">
-  
-  <div class="project-content">
-    <div class="project-title">FX Trend Strategy using Exponential Smoothing</div>
-    <p class="project-description">
-      A fully reproducible quantitative research project analyzing USD/CAD trend persistence using dual exponential smoothing filters. 
-      I built a complete forecasting and trading pipeline: signal engineering, α–β parameter tuning, long/short asymmetry testing, 
-      buffer and deceleration exit experiments, backtesting, Sharpe evaluation, and trade-level accuracy modeling.  
-      This project demonstrates my capabilities in <strong>quantitative analysis, data science workflow design, 
-      mathematical modeling, statistical reasoning, and technical communication</strong>.
-    </p>
-
-    <button class="details-btn" onclick="toggleDetails('project_fx')">View Details</button>
-  </div>
-</div>
-
-<!-- Hidden Details for FX Project -->
 <div id="project_fx" class="project-details">
-  <!-- Embedded PDF Preview -->
+
+  <!-- 🔥 Summary Section -->
+  <div class="project-summary">
+    <h2 style="color:#6d4195;">📌 Project Summary</h2>
+    <p><strong>Objective:</strong> Build a trend-following FX trading system for USD/CAD using dual exponential smoothing filters (ESα, ESβ) and evaluate long/short symmetry, parameter sensitivity, and exit logic.</p>
+
+    <p><strong>Methodology:</strong> Designed full pipeline including parameter grid search, regime-specific performance evaluation, trade-level accuracy analysis, and experiments on buffer thresholds and deceleration-based exits.</p>
+
+    <ul>
+      <li>Dual ES crossover signals with α < β</li>
+      <li>Trade-level performance aggregation (not just daily returns)</li>
+      <li>Long-only vs short-only optimization</li>
+      <li>Buffer & deceleration exit experiments</li>
+    </ul>
+
+    <p><strong>Key Results:</strong></p>
+    <ul>
+      <li>Optimal parameters: <code>α = 0.20</code>, <code>β = 0.60</code></li>
+      <li>Sharpe ratio improves <strong>0.26 → 0.45</strong></li>
+      <li>Trade-level accuracy ≈ <strong>73%</strong></li>
+      <li>Distance buffer & deceleration exit <strong>reduce performance</strong></li>
+    </ul>
+
+    <p style="font-style:italic; color:#444;">See full technical report below.</p>
+  </div>
+
+  <!-- 🔽 PDF Preview -->
   <iframe class="preview-frame" src="https://drive.google.com/file/d/1waRGZB_vFinXPfDzRqbshjq4p5y41fQI/preview"></iframe>
 
-  <!-- Buttons -->
+  <!-- 🔗 Buttons -->
   <div class="button-row">
     <a href="https://github.com/ChengWu-Data/Exponential-Smoothing-Trend-Strategy-with-Parameter-Tuning-Exit-Rules" 
        class="github-btn" target="_blank">
       <i class="fa-brands fa-github"></i> GitHub
     </a>
-
     <a href="https://drive.google.com/file/d/1waRGZB_vFinXPfDzRqbshjq4p5y41fQI/view?usp=sharing" 
        class="html-btn" target="_blank">
       <i class="fa-solid fa-file-pdf"></i> View Report
     </a>
   </div>
+
 </div>
 
 
