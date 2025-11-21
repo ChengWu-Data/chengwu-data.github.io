@@ -289,15 +289,15 @@ author_profile: true
 
 </div>
 
-
-
 <!-- Project 2 -->
 <div class="project-card">
   <img src="{{ site.baseurl }}/images/project2.jpg" alt="Project Image" class="project-image">
   <div class="project-content">
-    <div class="project-title">Socioeconomic Attributes and Crime: Analyzing Economic Factors in Crime Trends</div>
+    <div class="project-title">Socioeconomic Drivers of Crime in San Francisco</div>
     <p class="project-description">
-      Explored socioeconomic predictors of crime in San Francisco by combining large-scale crime data (913k+ records) with census tract indicators. Used fixed-effects regression, count models, and time-series forecasting to identify drivers of crime trends, with education and mobility emerging as strong factors. Beyond policy relevance, the project sharpened my ability to handle complex datasets, longitudinal analysis, and predictive modeling—transferable skills for business and financial analytics.
+      Built a large-scale spatial econometrics pipeline linking 900k+ SF police incident records with ACS socioeconomic panel data. 
+      Applied fixed-effects logistic models, Poisson/NegBin count models, and time-series forecasting to quantify how inequality, unemployment, and mobility patterns shape crime trends. 
+      The project demonstrates skills in <strong>causal inference, longitudinal modeling, data integration, and policy analytics</strong>—transferable to business forecasting & systems design.
     </p>
     <button class="details-btn" onclick="toggleDetails('project2')">View Details</button>
   </div>
@@ -305,14 +305,51 @@ author_profile: true
 
 <!-- Hidden Details for Project 2 -->
 <div id="project2" class="project-details">
-  <!-- Embedded PDF Preview -->
+
+  <!-- 🔥 Summary Section -->
+  <div class="project-summary">
+    <h2 style="color:#6d4195;">📌 Project Summary</h2>
+
+    <p><strong>Objective:</strong> Quantify whether crime patterns are driven by economic factors such as inequality, unemployment, transit patterns, and demographic changes.</p>
+
+    <p><strong>Pipeline:</strong> Merged 913,732 incident-level crime records with census-tract ACS data (2017–2022) using spatial joins and longitudinal panel construction.</p>
+
+    <ul>
+      <li>Panel structure: <strong>tract × year</strong></li>
+      <li>Models: Fixed-effects logistic (individual), Poisson/Negative Binomial (aggregate)</li>
+      <li>Time-series forecasting using ARIMAX/SARIMAX</li>
+      <li>Feature engineering for economic deltas + mobility metrics</li>
+    </ul>
+
+    <p><strong>Key Findings:</strong></p>
+
+    <ul>
+      <li>Higher transit usage (public transit, cycling) → <strong>consistent increases in crime rates</strong> across categories</li>
+      <li>Income inequality + unemployment <strong>negatively associated with crime at tract level</strong> (counter-intuitive, suggests urban confounds)</li>
+      <li>Bachelor’s degree rate <strong>reduces violent/public order crime but increases property crime</strong></li>
+      <li>COVID years: fewer public order crimes, more property crimes</li>
+    </ul>
+
+    <p><strong>Methodological Insights (Transferable):</strong></p>
+    <ul>
+      <li>Importance of panel vs individual-level inference: aggregate models outperform individual classifiers</li>
+      <li>Negative Binomial superior under over-dispersion → similar logic applies to ops forecasting</li>
+      <li>Mobility + density better predictors than pure economic indicators</li>
+    </ul>
+
+    <p style="font-style:italic; color:#444;">Full methodology and regression tables available in report below.</p>
+  </div>
+
+  <!-- 🔽 PDF PREVIEW -->
   <iframe class="preview-frame" src="https://drive.google.com/file/d/1VjV4sNFC9NrD7N8A9QoP_Ss2yWV_5WkI/preview"></iframe>
-  <!-- View Online Button -->
+
+  <!-- 🔗 BUTTONS -->
   <div class="button-row">
     <a href="https://drive.google.com/file/d/1VjV4sNFC9NrD7N8A9QoP_Ss2yWV_5WkI/view?usp=sharing" class="html-btn">
-      <i class="fa-solid fa-file-pdf"></i> View Online
+      <i class="fa-solid fa-file-pdf"></i> View Report
     </a>
   </div>
+
 </div>
 
 <!-- Project 3: My Ikebana Portfolio Site -->
