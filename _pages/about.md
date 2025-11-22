@@ -105,7 +105,7 @@ author_profile: true
     🎯 I focus on three things in my work: <span class="about-text">clarity in communication, rigor in method, and measurable impact in results.</span> 
   </p>
   <p><span class="about-text">Focus areas</span>: market analytics, financial analysis, process improvement, education equity</p>
-  <p>📍 <span class="about-text">Toolss</span>: SQL, Python, BI dashboards (Power BI, Tableau, Plotly), Statistics / Econometrics</p>
+  <p>📍 <span class="about-text">Tools</span>: SQL, Python, BI dashboards (Power BI, Tableau, Plotly), Statistics / Econometrics</p>
 </div>
 
 <div class="section-container">
