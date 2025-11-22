@@ -119,7 +119,7 @@ lang: "zh"
     <ul>
       <li><strong>计量经济学与数量经济学学士</strong></li>
       <li><em>辅修：数据科学与统计学</em></li>
-      <li>GPA：3.85/4.00 <span class="gpa-badge">院长名单</span></li>
+      <li>GPA：3.90/4.00 <span class="gpa-badge">院长名单</span></li>
     </ul>
   </div>
 </div>
