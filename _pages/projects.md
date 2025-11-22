@@ -192,6 +192,13 @@ author_profile: true
 <!-- Hidden Details for FX Project -->
 <div id="project_fx" class="project-details">
 
+  <!-- 🎯 Problem Section -->
+  <div class="project-problem">
+    <strong>Problem:</strong> Most simple FX trend-following rules look good in toy backtests but fall apart once you
+    change parameters, markets, or exit rules. I wanted to design a <em>robust, parameterized</em> exponential smoothing
+    system and understand exactly when a “dual-ES crossover” strategy actually adds value versus noise.
+  </div>
+  
   <!-- 🔥 Summary Section -->
   <div class="project-summary" style="background:#faf7ff; padding:1.5rem; border-radius:8px; margin-bottom:1.5rem; border-left:4px solid #6d4195;">
     <h2 style="color:#6d4195;">📌 Project Summary</h2>
@@ -328,6 +335,13 @@ author_profile: true
 
 <!-- Hidden Details for Project 1 -->
 <div id="project1" class="project-details">
+
+  <!-- 🎯 Problem Section -->
+  <div class="project-problem">
+    <strong>Problem:</strong> House price models often chase leaderboard metrics but fail to answer a practical question:
+    <em>what exactly is driving value?</em> For a buyer, developer, or bank, we need an interpretable decomposition of
+    space, quality, and neighborhood effects rather than a pure black-box forecast.
+  </div>
 
   <!-- 🔥 Summary Section -->
   <div class="project-summary" style="background:#faf7ff; padding:1.5rem; border-radius:8px; margin-bottom:1.5rem; border-left:4px solid #6d4195;">
@@ -481,6 +495,13 @@ author_profile: true
 
 <!-- Hidden Details for Project 3 -->
 <div id="project3" class="project-details">
+
+  <!-- 🎯 Problem Section -->
+  <div class="project-problem">
+    <strong>Problem:</strong> Most “portfolio sites” for creative work are either static grids of images or generic templates.
+    I wanted to see if I could turn an Ikebana course portfolio into a small, product-like web experience with deliberate
+    motion, sound, and layout — without relying on heavy frameworks.
+  </div>
 
   <!-- 🔥 Summary Section -->
   <div class="project-summary" style="background:#faf7ff; padding:1.5rem; border-radius:8px; margin-bottom:1.5rem; border-left:4px solid #6d4195;">
