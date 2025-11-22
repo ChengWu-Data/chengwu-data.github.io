@@ -61,6 +61,21 @@ author_profile: true
   margin-bottom: 0.5rem;
 }
 
+
+.project-problem {
+  background: #f7ecff;
+  border-left: 4px solid #6d4195;
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 0.95rem;
+}
+.project-problem strong {
+  color: #6d4195;
+}
+
+  
 .project-description {
   color: #444;
   line-height: 1.5;
@@ -374,8 +389,26 @@ author_profile: true
     <button class="details-btn" onclick="toggleDetails('project2')">View Details</button>
   </div>
 </div>
+
+
 <!-- Hidden Details for Project 2 -->
 <div id="project2" class="project-details">
+
+  <!-- 🎯 Problem Section -->
+  <div class="project-problem">
+    <strong>Problem:</strong> City agencies and planners see crime as an “economic problem”, but it’s unclear whether
+    inequality, unemployment, or mobility actually explain crime patterns once we control for where people live and move.
+    This project builds a tract–year panel to test whether the data supports that narrative.
+  </div>
+
+  <!-- （可选）一张展示问题的图，比如时间趋势 -->
+  <!--
+  <img src="{{ site.baseurl }}/images/fig_time_trend.png" 
+       alt="Crime time trend" 
+       style="width:100%; border-radius:6px; margin-bottom:1rem;">
+  -->
+
+
 
   <!-- 🔥 Summary Section -->
   
