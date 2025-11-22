@@ -266,6 +266,14 @@ author_profile: true
 <!-- Hidden Details for MultiDocRAG Project -->
 <div id="project_multidoc" class="project-details">
 
+  <!-- 🎯 Problem Section -->
+  <div class="project-problem">
+    <strong>Problem:</strong> Most RAG systems work well for <em>single-document retrieval</em> but fail when answers require
+    contrasting evidence or synthesizing information across multiple sources. This project explores how to design a retrieval,
+    ranking, and reasoning pipeline that can accurately answer questions spanning multiple PDFs.
+  </div>
+
+
   <!-- 🔥 Summary Section -->
   <div class="project-summary" style="background:#faf7ff; padding:1.5rem; border-radius:8px; margin-bottom:1.5rem; border-left:4px solid #6d4195;">
     <h2 style="color:#6d4195;">📌 Project Summary</h2>
