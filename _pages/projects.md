@@ -242,35 +242,36 @@ author_profile: true
 
 </div>
 
-
-
-<!-- Project 5: MultiDocRAG (Developing) -->
+<!-- Project 5: MultiDocRAG -->
 <div class="project-card">
   <img src="{{ site.baseurl }}/images/MultiDocRAG_cover.jpg" alt="MultiDocRAG Cover Image" class="project-image">
   
   <div class="project-content">
-    <div class="project-title">MultiDocRAG (Developing)</div>
+    <div class="project-title">MultiDocRAG</div>
     <p class="project-description">
-      A retrieval-augmented multi-document reasoning system that ingests multiple PDFs, retrieves evidence with vector search, 
-      and generates synthesized, citation-grounded answers. This is a full-stack applied ML project where I am building 
-      an end-to-end pipeline involving document ingestion, chunking strategies, embedding search, multi-document LLM reasoning, 
-      evaluation framework design, and a demo interface.  
-      This project demonstrates my capabilities in <strong>LLM engineering, applied machine learning, full data pipeline design, 
-      evaluation methodology, and technical communication</strong>.
+      A full-stack retrieval-augmented generation (RAG) system designed to perform 
+      <strong>multi-document reasoning</strong> across uploaded PDFs. The system supports 
+      scalable document ingestion, semantic chunking, vector search retrieval, 
+      transparent evidence inspection, and automated evaluation. 
+      This project demonstrates my ability to integrate <strong>LLM engineering, 
+      applied machine learning, data pipeline design, evaluation methodology,
+      and end-to-end product prototyping</strong>.
     </p>
 
     <button class="details-btn" onclick="toggleDetails('project_multidoc')">View Details</button>
   </div>
 </div>
 
+
 <!-- Hidden Details for MultiDocRAG Project -->
 <div id="project_multidoc" class="project-details">
 
   <!-- 🎯 Problem Section -->
   <div class="project-problem">
-    <strong>Problem:</strong> Most RAG systems work well for <em>single-document retrieval</em> but fail when answers require
-    contrasting evidence or synthesizing information across multiple sources. This project explores how to design a retrieval,
-    ranking, and reasoning pipeline that can accurately answer questions spanning multiple PDFs.
+    <strong>Problem:</strong> Traditional RAG pipelines work well for <em>single-document</em> lookup, 
+    but real-world analysis often requires <strong>synthesizing information across multiple sources</strong>. 
+    MultiDocRAG addresses this challenge by building a retrieval and reasoning pipeline capable of 
+    cross-document evidence comparison, grounded generation, and systematic evaluation.
   </div>
 
 
@@ -278,35 +279,47 @@ author_profile: true
   <div class="project-summary" style="background:#faf7ff; padding:1.5rem; border-radius:8px; margin-bottom:1.5rem; border-left:4px solid #6d4195;">
     <h2 style="color:#6d4195;">📌 Project Summary</h2>
 
-    <p><strong>Objective:</strong> Build an AI assistant capable of performing <strong>cross-document reasoning</strong> across multiple PDFs using Retrieval-Augmented Generation (RAG) and optional conversational memory.</p>
+    <p><strong>Objective:</strong> Build an AI assistant that can perform <strong>cross-document synthesis</strong> 
+    and answer questions using grounded, evidence-retrieved context from multiple PDFs.</p>
 
-    <p><strong>Methodology:</strong> Designed a modular system including multi-PDF ingestion, hierarchical chunking, embedding generation, vector-based retrieval, and an LLM reasoning layer capable of comparing, contrasting, and synthesizing content from multiple documents.</p>
-
+    <p><strong>System Design:</strong> Implemented an end-to-end pipeline including:</p>
     <ul>
-      <li>Semantic chunking with hierarchical fallback</li>
-      <li>Vector search with top-k reranking</li>
-      <li>Cross-document answer synthesis with citations</li>
-      <li>Optional memory module for multi-turn reasoning</li>
-      <li>Evaluation framework comparing baseline LLM vs RAG vs RAG+memory</li>
+      <li>Multi-PDF ingestion and cleaning</li>
+      <li>Sliding-window chunking with semantic overlap</li>
+      <li>Embedding generation via Sentence-Transformers</li>
+      <li>FAISS vector search retrieval with score transparency</li>
+      <li>LLM reasoning layer with contextual grounding + controlled refusals</li>
+      <li>Automated evaluation framework across correctness, groundedness, and refusal safety</li>
+      <li>Streamlit demo UI with prompt inspection and retrieval visibility</li>
     </ul>
 
-    <p><strong>Use Cases:</strong></p>
+    <p><strong>Applications:</strong></p>
     <ul>
-      <li>Summarizing common findings across multiple reports</li>
-      <li>Comparing methodologies between research papers</li>
-      <li>Extracting evidence-backed insights for business or policy analysis</li>
-      <li>Automated literature review and document synthesis</li>
+      <li>Cross-document analytics for research & reporting</li>
+      <li>Policy / business intelligence synthesis across multiple PDFs</li>
+      <li>Technical documentation QA and comparison</li>
+      <li>Automated literature review</li>
+    </ul>
+
+    <p><strong>What This Shows About My Skillset:</strong></p>
+    <ul>
+      <li>Ability to design end-to-end ML/LLM systems</li>
+      <li>Strength in data engineering workflow (cleaning → chunking → indexing → retrieval)</li>
+      <li>Evaluation methodology formulation and metric-driven iteration</li>
+      <li>Full-stack prototyping (backend + model + frontend UI)</li>
+      <li>Clear communication of system design and reasoning behavior</li>
     </ul>
 
     <p><strong>Current Progress:</strong></p>
     <ul>
-      <li>Document ingestion + chunking pipeline complete</li>
-      <li>Embedding search + retrieval module integrated</li>
-      <li>Baseline vs RAG evaluation being designed</li>
-      <li>Reasoning module + demo UI under active development</li>
+      <li>Core ingestion, chunking, and vector retrieval implemented</li>
+      <li>LLM reasoning module integrated with memory + grounded prompting</li>
+      <li>Automated evaluation pipeline complete (27-question benchmark)</li>
+      <li>Live demo deployed via HuggingFace Spaces</li>
+      <li>Full report available</li>
     </ul>
 
-    <p style="font-style:italic; color:#444;">This is an ongoing project — codebase updates weekly.</p>
+    <p style="font-style:italic; color:#444;">This project is actively evolving as I benchmark, refine prompts, evaluate failure modes, and introduce reranking & improved LLM backends.</p>
   </div>
 
   <!-- 🔗 Buttons -->
@@ -315,13 +328,19 @@ author_profile: true
        class="github-btn" target="_blank">
       <i class="fa-brands fa-github"></i> GitHub
     </a>
-    <a href="#" class="html-btn" style="opacity:0.4; pointer-events:none;">
-      <i class="fa-solid fa-file-code"></i> Report (Coming Soon)
+
+    <a href="https://chengwu1210-multidocrag.hf.space/" 
+       class="html-btn" target="_blank">
+      <i class="fa-solid fa-globe"></i> Demo
+    </a>
+
+    <a href="https://drive.google.com/file/d/1cJG3CEvquydOJhJv0aWaZ4-eonIwfNJi/view?usp=sharing" 
+       class="html-btn" target="_blank">
+      <i class="fa-solid fa-file-code"></i> Report
     </a>
   </div>
 
 </div>
-
 
 
 
