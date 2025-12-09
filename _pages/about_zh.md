@@ -3,7 +3,6 @@ layout: default
 permalink: /zh/about/
 author_profile: true
 lang: "zh"
-
 ---
 
 <style>
@@ -38,7 +37,7 @@ lang: "zh"
 
 /* 各部分间距 */
 .entry {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
 }
 
 /* 经验标题 */
@@ -93,173 +92,222 @@ lang: "zh"
 
 <div class="section-container">
   <h2 class="section-header">关于我</h2>
+
   <p>
-    我是 <span class="about-text">吴骋</span>，目前就读于 
-    <span class="about-text">伊利诺伊大学厄巴纳-香槟分校</span>， 
-    主修 <span class="about-text">计量经济学与数量经济学</span>， 
-    辅修 <span class="about-text">数据科学与统计学</span>。 
-    我的研究方向涵盖 <span class="about-text">数据驱动的政策分析</span>、 
-    <span class="about-text">公共卫生数据分析</span>，以及 
-    <span class="about-text">机器学习在社会问题中的应用</span>。
-  </p>
-  
-  <p>
-    我专注于大规模数据分析、预测建模和可视化工具，致力于挖掘有价值的信息来支持实际决策。我的经验涵盖公共政策、 
-    健康信息学和经济分析，希望通过数据科学与政策制定的结合，推动更具影响力的解决方案。
+    我是 <span class="about-text">吴骋</span>，一名关注“<span class="about-text">数据如何真正改变现实决策</span>”的 
+    <span class="about-text">数据与商业分析师</span>。
   </p>
 
-  <p>📍 <span class="about-text">目前居住在美国伊利诺伊州香槟市。</span></p>
+  <p>
+    我本科毕业于 <span class="about-text">伊利诺伊大学厄巴纳-香槟分校</span>，
+    主修 <span class="about-text">计量经济学与数量经济学</span>，目前在 
+    <span class="about-text">哥伦比亚大学</span> 攻读 <span class="about-text">数据科学硕士</span>。
+    我的训练强调 <span class="about-text">严谨的因果推断、统计建模</span> 与 
+    <span class="about-text">面向实际业务落地的分析能力</span> 的结合。
+  </p>
+
+  <p>
+    我的分析实践横跨 <span class="about-text">市场、金融与社会影响</span> 多个领域。
+    从企业定价与需求预测、财务与合规流程优化，到教育不平等与公共卫生问题的量化研究，
+    我始终关注的是：<span class="about-text">在没有标准答案的问题中，用数据建立清晰判断。</span>
+  </p>
+
+  <p>
+    在工作中，我始终坚持三点原则：<br>
+    <span class="about-text">清晰的表达、严格的方法、可衡量的影响。</span>
+  </p>
+
+  <p>
+    <span class="about-text">关注方向</span>：市场分析、金融分析、流程优化、教育公平
+  </p>
+
+  <p>
+    📍 <span class="about-text">工具栈</span>：SQL、Python、BI 可视化（Power BI / Tableau / Plotly）、统计与计量经济学
+  </p>
 </div>
 
 <div class="section-container">
   <h2 class="section-header"><i class="fas fa-graduation-cap"></i> 教育背景</h2>
+
+  <div class="entry">
+    <div class="entry-title">哥伦比亚大学</div>
+    <div class="entry-details">数据科学 硕士 | 在读</div>
+  </div>
+
   <div class="entry">
     <div class="entry-title">伊利诺伊大学厄巴纳-香槟分校</div>
-    <div class="entry-details">预计毕业时间：2025 年</div>
+    <div class="entry-details">毕业时间：2025 年</div>
     <ul>
-      <li><strong>计量经济学与数量经济学学士</strong></li>
+      <li><strong>计量经济学与数量经济学 学士</strong></li>
       <li><em>辅修：数据科学与统计学</em></li>
-      <li>GPA：3.90/4.00 <span class="gpa-badge">院长名单</span></li>
+      <li>GPA：3.9 / 4.0 <span class="gpa-badge">院长名单</span></li>
     </ul>
   </div>
 </div>
 
 <div class="section-container">
-  <h2 class="section-header"><i class="fas fa-briefcase"></i> 实习与工作经验</h2>
-  
+  <h2 class="section-header"><i class="fas fa-briefcase"></i> 职业经历</h2>
+
   <div class="entry">
-    <div class="entry-title">数据科学实习生 - 市场策略</div>
-    <div class="entry-details">东来生物科技有限公司 | 2024 年 6 月 - 2024 年 9 月 | 远程</div>
+    <div class="entry-title">数据分析师 — 供应链合规与运营</div>
+    <div class="entry-details">Tarte Cosmetics | 2025 年 10 月 – 至今 | 纽约</div>
     <div class="entry-content">
-      <ul>
-        <li>通过并行计算优化库存管理，利用 K-Means 和 DBSCAN 进行客户分析，提高效率 10%。</li>
-        <li>利用回归分析、预测建模和价格弹性分析，实现价格优化，使订单完成率提高 12%。</li>
-      </ul>
+      <p>
+        在 <span class="about-text">Tarte</span>，我负责 <span class="about-text">全球产品进出口合规与供应链数据分析</span>，
+        主要围绕 <span class="about-text">HTS 编码、NAV 数据整合与 7501 报关审计</span>，
+        确保产品主数据、报关信息与内部 SKU 系统在法规层面保持一致。
+      </p>
+      <p>
+        我搭建了多套 <span class="about-text">跨系统数据核对流程</span>，将 TOR 清单、原产地证明、
+        完税价值与实际申报信息进行自动比对，有效降低人工复核成本。
+        同时，我正在设计一套 <span class="about-text">自动预警管道</span>，
+        在清关前识别 <span class="about-text">估价异常、商品编码错误与运输属性不一致</span>，
+        以降低合规风险与通关延误。
+      </p>
     </div>
   </div>
 
   <div class="entry">
-    <div class="entry-title">数据科学实习生 - 机构金融部</div>
-    <div class="entry-details">浙商证券股份有限公司 | 2023 年 5 月 - 2023 年 9 月 | 中国杭州</div>
+    <div class="entry-title">数据科学实习生 — 市场分析</div>
+    <div class="entry-details">东来生物科技 | 2024 年 6 月 – 2024 年 9 月 | 远程</div>
     <div class="entry-content">
-      <ul>
-        <li>运用随机森林和回归模型优化 20 多个私募股权投资决策，投资回报率提高 25%。</li>
-        <li>通过自动化报告和 Excel、VBA、ETL 数据可视化，提高 15% 的跨部门数据一致性和决策效率。</li>
-      </ul>
+      <p>
+        我加入公司时正处于 <span class="about-text">多产品线需求预测失效</span> 的阶段。
+        我的工作从 <span class="about-text">客户分群</span> 入手，使用 
+        <span class="about-text">K-Means 与 DBSCAN</span> 构建购买行为结构，
+        并直接接入 <span class="about-text">SQL ETL 库存系统</span> 进行测试。
+      </p>
+      <p>
+        我随后构建了 <span class="about-text">需求预测与价格弹性模型</span>，
+        供管理层进行情景模拟。
+        一次针对季节性商品的定价调整验证，使订单完成率 <span class="about-text">提升约 12%</span>。
+        在数据工程侧，我使用 <span class="about-text">Spark 与 Dask</span> 重构流水线，
+        将报表延迟 <span class="about-text">降低 40%</span>。
+        最终成果通过 <span class="about-text">Power BI、Plotly 与 Dash</span> 仪表盘交付，
+        管理层可直接基于预测结果调整市场节奏。
+      </p>
     </div>
   </div>
 
   <div class="entry">
-    <div class="entry-title">战略规划与社区赋能 - 负责人</div>
-    <div class="entry-details">Innovative Bloom 基金会 | 2019 年 5 月 - 2024 年 6 月 | 中国上海</div>
+    <div class="entry-title">数据分析师 — 机构金融</div>
+    <div class="entry-details">浙商证券 | 2023 年 5 月 – 2023 年 9 月 | 杭州</div>
     <div class="entry-content">
-      <ul>
-        <li>为 200 多名远程学生提供预测性监测、干预措施和课程优化，提高 20% 学业成功率。</li>
-        <li>通过电子商务平台结合数据分析，提高欠发达社区的手工艺收入、教育和健康水平 30%。</li>
-      </ul>
+      <p>
+        我在 <span class="about-text">机构融资与私募股权部门</span> 参与超过 
+        <span class="about-text">20 个并购与投资项目</span> 的前期筛选，
+        通过 <span class="about-text">多因子回归、情景分析</span>
+        提升投资评估准确率约 <span class="about-text">25%</span>。
+      </p>
+      <p>
+        针对 <span class="about-text">跨系统数据割裂</span> 问题，我整合了 
+        <span class="about-text">SQL + VBA 自动化管道</span>，
+        将对账时间缩短近三分之一，同时构建了 
+        <span class="about-text">组合风险与市场基准对比仪表盘</span>，
+        成为部门周会的核心决策工具。
+      </p>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="entry-title">数据分析师 & 项目统筹 — 公平增长</div>
+    <div class="entry-details">Innovative Bloom 基金会 | 2019 年 5 月 – 2024 年 6 月 | 上海</div>
+    <div class="entry-content">
+      <p>
+        我在高中时期作为 <span class="about-text">支教志愿者</span> 加入基金会，
+        后逐步转向 <span class="about-text">项目统筹与数据分析</span>。
+      </p>
+      <p>
+        我将零散的问卷与手工记录整理为 <span class="about-text">SQL 数据库</span>，
+        并构建仪表盘监测 <span class="about-text">教育、健康与食物安全</span> 指标。
+      </p>
+      <p>
+        我主导搭建的 <span class="about-text">手工艺品电商平台</span>
+        在一年内支持 <span class="about-text">15 个家庭</span>，
+        家庭收入平均提升 <span class="about-text">30%</span>。
+      </p>
+      <p>
+        我同时通过 <span class="about-text">回归分析</span> 评估项目成效，
+        使数据真正成为资源配置与项目设计的依据。
+      </p>
     </div>
   </div>
 </div>
 
 <div class="section-container">
-  <h2 class="section-header"><i class="fas fa-microscope"></i> 研究经历</h2>  
+  <h2 class="section-header"><i class="fas fa-microscope"></i> 科研经历</h2>
 
   <div class="entry">
-    <div class="entry-title">研究助理 - 经济政策与公共卫生</div>
-    <div class="entry-details">伊利诺伊大学 | 2024 年 1 月 - 2024 年 7 月 | 美国香槟</div>
+    <div class="entry-title">研究员 — 教育不平等与代际贫困</div>
+    <div class="entry-details">UIUC | 2023 年 1 月 – 2025 年 2 月</div>
     <div class="entry-content">
-      <ul>
-        <li>利用大规模国家数据库研究公共卫生政策对经济流动性的影响。</li>
-        <li>应用机器学习模型分析医疗资源可及性对经济差距的影响。</li>
-      </ul>
+      <p>
+        我的不平等研究起源于对 <span class="about-text">留守儿童</span> 的长期观察。
+        在 UIUC，我系统量化 <span class="about-text">学校资源差异</span> 对
+        <span class="about-text">社会向上流动性</span> 的影响，
+        采用 <span class="about-text">回归 + 倾向评分匹配（PSM）</span>，
+        构建 <span class="about-text">教育经费与师生比指标</span>。
+      </p>
+      <p>
+        我通过 <span class="about-text">自动化仪表盘</span> 展示 
+        <span class="about-text">地理差距</span>，
+        为政策支持提供量化证据。
+      </p>
     </div>
   </div>
 
   <div class="entry">
-    <div class="entry-title">研究员 - 教育不平等与经济流动性</div>
-    <div class="entry-details">伊利诺伊大学 | 2023 年 1 月 - 至今</div>
+    <div class="entry-title">研究助理 — 儿童保育政策</div>
+    <div class="entry-details">UIUC | 2024 年 1 月 – 2024 年 7 月</div>
     <div class="entry-content">
-      <ul>
-        <li>采用回归分析、倾向评分匹配（PSM）等方法，评估教育不平等对经济流动性的影响。</li>
-      </ul>
+      <p>
+        我在 <span class="about-text">Powers 教授团队</span> 中负责底层数据工程，
+        整合全国调查与行政数据，
+        采用 <span class="about-text">DiD 与 IV</span> 分析补贴政策对
+        <span class="about-text">就业、收入与儿童福利</span> 的因果效应，
+        并构建 <span class="about-text">R Shiny 政策模拟系统</span>。
+      </p>
     </div>
   </div>
 
   <div class="entry">
-    <div class="entry-title">研究员 - 公共卫生政策与关键药物可及性</div>
-    <div class="entry-details">伊利诺伊大学 | 2023 年 4 月 - 2023 年 12 月</div>
+    <div class="entry-title">研究员 — 公共卫生危机下的关键药物可及性</div>
+    <div class="entry-details">UIUC | 2023 年 4 月 – 2023 年 12 月</div>
     <div class="entry-content">
-      <ul>
-        <li>评估预防性卫生政策对疾病发病率、死亡率和医疗成本的影响。</li>
-        <li>使用预测建模分析关键药品短缺及其经济后果。</li>
-      </ul>
+      <p>
+        因 COVID 期间亲属去世的经历，
+        我系统研究 <span class="about-text">公共卫生失灵机制</span>。
+        我构建 <span class="about-text">政策暴露指数</span>，
+        并使用 <span class="about-text">XGBoost、LSTM 与聚类</span>
+        预测关键药品短缺与高风险人群，
+        结果以 <span class="about-text">资源配置决策仪表盘</span> 方式交付。
+      </p>
     </div>
   </div>
 </div>
 
-<!-- 联系方式 -->
 <div class="section-container contact-section">
-  <div class="contact-card">
-    <h2>📩 联系我</h2>
-    <p>如果有任何问题或合作意向，欢迎随时联系！</p>
-    <a href="mailto:datajourney.chengw@gmail.com" class="email-btn">
-      <i class="fa-solid fa-envelope"></i> 发送邮件
-    </a>
-  </div>
+  <h2>📩 联系我</h2>
+  <p>如果你对我的工作感兴趣，欢迎随时联系：</p>
+  <a href="mailto:cheng.w@columbia.edu" class="email-btn">发送邮件</a>
 </div>
 
 <style>
-/* 联系方式卡片 */
-.contact-card {
-  background: #f3e8fd;
-  padding: 1.8rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.contact-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-}
-
-/* 文字样式 */
-.contact-card h2 {
-  font-size: 1.6rem;
-  color: #6d4195;
-  margin-bottom: 0.8rem;
-}
-
-.contact-card p {
-  color: #555;
-  font-size: 1rem;
-  margin-bottom: 1.2rem;
-}
-
-/* 邮件按钮 */
 .email-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 18px;
+  display: inline-block;
+  padding: 12px 20px;
   background: #6d4195;
   color: white;
-  font-weight: bold;
-  font-size: 1rem;
   text-decoration: none;
-  border-radius: 8px;
-  border: none;
-  transition: background 0.3s, transform 0.2s;
-}
-
-.email-btn i {
-  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: background 0.2s, transform 0.2s;
 }
 
 .email-btn:hover {
-  background: #4b2a66;
+  background: #572e7a;
   transform: scale(1.05);
 }
 </style>
+
 
