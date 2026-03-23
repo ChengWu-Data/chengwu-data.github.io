@@ -259,6 +259,91 @@ lang: "zh"
 
 </div>
 
+<!-- Project: Iris Recognition System -->
+<div class="project-card">
+  <img src="{{ site.baseurl }}/images/iris_recognition_cover.jpg" alt="虹膜识别系统项目封面图" class="project-image">
+  
+  <div class="project-content">
+    <div class="project-title">端到端虹膜识别系统</div>
+    <p class="project-description">
+      一个基于经典论文方法实现的<strong>完整计算机视觉与模式识别项目</strong>，作为<strong>哥伦比亚大学课程项目</strong>完成。
+      项目围绕虹膜生物识别任务，搭建了从原始眼部图像到最终识别结果的完整流水线，包括虹膜定位、归一化、图像增强、手工特征提取、PCA + Fisher 线性判别匹配，以及识别与验证评估。
+      <br><br>
+      项目系统展现了我在 <strong>计算机视觉、机器学习系统设计、数学建模、实验调试、指标评估与技术实现</strong> 方面的能力。
+    </p>
+
+    <button class="details-btn" onclick="toggleDetails('project_iris')">查看详情</button>
+  </div>
+</div>
+
+<!-- Hidden Details for Iris Recognition Project -->
+<div id="project_iris" class="project-details">
+
+  <!-- 🎯 Problem Section -->
+  <div class="project-problem">
+    <strong>研究问题：</strong> 虹膜识别并不是“把图片丢进分类器”这么简单。原始眼部图像首先需要完成边界定位、几何归一化、亮度校正与局部增强，再提取稳定的纹理特征，并在存在旋转、噪声和成像差异的情况下完成匹配。
+    本项目希望基于经典论文方法，真正实现一个 <em>从原始图像到最终评估指标</em> 的完整识别系统，并弄清楚：哪些设计选择真正影响最终识别性能。
+  </div>
+  
+  <!-- 🔥 Summary Section -->
+  <div class="project-summary" style="background:#faf7ff; padding:1.5rem; border-radius:8px; margin-bottom:1.5rem; border-left:4px solid #6d4195;">
+    <h2 style="color:#6d4195;">📌 项目总结</h2>
+
+    <p><strong>目标：</strong> 基于 Ma et al. (2003) 的经典方法，在 CASIA-IrisV1 数据集上实现一个完整的虹膜识别系统，并在固定训练/测试协议下完成识别与验证评估。</p>
+
+    <p><strong>方法与流水线：</strong></p>
+    <ul>
+      <li>使用投影极小值、阈值分割、轮廓分析与 Hough Circle 进行虹膜与瞳孔定位</li>
+      <li>基于非同心 rubber-sheet 模型，将虹膜区域归一化为固定大小的矩形表示</li>
+      <li>通过背景光照校正与局部直方图均衡化提升纹理可见性</li>
+      <li>使用两个 circularly symmetric spatial filters 提取虹膜纹理响应</li>
+      <li>基于 8×8 block 的 Mean + Average Absolute Deviation 构建 1536 维特征向量</li>
+      <li>结合 PCA + Fisher Linear Discriminant (FLD) 进行降维</li>
+      <li>采用多模板最近中心匹配，并比较 L1、L2、Cosine 三种距离度量</li>
+      <li>通过 CRR 与 Verification ROC 曲线评估系统性能</li>
+    </ul>
+
+    <p><strong>我解决了什么问题：</strong></p>
+    <ul>
+      <li>将原始灰度眼部图像转化为一个可复现的完整识别流水线，而不只是单一步骤分类器</li>
+      <li>通过归一化与旋转模板匹配，处理了几何变化和角度偏移问题</li>
+      <li>通过图像增强和局部块统计特征，降低了亮度不均与局部噪声带来的干扰</li>
+      <li>通过多轮调试 ROI、匹配策略和评估协议，使实现更贴近论文和课程要求，并显著提升最终识别效果</li>
+    </ul>
+
+    <p><strong>关键结果：</strong></p>
+    <ul>
+      <li><strong>Original Space CRR：</strong>L1 = 73.38%，L2 = 71.99%，Cosine = 73.38%</li>
+      <li><strong>Reduced Space CRR：</strong>L1 = 80.79%，L2 = 81.25%，Cosine = 86.11%</li>
+      <li><strong>Verification ROC AUC：</strong>L1 = 0.9476，L2 = 0.9555，Cosine = 0.9912</li>
+      <li>降维后的匹配空间相比原始特征空间明显提升了识别性能</li>
+      <li>Cosine 距离在最终识别与验证结果中表现最好</li>
+    </ul>
+
+    <p><strong>展现能力：</strong></p>
+    <ul>
+      <li>能够从原始图像出发，搭建完整的计算机视觉 / 机器学习识别系统</li>
+      <li>能够根据实验结果迭代调试，而不是只停留在“代码能跑”层面</li>
+      <li>能够将论文方法转化为模块化、可复现的工程实现</li>
+      <li>熟悉经典机器学习、特征工程、降维与指标分析</li>
+      <li>具备将复杂技术流程整理为清晰项目结构与技术文档的能力</li>
+    </ul>
+
+    <p style="font-style:italic; color:#444;">
+      本项目作为哥伦比亚大学课程项目完成，重点体现了从论文实现、系统搭建到性能优化的完整技术过程。
+    </p>
+  </div>
+
+  <!-- 🔗 Buttons -->
+  <div class="button-row">
+    <a href="https://github.com/ChengWu-Data/iris-recognition-system.git" 
+       class="github-btn" target="_blank">
+      <i class="fa-brands fa-github"></i> GitHub
+    </a>
+  </div>
+
+</div>
+
 <!-- Project 5: MultiDocRAG -->
 <div class="project-card">
   <img src="{{ site.baseurl }}/images/MultiDocRAG_cover.jpg" alt="MultiDocRAG Cover Image" class="project-image">
