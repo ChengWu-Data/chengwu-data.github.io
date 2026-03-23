@@ -343,6 +343,95 @@ author_profile: true
 </div>
 
 
+<!-- Project: Iris Recognition System -->
+<div class="project-card">
+  <img src="{{ site.baseurl }}/images/iris_recognition_cover.jpg" alt="Iris Recognition System Cover Image" class="project-image">
+  
+  <div class="project-content">
+    <div class="project-title">Iris Recognition System</div>
+    <p class="project-description">
+      A full computer vision and pattern recognition pipeline for <strong>iris-based biometric identification</strong>, 
+      implemented as a <strong>Columbia University course project</strong> based on Ma et al. (2003). 
+      I built and refined an end-to-end system including iris localization, normalization, image enhancement, 
+      handcrafted feature extraction, PCA + Fisher Linear Discriminant matching, and verification/identification evaluation. 
+      This project demonstrates my ability in <strong>computer vision, machine learning system design, mathematical modeling, 
+      experimental debugging, evaluation methodology, and technical implementation</strong>.
+    </p>
+
+    <button class="details-btn" onclick="toggleDetails('project_iris')">View Details</button>
+  </div>
+</div>
+
+<!-- Hidden Details for Iris Recognition Project -->
+<div id="project_iris" class="project-details">
+
+  <!-- Problem Section -->
+  <div class="project-problem">
+    <strong>Problem:</strong> Iris recognition requires much more than just classification. Raw eye images must first be 
+    localized, geometrically normalized, enhanced, converted into discriminative texture features, and then matched under 
+    rotation and illumination variation. I wanted to implement a full pipeline based on a classic paper and understand 
+    which design choices actually drive recognition performance.
+  </div>
+
+  <!-- Summary Section -->
+  <div class="project-summary" style="background:#faf7ff; padding:1.5rem; border-radius:8px; margin-bottom:1.5rem; border-left:4px solid #6d4195;">
+    <h2 style="color:#6d4195;">📌 Project Summary</h2>
+
+    <p><strong>Objective:</strong> Reproduce and refine a complete iris recognition system based on <strong>Ma et al. (2003)</strong>, using the <strong>CASIA-IrisV1</strong> dataset under a fixed training/testing protocol.</p>
+
+    <p><strong>System Design:</strong> Implemented an end-to-end modular pipeline including:</p>
+    <ul>
+      <li>Iris localization using projection minima, thresholding, contour analysis, and Hough circle detection</li>
+      <li>Non-concentric rubber-sheet normalization into a fixed-size rectangular iris representation</li>
+      <li>Image enhancement through background illumination correction and local histogram equalization</li>
+      <li>Handcrafted texture feature extraction using two circularly symmetric spatial filters</li>
+      <li>Block-wise statistical encoding (Mean + Average Absolute Deviation) into a 1536-dimensional feature vector</li>
+      <li>PCA + Fisher Linear Discriminant (FLD) for dimensionality reduction</li>
+      <li>Nearest-center / multi-template matching with L1, L2, and cosine distance metrics</li>
+      <li>Performance evaluation through CRR and verification ROC curves</li>
+    </ul>
+
+    <p><strong>What problem I solved:</strong></p>
+    <ul>
+      <li>Turned raw grayscale eye images into a reproducible recognition pipeline rather than a single classifier</li>
+      <li>Handled geometric variation through normalization and rotation-aware template matching</li>
+      <li>Reduced sensitivity to illumination and local noise through enhancement and block-level feature design</li>
+      <li>Improved performance through iterative debugging of ROI selection, matching strategy, and evaluation protocol alignment</li>
+    </ul>
+
+    <p><strong>Key Results:</strong></p>
+    <ul>
+      <li><strong>Original Space CRR:</strong> L1 = 73.38%, L2 = 71.99%, Cosine = 73.38%</li>
+      <li><strong>Reduced Space CRR:</strong> L1 = 80.79%, L2 = 81.25%, Cosine = 86.11%</li>
+      <li><strong>Verification ROC AUC:</strong> L1 = 0.9476, L2 = 0.9555, Cosine = 0.9912</li>
+      <li>Reduced-space matching substantially outperformed original-space matching</li>
+      <li>Cosine distance produced the strongest final identification and verification performance</li>
+    </ul>
+
+    <p><strong>What this shows about my skillset:</strong></p>
+    <ul>
+      <li>Ability to implement a full ML / CV pipeline from raw data to final evaluation</li>
+      <li>Strong debugging and iteration skills guided by metrics rather than guesswork</li>
+      <li>Experience translating research-paper methodology into working code</li>
+      <li>Comfort with classical machine learning, feature engineering, and experimental analysis</li>
+      <li>Ability to structure technical projects in a modular, reproducible way</li>
+    </ul>
+
+    <p style="font-style:italic; color:#444;">
+      This project was completed as a Columbia University course project and reflects both technical implementation and iterative performance improvement under a fixed experimental protocol.
+    </p>
+  </div>
+
+  <!-- Buttons -->
+  <div class="button-row">
+    <a href="https://github.com/ChengWu-Data/iris-recognition-system.git" 
+       class="github-btn" target="_blank">
+      <i class="fa-brands fa-github"></i> GitHub
+    </a>
+  </div>
+
+</div>
+
 
 <!-- Project 1: Housing Price Prediction -->
 <div class="project-card">
