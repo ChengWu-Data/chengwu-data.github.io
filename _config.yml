@@ -7,8 +7,8 @@
 
 # Site Settings
 baseurl: ""
-title                    : "Cheng Wu"
-description              : ""
+title                    : "Cheng Wu | Data Science at Columbia University"
+description              : "Cheng Wu | MS in Data Science at Columbia University & BS in Econometrics from UIUC. Specializing in Financial Analytics, Machine Learning (Computer Vision), and intern at Tarte Cosmetics."
 repository               : "ChengWu-Data/chengwu-data.github.io"
 google_scholar_stats_use_cdn : true
 
@@ -16,7 +16,7 @@ google_scholar_stats_use_cdn : true
 google_analytics_id      :  # get google_analytics_id from https://analytics.google.com/analytics/
 
 # SEO Related
-google_site_verification :  # get google_site_verification from https://search.google.com/search-console/about
+google_site_verification :  "googleba9a1384104a9b43"
 bing_site_verification   :  # get bing_site_verification from https://www.bing.com/webmasters/about
 baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.baidu.com/login/index?u=/site/index
 
