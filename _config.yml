@@ -8,7 +8,7 @@
 # Site Settings
 baseurl: ""
 title                    : "Cheng Wu | Data Science at Columbia University"
-description              : "Cheng Wu | MS in Data Science at Columbia University & BS in Econometrics from UIUC. Specializing in Financial Analytics, Machine Learning (Computer Vision), and intern at Tarte Cosmetics."
+description              : ""
 repository               : "ChengWu-Data/chengwu-data.github.io"
 google_scholar_stats_use_cdn : true
 
