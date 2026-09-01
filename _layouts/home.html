@@ -75,7 +75,8 @@
     © {{ "now" | date: "%Y" }} Cheng Wu
   </div>
 
-  <!-- Data Detective Dog: runs in from the bottom-right corner, click to dig -->
+  <!-- Data Detective Dog: runs in from the bottom-right corner, click to dig.
+       Idles into a small peek at the edge after 30s with no click. -->
   <div class="cw-corner-dog" id="cw-corner-dog">
     <div class="cw-dig-hint" id="cw-dig-hint" aria-hidden="true">
       <span class="cw-dig-hint-text">tap to see what he found</span>
@@ -84,11 +85,18 @@
         <path d="M40,32 L57,35 L52,18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
       </svg>
     </div>
+    <div class="cw-think-bubble" id="cw-think-bubble" aria-hidden="true">
+      <span class="cw-think-bubble-text" id="cw-think-bubble-text"></span>
+    </div>
     <button type="button" class="cw-dig-item" id="cw-dig-item" aria-label="Tap to see what he found">
       <img class="cw-dig-item-img" id="cw-dig-item-img" src="" alt="" />
     </button>
     <button type="button" class="cw-dog-dig" id="cw-dog-dig" aria-label="Dig with the dog">
       <img class="cw-dog-dig-img" id="cw-dog-dig-img" src="{{ site.baseurl }}/assets/images/dog/dog-idle.png" alt="" />
+      <span class="cw-peek-face" aria-hidden="true">
+        <img class="cw-peek-img cw-peek-img--bored" src="{{ site.baseurl }}/assets/images/dog/dog-peek-bored.png" alt="" />
+        <img class="cw-peek-img cw-peek-img--excited" src="{{ site.baseurl }}/assets/images/dog/dog-peek-excited.png" alt="" />
+      </span>
     </button>
   </div>
 

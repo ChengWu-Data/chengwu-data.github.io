@@ -888,6 +888,7 @@
   right: 20px;
   bottom: 66px;
   z-index: 40;
+  transition: right 0.6s cubic-bezier(0.65, 0, 0.35, 1), bottom 0.6s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .cw-dog-dig {
@@ -902,7 +903,7 @@
   background: none;
   cursor: pointer;
   transform-origin: 50% 85%;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, width 0.6s cubic-bezier(0.65, 0, 0.35, 1), height 0.6s cubic-bezier(0.65, 0, 0.35, 1);
   animation: cw-corner-dog-run-in 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.1s both;
 }
 
@@ -921,7 +922,7 @@
   height: 100%;
   object-fit: contain;
   filter: drop-shadow(0 3px 6px rgba(76, 41, 102, 0.25));
-  transition: transform 0.12s ease;
+  transition: transform 0.12s ease, opacity 0.45s ease;
 }
 
 .cw-dog-dig-img.is-bump {
@@ -1036,6 +1037,160 @@
 .cw-dig-hint-arrow {
   width: 58px;
   height: 50px;
+}
+
+/* Peek-at-the-edge state (home page): after 30s idle, the dog
+   retreats to a small sliver hugging the bottom-right edge, bored
+   expression by default. The whole thing is one continuous CSS
+   transition (size + position + a crossfade between the idle art and
+   the peek art) rather than a jump-cut, so the retreat reads as
+   natural. Every other page uses .cw-corner-dog--peek-only, which
+   sits in this same small form permanently. */
+.cw-corner-dog.is-peek,
+.cw-corner-dog--peek-only {
+  right: -44px;
+  bottom: 40px;
+}
+
+.cw-corner-dog.is-peek .cw-dog-dig,
+.cw-dog-peek {
+  width: 104px;
+  height: 104px;
+}
+
+.cw-corner-dog.is-peek .cw-dog-dig:hover,
+.cw-dog-peek:hover {
+  transform: scale(1.04);
+}
+
+.cw-corner-dog.is-peek .cw-dog-dig-img {
+  opacity: 0;
+}
+
+.cw-dog-peek {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  animation: cw-peek-fade-in 0.5s ease 0.3s both;
+}
+
+.cw-dog-peek:focus-visible {
+  outline: 2px solid var(--cw-purple);
+  outline-offset: 3px;
+  border-radius: var(--cw-radius-sm);
+}
+
+@keyframes cw-peek-fade-in {
+  0% { opacity: 0; transform: translateX(14px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+/* The peek expression itself: two stacked images (bored + excited)
+   that crossfade on hover/focus, so swapping expressions never jumps
+   — both were cropped to sit at the same spot in the frame. Hidden
+   entirely outside the peek state; .cw-dog-peek forces it on since
+   that button only ever shows the peek form. */
+.cw-peek-face {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s ease;
+}
+
+.cw-corner-dog.is-peek .cw-peek-face,
+.cw-dog-peek .cw-peek-face {
+  opacity: 1;
+}
+
+.cw-peek-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 6px rgba(76, 41, 102, 0.25));
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.cw-peek-img--bored {
+  opacity: 1;
+}
+
+.cw-dog-dig:hover .cw-peek-img--bored,
+.cw-dog-dig:focus-visible .cw-peek-img--bored,
+.cw-dog-peek:hover .cw-peek-img--bored,
+.cw-dog-peek:focus-visible .cw-peek-img--bored {
+  opacity: 0;
+}
+
+.cw-dog-dig:hover .cw-peek-img--excited,
+.cw-dog-dig:focus-visible .cw-peek-img--excited,
+.cw-dog-peek:hover .cw-peek-img--excited,
+.cw-dog-peek:focus-visible .cw-peek-img--excited {
+  opacity: 1;
+}
+
+/* "Thinking" instead of digging: a gentle head-tilt while a thought
+   bubble grows above him — no digging motion, nothing blocking the
+   page's own text. Positioned relative to the viewport (not the
+   shrinking/shifting corner box) so it always lands fully on screen,
+   with a lower anchor point for the small peek form. */
+.cw-dog-dig.is-thinking,
+.cw-dog-peek.is-thinking {
+  animation: cw-dog-think-tilt 1.1s ease-in-out infinite;
+}
+
+@keyframes cw-dog-think-tilt {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-4deg); }
+}
+
+.cw-think-bubble {
+  position: fixed;
+  right: 24px;
+  bottom: 244px;
+  max-width: 190px;
+  padding: 0.6rem 0.85rem;
+  background: #fff;
+  border: 1px solid var(--cw-purple-border);
+  border-radius: var(--cw-radius-md) var(--cw-radius-md) var(--cw-radius-md) 4px;
+  box-shadow: var(--cw-shadow-md);
+  color: var(--cw-purple-dark);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: left;
+  opacity: 0;
+  transform: translateY(6px) scale(0.85);
+  transform-origin: 90% 100%;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.cw-corner-dog.is-peek .cw-think-bubble,
+.cw-corner-dog--peek-only .cw-think-bubble {
+  bottom: 152px;
+  right: 20px;
+}
+
+.cw-think-bubble.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  animation: cw-think-bubble-pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes cw-think-bubble-pop {
+  0% { transform: translateY(6px) scale(0.6); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
 }
 
 /* Zoomed-in view: a centered lightbox card, always legible regardless
@@ -1156,16 +1311,25 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cw-dog-dig {
+  .cw-dog-dig,
+  .cw-dog-peek {
     animation: none;
   }
 
+  .cw-corner-dog,
+  .cw-dog-dig,
   .cw-dog-dig-img,
   .cw-dig-item.is-visible,
   .cw-dig-item[data-item="can"].is-visible,
   .cw-dig-hint,
   .cw-dig-zoom,
-  .cw-dig-zoom-card {
+  .cw-dig-zoom-card,
+  .cw-peek-face,
+  .cw-peek-img,
+  .cw-dog-dig.is-thinking,
+  .cw-dog-peek.is-thinking,
+  .cw-think-bubble,
+  .cw-think-bubble.is-visible {
     animation: none;
     transition: none;
   }
@@ -1177,9 +1341,21 @@
     bottom: 58px;
   }
 
+  .cw-corner-dog.is-peek,
+  .cw-corner-dog--peek-only {
+    right: -34px;
+    bottom: 30px;
+  }
+
   .cw-dog-dig {
     width: 130px;
     height: 130px;
+  }
+
+  .cw-corner-dog.is-peek .cw-dog-dig,
+  .cw-dog-peek {
+    width: 80px;
+    height: 80px;
   }
 
   .cw-dig-item[data-item="can"] {
@@ -1201,6 +1377,18 @@
   .cw-dig-hint-arrow {
     width: 48px;
     height: 42px;
+  }
+
+  .cw-think-bubble {
+    max-width: 160px;
+    font-size: 12px;
+    padding: 0.5rem 0.7rem;
+    bottom: 196px;
+  }
+
+  .cw-corner-dog.is-peek .cw-think-bubble,
+  .cw-corner-dog--peek-only .cw-think-bubble {
+    bottom: 118px;
   }
 
   .cw-dig-zoom-item-wrap {
