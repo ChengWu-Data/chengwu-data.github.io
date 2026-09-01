@@ -92,12 +92,12 @@
         dogImg: 'dog-idle.png',
         icon: 'tag-bone.png',
         entries: [
-          { short: '25% less review', full: 'Cheng cut review workload ~25% across 7 systems.' },
-          { short: '10K+ customers', full: 'Cheng segmented 10K+ customers for a real conversion lift.' },
-          { short: 'Attrition down 19%', full: "Cheng's models helped cut attrition by ~19%." },
-          { short: 'Columbia · ex-quant', full: 'Cheng: Columbia data science, ex-quant research.' },
+          { short: '25% less review', full: 'My mom cut review workload ~25% across 7 systems.' },
+          { short: '10K+ customers', full: 'My mom segmented 10K+ customers for a real conversion lift.' },
+          { short: 'Attrition -19%', full: "My mom's models helped cut attrition by ~19%." },
+          { short: 'Columbia · quant', full: 'My mom: Columbia data science, ex-quant research.' },
           { short: "It's Cheng's dog", full: "I'm Cheng's dog — she built this whole site herself." },
-          { short: '2 degrees, 6 shipped', full: '2 degrees, 6 shipped projects. That’s Cheng.' }
+          { short: '2 deg · 6 shipped', full: 'My mom has 2 degrees, 6 shipped projects.' }
         ]
       },
       gift: {
@@ -105,9 +105,9 @@
         dogImg: 'dog-idle.png',
         icon: 'tag-gift.png',
         entries: [
-          { short: 'FX', lead: 'Cheng built an FX trend strategy.', linkText: 'Take a look →', href: '/projects/#card-project_fx' },
+          { short: 'FX', lead: 'My mom built an FX trend strategy.', linkText: 'Take a look →', href: '/projects/#card-project_fx' },
           { short: 'RAG', lead: 'Curious about MultiDocRAG?', linkText: 'Check it out →', href: '/projects/#card-project_multidoc' },
-          { short: 'IRIS', lead: 'Cheng built an iris recognition system.', linkText: 'See how →', href: '/projects/#card-project_iris' }
+          { short: 'IRIS', lead: 'My mom built an iris recognition system.', linkText: 'See how →', href: '/projects/#card-project_iris' }
         ]
       },
       can: {
@@ -116,8 +116,8 @@
         icon: 'tag-can.png',
         entries: [
           { short: 'meh', full: 'I dug up... nothing. Sorry about that.' },
-          { short: 'just dirt', full: 'Just dirt. Worth a shot though.' },
-          { short: "that's on me", full: 'Okay, that one’s on me.' },
+          { short: 'dirt', full: 'Just dirt. Worth a shot though.' },
+          { short: 'oops', full: 'Okay, that one’s on me.' },
           { short: 'nope', full: 'Nope. Try again later?' }
         ]
       }
@@ -128,12 +128,12 @@
         dogImg: 'dog-idle.png',
         icon: 'tag-bone.png',
         entries: [
-          { short: '审核量降约25%', full: '吴骋帮 7 个系统把审核量降了约 25%。' },
-          { short: '1万+客户分群', full: '吴骋为 1 万+ 客户做分群，带来了实打实的转化提升。' },
-          { short: '流失率降约19%', full: '吴骋的模型帮着把流失率降了约 19%。' },
-          { short: '哥大 · 量化研究', full: '吴骋：哥伦比亚大学数据科学，做过量化研究。' },
+          { short: '审核-25%', full: '我妈妈帮 7 个系统把审核量降了约 25%。' },
+          { short: '万级分群', full: '我妈妈为 1 万+ 客户做分群，带来了实打实的转化提升。' },
+          { short: '流失降19%', full: '我妈妈的模型帮着把流失率降了约 19%。' },
+          { short: '哥大', full: '我妈妈：哥伦比亚大学数据科学，做过量化研究。' },
           { short: '这是吴骋的狗', full: '我是吴骋的狗，这个网站是她自己搭的。' },
-          { short: '2学位 6项目', full: '2 个学位，6 个上线项目——这就是吴骋。' }
+          { short: '2学位 6项目', full: '我妈妈有 2 个学位，6 个上线项目。' }
         ]
       },
       gift: {
@@ -141,9 +141,9 @@
         dogImg: 'dog-idle.png',
         icon: 'tag-gift.png',
         entries: [
-          { short: '外汇', lead: '吴骋做过一个外汇趋势交易策略。', linkText: '看看 →', href: '/zh/projects/#card-project_fx' },
+          { short: 'FX', lead: '我妈妈做过一个外汇趋势交易策略。', linkText: '看看 →', href: '/zh/projects/#card-project_fx' },
           { short: 'RAG', lead: '对 MultiDocRAG 感兴趣？', linkText: '了解一下 →', href: '/zh/projects/#card-project_multidoc' },
-          { short: '虹膜', lead: '吴骋做过一个虹膜识别系统。', linkText: '看看怎么做的 →', href: '/zh/projects/#card-project_iris' }
+          { short: 'IRIS', lead: '我妈妈做过一个虹膜识别系统。', linkText: '看看怎么做的 →', href: '/zh/projects/#card-project_iris' }
         ]
       },
       can: {
@@ -152,9 +152,9 @@
         icon: 'tag-can.png',
         entries: [
           { short: '呃', full: '挖到的是……什么都没有，不好意思。' },
-          { short: '只有土', full: '只有土，不过值得一试。' },
-          { short: '这个我认', full: '这个我认。' },
-          { short: '没挖到', full: '没挖到，要不再试一次？' }
+          { short: '土', full: '只有土，不过值得一试。' },
+          { short: '错', full: '这个我认。' },
+          { short: '空', full: '没挖到，要不再试一次？' }
         ]
       }
     }
@@ -179,14 +179,17 @@
     var itemText = document.getElementById('cw-dig-item-text');
     var zoom = document.getElementById('cw-dig-zoom');
     var zoomBackdrop = document.getElementById('cw-dig-zoom-backdrop');
+    var zoomItemWrap = document.getElementById('cw-dig-zoom-item-wrap');
     var zoomImg = document.getElementById('cw-dig-zoom-img');
+    var zoomItemText = document.getElementById('cw-dig-zoom-item-text');
     var zoomText = document.getElementById('cw-dig-zoom-text');
-    if (!dogBtn || !dogImg || !item || !itemImg || !itemText || !zoom || !zoomBackdrop || !zoomImg || !zoomText) return;
+    if (!dogBtn || !dogImg || !item || !itemImg || !itemText || !zoom || !zoomBackdrop || !zoomItemWrap || !zoomImg || !zoomItemText || !zoomText) return;
 
     var lang = document.documentElement.lang === 'zh' ? 'zh' : 'en';
     var pools = CW_DIG_ITEMS[lang];
     var base = dogImg.getAttribute('src').replace(/dog-idle\.png$/, '');
     var busy = false;
+    var currentKind = null;
     var currentEntry = null;
     var currentIcon = null;
     var revertTimer = null;
@@ -205,7 +208,9 @@
 
     function openZoom() {
       if (!currentEntry) return;
+      zoomItemWrap.setAttribute('data-item', currentKind);
       zoomImg.src = currentIcon;
+      zoomItemText.textContent = currentEntry.short;
       zoomText.textContent = '';
       if (currentEntry.href) {
         zoomText.appendChild(document.createTextNode(currentEntry.lead + ' '));
@@ -240,6 +245,7 @@
     function showItem(kind) {
       var pool = pools[kind];
       var entry = pool.entries[Math.floor(Math.random() * pool.entries.length)];
+      currentKind = kind;
       currentEntry = entry;
       currentIcon = base + pool.icon;
 
