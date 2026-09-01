@@ -4,171 +4,18 @@
 <head>
     {% include head.html %}
     {% include head/custom.html %}
+    <meta charset="UTF-8" />
+    <title>吴骋</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<meta charset="UTF-8" />
-<title>吴骋</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body style="display:flex; flex-direction:column; min-height:100vh; margin:0;">
 
-<style>
-    /* 保持样式不变 */
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      display: flex;
-      flex-direction: column;
-      background: #f3e8fd;
-      color: #333;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    }
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.75rem 1.5rem;
-      background: #f3e8fd;
-      border-bottom: 1px solid #e0c9fa;
-      flex-shrink: 0;
-    }
-    .nav .logo {
-      display: flex;
-      align-items: center;
-    }
-    .nav .logo img {
-      height: 32px;
-      width: 32px;
-      margin-right: 0.5rem;
-    }
-    .nav .logo span {
-      font-weight: 600;
-      color: #4b2a66;
-    }
-    .nav .links a {
-      margin-left: 1rem;
-      text-decoration: none;
-      color: #4b2a66;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav .links a:hover {
-      color: #2f1a42;
-    }
-
-    /* 主要内容区域 */
-    .hero {
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      max-width: 600px;
-      width: 100%;
-      margin: 0 auto;
-    }
-    .hero .avatar {
-      height: 120px;
-      width: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 1.2rem;
-    }
-    .hero h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;  /* 使标题稍微向上移动 */
-      color: #4b2a66;
-    }
-    .hero .subtitle {
-      font-size: 1rem;
-      color: #555;
-      margin-bottom: 2rem;
-      max-width: 500px;
-      padding: 0 1rem;
-      font-style: italic;
-    }
-
-    /* 统一社交图标的大小和对齐 */
-    .icons {
-      display: flex;
-      gap: 1.2rem;  /* 统一间距 */
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 2.5rem;
-    }
-
-    /* 确保图标大小一致 */
-    .icons a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      color: #4b2a66;
-      font-size: 1.6rem; /* 统一大小 */
-      transition: all 0.3s;
-    }
-    .icons a i {
-      font-size: 1.4rem;
-    }
-    .icons a:hover {
-      color: #6d4195;
-    }
-
-    /* 语言切换按钮 */
-    .language-toggle {
-      position: absolute;
-      right: 20px;
-      bottom: 40px;  /* 稍微上移 */
-      display: flex;
-      align-items: center;
-      border-radius: 20px;
-      overflow: hidden;
-      border: 2px solid #6d4195;
-      font-size: 0.8rem;
-      transform: scale(0.75);
-    }
-    .lang-en {
-      background: white;
-      color: #6d4195;
-      padding: 5px 12px;
-      font-weight: bold;
-      text-decoration: none;
-      border-right: 2px solid #6d4195;
-    }
-    .lang-en:hover {
-      background: #e0c9fa;
-    }
-    .lang-zh {
-      background: #6d4195;
-      color: white;
-      padding: 5px 12px;
-      font-weight: bold;
-      text-decoration: none;
-    }
-    .lang-zh:hover {
-      background: #4b2a66;
-    }
-
-    /* 页脚 */
-    .footer {
-      margin-top: auto;
-      text-align: center;
-      color: #666;
-      font-size: 0.9rem;
-      padding: 1rem 0;
-      flex-shrink: 0;
-    }
-</style>
-
-</head>
-<body>
   <!-- 顶部导航栏 -->
-  <nav class="nav">
+  <nav class="cw-home-nav">
     <div class="logo">
-      <img src="{{ site.baseurl }}/images/notion2.png" alt="Logo" />
-      <span>Cheng</span> 
+      <img src="{{ site.baseurl }}/images/avatar.png" alt="吴骋" />
+      <span>吴骋</span>
     </div>
     <div class="links">
       <a href="{{ site.baseurl }}/zh/about/">关于我</a>
@@ -178,16 +25,26 @@
   </nav>
 
   <!-- 主要内容 -->
-  <main class="hero">
-    <img src="{{ site.baseurl }}/images/avatar.png" alt="Avatar" class="avatar" />
+  <main class="cw-home-main">
+    <div class="cw-home-hero">
+      <img src="{{ site.baseurl }}/images/avatar.png" alt="Avatar" class="avatar" />
 
-    <h1>吴骋</h1>
+      <div class="cw-eyebrow">数据科学 · 哥伦比亚大学</div>
+      <h1>吴骋</h1>
+      <p class="cw-sub">一名关注“数据如何真正改变现实决策”的数据与商业分析师——量化研究与应用机器学习项目，横跨市场、金融与社会影响领域。</p>
 
-    <div class="subtitle">
-      欢迎来到我的世界...
-    </div>
-      
-    <div class="icons">
+      <div class="cw-hero-actions">
+        <a href="{{ site.baseurl }}/zh/projects/" class="html-btn"><i class="fa-solid fa-folder-open"></i> 查看项目</a>
+        <a href="{{ site.baseurl }}/zh/about/" class="github-btn"><i class="fa-solid fa-user"></i> 关于我</a>
+      </div>
+
+      <div class="cw-stats">
+        <div class="cw-stat"><b>6</b><span>项目</span></div>
+        <div class="cw-stat"><b>7</b><span>职业 &amp; 科研经历</span></div>
+        <div class="cw-stat"><b>2</b><span>学位</span></div>
+      </div>
+
+      <div class="cw-home-icons">
         {% if site.author.github %}
           <a href="https://github.com/{{ site.author.github }}" aria-label="GitHub">
               <i class="fa-brands fa-github"></i>
@@ -203,18 +60,21 @@
               <i class="fa-solid fa-envelope"></i>
           </a>
         {% endif %}
+      </div>
     </div>
   </main>
-    
+
   <!-- 语言切换按钮 -->
-  <div class="language-toggle">
-    <a href="{{ site.baseurl }}/" class="lang-en">EN</a>
-    <a href="{{ site.baseurl }}/zh/" class="lang-zh">中文</a>
+  <div class="cw-lang-toggle">
+    <a href="{{ site.baseurl }}/">EN</a>
+    <a href="{{ site.baseurl }}/zh/" class="is-current">中文</a>
   </div>
 
   <!-- 页脚 -->
-  <div class="footer">
+  <div class="cw-home-footer">
     © {{ "now" | date: "%Y" }} 吴骋
   </div>
+
+  <script src="{{ site.baseurl }}/assets/js/interactions.js"></script>
 </body>
 </html>

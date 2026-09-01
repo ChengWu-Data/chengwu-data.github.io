@@ -5,106 +5,19 @@ author_profile: true
 lang: "zh"
 ---
 
-<style>
-/* 页面整体样式 */
-.page-content {
-  background: #f3e8fd;
-  padding: 2rem;
-}
-
-/* 容器样式 */
-.section-container {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  margin-bottom: 2rem;
-}
-
-/* 标题样式 */
-.section-header {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #6d4195;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-}
-
-.section-header i {
-  margin-right: 8px;
-}
-
-/* 各部分间距 */
-.entry {
-  margin-bottom: 2.5rem;
-}
-
-/* 经验标题 */
-.entry-title {
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-bottom: 0.3rem;
-}
-
-/* 机构与时间 */
-.entry-details {
-  color: #666;
-  font-style: italic;
-  margin-bottom: 0.5rem;
-}
-
-/* 列表样式 */
-.entry-content ul {
-  padding-left: 1.2rem;
-}
-
-.entry-content li {
-  margin-bottom: 0.5rem;
-  line-height: 1.5;
-}
-
-/* GPA 标注 */
-.gpa-badge {
-  background: #6d4195;
-  color: white;
-  padding: 3px 8px;
-  font-size: 0.85rem;
-  border-radius: 4px;
-  margin-left: 8px;
-  font-weight: bold;
-}
-
-/* 联系方式 */
-.contact-section {
-  text-align: center;
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #6d4195;
-}
-
-/* 关于我的关键字高亮 */
-.about-text {
-  color: #4b2a66;
-  font-weight: 600;
-}
-</style>
+<div class="cw-hero">
+  <span class="cw-eyebrow">关于我</span>
+  <h1>数据与商业分析师，<em>哥伦比亚大学数据科学硕士</em></h1>
+  <p class="cw-sub">我是吴骋，一名关注“数据如何真正改变现实决策”的数据与商业分析师。本科毕业于伊利诺伊大学厄巴纳-香槟分校，主修计量经济学与数量经济学，目前在哥伦比亚大学攻读数据科学硕士，训练强调严谨的因果推断、统计建模与面向实际业务落地的分析能力的结合。</p>
+  <div class="cw-stats">
+    <div class="cw-stat"><b>4</b><span>职业经历</span></div>
+    <div class="cw-stat"><b>3</b><span>科研经历</span></div>
+    <div class="cw-stat"><b>2</b><span>学位</span></div>
+  </div>
+</div>
 
 <div class="section-container">
   <h2 class="section-header">关于我</h2>
-
-  <p>
-    我是 <span class="about-text">吴骋</span>，一名关注“<span class="about-text">数据如何真正改变现实决策</span>”的 
-    <span class="about-text">数据与商业分析师</span>。
-  </p>
-
-  <p>
-    我本科毕业于 <span class="about-text">伊利诺伊大学厄巴纳-香槟分校</span>，
-    主修 <span class="about-text">计量经济学与数量经济学</span>，目前在 
-    <span class="about-text">哥伦比亚大学</span> 攻读 <span class="about-text">数据科学硕士</span>。
-    我的训练强调 <span class="about-text">严谨的因果推断、统计建模</span> 与 
-    <span class="about-text">面向实际业务落地的分析能力</span> 的结合。
-  </p>
 
   <p>
     我的分析实践横跨 <span class="about-text">市场、金融与社会影响</span> 多个领域。
@@ -117,13 +30,23 @@ lang: "zh"
     <span class="about-text">清晰的表达、严格的方法、可衡量的影响。</span>
   </p>
 
-  <p>
-    <span class="about-text">关注方向</span>：市场分析、金融分析、流程优化、教育公平
-  </p>
+  <p><span class="about-text">关注方向</span></p>
+  <div class="tool-chips">
+    <span class="tool-chip">市场分析</span>
+    <span class="tool-chip">金融分析</span>
+    <span class="tool-chip">流程优化</span>
+    <span class="tool-chip">教育公平</span>
+  </div>
 
-  <p>
-    📍 <span class="about-text">工具栈</span>：SQL、Python、BI 可视化（Power BI / Tableau / Plotly）、统计与计量经济学
-  </p>
+  <p style="margin-top:1.1rem;">📍 <span class="about-text">工具栈</span></p>
+  <div class="tool-chips">
+    <span class="tool-chip">SQL</span>
+    <span class="tool-chip">Python</span>
+    <span class="tool-chip">Power BI</span>
+    <span class="tool-chip">Tableau</span>
+    <span class="tool-chip">Plotly</span>
+    <span class="tool-chip">统计与计量经济学</span>
+  </div>
 </div>
 
 <div class="section-container">
@@ -292,22 +215,5 @@ lang: "zh"
   <a href="mailto:cheng.w@columbia.edu" class="email-btn">发送邮件</a>
 </div>
 
-<style>
-.email-btn {
-  display: inline-block;
-  padding: 12px 20px;
-  background: #6d4195;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 6px;
-  transition: background 0.2s, transform 0.2s;
-}
-
-.email-btn:hover {
-  background: #572e7a;
-  transform: scale(1.05);
-}
-</style>
-
+<script src="{{ site.baseurl }}/assets/js/interactions.js"></script>
 

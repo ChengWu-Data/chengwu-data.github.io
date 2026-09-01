@@ -7,187 +7,41 @@ author_profile: true
 lang: "zh"
 ---
 
-<style>
-/* General Page Styling */
-.page-content {
-  background: #f3e8fd;
-  padding: 2rem;
-}
+<div class="cw-hero">
+  <span class="cw-eyebrow">研究项目</span>
+  <h1>把复杂数据<em>变成清楚的决策</em></h1>
+  <p class="cw-sub">量化研究与应用机器学习项目，横跨市场、金融与社会影响领域——和我在分析师工作中关注的方向一致，这里是它们完整、可复现的项目版本。</p>
+  <div class="cw-stats">
+    <div class="cw-stat"><b>6</b><span>项目</span></div>
+    <div class="cw-stat"><b>4</b><span>领域</span></div>
+    <div class="cw-stat"><b>6</b><span>GITHUB 仓库</span></div>
+  </div>
+</div>
 
-/* Project Card Styling */
-.project-card {
-  display: flex;
-  align-items: center;
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  margin-bottom: 2rem;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
+<div class="cw-project-section">
 
-/* Responsive for Mobile */
-@media (max-width: 768px) {
-  .project-card {
-    flex-direction: column;
-    text-align: center;
-  }
-  .project-image {
-    margin-right: 0;
-    margin-bottom: 1rem;
-  }
-  .button-row {
-    justify-content: center;
-  }
-}
+<div class="cw-toolbar" data-role="project-filter">
+  <div class="cw-search-wrap">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <input class="cw-search" type="text" placeholder="搜索项目 / 技术栈…">
+  </div>
+  <div class="cw-chips">
+    <button type="button" class="cw-chip is-active" data-tag="all">全部</button>
+    <button type="button" class="cw-chip" data-tag="quant">量化 / 金融</button>
+    <button type="button" class="cw-chip" data-tag="ml">机器学习</button>
+    <button type="button" class="cw-chip" data-tag="causal">因果推断</button>
+    <button type="button" class="cw-chip" data-tag="other">前端 / 设计</button>
+  </div>
+</div>
 
-/* Project Image */
-.project-image {
-  width: 200px;
-  height: 150px;
-  border-radius: 6px;
-  object-fit: cover;
-  margin-right: 1.5rem;
-}
-
-/* Project Content */
-.project-content {
-  flex: 1;
-}
-
-.project-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #6d4195;
-  margin-bottom: 0.5rem;
-}
-
-.project-problem {
-  background: #f7ecff;
-  border-left: 4px solid #6d4195;
-  padding: 0.8rem 1rem;
-  border-radius: 6px;
-  margin-bottom: 1rem;
-  color: #333;
-  font-size: 0.95rem;
-}
-.project-problem strong {
-  color: #6d4195;
-}
-
-.project-description {
-  color: #444;
-  line-height: 1.5;
-  margin-bottom: 1rem;
-}
-
-/* Details Button */
-.details-btn {
-  background: transparent;
-  color: #6d4195;
-  border: 2px solid #6d4195;
-  padding: 8px 12px;
-  font-size: 0.9rem;
-  font-weight: bold;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.details-btn:hover {
-  background: #6d4195;
-  color: white;
-}
-
-/* Hidden Details - Ensure Spacing */
-.project-details {
-  display: none;
-  background: #fff;
-  padding: 1.5rem;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  border-radius: 6px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-}
-
-/* Preview Frame */
-.preview-frame {
-  width: 100%;
-  height: 450px;
-  border: none;
-  margin-bottom: 1rem;
-  border-radius: 6px;
-}
-
-/* Button Row */
-.button-row {
-  display: flex;
-  gap: 0.8rem;
-}
-
-/* GitHub Button - Outline Style */
-.github-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 6px 10px;
-  font-size: 0.9rem;
-  font-weight: bold;
-  border-radius: 6px;
-  text-decoration: none;
-  border: 2px solid #6d4195;
-  color: #6d4195;
-}
-
-.github-btn:hover {
-  background: #6d4195;
-  color: white;
-}
-
-/* View Page Button - Solid Purple */
-.html-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 6px 10px;
-  font-size: 0.9rem;
-  font-weight: bold;
-  border-radius: 6px;
-  text-decoration: none;
-  background: #6d4195;
-  color: white;
-  border: 2px solid #6d4195;
-}
-
-.html-btn:hover {
-  background: #4a256d;
-  border-color: #4a256d;
-}
-
-/* Ikebana gallery */
-.photo-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 0.8rem;
-  margin-bottom: 1rem;
-}
-
-.project-photo {
-  width: 100%;
-  border-radius: 6px;
-  object-fit: cover;
-}
-</style>
-
-<h1 style="display: flex; align-items: center; font-size: 2rem; color: #6d4195; margin-bottom: 1.5rem; text-align: left;">
-  <i class="fa-solid fa-folder-open" style="margin-right: 10px;"></i> 我的研究项目
-</h1>
+<div class="cw-result-count" data-template="显示 {n} / 共 {total} 个项目" aria-live="polite"></div>
 
 <!-- Project 0: Exponential Smoothing FX Trend Strategy -->
-<div class="project-card">
+<div class="project-card" data-tags="quant" data-details-id="project_fx">
   <img src="{{ site.baseurl }}/images/project_fx.jpg" alt="FX Project Image" class="project-image">
   
   <div class="project-content">
+    <div class="project-kicker">01 · 量化 / 金融</div>
     <div class="project-title">基于指数平滑的外汇趋势交易策略（USD/CAD）</div>
     <p class="project-description">
       一个<strong>完全可复现的量化研究项目</strong>，围绕 USD/CAD 汇率趋势持续性，构建基于双指数平滑（Dual ES）的完整预测与交易流水线：
@@ -195,6 +49,20 @@ lang: "zh"
       <br><br>
       项目系统呈现了我在 <strong>量化分析、数据科学工作流设计、数学建模、统计推断与技术沟通</strong> 方面的能力。
     </p>
+
+    <div class="metric-chart">
+      <div class="metric-chart-row">
+        <span class="metric-chart-label">优化前</span>
+        <div class="metric-chart-track"><div class="metric-chart-bar" style="width:58%"></div></div>
+        <span class="metric-chart-value">0.26</span>
+      </div>
+      <div class="metric-chart-row">
+        <span class="metric-chart-label">优化后</span>
+        <div class="metric-chart-track"><div class="metric-chart-bar metric-chart-bar--accent" style="width:100%"></div></div>
+        <span class="metric-chart-value">0.45</span>
+      </div>
+      <div class="metric-chart-caption">夏普比率，双 ES 交叉策略</div>
+    </div>
 
     <button class="details-btn" onclick="toggleDetails('project_fx')">查看详情</button>
   </div>
@@ -260,10 +128,11 @@ lang: "zh"
 </div>
 
 <!-- Project: Iris Recognition System -->
-<div class="project-card">
+<div class="project-card" data-tags="ml" data-details-id="project_iris">
   <img src="{{ site.baseurl }}/images/iris_recognition_cover.jpg" alt="虹膜识别系统项目封面图" class="project-image">
   
   <div class="project-content">
+    <div class="project-kicker">02 · 机器学习</div>
     <div class="project-title">端到端虹膜识别系统</div>
     <p class="project-description">
       一个基于经典论文方法实现的<strong>完整计算机视觉与模式识别项目</strong>，作为<strong>哥伦比亚大学课程项目</strong>完成。
@@ -271,6 +140,20 @@ lang: "zh"
       <br><br>
       项目系统展现了我在 <strong>计算机视觉、机器学习系统设计、数学建模、实验调试、指标评估与技术实现</strong> 方面的能力。
     </p>
+
+    <div class="metric-chart">
+      <div class="metric-chart-row">
+        <span class="metric-chart-label">原始空间</span>
+        <div class="metric-chart-track"><div class="metric-chart-bar" style="width:85%"></div></div>
+        <span class="metric-chart-value">73.4%</span>
+      </div>
+      <div class="metric-chart-row">
+        <span class="metric-chart-label">降维后</span>
+        <div class="metric-chart-track"><div class="metric-chart-bar metric-chart-bar--accent" style="width:100%"></div></div>
+        <span class="metric-chart-value">86.1%</span>
+      </div>
+      <div class="metric-chart-caption">Cosine 距离 CRR，原始空间 vs. PCA+FLD 降维空间</div>
+    </div>
 
     <button class="details-btn" onclick="toggleDetails('project_iris')">查看详情</button>
   </div>
@@ -345,10 +228,11 @@ lang: "zh"
 </div>
 
 <!-- Project 5: MultiDocRAG -->
-<div class="project-card">
+<div class="project-card" data-tags="ml" data-details-id="project_multidoc">
   <img src="{{ site.baseurl }}/images/MultiDocRAG_cover.jpg" alt="MultiDocRAG Cover Image" class="project-image">
   
   <div class="project-content">
+    <div class="project-kicker">03 · 机器学习</div>
     <div class="project-title">MultiDocRAG：多文档检索增强推理系统</div>
     <p class="project-description">
       一个面向<strong>多文档场景</strong>的全栈检索增强生成（RAG）系统，可对多份上传 PDF 进行跨文档推理。
@@ -356,10 +240,14 @@ lang: "zh"
       本项目体现了我在 <strong>LLM 工程、应用机器学习、数据管道设计、评估方法论以及端到端产品原型设计</strong> 方面的能力。
     </p>
 
+    <div class="project-stats">
+      <span class="stat-chip">27 题评测基准</span>
+      <span class="stat-chip">HF Spaces 在线 Demo</span>
+    </div>
+
     <button class="details-btn" onclick="toggleDetails('project_multidoc')">查看详情</button>
   </div>
 </div>
-
 
 <!-- Hidden Details for MultiDocRAG Project -->
 <div id="project_multidoc" class="project-details">
@@ -370,7 +258,6 @@ lang: "zh"
     <strong>多份报告 / 文献 / 政策文件之间综合证据</strong>。MultiDocRAG 旨在构建一个能够进行跨文档对比、
     证据融合与可解释推理的检索与生成系统。
   </div>
-
 
   <!-- 🔥 Summary Section -->
   <div class="project-summary" style="background:#faf7ff; padding:1.5rem; border-radius:8px; margin-bottom:1.5rem; border-left:4px solid #6d4195;">
@@ -436,19 +323,25 @@ lang: "zh"
 
 </div>
 
-
-
 <!-- Project 1: Housing Price Prediction -->
-<div class="project-card">
+<div class="project-card" data-tags="ml" data-details-id="project1">
   <img src="{{ site.baseurl }}/images/project1.jpg" alt="Housing Project Image" class="project-image">
   
   <div class="project-content">
+    <div class="project-kicker">04 · 机器学习</div>
     <div class="project-title">房价预测：探索性分析与可解释建模</div>
     <p class="project-description">
       基于 Ames 房价数据构建完整预测流水线：从探索性数据分析、特征工程，到岭回归、LASSO、随机森林、Group LASSO 等多种模型。
       在获得较强预测精度的同时，更关注于回答一个现实问题：<strong>到底是什么在驱动房价？</strong><br><br>
       项目强调模型的可解释性与面向非技术决策者的沟通，将高维数据转化为开发商、购房者、银行等可以直接使用的决策信息。
     </p>
+
+    <div class="project-stats">
+      <span class="stat-chip">岭回归</span>
+      <span class="stat-chip">LASSO</span>
+      <span class="stat-chip">随机森林</span>
+      <span class="stat-chip">Group LASSO</span>
+    </div>
 
     <button class="details-btn" onclick="toggleDetails('project1')">查看详情</button>
   </div>
@@ -512,9 +405,10 @@ lang: "zh"
 </div>
 
 <!-- Project 2 -->
-<div class="project-card">
+<div class="project-card" data-tags="causal" data-details-id="project2">
   <img src="{{ site.baseurl }}/images/project2.jpg" alt="Project Image" class="project-image">
   <div class="project-content">
+    <div class="project-kicker">05 · 因果推断</div>
     <div class="project-title">旧金山犯罪率的社会经济驱动因素分析</div>
     <p class="project-description">
       构建覆盖 90 万+ 警情记录与 ACS 社会经济数据的大规模空间计量经济学分析流水线，将 SF 警方案件数据与普查局分区面板数据进行整合。
@@ -522,10 +416,13 @@ lang: "zh"
       <br><br>
       项目展示了我在 <strong>因果推断、纵向面板建模、数据整合与政策分析</strong> 方面的能力，这些方法亦可迁移至商业预测与复杂系统建模。
     </p>
+    <div class="project-stats">
+      <span class="stat-chip">91.3 万+ 案件记录</span>
+      <span class="stat-chip">社区 × 年度面板</span>
+    </div>
     <button class="details-btn" onclick="toggleDetails('project2')">查看详情</button>
   </div>
 </div>
-
 
 <!-- Hidden Details for Project 2 -->
 <div id="project2" class="project-details">
@@ -587,12 +484,11 @@ lang: "zh"
 
 </div>
 
-
-
 <!-- Project 3: Ikebana Portfolio Site -->
-<div class="project-card">
+<div class="project-card" data-tags="other" data-details-id="project3">
   <img src="{{ site.baseurl }}/images/project3.jpg" alt="Ikebana Site Image" class="project-image">
   <div class="project-content">
+    <div class="project-kicker">06 · 前端 / 设计</div>
     <div class="project-title">Ikebana Portfolio — 沉浸式前端作品集微站</div>
     <p class="project-description">
       一个完全手写的单页微型网站，将日式插花课程作品集转化为一个沉浸式数字体验。
@@ -600,6 +496,10 @@ lang: "zh"
       <br><br>
       项目展示了我在 <strong>前端工程、交互设计、信息层级与体验「最后一公里」</strong> 等方面的关注，而不仅是静态页面堆叠。
     </p>
+    <div class="project-stats">
+      <span class="stat-chip">不依赖框架</span>
+      <span class="stat-chip">原生 JS/CSS</span>
+    </div>
     <button class="details-btn" onclick="toggleDetails('project3')">查看详情</button>
   </div>
 </div>
@@ -657,6 +557,13 @@ lang: "zh"
   </div>
 </div>
 
+<div class="cw-empty-state">
+  <i class="fa-solid fa-magnifying-glass" style="font-size:1.3rem; display:block; margin-bottom:.6rem;"></i>
+  没有匹配的项目——换个关键词或筛选条件试试。
+</div>
+
+</div>
+
 <script>
 function toggleDetails(id) {
   var details = document.getElementById(id);
@@ -675,4 +582,6 @@ function toggleDetails(id) {
   }
 }
 </script>
+<script src="{{ site.baseurl }}/assets/js/project-filters.js"></script>
+<script src="{{ site.baseurl }}/assets/js/interactions.js"></script>
 

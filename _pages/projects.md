@@ -6,176 +6,41 @@ excerpt: "A collection of my research and professional projects."
 author_profile: true
 ---
 
-<style>
-/* General Page Styling */
-.page-content {
-  background: #f3e8fd;
-  padding: 2rem;
-}
+<div class="cw-hero">
+  <span class="cw-eyebrow">PROJECTS</span>
+  <h1>Projects that turn data into <em>decisions</em></h1>
+  <p class="cw-sub">Quantitative research and applied ML across markets, finance, and social impact — the same focus areas from my analyst work, built out here as full, reproducible projects with real results.</p>
+  <div class="cw-stats">
+    <div class="cw-stat"><b>6</b><span>PROJECTS</span></div>
+    <div class="cw-stat"><b>4</b><span>DOMAINS</span></div>
+    <div class="cw-stat"><b>6</b><span>GITHUB REPOS</span></div>
+  </div>
+</div>
 
-/* Project Card Styling */
-.project-card {
-  display: flex;
-  align-items: center;
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  margin-bottom: 2rem;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
+<div class="cw-project-section">
 
-/* Responsive for Mobile */
-@media (max-width: 768px) {
-  .project-card {
-    flex-direction: column;
-    text-align: center;
-  }
-  .project-image {
-    margin-right: 0;
-    margin-bottom: 1rem;
-  }
-  .button-row {
-    justify-content: center;
-  }
-}
+<div class="cw-toolbar" data-role="project-filter">
+  <div class="cw-search-wrap">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <input class="cw-search" type="text" placeholder="Search projects or tech stack…">
+  </div>
+  <div class="cw-chips">
+    <button type="button" class="cw-chip is-active" data-tag="all">All</button>
+    <button type="button" class="cw-chip" data-tag="quant">Quant &amp; Finance</button>
+    <button type="button" class="cw-chip" data-tag="ml">Machine Learning</button>
+    <button type="button" class="cw-chip" data-tag="causal">Causal Inference</button>
+    <button type="button" class="cw-chip" data-tag="other">Web &amp; Design</button>
+  </div>
+</div>
 
-/* Project Image */
-.project-image {
-  width: 200px;
-  height: 150px;
-  border-radius: 6px;
-  object-fit: cover;
-  margin-right: 1.5rem;
-}
-
-/* Project Content */
-.project-content {
-  flex: 1;
-}
-
-.project-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #6d4195;
-  margin-bottom: 0.5rem;
-}
-
-
-.project-problem {
-  background: #f7ecff;
-  border-left: 4px solid #6d4195;
-  padding: 0.8rem 1rem;
-  border-radius: 6px;
-  margin-bottom: 1rem;
-  color: #333;
-  font-size: 0.95rem;
-}
-.project-problem strong {
-  color: #6d4195;
-}
-
-  
-.project-description {
-  color: #444;
-  line-height: 1.5;
-  margin-bottom: 1rem;
-}
-
-/* Details Button */
-.details-btn {
-  background: transparent;
-  color: #6d4195;
-  border: 2px solid #6d4195;
-  padding: 8px 12px;
-  font-size: 0.9rem;
-  font-weight: bold;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.details-btn:hover {
-  background: #6d4195;
-  color: white;
-}
-
-/* Hidden Details - Ensure Spacing */
-.project-details {
-  display: none;
-  background: #fff;
-  padding: 1.5rem;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  border-radius: 6px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-}
-
-/* Preview Frame */
-.preview-frame {
-  width: 100%;
-  height: 450px;
-  border: none;
-  margin-bottom: 1rem;
-  border-radius: 6px;
-}
-
-/* Button Row */
-.button-row {
-  display: flex;
-  gap: 0.8rem;
-}
-
-/* GitHub Button - Outline Style */
-.github-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 6px 10px;
-  font-size: 0.9rem;
-  font-weight: bold;
-  border-radius: 6px;
-  text-decoration: none;
-  border: 2px solid #6d4195;
-  color: #6d4195;
-}
-
-.github-btn:hover {
-  background: #6d4195;
-  color: white;
-}
-
-/* View Page Button - Solid Purple */
-.html-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 6px 10px;
-  font-size: 0.9rem;
-  font-weight: bold;
-  border-radius: 6px;
-  text-decoration: none;
-  background: #6d4195;
-  color: white;
-  border: 2px solid #6d4195;
-}
-
-.html-btn:hover {
-  background: #4a256d;
-  border-color: #4a256d;
-}
-</style>
-
-<h1 style="display: flex; align-items: center; font-size: 2rem; color: #6d4195; margin-bottom: 1.5rem; text-align: left;">
-  <i class="fa-solid fa-folder-open" style="margin-right: 10px;"></i> My Projects
-</h1>
-
+<div class="cw-result-count" data-template="Showing {n} of {total} projects" aria-live="polite"></div>
 
 <!-- Project 0: Exponential Smoothing FX Trend Strategy -->
-<div class="project-card">
+<div class="project-card" data-tags="quant" data-details-id="project_fx">
   <img src="{{ site.baseurl }}/images/project_fx.jpg" alt="FX Project Image" class="project-image">
   
   <div class="project-content">
+    <div class="project-kicker">01 · QUANT &amp; FINANCE</div>
     <div class="project-title">FX Trend Strategy using Exponential Smoothing</div>
     <p class="project-description">
       A fully reproducible quantitative research project analyzing USD/CAD trend persistence using dual exponential smoothing filters. 
@@ -184,6 +49,20 @@ author_profile: true
       This project demonstrates my capabilities in <strong>quantitative analysis, data science workflow design, 
       mathematical modeling, statistical reasoning, and technical communication</strong>.
     </p>
+
+    <div class="metric-chart">
+      <div class="metric-chart-row">
+        <span class="metric-chart-label">Before</span>
+        <div class="metric-chart-track"><div class="metric-chart-bar" style="width:58%"></div></div>
+        <span class="metric-chart-value">0.26</span>
+      </div>
+      <div class="metric-chart-row">
+        <span class="metric-chart-label">After</span>
+        <div class="metric-chart-track"><div class="metric-chart-bar metric-chart-bar--accent" style="width:100%"></div></div>
+        <span class="metric-chart-value">0.45</span>
+      </div>
+      <div class="metric-chart-caption">Sharpe ratio, dual-ES crossover strategy</div>
+    </div>
 
     <button class="details-btn" onclick="toggleDetails('project_fx')">View Details</button>
   </div>
@@ -243,10 +122,11 @@ author_profile: true
 </div>
 
 <!-- Project 5: MultiDocRAG -->
-<div class="project-card">
+<div class="project-card" data-tags="ml" data-details-id="project_multidoc">
   <img src="{{ site.baseurl }}/images/MultiDocRAG_cover.jpg" alt="MultiDocRAG Cover Image" class="project-image">
   
   <div class="project-content">
+    <div class="project-kicker">02 · MACHINE LEARNING</div>
     <div class="project-title">MultiDocRAG</div>
     <p class="project-description">
       A full-stack retrieval-augmented generation (RAG) system designed to perform 
@@ -258,10 +138,14 @@ author_profile: true
       and end-to-end product prototyping</strong>.
     </p>
 
+    <div class="project-stats">
+      <span class="stat-chip">27-Q eval benchmark</span>
+      <span class="stat-chip">Live demo on HF Spaces</span>
+    </div>
+
     <button class="details-btn" onclick="toggleDetails('project_multidoc')">View Details</button>
   </div>
 </div>
-
 
 <!-- Hidden Details for MultiDocRAG Project -->
 <div id="project_multidoc" class="project-details">
@@ -273,7 +157,6 @@ author_profile: true
     MultiDocRAG addresses this challenge by building a retrieval and reasoning pipeline capable of 
     cross-document evidence comparison, grounded generation, and systematic evaluation.
   </div>
-
 
   <!-- 🔥 Summary Section -->
   <div class="project-summary" style="background:#faf7ff; padding:1.5rem; border-radius:8px; margin-bottom:1.5rem; border-left:4px solid #6d4195;">
@@ -342,12 +225,12 @@ author_profile: true
 
 </div>
 
-
 <!-- Project: Iris Recognition System -->
-<div class="project-card">
+<div class="project-card" data-tags="ml" data-details-id="project_iris">
   <img src="{{ site.baseurl }}/images/iris_recognition_cover.jpg" alt="Iris Recognition System Cover Image" class="project-image">
   
   <div class="project-content">
+    <div class="project-kicker">03 · MACHINE LEARNING</div>
     <div class="project-title">Iris Recognition System</div>
     <p class="project-description">
       A full computer vision and pattern recognition pipeline for <strong>iris-based biometric identification</strong>, 
@@ -357,6 +240,20 @@ author_profile: true
       This project demonstrates my ability in <strong>computer vision, machine learning system design, mathematical modeling, 
       experimental debugging, evaluation methodology, and technical implementation</strong>.
     </p>
+
+    <div class="metric-chart">
+      <div class="metric-chart-row">
+        <span class="metric-chart-label">Original</span>
+        <div class="metric-chart-track"><div class="metric-chart-bar" style="width:85%"></div></div>
+        <span class="metric-chart-value">73.4%</span>
+      </div>
+      <div class="metric-chart-row">
+        <span class="metric-chart-label">Reduced</span>
+        <div class="metric-chart-track"><div class="metric-chart-bar metric-chart-bar--accent" style="width:100%"></div></div>
+        <span class="metric-chart-value">86.1%</span>
+      </div>
+      <div class="metric-chart-caption">Cosine-distance CRR, original vs. PCA+FLD reduced space</div>
+    </div>
 
     <button class="details-btn" onclick="toggleDetails('project_iris')">View Details</button>
   </div>
@@ -432,18 +329,25 @@ author_profile: true
 
 </div>
 
-
 <!-- Project 1: Housing Price Prediction -->
-<div class="project-card">
+<div class="project-card" data-tags="ml" data-details-id="project1">
   <img src="{{ site.baseurl }}/images/project1.jpg" alt="Housing Project Image" class="project-image">
   
   <div class="project-content">
+    <div class="project-kicker">04 · MACHINE LEARNING</div>
     <div class="project-title">Housing Price Prediction: An Exploratory Analysis</div>
     <p class="project-description">
       Built a housing price prediction pipeline using exploratory data analysis, feature engineering, and regression/ML models including Ridge, LASSO, Random Forest, and Group LASSO. 
       The models achieved strong predictive accuracy while consistently identifying space, quality, and utility as the key drivers of value. 
       Beyond forecasting, the project emphasized interpretability and stakeholder communication — turning high-dimensional data into actionable insights for decisions.
     </p>
+
+    <div class="project-stats">
+      <span class="stat-chip">Ridge</span>
+      <span class="stat-chip">LASSO</span>
+      <span class="stat-chip">Random Forest</span>
+      <span class="stat-chip">Group LASSO</span>
+    </div>
 
     <button class="details-btn" onclick="toggleDetails('project1')">View Details</button>
   </div>
@@ -507,19 +411,23 @@ author_profile: true
 </div>
 
 <!-- Project 2 -->
-<div class="project-card">
+<div class="project-card" data-tags="causal" data-details-id="project2">
   <img src="{{ site.baseurl }}/images/project2.jpg" alt="Project Image" class="project-image">
   <div class="project-content">
+    <div class="project-kicker">05 · CAUSAL INFERENCE</div>
     <div class="project-title">Socioeconomic Drivers of Crime in San Francisco</div>
     <p class="project-description">
       Built a large-scale spatial econometrics pipeline linking 900k+ SF police incident records with ACS socioeconomic panel data. 
       Applied fixed-effects logistic models, Poisson/NegBin count models, and time-series forecasting to quantify how inequality, unemployment, and mobility patterns shape crime trends. 
       The project demonstrates skills in <strong>causal inference, longitudinal modeling, data integration, and policy analytics</strong>—transferable to business forecasting & systems design.
     </p>
+    <div class="project-stats">
+      <span class="stat-chip">913K+ incident records</span>
+      <span class="stat-chip">Tract × year panel</span>
+    </div>
     <button class="details-btn" onclick="toggleDetails('project2')">View Details</button>
   </div>
 </div>
-
 
 <!-- Hidden Details for Project 2 -->
 <div id="project2" class="project-details">
@@ -538,13 +446,10 @@ author_profile: true
        style="width:100%; border-radius:6px; margin-bottom:1rem;">
   -->
 
-
-
   <!-- 🔥 Summary Section -->
   
 <div class="project-summary" style="background:#faf7ff; padding:1.5rem; border-radius:8px; margin-bottom:1.5rem; border-left:4px solid #6d4195;">
     <h2 style="color:#6d4195;">📌 Project Summary</h2>
-
 
     <p><strong>Objective:</strong> Quantify whether crime patterns are driven by economic factors such as inequality, unemployment, transit patterns, and demographic changes.</p>
 
@@ -593,18 +498,21 @@ author_profile: true
 
 </div>
 
-
-
 <!-- Project 3: Ikebana Portfolio Site -->
-<div class="project-card">
+<div class="project-card" data-tags="other" data-details-id="project3">
   <img src="{{ site.baseurl }}/images/project3.jpg" alt="Ikebana Site Image" class="project-image">
   <div class="project-content">
+    <div class="project-kicker">06 · WEB &amp; DESIGN</div>
     <div class="project-title">Ikebana Portfolio — Immersive Front-End Microsite</div>
     <p class="project-description">
       A handcrafted, single-page microsite that turns my Ikebana course portfolio into an immersive digital experience. 
       Built from scratch (no frameworks) with responsive layout, CSS animations, JavaScript-driven interactions, and background audio integration, 
       this project reflects my attention to detail in <strong>UX, visual hierarchy, and front-end systems thinking</strong> rather than just static pages.
     </p>
+    <div class="project-stats">
+      <span class="stat-chip">No framework</span>
+      <span class="stat-chip">Vanilla JS/CSS</span>
+    </div>
     <button class="details-btn" onclick="toggleDetails('project3')">View Details</button>
   </div>
 </div>
@@ -663,6 +571,13 @@ author_profile: true
   </div>
 </div>
 
+<div class="cw-empty-state">
+  <i class="fa-solid fa-magnifying-glass" style="font-size:1.3rem; display:block; margin-bottom:.6rem;"></i>
+  No projects match your search — try a different keyword or filter.
+</div>
+
+</div>
+
 <script>
 function toggleDetails(id) {
   var details = document.getElementById(id);
@@ -682,3 +597,5 @@ function toggleDetails(id) {
   }
 }
 </script>
+<script src="{{ site.baseurl }}/assets/js/project-filters.js"></script>
+<script src="{{ site.baseurl }}/assets/js/interactions.js"></script>

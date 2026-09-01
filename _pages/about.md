@@ -4,108 +4,41 @@ permalink: /about/
 author_profile: true
 ---
 
-<style>
-/* General Styling */
-.page-content {
-  background: #f3e8fd;
-  padding: 2rem;
-}
-
-/* Container for sections */
-.section-container {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  margin-bottom: 2rem;
-}
-
-/* Section headers */
-.section-header {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #6d4195;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-}
-
-.section-header i {
-  margin-right: 8px;
-}
-
-/* Spacing between entries */
-.entry {
-  margin-bottom: 2.5rem;
-}
-
-/* Job & Research Titles */
-.entry-title {
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-bottom: 0.3rem;
-}
-
-/* Institution & Date */
-.entry-details {
-  color: #666;
-  font-style: italic;
-  margin-bottom: 0.5rem;
-}
-
-/* Bullet Points */
-.entry-content ul {
-  padding-left: 1.2rem;
-}
-
-.entry-content li {
-  margin-bottom: 0.5rem;
-  line-height: 1.5;
-}
-
-/* GPA Highlight */
-.gpa-badge {
-  background: #6d4195;
-  color: white;
-  padding: 3px 8px;
-  font-size: 0.85rem;
-  border-radius: 4px;
-  margin-left: 8px;
-  font-weight: bold;
-}
-
-/* Contact Section */
-.contact-section {
-  text-align: center;
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #6d4195;
-}
-
-/* Styling for About Me */
-.about-text {
-  color: #4b2a66; /* Purple highlight instead of bold */
-  font-weight: 600;
-}
-</style>
-
+<div class="cw-hero">
+  <span class="cw-eyebrow">ABOUT</span>
+  <h1>Data &amp; business analyst, <em>Columbia MS in Data Science</em></h1>
+  <p class="cw-sub">I’m Cheng Wu, and I care about how analysis translates into real-world decisions — with a background in econometrics and quantitative economics from UIUC, now working at the intersection of quantitative rigor and practical outcomes.</p>
+  <div class="cw-stats">
+    <div class="cw-stat"><b>4</b><span>PROFESSIONAL ROLES</span></div>
+    <div class="cw-stat"><b>3</b><span>RESEARCH ROLES</span></div>
+    <div class="cw-stat"><b>2</b><span>DEGREES</span></div>
+  </div>
+</div>
 
 <div class="section-container">
   <h2 class="section-header">About Me</h2>
-  <p>
-    I’m <span class="about-text">Cheng Wu</span>, a <span class="about-text">data and business analyst</span> who cares about how analysis translates into real-world decisions. 
-  </p> 
-  <p>
-    With a background in <span class="about-text">econometrics and quantitative economics</span> from the <span class="about-text">University of Illinois Urbana-Champaign</span> and current graduate studies in <span class="about-text">Data Science</span> at <span class="about-text">Columbia University</span>, I work at the intersection of quantitative rigor and practical outcomes.
-  </p>
   <p>
     I’ve applied analytics across <span class="about-text">Markets, Finance, and Social Impact</span>. My work has helped managers improve pricing and demand planning, speed up financial reporting, and identify inequities in education systems. What motivates me most are questions without ready-made answers — problems where careful analysis can bring clarity and drive meaningful change.
   </p>
   <p>
     I focus on three things in my work: <span class="about-text">clarity in communication, rigor in method, and measurable impact in results.</span> 
   </p>
-  <p><span class="about-text">Focus areas</span>: market analytics, financial analysis, process improvement, education equity</p>
-  <p>📍 <span class="about-text">Tools</span>: SQL, Python, BI dashboards (Power BI, Tableau, Plotly), Statistics / Econometrics</p>
+  <p><span class="about-text">Focus areas</span></p>
+  <div class="tool-chips">
+    <span class="tool-chip">Market Analytics</span>
+    <span class="tool-chip">Financial Analysis</span>
+    <span class="tool-chip">Process Improvement</span>
+    <span class="tool-chip">Education Equity</span>
+  </div>
+  <p style="margin-top:1.1rem;">📍 <span class="about-text">Tools</span></p>
+  <div class="tool-chips">
+    <span class="tool-chip">SQL</span>
+    <span class="tool-chip">Python</span>
+    <span class="tool-chip">Power BI</span>
+    <span class="tool-chip">Tableau</span>
+    <span class="tool-chip">Plotly</span>
+    <span class="tool-chip">Statistics / Econometrics</span>
+  </div>
 </div>
 
 <div class="section-container">
@@ -129,7 +62,6 @@ author_profile: true
 
 <div class="section-container">
   <h2 class="section-header"><i class="fas fa-briefcase"></i> Professional Experience</h2>
-
 
 <div class="entry">
   <div class="entry-title">Data Analyst — Supply Chain Compliance & Operations</div>
@@ -156,7 +88,6 @@ author_profile: true
     </p>
   </div>
 </div>
-
 
  <div class="entry">
   <div class="entry-title">Data Analyst — Institutional Finance</div>
@@ -192,8 +123,6 @@ author_profile: true
 
 </div>
 
-
-
 <div class="section-container">
   <h2 class="section-header"><i class="fas fa-microscope"></i> Research Experience</h2>
 
@@ -213,7 +142,6 @@ author_profile: true
   </div>
 </div>
 
-
   
  <div class="entry">
   <div class="entry-title">Research Assistant — Education Policy</div>
@@ -227,7 +155,6 @@ author_profile: true
     </p>
   </div>
 </div>
-
 
   
 <div class="entry">
@@ -246,7 +173,6 @@ author_profile: true
   </div>
 </div>
 
-
   </div>
 
 <!-- Contact Section -->
@@ -256,22 +182,5 @@ author_profile: true
   <a href="mailto:cheng.w@columbia.edu" class="email-btn">Email Me</a>
 </div>
 
-<style>
-/* Styling for Email Button */
-.email-btn {
-  display: inline-block;
-  padding: 12px 20px;
-  background: #6d4195; /* Purple background */
-  color: white; /* White text */
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 6px; /* Rounded corners */
-  transition: background 0.2s, transform 0.2s;
-}
+<script src="{{ site.baseurl }}/assets/js/interactions.js"></script>
 
-/* Hover effect */
-.email-btn:hover {
-  background: #572e7a; /* Darker purple */
-  transform: scale(1.05);
-}
-</style>

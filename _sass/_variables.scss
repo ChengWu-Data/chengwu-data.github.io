@@ -14,7 +14,7 @@ $indent-var                 : 0.5em;
 
 /* system typefaces */
 $serif                      : Georgia, Times, serif;
-$sans-serif                 : "Trebuchet MS", Helvetica, sans-serif;
+$sans-serif                 : "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
 // $sans-serif                 : Georgia, serif, sans-serif;
 
 // $sans-serif                 : -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
@@ -57,8 +57,8 @@ $light-gray                 : #D9C6E6;
 $lighter-gray               : #F0E6FA;
 
 /* Main Colors */
-$body-color                 : #F5E6FE;  // 网站整体背景（淡紫色）
-$background-color           : #F5E6FE;  // 页面背景色
+$body-color                 : #F8F4FC;  // 网站整体背景（淡紫色，比原来更柔和）
+$background-color           : #F8F4FC;  // 页面背景色（同上）
 $code-background-color      : #F2E6FF;  // 代码块背景色
 $code-background-color-dark : #E6CCFF;  // 代码块深色模式
 $text-color                 : #3D2352;  // 主要文本颜色（深紫色）
