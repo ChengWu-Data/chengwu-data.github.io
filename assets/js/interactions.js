@@ -400,6 +400,11 @@
     function openZoom() {
       if (!currentEntry) return;
       hint.classList.remove('is-visible');
+      // The zoom card now carries the full text — the little plaque on
+      // the ground has nothing left to do, and leaving it up just risks
+      // it still being there (with the dog long since retreated) once
+      // the card is closed again.
+      item.classList.remove('is-visible');
       zoomItemWrap.setAttribute('data-item', currentKind);
       zoomImg.src = currentIcon;
       zoomItemText.textContent = currentEntry.short;
@@ -517,8 +522,12 @@
 
       // Peeking: this click just pops him back out to full size. It
       // doesn't dig or think by itself — the next click does that.
+      // Popping out is always a clean slate: nothing left over from
+      // before should still be sitting on the ground or in the bubble.
       if (corner.classList.contains('is-peek')) {
         corner.classList.remove('is-peek');
+        item.classList.remove('is-visible');
+        bubble.classList.remove('is-visible');
         armIdleTimer();
         return;
       }
