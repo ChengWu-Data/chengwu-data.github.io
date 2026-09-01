@@ -323,12 +323,12 @@
     };
   }
 
-  // Two different waits, not one: with nothing on screen the dog
-  // should retreat quickly (IDLE_MS); once he's actually shown
-  // something — a dug-up item or a thought bubble — that needs real
-  // reading time before it clears and he retreats (RESULT_MS).
+  // How long the dog waits before retreating: quickly if nothing's on
+  // screen, and the same short window even once he's shown something
+  // (a dug-up item or a thought bubble) — long enough for a sentence,
+  // not indefinite.
   var IDLE_MS = 5000;
-  var RESULT_MS = 12000;
+  var RESULT_MS = 5000;
 
   function setupDogDig() {
     var corner = document.getElementById('cw-corner-dog');
