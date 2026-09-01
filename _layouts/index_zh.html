@@ -31,7 +31,7 @@
 
       <div class="cw-eyebrow">数据科学 · 哥伦比亚大学</div>
       <h1>吴骋</h1>
-      <p class=”cw-sub”>让数据真正影响决策。</p>
+      <p class="cw-sub">让数据真正影响决策。</p>
 
       <div class="cw-hero-actions">
         <a href="{{ site.baseurl }}/zh/projects/" class="html-btn"><i class="fa-solid fa-folder-open"></i> 查看项目</a>
@@ -73,6 +73,19 @@
   <!-- 页脚 -->
   <div class="cw-home-footer">
     © {{ "now" | date: "%Y" }} 吴骋
+  </div>
+
+  <!-- 数据侦探犬：从右下角跑出来，点一下开始挖 -->
+  <div class="cw-corner-dog" id="cw-corner-dog">
+    <a class="cw-dig-reveal" id="cw-dig-reveal" href="#" aria-hidden="true" tabindex="-1">
+      <span class="cw-dig-reveal-item" id="cw-dig-reveal-item">
+        <img class="cw-dig-reveal-img" id="cw-dig-reveal-img" src="" alt="" />
+        <span class="cw-dig-reveal-text" id="cw-dig-reveal-text"></span>
+      </span>
+    </a>
+    <button type="button" class="cw-dog-dig" id="cw-dog-dig" aria-label="点一下小狗，挖点东西出来">
+      <img class="cw-dog-dig-img" id="cw-dog-dig-img" src="{{ site.baseurl }}/assets/images/dog/dog-idle.png" alt="" />
+    </button>
   </div>
 
   <script src="{{ site.baseurl }}/assets/js/interactions.js"></script>
