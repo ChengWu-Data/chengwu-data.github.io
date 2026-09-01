@@ -895,8 +895,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 108px;
-  height: 108px;
+  width: 170px;
+  height: 170px;
   padding: 0;
   border: none;
   background: none;
@@ -929,9 +929,9 @@
 }
 
 @keyframes cw-corner-dog-run-in {
-  0% { transform: translate(160px, 110px) scale(0.7) rotate(8deg); opacity: 0; }
-  55% { transform: translate(-8px, -6px) scale(1.05) rotate(-4deg); opacity: 1; }
-  75% { transform: translate(3px, 2px) scale(0.98) rotate(2deg); }
+  0% { transform: translate(252px, 173px) scale(0.7) rotate(8deg); opacity: 0; }
+  55% { transform: translate(-13px, -9px) scale(1.05) rotate(-4deg); opacity: 1; }
+  75% { transform: translate(5px, 3px) scale(0.98) rotate(2deg); }
   100% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 1; }
 }
 
@@ -941,10 +941,10 @@
    on its own blank plaque; tap it to zoom in for the full text. */
 .cw-dig-item {
   position: absolute;
-  right: 78px;
-  bottom: 2px;
-  width: 76px;
-  height: 76px;
+  right: 123px;
+  bottom: 3px;
+  width: 120px;
+  height: 120px;
   padding: 0;
   border: none;
   background: none;
@@ -960,10 +960,10 @@
 }
 
 @keyframes cw-dig-item-land {
-  0% { transform: translate(26px, -46px) scale(0.35) rotate(-12deg); opacity: 0; }
+  0% { transform: translate(41px, -73px) scale(0.35) rotate(-12deg); opacity: 0; }
   35% { opacity: 1; }
-  62% { transform: translate(-4px, 6px) scale(1.1) rotate(5deg); }
-  82% { transform: translate(2px, -2px) scale(0.95) rotate(-3deg); }
+  62% { transform: translate(-6px, 9px) scale(1.1) rotate(5deg); }
+  82% { transform: translate(3px, -3px) scale(0.95) rotate(-3deg); }
   100% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 1; }
 }
 
@@ -985,7 +985,7 @@
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: 0.01em;
-  font-size: 6.5px;
+  font-size: 10px;
 }
 
 /* Blank-plaque coordinates read off each illustration (percent of the
@@ -1011,6 +1011,17 @@
   top: 49%;
   height: 16%;
   transform: rotate(26deg);
+}
+
+/* Chinese characters run noticeably wider than Latin letters at the
+   same font-size, so the plaque text needs its own smaller size to
+   keep fitting inside the same physical tag artwork. */
+[lang="zh"] .cw-dig-item-text {
+  font-size: 8px;
+}
+
+[lang="zh"] .cw-dig-zoom-item-text {
+  font-size: 12px;
 }
 
 /* Zoomed-in view: a centered lightbox card, always legible regardless
@@ -1061,11 +1072,57 @@
   transform: scale(1);
 }
 
+/* Same idea as the small landed item: the found-item image has a
+   blank plaque baked in, and the label sits on top of it — just
+   bigger and clearer here since there's room. */
+.cw-dig-zoom-item-wrap {
+  position: relative;
+  width: 190px;
+  height: 190px;
+}
+
 .cw-dig-zoom-img {
-  width: 130px;
-  height: 130px;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   filter: drop-shadow(0 3px 8px rgba(76, 41, 102, 0.25));
+}
+
+.cw-dig-zoom-item-text {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  color: var(--cw-purple-dark);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  font-size: 15px;
+}
+
+.cw-dig-zoom-item-wrap[data-item="bone"] .cw-dig-zoom-item-text {
+  left: 26%;
+  right: 26%;
+  top: 44%;
+  bottom: 38%;
+}
+
+.cw-dig-zoom-item-wrap[data-item="gift"] .cw-dig-zoom-item-text {
+  left: 60%;
+  width: 17%;
+  top: 46%;
+  height: 14%;
+  transform: rotate(13deg);
+}
+
+.cw-dig-zoom-item-wrap[data-item="can"] .cw-dig-zoom-item-text {
+  left: 58%;
+  width: 20%;
+  top: 49%;
+  height: 16%;
+  transform: rotate(26deg);
 }
 
 .cw-dig-zoom-text {
@@ -1105,23 +1162,35 @@
   }
 
   .cw-dog-dig {
-    width: 84px;
-    height: 84px;
+    width: 130px;
+    height: 130px;
   }
 
   .cw-dig-item {
-    right: 60px;
-    width: 62px;
-    height: 62px;
+    right: 94px;
+    width: 98px;
+    height: 98px;
   }
 
   .cw-dig-item-text {
-    font-size: 5.5px;
+    font-size: 9px;
   }
 
-  .cw-dig-zoom-img {
-    width: 100px;
-    height: 100px;
+  [lang="zh"] .cw-dig-item-text {
+    font-size: 7px;
+  }
+
+  .cw-dig-zoom-item-wrap {
+    width: 150px;
+    height: 150px;
+  }
+
+  .cw-dig-zoom-item-text {
+    font-size: 12px;
+  }
+
+  [lang="zh"] .cw-dig-zoom-item-text {
+    font-size: 10px;
   }
 
   .cw-dig-zoom-text {
