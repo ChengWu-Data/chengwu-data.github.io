@@ -77,65 +77,85 @@
 
   // Home page mascot: the dog sits fixed in the bottom-right corner and
   // runs in once (pure CSS) shortly after load. Click/tap it and it
-  // digs — a short dig-loop plays on the dog's own image, then a found
-  // item (bone / gift / can) pops up in a small bubble above the dog,
-  // holds a few seconds, then fades. Pure decoration on top of a page
-  // that's already complete without JS or images.
+  // digs — a short dig-loop plays on the dog's own image, then it
+  // spits the found item out of its mouth onto the ground, where it
+  // lands with a bounce and carries a short label on its own blank
+  // plaque. Tap the landed item to zoom in on the full text (and, for
+  // project finds, a real link) in a clearly readable card. Pure
+  // decoration on top of a page that's already complete without JS or
+  // images. Each entry has a short label (what fits on the tiny
+  // plaque) and a full line (shown once zoomed in).
   var CW_DIG_ITEMS = {
     en: {
       bone: {
-        weight: 65,
+        weight: 55,
         dogImg: 'dog-idle.png',
+        icon: 'tag-bone.png',
         entries: [
-          '25% less review',
-          '10K+ customers',
-          '50K+ records +70%',
-          'Attrition down 19%',
-          '6 shipped projects',
-          '1 very good dog'
+          { short: '25% less review', full: 'Cheng cut review workload ~25% across 7 systems.' },
+          { short: '10K+ customers', full: 'Cheng segmented 10K+ customers for a real conversion lift.' },
+          { short: 'Attrition down 19%', full: "Cheng's models helped cut attrition by ~19%." },
+          { short: 'Columbia · ex-quant', full: 'Cheng: Columbia data science, ex-quant research.' },
+          { short: "It's Cheng's dog", full: "I'm Cheng's dog — she built this whole site herself." },
+          { short: '2 degrees, 6 shipped', full: '2 degrees, 6 shipped projects. That’s Cheng.' }
         ]
       },
       gift: {
-        weight: 25,
+        weight: 30,
         dogImg: 'dog-idle.png',
+        icon: 'tag-gift.png',
         entries: [
-          { text: 'FX', href: '/projects/#card-project_fx' },
-          { text: 'RAG', href: '/projects/#card-project_multidoc' },
-          { text: 'IRIS', href: '/projects/#card-project_iris' }
+          { short: 'FX', lead: 'Cheng built an FX trend strategy.', linkText: 'Take a look →', href: '/projects/#card-project_fx' },
+          { short: 'RAG', lead: 'Curious about MultiDocRAG?', linkText: 'Check it out →', href: '/projects/#card-project_multidoc' },
+          { short: 'IRIS', lead: 'Cheng built an iris recognition system.', linkText: 'See how →', href: '/projects/#card-project_iris' }
         ]
       },
       can: {
-        weight: 10,
+        weight: 15,
         dogImg: 'dog-sad.png',
-        entries: ['meh', 'lol', 'oof', 'nah']
+        icon: 'tag-can.png',
+        entries: [
+          { short: 'meh', full: 'I dug up... nothing. Sorry about that.' },
+          { short: 'just dirt', full: 'Just dirt. Worth a shot though.' },
+          { short: "that's on me", full: 'Okay, that one’s on me.' },
+          { short: 'nope', full: 'Nope. Try again later?' }
+        ]
       }
     },
     zh: {
       bone: {
-        weight: 65,
+        weight: 55,
         dogImg: 'dog-idle.png',
+        icon: 'tag-bone.png',
         entries: [
-          '7个系统审核量降约25%',
-          '万+客户分群 转化提升',
-          '5万+条对账 提速70%',
-          'PSM/DiD 流失降约19%',
-          '6个项目 10段经历',
-          '2个学位 1只好狗'
+          { short: '审核量降约25%', full: '吴骋帮 7 个系统把审核量降了约 25%。' },
+          { short: '1万+客户分群', full: '吴骋为 1 万+ 客户做分群，带来了实打实的转化提升。' },
+          { short: '流失率降约19%', full: '吴骋的模型帮着把流失率降了约 19%。' },
+          { short: '哥大 · 量化研究', full: '吴骋：哥伦比亚大学数据科学，做过量化研究。' },
+          { short: '这是吴骋的狗', full: '我是吴骋的狗，这个网站是她自己搭的。' },
+          { short: '2学位 6项目', full: '2 个学位，6 个上线项目——这就是吴骋。' }
         ]
       },
       gift: {
-        weight: 25,
+        weight: 30,
         dogImg: 'dog-idle.png',
+        icon: 'tag-gift.png',
         entries: [
-          { text: '外汇', href: '/zh/projects/#card-project_fx' },
-          { text: 'RAG', href: '/zh/projects/#card-project_multidoc' },
-          { text: '虹膜', href: '/zh/projects/#card-project_iris' }
+          { short: '外汇', lead: '吴骋做过一个外汇趋势交易策略。', linkText: '看看 →', href: '/zh/projects/#card-project_fx' },
+          { short: 'RAG', lead: '对 MultiDocRAG 感兴趣？', linkText: '了解一下 →', href: '/zh/projects/#card-project_multidoc' },
+          { short: '虹膜', lead: '吴骋做过一个虹膜识别系统。', linkText: '看看怎么做的 →', href: '/zh/projects/#card-project_iris' }
         ]
       },
       can: {
-        weight: 10,
+        weight: 15,
         dogImg: 'dog-sad.png',
-        entries: ['呃', '唉', '嗯…', '拜托']
+        icon: 'tag-can.png',
+        entries: [
+          { short: '呃', full: '挖到的是……什么都没有，不好意思。' },
+          { short: '只有土', full: '只有土，不过值得一试。' },
+          { short: '这个我认', full: '这个我认。' },
+          { short: '没挖到', full: '没挖到，要不再试一次？' }
+        ]
       }
     }
   };
@@ -154,45 +174,92 @@
   function setupDogDig() {
     var dogBtn = document.getElementById('cw-dog-dig');
     var dogImg = document.getElementById('cw-dog-dig-img');
-    var reveal = document.getElementById('cw-dig-reveal');
-    var revealItem = document.getElementById('cw-dig-reveal-item');
-    var revealImg = document.getElementById('cw-dig-reveal-img');
-    var revealText = document.getElementById('cw-dig-reveal-text');
-    if (!dogBtn || !dogImg || !reveal || !revealItem || !revealImg || !revealText) return;
+    var item = document.getElementById('cw-dig-item');
+    var itemImg = document.getElementById('cw-dig-item-img');
+    var itemText = document.getElementById('cw-dig-item-text');
+    var zoom = document.getElementById('cw-dig-zoom');
+    var zoomBackdrop = document.getElementById('cw-dig-zoom-backdrop');
+    var zoomImg = document.getElementById('cw-dig-zoom-img');
+    var zoomText = document.getElementById('cw-dig-zoom-text');
+    if (!dogBtn || !dogImg || !item || !itemImg || !itemText || !zoom || !zoomBackdrop || !zoomImg || !zoomText) return;
 
     var lang = document.documentElement.lang === 'zh' ? 'zh' : 'en';
     var pools = CW_DIG_ITEMS[lang];
     var base = dogImg.getAttribute('src').replace(/dog-idle\.png$/, '');
     var busy = false;
+    var currentEntry = null;
+    var currentIcon = null;
+    var revertTimer = null;
+
+    // While the zoom card is open, the landed item's auto-revert is
+    // paused (so it can't disappear out from under someone reading);
+    // closing the zoom gives it one short grace window instead.
+    function scheduleRevert(delay) {
+      if (revertTimer) clearTimeout(revertTimer);
+      revertTimer = setTimeout(function () {
+        revertTimer = null;
+        revert();
+        busy = false;
+      }, delay);
+    }
+
+    function openZoom() {
+      if (!currentEntry) return;
+      zoomImg.src = currentIcon;
+      zoomText.textContent = '';
+      if (currentEntry.href) {
+        zoomText.appendChild(document.createTextNode(currentEntry.lead + ' '));
+        var link = document.createElement('a');
+        link.href = currentEntry.href;
+        link.textContent = currentEntry.linkText;
+        zoomText.appendChild(link);
+      } else {
+        zoomText.textContent = currentEntry.full;
+      }
+      zoom.classList.add('is-open');
+      if (revertTimer) {
+        clearTimeout(revertTimer);
+        revertTimer = null;
+      }
+    }
+
+    function closeZoom() {
+      var wasOpen = zoom.classList.contains('is-open');
+      zoom.classList.remove('is-open');
+      if (wasOpen && busy && !revertTimer) {
+        scheduleRevert(1200);
+      }
+    }
+
+    item.addEventListener('click', openZoom);
+    zoomBackdrop.addEventListener('click', closeZoom);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeZoom();
+    });
 
     function showItem(kind) {
       var pool = pools[kind];
       var entry = pool.entries[Math.floor(Math.random() * pool.entries.length)];
-      var text = typeof entry === 'string' ? entry : entry.text;
-      var href = typeof entry === 'string' ? null : entry.href;
+      currentEntry = entry;
+      currentIcon = base + pool.icon;
 
-      revealItem.setAttribute('data-item', kind);
-      revealImg.src = base + 'tag-' + kind + '.png';
-      revealText.textContent = text;
+      item.setAttribute('data-item', kind);
+      itemImg.src = currentIcon;
+      itemText.textContent = entry.short;
       dogImg.src = base + pool.dogImg;
 
-      if (href) {
-        reveal.setAttribute('href', href);
-        reveal.removeAttribute('tabindex');
-      } else {
-        reveal.setAttribute('href', '#');
-        reveal.setAttribute('tabindex', '-1');
-      }
-
-      reveal.classList.add('is-visible');
+      item.classList.remove('is-visible');
+      void item.offsetWidth; // restart the land animation even on repeat clicks
+      item.classList.add('is-visible');
     }
 
     function revert() {
-      reveal.classList.remove('is-visible');
+      item.classList.remove('is-visible');
+      closeZoom();
       dogImg.src = base + 'dog-idle.png';
     }
 
-    dogBtn.addEventListener('click', function (e) {
+    dogBtn.addEventListener('click', function () {
       if (busy) return;
       busy = true;
 
@@ -200,10 +267,7 @@
 
       if (reduceMotion) {
         showItem(kind);
-        setTimeout(function () {
-          revert();
-          busy = false;
-        }, 2600);
+        scheduleRevert(4200);
         return;
       }
 
@@ -221,16 +285,7 @@
         showItem(kind);
       }, 620);
 
-      setTimeout(function () {
-        revert();
-        busy = false;
-      }, 3400);
-    });
-
-    // Clicking the reveal itself (gift outcomes) follows the link
-    // normally; nothing extra to wire up here.
-    reveal.addEventListener('click', function (e) {
-      if (reveal.getAttribute('href') === '#') e.preventDefault();
+      scheduleRevert(5000);
     });
   }
 

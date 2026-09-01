@@ -873,13 +873,16 @@
   margin-right: auto;
 }
 
-/* Data Detective Dog: sits fixed in the bottom-right corner, clear of
-   the hero content and the language toggle. It hops in from off-screen
-   once on page load, then click/tap makes it dig — a short dig-motion
-   cycle on the dog's own image, then a found item (bone / gift / can)
-   pops up in a small bubble above it, holds a few seconds, and fades.
-   Pure decoration on top of a page that's already complete without it;
-   the dog button does nothing until interactions.js wires it up. */
+/* Data Detective Dog: sits fixed in the bottom-right corner, big enough
+   to actually see, clear of the language toggle. It hops in from
+   off-screen once on page load, then click/tap makes it dig — a short
+   dig-motion cycle on the dog's own image, then it spits the found
+   item out of its mouth onto the ground next to it, where it lands
+   with a little bounce. The landed item carries a short label; tap it
+   to zoom in on a bigger, clearly readable card (with a real link, for
+   project finds). Pure decoration on top of a page that's already
+   complete without it; the dog button does nothing until
+   interactions.js wires it up. */
 .cw-corner-dog {
   position: fixed;
   right: 20px;
@@ -892,8 +895,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
-  height: 64px;
+  width: 108px;
+  height: 108px;
   padding: 0;
   border: none;
   background: none;
@@ -904,7 +907,7 @@
 }
 
 .cw-dog-dig:hover {
-  transform: rotate(-6deg) scale(1.08);
+  transform: rotate(-6deg) scale(1.06);
 }
 
 .cw-dog-dig:focus-visible {
@@ -917,59 +920,61 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 2px 4px rgba(76, 41, 102, 0.2));
+  filter: drop-shadow(0 3px 6px rgba(76, 41, 102, 0.25));
   transition: transform 0.12s ease;
 }
 
 .cw-dog-dig-img.is-bump {
-  transform: scale(1.1) rotate(-4deg);
+  transform: scale(1.08) rotate(-4deg);
 }
 
 @keyframes cw-corner-dog-run-in {
-  0% { transform: translate(140px, 90px) scale(0.7) rotate(8deg); opacity: 0; }
-  55% { transform: translate(-6px, -4px) scale(1.05) rotate(-4deg); opacity: 1; }
-  75% { transform: translate(2px, 1px) scale(0.98) rotate(2deg); }
+  0% { transform: translate(160px, 110px) scale(0.7) rotate(8deg); opacity: 0; }
+  55% { transform: translate(-8px, -6px) scale(1.05) rotate(-4deg); opacity: 1; }
+  75% { transform: translate(3px, 2px) scale(0.98) rotate(2deg); }
   100% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 1; }
 }
 
-/* The item bubble pops up above the dog, never over the page's own
-   content. Absolutely positioned within the fixed corner wrapper. */
-.cw-dig-reveal {
+/* The found item: starts near the dog's mouth (up + right of its
+   landing spot, since the dog faces left) and bounces down onto the
+   ground just in front of it. Sits there, small, with a short label
+   on its own blank plaque; tap it to zoom in for the full text. */
+.cw-dig-item {
   position: absolute;
-  right: 0;
-  bottom: 100%;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  right: 78px;
+  bottom: 2px;
+  width: 76px;
+  height: 76px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
   opacity: 0;
-  transform: translateY(6px);
   pointer-events: none;
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  text-decoration: none;
 }
 
-.cw-dig-reveal.is-visible {
+.cw-dig-item.is-visible {
   opacity: 1;
-  transform: translateY(0);
   pointer-events: auto;
+  animation: cw-dig-item-land 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
-.cw-dig-reveal-item {
-  position: relative;
-  display: block;
-  width: 100px;
-  height: 100px;
+@keyframes cw-dig-item-land {
+  0% { transform: translate(26px, -46px) scale(0.35) rotate(-12deg); opacity: 0; }
+  35% { opacity: 1; }
+  62% { transform: translate(-4px, 6px) scale(1.1) rotate(5deg); }
+  82% { transform: translate(2px, -2px) scale(0.95) rotate(-3deg); }
+  100% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 1; }
 }
 
-.cw-dig-reveal-img {
+.cw-dig-item-img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 3px 8px rgba(76, 41, 102, 0.25));
+  filter: drop-shadow(0 3px 6px rgba(76, 41, 102, 0.25));
 }
 
-.cw-dig-reveal-text {
+.cw-dig-item-text {
   position: absolute;
   display: flex;
   align-items: center;
@@ -980,34 +985,103 @@
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: 0.01em;
+  font-size: 6.5px;
 }
 
 /* Blank-plaque coordinates read off each illustration (percent of the
    square image box), one set per found-item type. */
-.cw-dig-reveal-item[data-item="bone"] .cw-dig-reveal-text {
+.cw-dig-item[data-item="bone"] .cw-dig-item-text {
   left: 26%;
   right: 26%;
   top: 44%;
   bottom: 38%;
-  font-size: 7px;
 }
 
-.cw-dig-reveal-item[data-item="gift"] .cw-dig-reveal-text {
+.cw-dig-item[data-item="gift"] .cw-dig-item-text {
   left: 60%;
   width: 17%;
   top: 46%;
   height: 14%;
   transform: rotate(13deg);
-  font-size: 6.5px;
 }
 
-.cw-dig-reveal-item[data-item="can"] .cw-dig-reveal-text {
+.cw-dig-item[data-item="can"] .cw-dig-item-text {
   left: 58%;
   width: 20%;
   top: 49%;
   height: 16%;
   transform: rotate(26deg);
-  font-size: 6.5px;
+}
+
+/* Zoomed-in view: a centered lightbox card, always legible regardless
+   of how small the landed item is on screen. */
+.cw-dig-zoom {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.cw-dig-zoom.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cw-dig-zoom-backdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  background: rgba(45, 24, 61, 0.45);
+  cursor: pointer;
+}
+
+.cw-dig-zoom-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 280px;
+  padding: 1.5rem 1.5rem 1.75rem;
+  background: #fff;
+  border-radius: var(--cw-radius-md);
+  box-shadow: var(--cw-shadow-md);
+  transform: scale(0.9);
+  transition: transform 0.2s ease;
+}
+
+.cw-dig-zoom.is-open .cw-dig-zoom-card {
+  transform: scale(1);
+}
+
+.cw-dig-zoom-img {
+  width: 130px;
+  height: 130px;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 8px rgba(76, 41, 102, 0.25));
+}
+
+.cw-dig-zoom-text {
+  margin: 0;
+  text-align: center;
+  color: var(--cw-purple-dark);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.cw-dig-zoom-text a {
+  color: var(--cw-purple);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1016,24 +1090,11 @@
   }
 
   .cw-dog-dig-img,
-  .cw-dig-reveal {
+  .cw-dig-item.is-visible,
+  .cw-dig-zoom,
+  .cw-dig-zoom-card {
+    animation: none;
     transition: none;
-  }
-}
-
-@media (min-width: 640px) {
-  .cw-dig-reveal-item {
-    width: 116px;
-    height: 116px;
-  }
-
-  .cw-dig-reveal-item[data-item="bone"] .cw-dig-reveal-text {
-    font-size: 7.5px;
-  }
-
-  .cw-dig-reveal-item[data-item="gift"] .cw-dig-reveal-text,
-  .cw-dig-reveal-item[data-item="can"] .cw-dig-reveal-text {
-    font-size: 7.5px;
   }
 }
 
@@ -1044,22 +1105,27 @@
   }
 
   .cw-dog-dig {
-    width: 50px;
-    height: 50px;
-  }
-
-  .cw-dig-reveal-item {
     width: 84px;
     height: 84px;
   }
 
-  .cw-dig-reveal-item[data-item="bone"] .cw-dig-reveal-text {
+  .cw-dig-item {
+    right: 60px;
+    width: 62px;
+    height: 62px;
+  }
+
+  .cw-dig-item-text {
     font-size: 5.5px;
   }
 
-  .cw-dig-reveal-item[data-item="gift"] .cw-dig-reveal-text,
-  .cw-dig-reveal-item[data-item="can"] .cw-dig-reveal-text {
-    font-size: 5.5px;
+  .cw-dig-zoom-img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .cw-dig-zoom-text {
+    font-size: 0.88rem;
   }
 }
 
