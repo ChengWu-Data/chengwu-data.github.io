@@ -75,7 +75,223 @@
     }
   }
 
+  // Home page mascot: the dog sits fixed in the bottom-right corner and
+  // runs in once (pure CSS) shortly after load. Click/tap it and it
+  // digs — a short dig-loop plays on the dog's own image, then it
+  // spits the found item out of its mouth onto the ground, where it
+  // lands with a bounce and carries a short label on its own blank
+  // plaque. Tap the landed item to zoom in on the full text (and, for
+  // project finds, a real link) in a clearly readable card. Pure
+  // decoration on top of a page that's already complete without JS or
+  // images. Each entry has a short label (what fits on the tiny
+  // plaque) and a full line (shown once zoomed in).
+  var CW_DIG_ITEMS = {
+    en: {
+      bone: {
+        weight: 55,
+        dogImg: 'dog-idle.png',
+        icon: 'tag-bone.png',
+        entries: [
+          { short: '25% less review', full: 'Cheng cut review workload ~25% across 7 systems.' },
+          { short: '10K+ customers', full: 'Cheng segmented 10K+ customers for a real conversion lift.' },
+          { short: 'Attrition down 19%', full: "Cheng's models helped cut attrition by ~19%." },
+          { short: 'Columbia · ex-quant', full: 'Cheng: Columbia data science, ex-quant research.' },
+          { short: "It's Cheng's dog", full: "I'm Cheng's dog — she built this whole site herself." },
+          { short: '2 degrees, 6 shipped', full: '2 degrees, 6 shipped projects. That’s Cheng.' }
+        ]
+      },
+      gift: {
+        weight: 30,
+        dogImg: 'dog-idle.png',
+        icon: 'tag-gift.png',
+        entries: [
+          { short: 'FX', lead: 'Cheng built an FX trend strategy.', linkText: 'Take a look →', href: '/projects/#card-project_fx' },
+          { short: 'RAG', lead: 'Curious about MultiDocRAG?', linkText: 'Check it out →', href: '/projects/#card-project_multidoc' },
+          { short: 'IRIS', lead: 'Cheng built an iris recognition system.', linkText: 'See how →', href: '/projects/#card-project_iris' }
+        ]
+      },
+      can: {
+        weight: 15,
+        dogImg: 'dog-sad.png',
+        icon: 'tag-can.png',
+        entries: [
+          { short: 'meh', full: 'I dug up... nothing. Sorry about that.' },
+          { short: 'just dirt', full: 'Just dirt. Worth a shot though.' },
+          { short: "that's on me", full: 'Okay, that one’s on me.' },
+          { short: 'nope', full: 'Nope. Try again later?' }
+        ]
+      }
+    },
+    zh: {
+      bone: {
+        weight: 55,
+        dogImg: 'dog-idle.png',
+        icon: 'tag-bone.png',
+        entries: [
+          { short: '审核量降约25%', full: '吴骋帮 7 个系统把审核量降了约 25%。' },
+          { short: '1万+客户分群', full: '吴骋为 1 万+ 客户做分群，带来了实打实的转化提升。' },
+          { short: '流失率降约19%', full: '吴骋的模型帮着把流失率降了约 19%。' },
+          { short: '哥大 · 量化研究', full: '吴骋：哥伦比亚大学数据科学，做过量化研究。' },
+          { short: '这是吴骋的狗', full: '我是吴骋的狗，这个网站是她自己搭的。' },
+          { short: '2学位 6项目', full: '2 个学位，6 个上线项目——这就是吴骋。' }
+        ]
+      },
+      gift: {
+        weight: 30,
+        dogImg: 'dog-idle.png',
+        icon: 'tag-gift.png',
+        entries: [
+          { short: '外汇', lead: '吴骋做过一个外汇趋势交易策略。', linkText: '看看 →', href: '/zh/projects/#card-project_fx' },
+          { short: 'RAG', lead: '对 MultiDocRAG 感兴趣？', linkText: '了解一下 →', href: '/zh/projects/#card-project_multidoc' },
+          { short: '虹膜', lead: '吴骋做过一个虹膜识别系统。', linkText: '看看怎么做的 →', href: '/zh/projects/#card-project_iris' }
+        ]
+      },
+      can: {
+        weight: 15,
+        dogImg: 'dog-sad.png',
+        icon: 'tag-can.png',
+        entries: [
+          { short: '呃', full: '挖到的是……什么都没有，不好意思。' },
+          { short: '只有土', full: '只有土，不过值得一试。' },
+          { short: '这个我认', full: '这个我认。' },
+          { short: '没挖到', full: '没挖到，要不再试一次？' }
+        ]
+      }
+    }
+  };
+
+  function weightedPick(pools) {
+    var keys = Object.keys(pools);
+    var total = keys.reduce(function (sum, k) { return sum + pools[k].weight; }, 0);
+    var r = Math.random() * total;
+    for (var i = 0; i < keys.length; i++) {
+      r -= pools[keys[i]].weight;
+      if (r <= 0) return keys[i];
+    }
+    return keys[keys.length - 1];
+  }
+
+  function setupDogDig() {
+    var dogBtn = document.getElementById('cw-dog-dig');
+    var dogImg = document.getElementById('cw-dog-dig-img');
+    var item = document.getElementById('cw-dig-item');
+    var itemImg = document.getElementById('cw-dig-item-img');
+    var itemText = document.getElementById('cw-dig-item-text');
+    var zoom = document.getElementById('cw-dig-zoom');
+    var zoomBackdrop = document.getElementById('cw-dig-zoom-backdrop');
+    var zoomImg = document.getElementById('cw-dig-zoom-img');
+    var zoomText = document.getElementById('cw-dig-zoom-text');
+    if (!dogBtn || !dogImg || !item || !itemImg || !itemText || !zoom || !zoomBackdrop || !zoomImg || !zoomText) return;
+
+    var lang = document.documentElement.lang === 'zh' ? 'zh' : 'en';
+    var pools = CW_DIG_ITEMS[lang];
+    var base = dogImg.getAttribute('src').replace(/dog-idle\.png$/, '');
+    var busy = false;
+    var currentEntry = null;
+    var currentIcon = null;
+    var revertTimer = null;
+
+    // While the zoom card is open, the landed item's auto-revert is
+    // paused (so it can't disappear out from under someone reading);
+    // closing the zoom gives it one short grace window instead.
+    function scheduleRevert(delay) {
+      if (revertTimer) clearTimeout(revertTimer);
+      revertTimer = setTimeout(function () {
+        revertTimer = null;
+        revert();
+        busy = false;
+      }, delay);
+    }
+
+    function openZoom() {
+      if (!currentEntry) return;
+      zoomImg.src = currentIcon;
+      zoomText.textContent = '';
+      if (currentEntry.href) {
+        zoomText.appendChild(document.createTextNode(currentEntry.lead + ' '));
+        var link = document.createElement('a');
+        link.href = currentEntry.href;
+        link.textContent = currentEntry.linkText;
+        zoomText.appendChild(link);
+      } else {
+        zoomText.textContent = currentEntry.full;
+      }
+      zoom.classList.add('is-open');
+      if (revertTimer) {
+        clearTimeout(revertTimer);
+        revertTimer = null;
+      }
+    }
+
+    function closeZoom() {
+      var wasOpen = zoom.classList.contains('is-open');
+      zoom.classList.remove('is-open');
+      if (wasOpen && busy && !revertTimer) {
+        scheduleRevert(1200);
+      }
+    }
+
+    item.addEventListener('click', openZoom);
+    zoomBackdrop.addEventListener('click', closeZoom);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeZoom();
+    });
+
+    function showItem(kind) {
+      var pool = pools[kind];
+      var entry = pool.entries[Math.floor(Math.random() * pool.entries.length)];
+      currentEntry = entry;
+      currentIcon = base + pool.icon;
+
+      item.setAttribute('data-item', kind);
+      itemImg.src = currentIcon;
+      itemText.textContent = entry.short;
+      dogImg.src = base + pool.dogImg;
+
+      item.classList.remove('is-visible');
+      void item.offsetWidth; // restart the land animation even on repeat clicks
+      item.classList.add('is-visible');
+    }
+
+    function revert() {
+      item.classList.remove('is-visible');
+      closeZoom();
+      dogImg.src = base + 'dog-idle.png';
+    }
+
+    dogBtn.addEventListener('click', function () {
+      if (busy) return;
+      busy = true;
+
+      var kind = weightedPick(pools);
+
+      if (reduceMotion) {
+        showItem(kind);
+        scheduleRevert(4200);
+        return;
+      }
+
+      var frames = ['dog-dig-1.png', 'dog-dig-2.png', 'dog-dig-3.png', 'dog-dig-1.png', 'dog-dig-2.png'];
+      var i = 0;
+      var digTimer = setInterval(function () {
+        dogImg.src = base + frames[i % frames.length];
+        dogImg.classList.toggle('is-bump');
+        i++;
+      }, 120);
+
+      setTimeout(function () {
+        clearInterval(digTimer);
+        dogImg.classList.remove('is-bump');
+        showItem(kind);
+      }, 620);
+
+      scheduleRevert(5000);
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
+    setupDogDig();
+
     var targets = [];
 
     document.querySelectorAll('.cw-stats').forEach(function (el) { targets.push(el); });
