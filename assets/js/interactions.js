@@ -92,12 +92,12 @@
         dogImg: 'dog-idle.png',
         icon: 'tag-bone.png',
         entries: [
-          { short: '25% less review', full: 'Cut review workload ~25% across 7 systems.' },
-          { short: '10K+ customers', full: 'Segmented 10K+ customers for a real conversion lift.' },
-          { short: 'Attrition -19%', full: 'Models that helped cut attrition by ~19%.' },
-          { short: 'Columbia · quant', full: 'Columbia data science, ex-quant research.' },
+          { short: '25% less review', full: 'My mom cut review workload ~25% across 7 systems.' },
+          { short: '10K+ customers', full: 'My mom segmented 10K+ customers for a real conversion lift.' },
+          { short: 'Attrition -19%', full: "My mom's models helped cut attrition by ~19%." },
+          { short: 'Columbia · quant', full: 'My mom studied data science at Columbia, and did quant research before that.' },
           { short: "It's Cheng's dog", full: "I'm Cheng's dog — she built this whole site herself." },
-          { short: '2 deg · 6 shipped', full: '2 degrees, 6 shipped projects.' }
+          { short: '2 deg · 6 shipped', full: "My mom's got 2 degrees and 6 shipped projects under her belt." }
         ]
       },
       gift: {
@@ -105,9 +105,9 @@
         dogImg: 'dog-idle.png',
         icon: 'tag-gift.png',
         entries: [
-          { short: 'FX', lead: 'Built an FX trend strategy.', linkText: 'Take a look →', href: '/projects/#card-project_fx' },
+          { short: 'FX', lead: 'My mom built an FX trend strategy.', linkText: 'Take a look →', href: '/projects/#card-project_fx' },
           { short: 'RAG', lead: 'Curious about MultiDocRAG?', linkText: 'Check it out →', href: '/projects/#card-project_multidoc' },
-          { short: 'IRIS', lead: 'Built an iris recognition system.', linkText: 'See how →', href: '/projects/#card-project_iris' }
+          { short: 'IRIS', lead: 'My mom built an iris recognition system.', linkText: 'See how →', href: '/projects/#card-project_iris' }
         ]
       },
       can: {
@@ -128,12 +128,12 @@
         dogImg: 'dog-idle.png',
         icon: 'tag-bone.png',
         entries: [
-          { short: '审核-25%', full: '帮 7 个系统把审核量降了约 25%。' },
-          { short: '万级分群', full: '为 1 万+ 客户做分群，带来了实打实的转化提升。' },
-          { short: '流失降19%', full: '用模型把流失率降了约 19%。' },
-          { short: '哥大', full: '哥伦比亚大学数据科学，做过量化研究。' },
+          { short: '审核-25%', full: '我妈妈帮 7 个系统把审核量降了约 25%。' },
+          { short: '万级分群', full: '我妈妈为 1 万+ 客户做分群，带来了实打实的转化提升。' },
+          { short: '流失降19%', full: '我妈妈用模型把流失率降了约 19%。' },
+          { short: '哥大', full: '我妈妈在哥伦比亚大学读的数据科学，之前还做过量化研究。' },
           { short: '这是吴骋的狗', full: '我是吴骋的狗，这个网站是她自己搭的。' },
-          { short: '2学位 6项目', full: '2 个学位，6 个上线项目。' }
+          { short: '2学位 6项目', full: '我妈妈读了 2 个学位，上线过 6 个项目。' }
         ]
       },
       gift: {
@@ -141,9 +141,9 @@
         dogImg: 'dog-idle.png',
         icon: 'tag-gift.png',
         entries: [
-          { short: 'FX', lead: '做过一个外汇趋势交易策略。', linkText: '看看 →', href: '/zh/projects/#card-project_fx' },
+          { short: 'FX', lead: '我妈妈做过一个外汇趋势交易策略。', linkText: '看看 →', href: '/zh/projects/#card-project_fx' },
           { short: 'RAG', lead: '对 MultiDocRAG 感兴趣？', linkText: '了解一下 →', href: '/zh/projects/#card-project_multidoc' },
-          { short: 'IRIS', lead: '做过一个虹膜识别系统。', linkText: '看看怎么做的 →', href: '/zh/projects/#card-project_iris' }
+          { short: 'IRIS', lead: '我妈妈做过一个虹膜识别系统。', linkText: '看看怎么做的 →', href: '/zh/projects/#card-project_iris' }
         ]
       },
       can: {
@@ -193,6 +193,16 @@
     var currentEntry = null;
     var currentIcon = null;
     var revertTimer = null;
+
+    // The "tap to see what he found" hint only needs to be seen once
+    // per visitor — after that it's just noise. Remembered across
+    // visits when localStorage is available; otherwise it still won't
+    // repeat within this page load.
+    var HINT_SEEN_KEY = 'cw-dig-hint-seen';
+    var hintSeen = false;
+    try {
+      hintSeen = window.localStorage.getItem(HINT_SEEN_KEY) === '1';
+    } catch (e) {}
 
     // While the zoom card is open, the landed item's auto-revert is
     // paused (so it can't disappear out from under someone reading);
@@ -258,7 +268,14 @@
       hint.classList.remove('is-visible');
       void item.offsetWidth; // restart the land animation even on repeat clicks
       item.classList.add('is-visible');
-      hint.classList.add('is-visible');
+
+      if (!hintSeen) {
+        hint.classList.add('is-visible');
+        hintSeen = true;
+        try {
+          window.localStorage.setItem(HINT_SEEN_KEY, '1');
+        } catch (e) {}
+      }
     }
 
     function revert() {

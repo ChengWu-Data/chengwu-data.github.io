@@ -937,7 +937,7 @@
 
 /* The found item itself carries no text — it's just held in the
    dog's mouth (bone / gift) or sitting in the grass (the empty can,
-   since her mouth stays shut when she comes up with nothing). A
+   since his mouth stays shut when he comes up with nothing). A
    hand-drawn arrow + note is the only hint that it's tappable; the
    full picture and label only show up in the zoom card. */
 .cw-dig-item {
@@ -953,7 +953,7 @@
   opacity: 0;
   pointer-events: none;
   transform-origin: 30% 70%;
-  /* Sits on top of the dog's own image (it's now inside her mouth,
+  /* Sits on top of the dog's own image (it's now inside his mouth,
      not off to the side), so it needs to win the click. */
   z-index: 2;
 }
@@ -977,8 +977,8 @@
   filter: drop-shadow(0 2px 4px rgba(76, 41, 102, 0.3));
 }
 
-/* The can never makes it into her mouth — it lands and bounces on
-   the ground next to her instead, same as before. */
+/* The can never makes it into his mouth — it lands and bounces on
+   the ground next to him instead, same as before. */
 .cw-dig-item[data-item="can"] {
   left: auto;
   top: auto;
@@ -1002,7 +1002,7 @@
 }
 
 /* Hand-drawn-style hint: a note + a sketchy arrow pointing at
-   whatever she's holding, inviting a tap. Purely decorative, so it's
+   whatever he's holding, inviting a tap. Purely decorative, so it's
    aria-hidden — the item button itself carries the real label. */
 .cw-dig-hint {
   position: absolute;
