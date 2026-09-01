@@ -77,41 +77,77 @@
 
   // Home page mascot: the dog sits fixed in the bottom-right corner and
   // runs in once (pure CSS) shortly after load. Click/tap it and it
-  // digs — a short dig-loop plays on the dog's own image, then it
-  // spits the found item out of its mouth onto the ground, where it
+  // either digs — a short dig-loop plays on the dog's own image, then
+  // it spits the found item out of its mouth onto the ground, where it
   // lands with a bounce and carries a short label on its own blank
-  // plaque. Tap the landed item to zoom in on the full text (and, for
-  // project finds, a real link) in a clearly readable card. Pure
-  // decoration on top of a page that's already complete without JS or
-  // images. Each entry has a short label (what fits on the tiny
-  // plaque) and a full line (shown once zoomed in).
+  // plaque (tap it to zoom in on the full text, and for project finds,
+  // a real link) — or just stands and thinks, popping a short thought
+  // bubble above its head with no digging at all. After 30s with no
+  // click, the dog retreats to a small sliver peeking in from the
+  // screen's bottom-right edge (bored expression, excited on hover);
+  // clicking that just pops him back out to full size — a second
+  // click is what actually digs or thinks. Every other page carries
+  // only that small peeking form, always in "just think" mode. Pure
+  // decoration on top of pages that are already complete without JS
+  // or images. Each dig entry has a short label (what fits on the
+  // tiny plaque) and a full line (shown once zoomed in); each thought
+  // is just a single line, shown directly in the bubble.
+  var CW_THOUGHTS = {
+    en: [
+      "Psst — I live in the corner of every page now. Efficient, right?",
+      "I've read this whole site twice. Still no squirrels though.",
+      "Between us, I only know how to dig. Never how to bury it back.",
+      "I'm basically the site's QA team. Four paws on the ground.",
+      "Honestly I don't know what 'data science' means either. I just vibe.",
+      "This corner took some real effort to claim.",
+      "My mom's shipped 6 projects. I've shipped zero. We balance out.",
+      "She built this whole site herself — I just supervise from down here.",
+      "Two degrees, one dog. Pretty solid ratio if you ask me.",
+      "So... are you going to consider hiring her already?",
+      "Don't let the digging fool you — I've never once wrecked the furniture."
+    ],
+    zh: [
+      "嘘——现在每个页面的角落都有我。效率很高吧？",
+      "这个网站我看了两遍了，可惜一只松鼠都没有。",
+      "偷偷说，我只会挖，从来不知道埋回去。",
+      "我基本就是这个网站的质检员，四脚落地那种。",
+      "说实话我也不知道“数据科学”是啥，我就是负责可爱。",
+      "这个角落可是我费了老大劲儿才占下来的。",
+      "我妈妈上线了 6 个项目，我上线了 0 个。我们俩正好互补。",
+      "这个网站是她自己搭的，我就负责在旁边监督。",
+      "两个学位，一只狗，这个比例我觉得挺可以。",
+      "所以……你到底要不要考虑一下雇她呀？",
+      "别看我挖土挖得欢，家具是真没拆过。"
+    ]
+  };
+
   var CW_DIG_ITEMS = {
     en: {
       bone: {
-        weight: 55,
+        weight: 38,
         dogImg: 'dog-idle.png',
         icon: 'tag-bone.png',
         entries: [
-          { short: '25% less review', full: 'Cut review workload ~25% across 7 systems.' },
-          { short: '10K+ customers', full: 'Segmented 10K+ customers for a real conversion lift.' },
-          { short: 'Attrition -19%', full: 'Models that helped cut attrition by ~19%.' },
-          { short: 'Columbia · quant', full: 'Columbia data science, ex-quant research.' },
+          { short: '25% less review', full: 'My mom cut review workload ~25% across 7 systems.' },
+          { short: '10K+ customers', full: 'My mom segmented 10K+ customers for a real conversion lift.' },
+          { short: 'Attrition -19%', full: "My mom's models helped cut attrition by ~19%." },
+          { short: 'Columbia · quant', full: 'My mom studied data science at Columbia, and did quant research before that.' },
           { short: "It's Cheng's dog", full: "I'm Cheng's dog — she built this whole site herself." },
-          { short: '2 deg · 6 shipped', full: '2 degrees, 6 shipped projects.' }
+          { short: '2 deg · 6 shipped', full: "My mom's got 2 degrees and 6 shipped projects under her belt." }
         ]
       },
       gift: {
-        weight: 30,
+        weight: 20,
         dogImg: 'dog-idle.png',
         icon: 'tag-gift.png',
         entries: [
-          { short: 'FX', lead: 'Built an FX trend strategy.', linkText: 'Take a look →', href: '/projects/#card-project_fx' },
+          { short: 'FX', lead: 'My mom built an FX trend strategy.', linkText: 'Take a look →', href: '/projects/#card-project_fx' },
           { short: 'RAG', lead: 'Curious about MultiDocRAG?', linkText: 'Check it out →', href: '/projects/#card-project_multidoc' },
-          { short: 'IRIS', lead: 'Built an iris recognition system.', linkText: 'See how →', href: '/projects/#card-project_iris' }
+          { short: 'IRIS', lead: 'My mom built an iris recognition system.', linkText: 'See how →', href: '/projects/#card-project_iris' }
         ]
       },
       can: {
-        weight: 15,
+        weight: 12,
         dogImg: 'dog-sad.png',
         icon: 'tag-can.png',
         entries: [
@@ -124,30 +160,30 @@
     },
     zh: {
       bone: {
-        weight: 55,
+        weight: 38,
         dogImg: 'dog-idle.png',
         icon: 'tag-bone.png',
         entries: [
-          { short: '审核-25%', full: '帮 7 个系统把审核量降了约 25%。' },
-          { short: '万级分群', full: '为 1 万+ 客户做分群，带来了实打实的转化提升。' },
-          { short: '流失降19%', full: '用模型把流失率降了约 19%。' },
-          { short: '哥大', full: '哥伦比亚大学数据科学，做过量化研究。' },
+          { short: '审核-25%', full: '我妈妈帮 7 个系统把审核量降了约 25%。' },
+          { short: '万级分群', full: '我妈妈为 1 万+ 客户做分群，带来了实打实的转化提升。' },
+          { short: '流失降19%', full: '我妈妈用模型把流失率降了约 19%。' },
+          { short: '哥大', full: '我妈妈在哥伦比亚大学读的数据科学，之前还做过量化研究。' },
           { short: '这是吴骋的狗', full: '我是吴骋的狗，这个网站是她自己搭的。' },
-          { short: '2学位 6项目', full: '2 个学位，6 个上线项目。' }
+          { short: '2学位 6项目', full: '我妈妈读了 2 个学位，上线过 6 个项目。' }
         ]
       },
       gift: {
-        weight: 30,
+        weight: 20,
         dogImg: 'dog-idle.png',
         icon: 'tag-gift.png',
         entries: [
-          { short: 'FX', lead: '做过一个外汇趋势交易策略。', linkText: '看看 →', href: '/zh/projects/#card-project_fx' },
+          { short: 'FX', lead: '我妈妈做过一个外汇趋势交易策略。', linkText: '看看 →', href: '/zh/projects/#card-project_fx' },
           { short: 'RAG', lead: '对 MultiDocRAG 感兴趣？', linkText: '了解一下 →', href: '/zh/projects/#card-project_multidoc' },
-          { short: 'IRIS', lead: '做过一个虹膜识别系统。', linkText: '看看怎么做的 →', href: '/zh/projects/#card-project_iris' }
+          { short: 'IRIS', lead: '我妈妈做过一个虹膜识别系统。', linkText: '看看怎么做的 →', href: '/zh/projects/#card-project_iris' }
         ]
       },
       can: {
-        weight: 15,
+        weight: 12,
         dogImg: 'dog-sad.png',
         icon: 'tag-can.png',
         entries: [
@@ -160,6 +196,15 @@
     }
   };
 
+  // The "think" outcome shares the same thought-bubble pool used on
+  // every other page: no digging at all, just a bubble above his head.
+  ['en', 'zh'].forEach(function (lang) {
+    CW_DIG_ITEMS[lang].think = {
+      weight: 30,
+      entries: CW_THOUGHTS[lang].map(function (text) { return { full: text }; })
+    };
+  });
+
   function weightedPick(pools) {
     var keys = Object.keys(pools);
     var total = keys.reduce(function (sum, k) { return sum + pools[k].weight; }, 0);
@@ -171,19 +216,26 @@
     return keys[keys.length - 1];
   }
 
+  // How long the dog waits with no click before retreating to the
+  // small peek-at-the-edge form.
+  var IDLE_MS = 30000;
+
   function setupDogDig() {
+    var corner = document.getElementById('cw-corner-dog');
     var dogBtn = document.getElementById('cw-dog-dig');
     var dogImg = document.getElementById('cw-dog-dig-img');
     var hint = document.getElementById('cw-dig-hint');
     var item = document.getElementById('cw-dig-item');
     var itemImg = document.getElementById('cw-dig-item-img');
+    var bubble = document.getElementById('cw-think-bubble');
+    var bubbleText = document.getElementById('cw-think-bubble-text');
     var zoom = document.getElementById('cw-dig-zoom');
     var zoomBackdrop = document.getElementById('cw-dig-zoom-backdrop');
     var zoomItemWrap = document.getElementById('cw-dig-zoom-item-wrap');
     var zoomImg = document.getElementById('cw-dig-zoom-img');
     var zoomItemText = document.getElementById('cw-dig-zoom-item-text');
     var zoomText = document.getElementById('cw-dig-zoom-text');
-    if (!dogBtn || !dogImg || !hint || !item || !itemImg || !zoom || !zoomBackdrop || !zoomItemWrap || !zoomImg || !zoomItemText || !zoomText) return;
+    if (!corner || !dogBtn || !dogImg || !hint || !item || !itemImg || !bubble || !bubbleText || !zoom || !zoomBackdrop || !zoomItemWrap || !zoomImg || !zoomItemText || !zoomText) return;
 
     var lang = document.documentElement.lang === 'zh' ? 'zh' : 'en';
     var pools = CW_DIG_ITEMS[lang];
@@ -193,6 +245,37 @@
     var currentEntry = null;
     var currentIcon = null;
     var revertTimer = null;
+    var idleTimer = null;
+
+    // The "tap to see what he found" hint only needs to be seen once
+    // per visitor — after that it's just noise. Remembered across
+    // visits when localStorage is available; otherwise it still won't
+    // repeat within this page load.
+    var HINT_SEEN_KEY = 'cw-dig-hint-seen';
+    var hintSeen = false;
+    try {
+      hintSeen = window.localStorage.getItem(HINT_SEEN_KEY) === '1';
+    } catch (e) {}
+
+    // 30s with no click on the full-size dog and he retreats to the
+    // small peek form. Paused while he's mid-dig/mid-think or the
+    // zoom card is open, and re-armed every time he settles back down.
+    function armIdleTimer() {
+      if (idleTimer) clearTimeout(idleTimer);
+      idleTimer = setTimeout(function () {
+        idleTimer = null;
+        if (!busy && !zoom.classList.contains('is-open')) {
+          corner.classList.add('is-peek');
+        }
+      }, IDLE_MS);
+    }
+
+    function clearIdleTimer() {
+      if (idleTimer) {
+        clearTimeout(idleTimer);
+        idleTimer = null;
+      }
+    }
 
     // While the zoom card is open, the landed item's auto-revert is
     // paused (so it can't disappear out from under someone reading);
@@ -203,6 +286,7 @@
         revertTimer = null;
         revert();
         busy = false;
+        armIdleTimer();
       }, delay);
     }
 
@@ -258,21 +342,58 @@
       hint.classList.remove('is-visible');
       void item.offsetWidth; // restart the land animation even on repeat clicks
       item.classList.add('is-visible');
-      hint.classList.add('is-visible');
+
+      if (!hintSeen) {
+        hint.classList.add('is-visible');
+        hintSeen = true;
+        try {
+          window.localStorage.setItem(HINT_SEEN_KEY, '1');
+        } catch (e) {}
+      }
+    }
+
+    function showThought(text) {
+      currentKind = 'think';
+      currentEntry = null;
+      bubbleText.textContent = text;
+      bubble.classList.remove('is-visible');
+      dogBtn.classList.remove('is-thinking');
+      void bubble.offsetWidth; // restart the pop animation even on repeat clicks
+      bubble.classList.add('is-visible');
+      dogBtn.classList.add('is-thinking');
     }
 
     function revert() {
       item.classList.remove('is-visible');
       hint.classList.remove('is-visible');
+      bubble.classList.remove('is-visible');
+      dogBtn.classList.remove('is-thinking');
       closeZoom();
       dogImg.src = base + 'dog-idle.png';
     }
 
     dogBtn.addEventListener('click', function () {
       if (busy) return;
+
+      // Peeking: this click just pops him back out to full size. It
+      // doesn't dig or think by itself — the next click does that.
+      if (corner.classList.contains('is-peek')) {
+        corner.classList.remove('is-peek');
+        armIdleTimer();
+        return;
+      }
+
       busy = true;
+      clearIdleTimer();
 
       var kind = weightedPick(pools);
+
+      if (kind === 'think') {
+        var thought = pools.think.entries[Math.floor(Math.random() * pools.think.entries.length)];
+        showThought(thought.full);
+        scheduleRevert(4200);
+        return;
+      }
 
       if (reduceMotion) {
         showItem(kind);
@@ -296,10 +417,45 @@
 
       scheduleRevert(5000);
     });
+
+    armIdleTimer();
+  }
+
+  // Every page besides home carries only the small peeking form —
+  // bored by default, excited on hover (pure CSS) — and a click
+  // always pops a short thought bubble above his head. Never digs,
+  // never expands to full size.
+  function setupDogPeek() {
+    var peekBtn = document.getElementById('cw-dog-peek');
+    var bubble = document.getElementById('cw-think-bubble');
+    var bubbleText = document.getElementById('cw-think-bubble-text');
+    if (!peekBtn || !bubble || !bubbleText) return;
+
+    var lang = document.documentElement.lang === 'zh' ? 'zh' : 'en';
+    var thoughts = CW_THOUGHTS[lang];
+    var hideTimer = null;
+
+    peekBtn.addEventListener('click', function () {
+      var text = thoughts[Math.floor(Math.random() * thoughts.length)];
+      bubbleText.textContent = text;
+      bubble.classList.remove('is-visible');
+      peekBtn.classList.remove('is-thinking');
+      void bubble.offsetWidth; // restart the pop animation even on repeat clicks
+      bubble.classList.add('is-visible');
+      peekBtn.classList.add('is-thinking');
+
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(function () {
+        hideTimer = null;
+        bubble.classList.remove('is-visible');
+        peekBtn.classList.remove('is-thinking');
+      }, 4200);
+    });
   }
 
   document.addEventListener('DOMContentLoaded', function () {
     setupDogDig();
+    setupDogPeek();
 
     var targets = [];
 
