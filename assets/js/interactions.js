@@ -323,9 +323,12 @@
     };
   }
 
-  // How long the dog waits with no click before retreating to the
-  // small peek-at-the-edge form.
+  // Two different waits, not one: with nothing on screen the dog
+  // should retreat quickly (IDLE_MS); once he's actually shown
+  // something — a dug-up item or a thought bubble — that needs real
+  // reading time before it clears and he retreats (RESULT_MS).
   var IDLE_MS = 5000;
+  var RESULT_MS = 12000;
 
   function setupDogDig() {
     var corner = document.getElementById('cw-corner-dog');
@@ -369,7 +372,7 @@
     // peek form — clearing away whatever's currently shown as part of
     // that. Paused while he's mid-dig or the zoom card is open, and
     // re-armed every time he settles back down.
-    function armIdleTimer() {
+    function armIdleTimer(delay) {
       if (idleTimer) clearTimeout(idleTimer);
       idleTimer = setTimeout(function () {
         idleTimer = null;
@@ -377,7 +380,14 @@
           clearResults();
           corner.classList.add('is-peek');
         }
-      }, IDLE_MS);
+      }, delay || IDLE_MS);
+    }
+
+    // Whichever wait currently applies: short if nothing's on screen,
+    // long if an item or thought bubble is actively shown.
+    function currentIdleDelay() {
+      var showingSomething = item.classList.contains('is-visible') || bubble.classList.contains('is-visible');
+      return showingSomething ? RESULT_MS : IDLE_MS;
     }
 
     function clearIdleTimer() {
@@ -412,7 +422,7 @@
       // The idle timer may have fired (and no-opped) while the zoom
       // card blocked it — pick it back up now that it's closed.
       if (wasOpen && !idleTimer && !corner.classList.contains('is-peek')) {
-        armIdleTimer();
+        armIdleTimer(currentIdleDelay());
       }
     }
 
@@ -448,6 +458,10 @@
           window.localStorage.setItem(HINT_SEEN_KEY, '1');
         } catch (e) {}
       }
+
+      // Something's actually on screen now — give it real reading time
+      // before the idle retreat clears it away again.
+      armIdleTimer(RESULT_MS);
     }
 
     function showThought() {
@@ -474,6 +488,10 @@
       tiltTimer = setTimeout(function () {
         dogBtn.classList.remove('is-thinking');
       }, 1300);
+
+      // Same deal as showItem(): give the bubble real reading time
+      // before the idle retreat clears it.
+      armIdleTimer(RESULT_MS);
     }
 
     // Clears whatever's currently on display (dug-up item or thought
@@ -505,7 +523,10 @@
         return;
       }
 
-      armIdleTimer();
+      // Stop any pending retreat while we handle this click — showThought()
+      // or showItem() will arm the right (longer) wait once something is
+      // actually back on screen.
+      clearIdleTimer();
 
       var kind = weightedPick(pools);
 
@@ -547,7 +568,9 @@
   // always pops a short thought bubble above his head, drawn from
   // whichever pool fits that page (falls back to the general one).
   // Never digs, never expands to full size. Once shown, the bubble
-  // just stays up; a repeat click swaps in a new line in place
+  // stays up long enough to actually read (RESULT_MS), then clears
+  // itself away on its own — same as the home page's idle retreat —
+  // and a repeat click before then just swaps in a new line in place
   // rather than hiding and popping back in.
   function setupDogPeek() {
     var peekBtn = document.getElementById('cw-dog-peek');
@@ -560,6 +583,16 @@
     var pool = CW_THOUGHTS[lang][page] || CW_THOUGHTS[lang].general;
     var pickThought = makeShuffleBag(pool);
     var tiltTimer = null;
+    var clearTimer = null;
+
+    function armClearTimer() {
+      if (clearTimer) clearTimeout(clearTimer);
+      clearTimer = setTimeout(function () {
+        clearTimer = null;
+        bubble.classList.remove('is-visible');
+        peekBtn.classList.remove('is-thinking');
+      }, RESULT_MS);
+    }
 
     peekBtn.addEventListener('click', function () {
       var wasVisible = bubble.classList.contains('is-visible');
@@ -577,6 +610,8 @@
       tiltTimer = setTimeout(function () {
         peekBtn.classList.remove('is-thinking');
       }, 1300);
+
+      armClearTimer();
     });
   }
 
