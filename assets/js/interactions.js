@@ -218,7 +218,7 @@
 
   // How long the dog waits with no click before retreating to the
   // small peek-at-the-edge form.
-  var IDLE_MS = 30000;
+  var IDLE_MS = 10000;
 
   function setupDogDig() {
     var corner = document.getElementById('cw-corner-dog');
