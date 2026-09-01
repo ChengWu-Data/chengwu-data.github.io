@@ -37,11 +37,11 @@ lang: "zh"
 <div class="cw-result-count" data-template="显示 {n} / 共 {total} 个项目" aria-live="polite"></div>
 
 <!-- Project 0: Exponential Smoothing FX Trend Strategy -->
-<div class="project-card" data-tags="quant" data-details-id="project_fx">
+<div class="project-card project-card--featured" id="card-project_fx" data-tags="quant" data-details-id="project_fx">
   <img src="{{ site.baseurl }}/images/project_fx.jpg" alt="FX Project Image" class="project-image">
   
   <div class="project-content">
-    <div class="project-kicker">01 · 量化 / 金融</div>
+    <div class="project-kicker">★ 精选 · 01 · 量化 / 金融</div>
     <div class="project-title">基于指数平滑的外汇趋势交易策略（USD/CAD）</div>
     <p class="project-description">
       一个<strong>完全可复现的量化研究项目</strong>，围绕 USD/CAD 汇率趋势持续性，构建基于双指数平滑（Dual ES）的完整预测与交易流水线：
@@ -128,7 +128,7 @@ lang: "zh"
 </div>
 
 <!-- Project: Iris Recognition System -->
-<div class="project-card" data-tags="ml" data-details-id="project_iris">
+<div class="project-card" id="card-project_iris" data-tags="ml" data-details-id="project_iris">
   <img src="{{ site.baseurl }}/images/iris_recognition_cover.jpg" alt="虹膜识别系统项目封面图" class="project-image">
   
   <div class="project-content">
@@ -228,7 +228,7 @@ lang: "zh"
 </div>
 
 <!-- Project 5: MultiDocRAG -->
-<div class="project-card" data-tags="ml" data-details-id="project_multidoc">
+<div class="project-card" id="card-project_multidoc" data-tags="ml" data-details-id="project_multidoc">
   <img src="{{ site.baseurl }}/images/MultiDocRAG_cover.jpg" alt="MultiDocRAG Cover Image" class="project-image">
   
   <div class="project-content">

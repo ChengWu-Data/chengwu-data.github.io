@@ -7,10 +7,10 @@ author_profile: true
 <div class="cw-hero">
   <span class="cw-eyebrow">ABOUT</span>
   <h1>Data &amp; business analyst, <em>Columbia MS in Data Science</em></h1>
-  <p class="cw-sub">I’m Cheng Wu, and I care about how analysis translates into real-world decisions — with a background in econometrics and quantitative economics from UIUC, now working at the intersection of quantitative rigor and practical outcomes.</p>
+  <p class="cw-sub">I’m Cheng Wu, finishing an M.S. in Data Science at Columbia, with an econometrics and quantitative economics background from UIUC. Most of what I do comes down to the same move: take a messy, high-stakes decision and find the smallest model that actually changes it.</p>
   <div class="cw-stats">
     <div class="cw-stat"><b>4</b><span>PROFESSIONAL ROLES</span></div>
-    <div class="cw-stat"><b>3</b><span>RESEARCH ROLES</span></div>
+    <div class="cw-stat"><b>6</b><span>RESEARCH &amp; APPLIED PROJECTS</span></div>
     <div class="cw-stat"><b>2</b><span>DEGREES</span></div>
   </div>
 </div>
@@ -18,25 +18,28 @@ author_profile: true
 <div class="section-container">
   <h2 class="section-header">About Me</h2>
   <p>
-    I’ve applied analytics across <span class="about-text">Markets, Finance, and Social Impact</span>. My work has helped managers improve pricing and demand planning, speed up financial reporting, and identify inequities in education systems. What motivates me most are questions without ready-made answers — problems where careful analysis can bring clarity and drive meaningful change.
+    I’ve made that move across <span class="about-text">compliance risk, marketing analytics, institutional finance, and education/public-health research</span> — deciding which case to flag, which price to test, which family needs help first. Lately I’ve been pointing the same instinct at applied ML: retrieval systems, trading signals, computer vision. Partly out of curiosity, partly to see if the same discipline holds up outside econometrics.
   </p>
   <p>
-    I focus on three things in my work: <span class="about-text">clarity in communication, rigor in method, and measurable impact in results.</span> 
+    <span class="about-text">Clarity in communication, rigor in method, measurable impact in results</span> — those three things show up in pretty much everything below.
   </p>
   <p><span class="about-text">Focus areas</span></p>
   <div class="tool-chips">
-    <span class="tool-chip">Market Analytics</span>
-    <span class="tool-chip">Financial Analysis</span>
-    <span class="tool-chip">Process Improvement</span>
-    <span class="tool-chip">Education Equity</span>
+    <span class="tool-chip">Compliance &amp; Risk Analytics</span>
+    <span class="tool-chip">Marketing &amp; Pricing Analytics</span>
+    <span class="tool-chip">Institutional Finance</span>
+    <span class="tool-chip">Causal Inference &amp; Policy</span>
+    <span class="tool-chip">Applied ML</span>
   </div>
   <p style="margin-top:1.1rem;">📍 <span class="about-text">Tools</span></p>
   <div class="tool-chips">
     <span class="tool-chip">SQL</span>
     <span class="tool-chip">Python</span>
+    <span class="tool-chip">R / Stata</span>
+    <span class="tool-chip">PySpark / dbt</span>
+    <span class="tool-chip">LangChain / FAISS</span>
     <span class="tool-chip">Power BI</span>
     <span class="tool-chip">Tableau</span>
-    <span class="tool-chip">Plotly</span>
     <span class="tool-chip">Statistics / Econometrics</span>
   </div>
 </div>
@@ -64,59 +67,53 @@ author_profile: true
   <h2 class="section-header"><i class="fas fa-briefcase"></i> Professional Experience</h2>
 
 <div class="entry">
-  <div class="entry-title">Data Analyst — Supply Chain Compliance & Operations</div>
-  <div class="entry-details">Tarte Cosmetics | October 2025 – Present | New York, NY</div>
+  <div class="entry-title">Compliance Risk Analyst Intern</div>
+  <div class="entry-details">Tarte Cosmetics | October 2025 – May 2026 | New York, NY</div>
   <div class="entry-content">
     <p>
-      At <span class="about-text">Tarte</span>, I work across compliance and supply-chain analytics to streamline import/export auditing and improve traceability for global product launches. My work focuses on <span class="about-text">HTS classification, NAV data integration, and 7501 entry audits</span>, ensuring product metadata aligns with customs regulations and internal SKU catalogs.
+      Built a <span class="about-text">Python/SQL risk-prioritization workflow</span> across 7 internal systems, replacing manual case-by-case review with a ranked queue calibrated against historical reviewer decisions (<span class="about-text">Precision@K, Recall, Lift</span>) — cut low-yield review volume <span class="about-text">~25%</span> without missing material exceptions.
     </p>
     <p>
-      I build workflows that reconcile TOR lists, COO records, and duty valuations against shipment entries, reducing manual review time and improving consistency across regulatory filings. I'm also designing an automated pipeline that flags discrepancies in <span class="about-text">valuation, commodity codes, and shipment attributes</span> before clearance, helping minimize compliance risks and reporting delays.
+      Separately, traced <span class="about-text">12 recurring workflow breakdowns</span> behind ~40% of processing delays back to their root cause, then built <span class="about-text">Power BI monitoring views</span> that brought repeat issues down <span class="about-text">~22%</span>.
     </p>
   </div>
 </div>
 
   <div class="entry">
-  <div class="entry-title">Data Scientist Intern — Marketing Analytics</div>
-  <div class="entry-details">Donglai Natural BioTech Co. Ltd. | June 2024 – September 2024 | Remote</div>
+  <div class="entry-title">Data Scientist Intern</div>
+  <div class="entry-details">Donglai Natural BioTech Co. Ltd. | June 2024 – September 2024 | Champaign, IL (Remote)</div>
   <div class="entry-content">
     <p>
-      At <span class="about-text">Donglai</span>, I joined the <span class="about-text">marketing strategies team</span> at a time when the company was struggling with <span class="about-text">forecasting demand</span> across dozens of product lines. My role started with <span class="about-text">customer segmentation</span>: I applied clustering models like <span class="about-text">K-Means</span> and <span class="about-text">DBSCAN</span> to uncover groups of buyers with distinct purchasing patterns. These clusters were directly connected to <span class="about-text">SQL-based ETL pipelines</span> for inventory planning, which meant my work could be tested quickly against real stock levels.
+      Segmented <span class="about-text">10K+ customers</span> by purchase behavior (RFM + propensity modeling, <span class="about-text">0.78 ROC-AUC</span>) and built a weekly marketing-mix model across 5 channels — used it to reallocate a fixed budget for a <span class="about-text">~10% lift</span> in modeled incremental contribution.
     </p>
     <p>
-      One highlight of the summer was building <span class="about-text">demand forecasting</span> and <span class="about-text">price elasticity models</span> that managers used to run “what if” scenarios. For example, we simulated price adjustments on seasonal products, which translated into a measurable <span class="about-text">12% increase in order completion rates</span>. I also spent weeks refining workflows with <span class="about-text">Spark</span> and <span class="about-text">Dask</span> to handle millions of transaction records; shaving <span class="about-text">40% off reporting latency</span> meant the team could react faster to market shifts. To make all of this accessible, I built <span class="about-text">interactive dashboards</span> in <span class="about-text">Plotly</span>, <span class="about-text">Dash</span>, and <span class="about-text">Power BI</span>. Watching non-technical managers click through predictive insights and immediately adjust their plans was one of the most rewarding moments of my internship.
+      Also ran <span class="about-text">3 price/promotion A/B tests</span> (power/MDE-sized, guardrail metrics) that landed a mid-single-digit conversion lift, and automated invoice review with a <span class="about-text">LangChain extraction pipeline</span>, cutting daily manual review time <span class="about-text">~30%</span>.
     </p>
   </div>
 </div>
 
  <div class="entry">
-  <div class="entry-title">Data Analyst — Institutional Finance</div>
+  <div class="entry-title">Data Analyst Intern — Institutional Finance</div>
   <div class="entry-details">ZheShang Securities Co. Ltd. | May 2023 – September 2023 | Hangzhou, China</div>
   <div class="entry-content">
     <p>
-      At <span class="about-text">ZheShang Securities</span>, I rotated into the <span class="about-text">institutional finance department</span>, where private equity and M&A deals were evaluated at a rapid pace. I was tasked with supporting the screening of <span class="about-text">over 20 transactions</span>, which meant diving into financial statements, market data, and regulatory filings. Using <span class="about-text">multi-factor regression</span> and <span class="about-text">scenario analysis</span>, I helped improve the accuracy of our investment evaluations by about <span class="about-text">25%</span> — a difference that directly influenced whether deals moved forward.
+      Standardized <span class="about-text">SQL reconciliation logic</span> across 15+ fields for 50K+ financial records — manual effort down <span class="about-text">~70%</span> — and built <span class="about-text">alpha-signal and multi-factor risk models</span> across 20+ private-equity deals, backtesting with web-scraped, NLP-derived sentiment data.
     </p>
     <p>
-      A big challenge was <span class="about-text">data fragmentation</span>: portfolio data lived in one system, accounting in another, and managers often spent hours reconciling them. I worked on integrating these into a <span class="about-text">unified SQL/VBA pipeline</span>, which cut reconciliation time by nearly a third and made reporting more reliable. Beyond the technical work, I designed <span class="about-text">scalable portfolio analytics frameworks</span> that benchmarked performance against market indices, which gave our risk team a more consistent way to track exposure. The <span class="about-text">BI dashboards</span> I built for real-time portfolio and risk metrics became a talking point in weekly meetings, giving senior managers timely visibility to adjust allocation strategies and communicate with stakeholders.
+      Supported <span class="about-text">10+ quarterly investment reviews</span> by turning scenario and sensitivity results into "what changed → why → action" recommendations for investment stakeholders.
     </p>
   </div>
 </div>
 
 <div class="entry">
-  <div class="entry-title">Data Analyst & Lead Coordinator — Inclusive Growth</div>
+  <div class="entry-title">Lead Data Scientist — Inclusive Growth</div>
   <div class="entry-details">Innovative Bloom Foundation | May 2019 – June 2024 | Shanghai, China</div>
   <div class="entry-content">
     <p>
-      My work with the <span class="about-text">Innovative Bloom Foundation</span> spanned five years, starting when I was still in high school. I first joined as a volunteer <span class="about-text">math teacher</span> for left-behind children in rural communities, but as I observed the deeper structural challenges these families faced, I began to take on broader responsibilities. Over time, I grew from front-line teaching to <span class="about-text">coordinating programs</span> and ultimately leading <span class="about-text">data initiatives</span> that shaped how the foundation measured and scaled its work.
+      Five years, starting as a volunteer math teacher for left-behind children in rural China and ending up running the foundation's data work. Built a <span class="about-text">6-year longitudinal SQL/R database</span> (1,200+ participants) and used <span class="about-text">PSM + DiD with pre-trend testing</span> to see which interventions actually worked — that analysis contributed to a <span class="about-text">~19% drop</span> in high-risk attrition.
     </p>
     <p>
-      My contribution became twofold: <span class="about-text">data analysis</span> and <span class="about-text">program coordination</span>. I started by structuring survey data — often messy, handwritten responses — into <span class="about-text">SQL datasets</span> that could be analyzed systematically. This opened the door to building <span class="about-text">dashboards</span> that tracked education access, food security, and health indicators across different villages.
-    </p>
-    <p>
-      One initiative I’m proud of was helping launch an <span class="about-text">e-commerce platform</span> for local artisans. I set up real-time monitoring to track sales and logistics, and within a year the platform was supporting <span class="about-text">15 families</span> and increasing artisan household income by about <span class="about-text">30%</span>. These numbers weren’t abstract; they meant that families could afford school fees or healthcare they previously struggled with.
-    </p>
-    <p>
-      I also applied <span class="about-text">regression analysis</span> to benchmark program outcomes, which guided funding decisions for future projects. Over time, I learned how to <span class="about-text">translate complex outcomes into metrics</span> that stakeholders could act on, ensuring that data wasn’t just collected, but used to design better interventions.
+      Also helped launch an <span class="about-text">e-commerce channel</span> for local artisans that grew household income <span class="about-text">~30%</span> for the 15 families on it.
     </p>
   </div>
 </div>
@@ -126,52 +123,69 @@ author_profile: true
 <div class="section-container">
   <h2 class="section-header"><i class="fas fa-microscope"></i> Research Experience</h2>
 
+  <div class="research-subhead">UIUC</div>
+
   <div class="entry">
   <div class="entry-title">Researcher — Educational Inequality & Intergenerational Poverty</div>
   <div class="entry-details">UIUC | January 2023 – February 2025</div>
   <div class="entry-content">
     <p>
-     My academic interest in <span class="about-text">inequality research</span> grew out of my five years with the <span class="about-text">Innovative Bloom Foundation</span>, where I worked directly with <span class="about-text">left-behind children</span> in rural China. Seeing how <span class="about-text">lack of funding and resources</span> limited opportunities made me want to study these issues with greater rigor.
+      Grew out of my years at Innovative Bloom Foundation — I wanted to know if the resource gaps I'd seen firsthand actually showed up in the data. Used <span class="about-text">regression and propensity score matching (PSM)</span> with socioeconomic controls on national education and mobility datasets to isolate how <span class="about-text">funding disparities and teacher-student ratios</span> relate to intergenerational mobility.
     </p>
     <p>
-      At Illinois, I focused on quantifying how <span class="about-text">differences in school resources</span> shape <span class="about-text">intergenerational mobility</span>. I applied <span class="about-text">regression analysis</span> and <span class="about-text">propensity score matching (PSM)</span> with socio-economic controls, and engineered <span class="about-text">inequality metrics</span> such as <span class="about-text">funding disparities</span> and <span class="about-text">teacher-student ratios</span> by integrating <span class="about-text">national education and mobility datasets</span>. 
-    </p>
-    <p>
-      To make these insights accessible, I built <span class="about-text">dashboards</span> and <span class="about-text">automated reports</span> that highlighted <span class="about-text">geographic gaps</span>, providing evidence that <span class="about-text">policymakers</span> could use when designing support programs.
+      Wrote it up for a non-academic, policy-facing audience — dashboards and memos aimed at people who needed the geographic gaps, not the regression tables.
     </p>
   </div>
 </div>
 
-  
  <div class="entry">
-  <div class="entry-title">Research Assistant — Education Policy</div>
-  <div class="entry-details">UIUC | January 2024 – July 2024 </div>
+  <div class="entry-title">Research Assistant, Prof. Elizabeth T. Powers</div>
+  <div class="entry-details">UIUC | January 2024 – April 2025</div>
   <div class="entry-content">
     <p>
-      As part of Professor Powers’ research group on <span class="about-text">childcare policy</span>, I contributed to a project evaluating how <span class="about-text">childcare grants</span> affect families’ economic outcomes. My role was to build the <span class="about-text">technical backbone</span>: integrating <span class="about-text">national surveys and administrative data in R</span>, ensuring accuracy through <span class="about-text">standardization and auto-validation</span>, and preparing reliable datasets.
+      Used <span class="about-text">Difference-in-Differences and Instrumental Variables</span> to estimate how childcare grants affect employment, household income, and child welfare — the harder part was stress-testing the identification assumptions across specifications, not running the regression.
     </p>
     <p>
-      Methodologically, I applied <span class="about-text">Difference-in-Differences (DiD)</span> and <span class="about-text">Instrumental Variables (IV)</span> to isolate the causal effects of childcare subsidies on <span class="about-text">employment</span>, <span class="about-text">income distribution</span>, and <span class="about-text">child welfare</span>. I also developed <span class="about-text">feature-engineered regression models</span> and created <span class="about-text">interactive R Shiny dashboards</span> that simulated policy impacts in real time, enabling both <span class="about-text">policymakers</span> and the <span class="about-text">public</span> to see how grant structures influenced family well-being.
+      Built an <span class="about-text">R Shiny scenario tool</span> so the research group could show policymakers how outcomes shifted under different grant structures, and synthesized the findings into research briefs.
     </p>
   </div>
 </div>
 
-  
 <div class="entry">
   <div class="entry-title">Researcher — Critical Medicines Access in Public Health Emergencies</div>
   <div class="entry-details">UIUC | April 2023 – December 2023</div>
   <div class="entry-content">
     <p>
-      This project was deeply personal: my <span class="about-text">grandmother passed away during COVID-19</span> after being unable to access medicine or a hospital bed. That loss motivated me to study why <span class="about-text">health systems fail during crises</span> and how <span class="about-text">data-driven methods</span> could help prevent similar tragedies. 
+      My grandmother passed away during COVID-19 after being unable to access medicine or a hospital bed. That's what pushed me to study why health systems fail during crises, and whether data could help anticipate it next time.
     </p>
     <p>
-      I evaluated the impact of <span class="about-text">preventive health policies</span> on <span class="about-text">disease incidence</span>, <span class="about-text">mortality</span>, and <span class="about-text">healthcare costs</span>, applying <span class="about-text">quasi-experimental design</span> to isolate effects across demographics. To anticipate shortages, I engineered <span class="about-text">policy exposure scores</span> and <span class="about-text">health metrics</span> from <span class="about-text">WHO</span> and <span class="about-text">CDC datasets</span>, and trained <span class="about-text">predictive models (XGBoost, LSTM, clustering)</span> to identify high-risk populations and forecast long-term outcomes.
-    </p>
-    <p>
-      The results were delivered as <span class="about-text">decision-oriented dashboards and reports</span>, providing <span class="about-text">resource allocation insights</span> to improve resilience in future emergencies.
+      Applied a <span class="about-text">quasi-experimental design</span> to isolate the effect of preventive health policies on disease incidence, mortality, and cost across demographics, using WHO/CDC data and predictive models (<span class="about-text">XGBoost, LSTM, clustering</span>) to flag high-risk populations before shortages hit. Delivered as resource-allocation dashboards, not just a paper.
     </p>
   </div>
 </div>
+
+  <div class="research-subhead">Columbia — Applied Research &amp; Projects</div>
+
+  <div class="project-link-grid">
+    <a href="{{ site.baseurl }}/projects/#card-project_fx" class="project-link-card">
+      <span class="project-link-kicker">Quantitative Research · Dec 2025 – Mar 2026</span>
+      <span class="project-link-title">USD/CAD FX Trend Strategy</span>
+      <span class="project-link-desc">Dual exponential-smoothing trend strategy. The interesting result wasn't the signal — it was that "safer" exits actually hurt performance.</span>
+      <span class="project-link-cta">Full write-up on Projects <i class="fa-solid fa-arrow-right"></i></span>
+    </a>
+    <a href="{{ site.baseurl }}/projects/#card-project_multidoc" class="project-link-card">
+      <span class="project-link-kicker">Applied AI Project · Aug 2025 – Jan 2026</span>
+      <span class="project-link-title">MultiDocRAG</span>
+      <span class="project-link-desc">A RAG system for reasoning across PDFs, with a 27-case eval suite that took grounded-answer accuracy from 62% to 87%.</span>
+      <span class="project-link-cta">Live demo + report <i class="fa-solid fa-arrow-right"></i></span>
+    </a>
+    <a href="{{ site.baseurl }}/projects/#card-project_iris" class="project-link-card">
+      <span class="project-link-kicker">Computer Vision · Columbia coursework</span>
+      <span class="project-link-title">Iris Recognition System</span>
+      <span class="project-link-desc">Reproduced a classic biometric ID pipeline end to end, pushing cosine-distance CRR from 73% to 86% after dimensionality reduction.</span>
+      <span class="project-link-cta">Details on Projects <i class="fa-solid fa-arrow-right"></i></span>
+    </a>
+  </div>
 
   </div>
 

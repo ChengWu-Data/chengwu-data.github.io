@@ -36,11 +36,11 @@ author_profile: true
 <div class="cw-result-count" data-template="Showing {n} of {total} projects" aria-live="polite"></div>
 
 <!-- Project 0: Exponential Smoothing FX Trend Strategy -->
-<div class="project-card" data-tags="quant" data-details-id="project_fx">
+<div class="project-card project-card--featured" id="card-project_fx" data-tags="quant" data-details-id="project_fx">
   <img src="{{ site.baseurl }}/images/project_fx.jpg" alt="FX Project Image" class="project-image">
   
   <div class="project-content">
-    <div class="project-kicker">01 · QUANT &amp; FINANCE</div>
+    <div class="project-kicker">★ Featured · 01 · QUANT &amp; FINANCE</div>
     <div class="project-title">FX Trend Strategy using Exponential Smoothing</div>
     <p class="project-description">
       A fully reproducible quantitative research project analyzing USD/CAD trend persistence using dual exponential smoothing filters. 
@@ -122,7 +122,7 @@ author_profile: true
 </div>
 
 <!-- Project 5: MultiDocRAG -->
-<div class="project-card" data-tags="ml" data-details-id="project_multidoc">
+<div class="project-card" id="card-project_multidoc" data-tags="ml" data-details-id="project_multidoc">
   <img src="{{ site.baseurl }}/images/MultiDocRAG_cover.jpg" alt="MultiDocRAG Cover Image" class="project-image">
   
   <div class="project-content">
@@ -226,7 +226,7 @@ author_profile: true
 </div>
 
 <!-- Project: Iris Recognition System -->
-<div class="project-card" data-tags="ml" data-details-id="project_iris">
+<div class="project-card" id="card-project_iris" data-tags="ml" data-details-id="project_iris">
   <img src="{{ site.baseurl }}/images/iris_recognition_cover.jpg" alt="Iris Recognition System Cover Image" class="project-image">
   
   <div class="project-content">
