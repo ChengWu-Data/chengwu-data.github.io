@@ -5,7 +5,7 @@
     {% include head/custom.html %}
   </head>
 
-  <body>
+  <body data-cw-page="{% if page.url contains 'projects' %}projects{% elsif page.url contains 'cv' %}cv{% elsif page.url contains 'about' %}about{% else %}general{% endif %}">
 
     {% include browser-upgrade.html %}
     
