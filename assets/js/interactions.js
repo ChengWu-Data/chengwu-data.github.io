@@ -82,43 +82,117 @@
   // lands with a bounce and carries a short label on its own blank
   // plaque (tap it to zoom in on the full text, and for project finds,
   // a real link) — or just stands and thinks, popping a short thought
-  // bubble above its head with no digging at all. After 30s with no
-  // click, the dog retreats to a small sliver peeking in from the
-  // screen's bottom-right edge (bored expression, excited on hover);
-  // clicking that just pops him back out to full size — a second
-  // click is what actually digs or thinks. Every other page carries
-  // only that small peeking form, always in "just think" mode. Pure
-  // decoration on top of pages that are already complete without JS
-  // or images. Each dig entry has a short label (what fits on the
-  // tiny plaque) and a full line (shown once zoomed in); each thought
-  // is just a single line, shown directly in the bubble.
+  // bubble above its head with no digging at all. With no click, the
+  // dog retreats to a small sliver peeking in from the screen's
+  // bottom-right edge (bored expression, excited on hover); clicking
+  // that just pops him back out to full size — a second click is what
+  // actually digs or thinks. Every other page carries only that small
+  // peeking form, always in "just think" mode, drawing from a pool of
+  // thoughts tailored to that page (About/home get the general
+  // dog-humor-and-site-jokes pool; CV and Projects get their own).
+  // Whatever's currently shown — dug-up item or thought bubble — just
+  // stays up; only a fresh click, or drifting idle long enough to
+  // retreat to the peek form, replaces it. Each dig entry has a short
+  // label (what fits on the tiny plaque) and a full line (shown once
+  // zoomed in); each thought is just a single line, shown directly in
+  // the bubble.
   var CW_THOUGHTS = {
-    en: [
-      "Psst — I live in the corner of every page now. Efficient, right?",
-      "I've read this whole site twice. Still no squirrels though.",
-      "Between us, I only know how to dig. Never how to bury it back.",
-      "I'm basically the site's QA team. Four paws on the ground.",
-      "Honestly I don't know what 'data science' means either. I just vibe.",
-      "This corner took some real effort to claim.",
-      "My mom's shipped 6 projects. I've shipped zero. We balance out.",
-      "She built this whole site herself — I just supervise from down here.",
-      "Two degrees, one dog. Pretty solid ratio if you ask me.",
-      "So... are you going to consider hiring her already?",
-      "Don't let the digging fool you — I've never once wrecked the furniture."
-    ],
-    zh: [
-      "嘘——现在每个页面的角落都有我。效率很高吧？",
-      "这个网站我看了两遍了，可惜一只松鼠都没有。",
-      "偷偷说，我只会挖，从来不知道埋回去。",
-      "我基本就是这个网站的质检员，四脚落地那种。",
-      "说实话我也不知道“数据科学”是啥，我就是负责可爱。",
-      "这个角落可是我费了老大劲儿才占下来的。",
-      "我妈妈上线了 6 个项目，我上线了 0 个。我们俩正好互补。",
-      "这个网站是她自己搭的，我就负责在旁边监督。",
-      "两个学位，一只狗，这个比例我觉得挺可以。",
-      "所以……你到底要不要考虑一下雇她呀？",
-      "别看我挖土挖得欢，家具是真没拆过。"
-    ]
+    en: {
+      general: [
+        "Psst — I live in the corner of every page now. Efficient, right?",
+        "I've read this whole site twice. Still no squirrels though.",
+        "Between us, I only know how to dig. Never how to bury it back.",
+        "I'm basically the site's QA team. Four paws on the ground.",
+        "Honestly I don't know what 'data science' means either. I just vibe.",
+        "This corner took some real effort to claim.",
+        "My mom's shipped 6 projects. I've shipped zero. We balance out.",
+        "She built this whole site herself — I just supervise from down here.",
+        "Two degrees, one dog. Pretty solid ratio if you ask me.",
+        "So... are you going to consider hiring her already?",
+        "Don't let the digging fool you — I've never once wrecked the furniture.",
+        "I get a bow tie, she gets a portfolio. Feels like a fair trade.",
+        "Every page, every scroll — yep, still here.",
+        "No squirrels here, just spreadsheets. Rough life.",
+        "Four years of school, zero years of obedience training. It shows.",
+        "I've been told I'm the best part of this site. I agree.",
+        "Nice — you found my little corner. Not everyone does.",
+        "I don't do résumés. I do vibes and the occasional dig.",
+        "This whole site runs on coffee and me. Mostly me.",
+        "I'd bark at the doorbell, but browsers don't have one."
+      ],
+      cv: [
+        "Psst — there's a download button up top. I'd click it if I had thumbs.",
+        "Two degrees are hiding somewhere on this page. Worth the scroll.",
+        "I proofread this whole résumé. Mostly by chewing on the corners.",
+        "She's held more job titles than I've had walks. Genuinely impressive.",
+        "There's a PDF version too, in case you want to take her with you.",
+        "I supervised the formatting. The bullet points were my idea.",
+        "Somewhere on this page is a very good reason to hire her.",
+        "Every line on here is real. I checked. Well, I sniffed.",
+        "This résumé is shorter than my list of favorite snacks. Barely.",
+        "If you're skimming, at least skim the download button."
+      ],
+      projects: [
+        "She built an FX trend-following strategy. It trades, I nap. Balance.",
+        "MultiDocRAG is her project for asking questions across a pile of documents at once.",
+        "She built an iris-recognition system once. My eyes are still just for staring at treats.",
+        "Six projects live on this page. I've personally supervised zero of them, closely.",
+        "Scroll down — there's a project in here about turning messy data into decisions.",
+        "She writes code so things like review time and attrition go down. I make them go up, mildly.",
+        "Every project on this page shipped. Unlike my last attempt at digging a hole to China.",
+        "If a project title confuses you, the card below it explains it in plain English.",
+        "She likes projects that touch real numbers, not just pretty charts. I like tennis balls.",
+        "Pick a project card, click into it — I promise it's more interesting than watching me dig."
+      ]
+    },
+    zh: {
+      general: [
+        "嘘——现在每个页面的角落都有我。效率很高吧？",
+        "这个网站我看了两遍了，可惜一只松鼠都没有。",
+        "偷偷说，我只会挖，从来不知道埋回去。",
+        "我基本就是这个网站的质检员，四脚落地那种。",
+        "说实话我也不知道“数据科学”是啥，我就是负责可爱。",
+        "这个角落可是我费了老大劲儿才占下来的。",
+        "我妈妈上线了 6 个项目，我上线了 0 个。我们俩正好互补。",
+        "这个网站是她自己搭的，我就负责在旁边监督。",
+        "两个学位，一只狗，这个比例我觉得挺可以。",
+        "所以……你到底要不要考虑一下雇她呀？",
+        "别看我挖土挖得欢，家具是真没拆过。",
+        "我有蝴蝶结，她有作品集，这买卖挺公平的。",
+        "每个页面、每次滚动——对，我还在。",
+        "这里没有松鼠，只有表格。狗生不易。",
+        "上了四年学，服从训练是零年，看得出来吧。",
+        "有人说我是这个网站最大的亮点，我同意。",
+        "能找到我这个小角落，算你有眼光。",
+        "我不写简历，我只负责卖萌和偶尔挖土。",
+        "这个网站靠咖啡和我撑着，主要是我。",
+        "我也想冲着门铃叫，可惜浏览器里没有门铃。"
+      ],
+      cv: [
+        "悄悄说一句，上面有个下载按钮，我要是有手指早点了。",
+        "两个学位就藏在这页里，值得往下翻一翻。",
+        "这份简历我校对过了，主要是啃着看的。",
+        "她做过的职位比我散过的步都多，真的挺厉害。",
+        "还有 PDF 版本，方便你把她——呃，这份简历带走。",
+        "排版是我监督的，项目符号是我的主意。",
+        "这页里藏着一个雇她的好理由，自己找找看。",
+        "上面写的都是真的，我确认过，用鼻子确认的。",
+        "这份简历比我爱吃的零食清单还短一点点。",
+        "要是只想扫一眼，至少扫一眼那个下载按钮。"
+      ],
+      projects: [
+        "她做过一个外汇趋势跟踪策略，策略负责交易，我负责睡觉，分工明确。",
+        "MultiDocRAG 是她的项目，一次性从一堆文档里问出答案。",
+        "她还做过虹膜识别系统，我的眼睛现在还是只会盯着零食看。",
+        "这页上有六个项目，我一个都没认真监督过。",
+        "往下翻翻，这里有个项目是把乱糟糟的数据变成能用的决定。",
+        "她写代码是为了让审核时间、流失率这些数字降下来，我负责让它们稍微升一点点。",
+        "这页上的项目全都上线了，不像我上次挖洞去中国的计划，半途而废。",
+        "要是哪个项目名字看不懂，下面的卡片里会用大白话讲清楚。",
+        "她喜欢做能碰到真实数字的项目，不只是好看的图表。我喜欢网球。",
+        "随便点一张项目卡片进去看看，肯定比看我挖土有意思。"
+      ]
+    }
   };
 
   var CW_DIG_ITEMS = {
@@ -196,13 +270,11 @@
     }
   };
 
-  // The "think" outcome shares the same thought-bubble pool used on
-  // every other page: no digging at all, just a bubble above his head.
+  // The "think" outcome just needs a weight to compete with bone/gift/can
+  // in the pick below — its actual lines come from CW_THOUGHTS.general
+  // via the shuffle bag in setupDogDig, not from a flat entries list.
   ['en', 'zh'].forEach(function (lang) {
-    CW_DIG_ITEMS[lang].think = {
-      weight: 30,
-      entries: CW_THOUGHTS[lang].map(function (text) { return { full: text }; })
-    };
+    CW_DIG_ITEMS[lang].think = { weight: 30 };
   });
 
   function weightedPick(pools) {
@@ -216,9 +288,44 @@
     return keys[keys.length - 1];
   }
 
+  // Hands back entries from a pool in random order with no immediate
+  // repeats: a full shuffled pass through the pool before anything can
+  // come up twice, rather than plain chance re-picking the same line
+  // back to back.
+  function makeShuffleBag(items) {
+    var bag = [];
+    var last = null;
+
+    function refill() {
+      bag = items.slice();
+      for (var i = bag.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = bag[i];
+        bag[i] = bag[j];
+        bag[j] = tmp;
+      }
+      // Next item served is bag[bag.length - 1] (we pop from the end) —
+      // make sure a reshuffle doesn't immediately repeat the last thing
+      // shown right at the seam between two passes.
+      if (bag.length > 1 && bag[bag.length - 1] === last) {
+        var swapWith = Math.floor(Math.random() * (bag.length - 1));
+        var t = bag[bag.length - 1];
+        bag[bag.length - 1] = bag[swapWith];
+        bag[swapWith] = t;
+      }
+    }
+
+    return function next() {
+      if (bag.length === 0) refill();
+      var picked = bag.pop();
+      last = picked;
+      return picked;
+    };
+  }
+
   // How long the dog waits with no click before retreating to the
   // small peek-at-the-edge form.
-  var IDLE_MS = 10000;
+  var IDLE_MS = 5000;
 
   function setupDogDig() {
     var corner = document.getElementById('cw-corner-dog');
@@ -239,13 +346,14 @@
 
     var lang = document.documentElement.lang === 'zh' ? 'zh' : 'en';
     var pools = CW_DIG_ITEMS[lang];
+    var pickThought = makeShuffleBag(CW_THOUGHTS[lang].general);
     var base = dogImg.getAttribute('src').replace(/dog-idle\.png$/, '');
     var busy = false;
     var currentKind = null;
     var currentEntry = null;
     var currentIcon = null;
-    var revertTimer = null;
     var idleTimer = null;
+    var tiltTimer = null;
 
     // The "tap to see what he found" hint only needs to be seen once
     // per visitor — after that it's just noise. Remembered across
@@ -257,14 +365,16 @@
       hintSeen = window.localStorage.getItem(HINT_SEEN_KEY) === '1';
     } catch (e) {}
 
-    // 30s with no click on the full-size dog and he retreats to the
-    // small peek form. Paused while he's mid-dig/mid-think or the
-    // zoom card is open, and re-armed every time he settles back down.
+    // With no click on the full-size dog, he retreats to the small
+    // peek form — clearing away whatever's currently shown as part of
+    // that. Paused while he's mid-dig or the zoom card is open, and
+    // re-armed every time he settles back down.
     function armIdleTimer() {
       if (idleTimer) clearTimeout(idleTimer);
       idleTimer = setTimeout(function () {
         idleTimer = null;
         if (!busy && !zoom.classList.contains('is-open')) {
+          clearResults();
           corner.classList.add('is-peek');
         }
       }, IDLE_MS);
@@ -275,19 +385,6 @@
         clearTimeout(idleTimer);
         idleTimer = null;
       }
-    }
-
-    // While the zoom card is open, the landed item's auto-revert is
-    // paused (so it can't disappear out from under someone reading);
-    // closing the zoom gives it one short grace window instead.
-    function scheduleRevert(delay) {
-      if (revertTimer) clearTimeout(revertTimer);
-      revertTimer = setTimeout(function () {
-        revertTimer = null;
-        revert();
-        busy = false;
-        armIdleTimer();
-      }, delay);
     }
 
     function openZoom() {
@@ -307,17 +404,15 @@
         zoomText.textContent = currentEntry.full;
       }
       zoom.classList.add('is-open');
-      if (revertTimer) {
-        clearTimeout(revertTimer);
-        revertTimer = null;
-      }
     }
 
     function closeZoom() {
       var wasOpen = zoom.classList.contains('is-open');
       zoom.classList.remove('is-open');
-      if (wasOpen && busy && !revertTimer) {
-        scheduleRevert(1200);
+      // The idle timer may have fired (and no-opped) while the zoom
+      // card blocked it — pick it back up now that it's closed.
+      if (wasOpen && !idleTimer && !corner.classList.contains('is-peek')) {
+        armIdleTimer();
       }
     }
 
@@ -333,6 +428,9 @@
       currentKind = kind;
       currentEntry = entry;
       currentIcon = base + pool.icon;
+
+      bubble.classList.remove('is-visible');
+      dogBtn.classList.remove('is-thinking');
 
       item.setAttribute('data-item', kind);
       itemImg.src = currentIcon;
@@ -352,24 +450,48 @@
       }
     }
 
-    function showThought(text) {
+    function showThought() {
       currentKind = 'think';
       currentEntry = null;
-      bubbleText.textContent = text;
-      bubble.classList.remove('is-visible');
+      item.classList.remove('is-visible');
+      hint.classList.remove('is-visible');
+      closeZoom();
+
+      var wasVisible = bubble.classList.contains('is-visible');
+      bubbleText.textContent = pickThought();
+      if (!wasVisible) {
+        bubble.classList.remove('is-visible');
+        void bubble.offsetWidth; // play the pop-in only when it wasn't already showing
+        bubble.classList.add('is-visible');
+      }
+
+      // A brief head-tilt marks the moment he "thinks," separate from
+      // how long the bubble itself stays up.
       dogBtn.classList.remove('is-thinking');
-      void bubble.offsetWidth; // restart the pop animation even on repeat clicks
-      bubble.classList.add('is-visible');
+      void dogBtn.offsetWidth;
       dogBtn.classList.add('is-thinking');
+      if (tiltTimer) clearTimeout(tiltTimer);
+      tiltTimer = setTimeout(function () {
+        dogBtn.classList.remove('is-thinking');
+      }, 1300);
     }
 
-    function revert() {
+    // Clears whatever's currently on display (dug-up item or thought
+    // bubble) so the dog can retreat to peek, or start fresh. Nothing
+    // times this out on its own otherwise — once shown, a result just
+    // stays until the next click or an idle retreat replaces it.
+    function clearResults() {
       item.classList.remove('is-visible');
       hint.classList.remove('is-visible');
       bubble.classList.remove('is-visible');
       dogBtn.classList.remove('is-thinking');
+      if (tiltTimer) {
+        clearTimeout(tiltTimer);
+        tiltTimer = null;
+      }
       closeZoom();
       dogImg.src = base + 'dog-idle.png';
+      currentEntry = null;
     }
 
     dogBtn.addEventListener('click', function () {
@@ -383,23 +505,23 @@
         return;
       }
 
-      busy = true;
-      clearIdleTimer();
+      armIdleTimer();
 
       var kind = weightedPick(pools);
 
       if (kind === 'think') {
-        var thought = pools.think.entries[Math.floor(Math.random() * pools.think.entries.length)];
-        showThought(thought.full);
-        scheduleRevert(4200);
+        showThought();
         return;
       }
 
       if (reduceMotion) {
         showItem(kind);
-        scheduleRevert(4200);
         return;
       }
+
+      busy = true;
+      bubble.classList.remove('is-visible');
+      dogBtn.classList.remove('is-thinking');
 
       var frames = ['dog-dig-1.png', 'dog-dig-2.png', 'dog-dig-3.png', 'dog-dig-1.png', 'dog-dig-2.png'];
       var i = 0;
@@ -413,9 +535,8 @@
         clearInterval(digTimer);
         dogImg.classList.remove('is-bump');
         showItem(kind);
+        busy = false;
       }, 620);
-
-      scheduleRevert(5000);
     });
 
     armIdleTimer();
@@ -423,8 +544,11 @@
 
   // Every page besides home carries only the small peeking form —
   // bored by default, excited on hover (pure CSS) — and a click
-  // always pops a short thought bubble above his head. Never digs,
-  // never expands to full size.
+  // always pops a short thought bubble above his head, drawn from
+  // whichever pool fits that page (falls back to the general one).
+  // Never digs, never expands to full size. Once shown, the bubble
+  // just stays up; a repeat click swaps in a new line in place
+  // rather than hiding and popping back in.
   function setupDogPeek() {
     var peekBtn = document.getElementById('cw-dog-peek');
     var bubble = document.getElementById('cw-think-bubble');
@@ -432,24 +556,27 @@
     if (!peekBtn || !bubble || !bubbleText) return;
 
     var lang = document.documentElement.lang === 'zh' ? 'zh' : 'en';
-    var thoughts = CW_THOUGHTS[lang];
-    var hideTimer = null;
+    var page = document.body.getAttribute('data-cw-page');
+    var pool = CW_THOUGHTS[lang][page] || CW_THOUGHTS[lang].general;
+    var pickThought = makeShuffleBag(pool);
+    var tiltTimer = null;
 
     peekBtn.addEventListener('click', function () {
-      var text = thoughts[Math.floor(Math.random() * thoughts.length)];
-      bubbleText.textContent = text;
-      bubble.classList.remove('is-visible');
-      peekBtn.classList.remove('is-thinking');
-      void bubble.offsetWidth; // restart the pop animation even on repeat clicks
-      bubble.classList.add('is-visible');
-      peekBtn.classList.add('is-thinking');
-
-      if (hideTimer) clearTimeout(hideTimer);
-      hideTimer = setTimeout(function () {
-        hideTimer = null;
+      var wasVisible = bubble.classList.contains('is-visible');
+      bubbleText.textContent = pickThought();
+      if (!wasVisible) {
         bubble.classList.remove('is-visible');
+        void bubble.offsetWidth; // play the pop-in only when it wasn't already showing
+        bubble.classList.add('is-visible');
+      }
+
+      peekBtn.classList.remove('is-thinking');
+      void peekBtn.offsetWidth;
+      peekBtn.classList.add('is-thinking');
+      if (tiltTimer) clearTimeout(tiltTimer);
+      tiltTimer = setTimeout(function () {
         peekBtn.classList.remove('is-thinking');
-      }, 4200);
+      }, 1300);
     });
   }
 
