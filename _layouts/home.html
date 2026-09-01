@@ -77,9 +77,15 @@
 
   <!-- Data Detective Dog: runs in from the bottom-right corner, click to dig -->
   <div class="cw-corner-dog" id="cw-corner-dog">
-    <button type="button" class="cw-dig-item" id="cw-dig-item" aria-label="Tap to read this more clearly">
+    <div class="cw-dig-hint" id="cw-dig-hint" aria-hidden="true">
+      <span class="cw-dig-hint-text">tap to see what she found</span>
+      <svg class="cw-dig-hint-arrow" viewBox="0 0 70 60" fill="none">
+        <path d="M4,6 C10,26 18,34 30,38 C42,42 50,40 56,34" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+        <path d="M40,32 L57,35 L52,18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+      </svg>
+    </div>
+    <button type="button" class="cw-dig-item" id="cw-dig-item" aria-label="Tap to see what she found">
       <img class="cw-dig-item-img" id="cw-dig-item-img" src="" alt="" />
-      <span class="cw-dig-item-text" id="cw-dig-item-text"></span>
     </button>
     <button type="button" class="cw-dog-dig" id="cw-dog-dig" aria-label="Dig with the dog">
       <img class="cw-dog-dig-img" id="cw-dog-dig-img" src="{{ site.baseurl }}/assets/images/dog/dog-idle.png" alt="" />
