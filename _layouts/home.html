@@ -75,6 +75,19 @@
     © {{ "now" | date: "%Y" }} Cheng Wu
   </div>
 
+  <!-- Data Detective Dog: runs in from the bottom-right corner, click to dig -->
+  <div class="cw-corner-dog" id="cw-corner-dog">
+    <a class="cw-dig-reveal" id="cw-dig-reveal" href="#" aria-hidden="true" tabindex="-1">
+      <span class="cw-dig-reveal-item" id="cw-dig-reveal-item">
+        <img class="cw-dig-reveal-img" id="cw-dig-reveal-img" src="" alt="" />
+        <span class="cw-dig-reveal-text" id="cw-dig-reveal-text"></span>
+      </span>
+    </a>
+    <button type="button" class="cw-dog-dig" id="cw-dog-dig" aria-label="Dig with the dog">
+      <img class="cw-dog-dig-img" id="cw-dog-dig-img" src="{{ site.baseurl }}/assets/images/dog/dog-idle.png" alt="" />
+    </button>
+  </div>
+
   <script src="{{ site.baseurl }}/assets/js/interactions.js"></script>
 </body>
 </html>
