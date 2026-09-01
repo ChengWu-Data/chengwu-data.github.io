@@ -69,7 +69,9 @@ author_profile: true
 <div class="entry">
   <div class="entry-title">Compliance Risk Analyst Intern</div>
   <div class="entry-details">Tarte Cosmetics | October 2025 – May 2026 | New York, NY</div>
-  <div class="entry-content">
+  <p class="entry-summary">Built a risk-prioritization workflow across 7 systems — cut low-yield review volume ~25%, repeat issues ~22%.</p>
+  <button type="button" class="entry-toggle" data-entry-id="entry_tarte">Read more <i class="fa-solid fa-chevron-down"></i></button>
+  <div id="entry_tarte" class="entry-content">
     <p>
       Built a <span class="about-text">Python/SQL risk-prioritization workflow</span> across 7 internal systems, replacing manual case-by-case review with a ranked queue calibrated against historical reviewer decisions (<span class="about-text">Precision@K, Recall, Lift</span>) — cut low-yield review volume <span class="about-text">~25%</span> without missing material exceptions.
     </p>
@@ -82,7 +84,9 @@ author_profile: true
   <div class="entry">
   <div class="entry-title">Data Scientist Intern</div>
   <div class="entry-details">Donglai Natural BioTech Co. Ltd. | June 2024 – September 2024 | Champaign, IL (Remote)</div>
-  <div class="entry-content">
+  <p class="entry-summary">Segmented 10K+ customers and modeled pricing/marketing scenarios for a ~10% lift in incremental contribution.</p>
+  <button type="button" class="entry-toggle" data-entry-id="entry_donglai">Read more <i class="fa-solid fa-chevron-down"></i></button>
+  <div id="entry_donglai" class="entry-content">
     <p>
       Segmented <span class="about-text">10K+ customers</span> by purchase behavior (RFM + propensity modeling, <span class="about-text">0.78 ROC-AUC</span>) and built a weekly marketing-mix model across 5 channels — used it to reallocate a fixed budget for a <span class="about-text">~10% lift</span> in modeled incremental contribution.
     </p>
@@ -95,7 +99,9 @@ author_profile: true
  <div class="entry">
   <div class="entry-title">Data Analyst Intern — Institutional Finance</div>
   <div class="entry-details">ZheShang Securities Co. Ltd. | May 2023 – September 2023 | Hangzhou, China</div>
-  <div class="entry-content">
+  <p class="entry-summary">Standardized reconciliation across 50K+ records (~70% faster) and built alpha-signal models for 20+ PE deals.</p>
+  <button type="button" class="entry-toggle" data-entry-id="entry_zheshang">Read more <i class="fa-solid fa-chevron-down"></i></button>
+  <div id="entry_zheshang" class="entry-content">
     <p>
       Standardized <span class="about-text">SQL reconciliation logic</span> across 15+ fields for 50K+ financial records — manual effort down <span class="about-text">~70%</span> — and built <span class="about-text">alpha-signal and multi-factor risk models</span> across 20+ private-equity deals, backtesting with web-scraped, NLP-derived sentiment data.
     </p>
@@ -108,7 +114,9 @@ author_profile: true
 <div class="entry">
   <div class="entry-title">Lead Data Scientist — Inclusive Growth</div>
   <div class="entry-details">Innovative Bloom Foundation | May 2019 – June 2024 | Shanghai, China</div>
-  <div class="entry-content">
+  <p class="entry-summary">Five years, volunteer teacher to lead data scientist — PSM/DiD analysis contributed to a ~19% drop in attrition.</p>
+  <button type="button" class="entry-toggle" data-entry-id="entry_bloom">Read more <i class="fa-solid fa-chevron-down"></i></button>
+  <div id="entry_bloom" class="entry-content">
     <p>
       Five years, starting as a volunteer math teacher for left-behind children in rural China and ending up running the foundation's data work. Built a <span class="about-text">6-year longitudinal SQL/R database</span> (1,200+ participants) and used <span class="about-text">PSM + DiD with pre-trend testing</span> to see which interventions actually worked — that analysis contributed to a <span class="about-text">~19% drop</span> in high-risk attrition.
     </p>
@@ -128,7 +136,9 @@ author_profile: true
   <div class="entry">
   <div class="entry-title">Researcher — Educational Inequality & Intergenerational Poverty</div>
   <div class="entry-details">UIUC | January 2023 – February 2025</div>
-  <div class="entry-content">
+  <p class="entry-summary">Used PSM and regression on national datasets to isolate how school-funding gaps shape mobility.</p>
+  <button type="button" class="entry-toggle" data-entry-id="entry_edu_inequality">Read more <i class="fa-solid fa-chevron-down"></i></button>
+  <div id="entry_edu_inequality" class="entry-content">
     <p>
       Grew out of my years at Innovative Bloom Foundation — I wanted to know if the resource gaps I'd seen firsthand actually showed up in the data. Used <span class="about-text">regression and propensity score matching (PSM)</span> with socioeconomic controls on national education and mobility datasets to isolate how <span class="about-text">funding disparities and teacher-student ratios</span> relate to intergenerational mobility.
     </p>
@@ -141,7 +151,9 @@ author_profile: true
  <div class="entry">
   <div class="entry-title">Research Assistant, Prof. Elizabeth T. Powers</div>
   <div class="entry-details">UIUC | January 2024 – April 2025</div>
-  <div class="entry-content">
+  <p class="entry-summary">DiD + IV on childcare-grant policy, with an R Shiny tool to show policymakers the projected outcomes.</p>
+  <button type="button" class="entry-toggle" data-entry-id="entry_powers">Read more <i class="fa-solid fa-chevron-down"></i></button>
+  <div id="entry_powers" class="entry-content">
     <p>
       Used <span class="about-text">Difference-in-Differences and Instrumental Variables</span> to estimate how childcare grants affect employment, household income, and child welfare — the harder part was stress-testing the identification assumptions across specifications, not running the regression.
     </p>
@@ -154,7 +166,9 @@ author_profile: true
 <div class="entry">
   <div class="entry-title">Researcher — Critical Medicines Access in Public Health Emergencies</div>
   <div class="entry-details">UIUC | April 2023 – December 2023</div>
-  <div class="entry-content">
+  <p class="entry-summary">A personal project on why health systems fail in crises, using WHO/CDC data and predictive models.</p>
+  <button type="button" class="entry-toggle" data-entry-id="entry_medicines">Read more <i class="fa-solid fa-chevron-down"></i></button>
+  <div id="entry_medicines" class="entry-content">
     <p>
       My grandmother passed away during COVID-19 after being unable to access medicine or a hospital bed. That's what pushed me to study why health systems fail during crises, and whether data could help anticipate it next time.
     </p>
@@ -196,5 +210,25 @@ author_profile: true
   <a href="mailto:cheng.w@columbia.edu" class="email-btn">Email Me</a>
 </div>
 
+<script>
+function toggleEntry(id) {
+  var content = document.getElementById(id);
+  var btn = document.querySelector('.entry-toggle[data-entry-id="' + id + '"]');
+  var isOpen = content.classList.toggle('is-open');
+  if (btn) {
+    btn.classList.toggle('is-open', isOpen);
+    btn.innerHTML = isOpen
+      ? 'Show less <i class="fa-solid fa-chevron-up"></i>'
+      : 'Read more <i class="fa-solid fa-chevron-down"></i>';
+  }
+}
+document.addEventListener('DOMContentLoaded', function () {
+  Array.prototype.slice.call(document.querySelectorAll('.entry-toggle')).forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      toggleEntry(btn.getAttribute('data-entry-id'));
+    });
+  });
+});
+</script>
 <script src="{{ site.baseurl }}/assets/js/interactions.js"></script>
 

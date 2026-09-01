@@ -77,7 +77,9 @@ lang: "zh"
   <div class="entry">
     <div class="entry-title">合规风控分析实习生</div>
     <div class="entry-details">Tarte Cosmetics | 2025 年 10 月 – 2026 年 5 月 | 纽约</div>
-    <div class="entry-content">
+    <p class="entry-summary">搭建跨 7 个系统的风险优先级排序流程——低价值审核量降低约 25%，重复问题减少约 22%。</p>
+    <button type="button" class="entry-toggle" data-entry-id="entry_tarte_zh">展开详情 <i class="fa-solid fa-chevron-down"></i></button>
+    <div id="entry_tarte_zh" class="entry-content">
       <p>
         搭建了一套 <span class="about-text">Python/SQL 风险优先级排序流程</span>，覆盖 7 个内部系统，
         用基于历史审核结果校准的排序队列（<span class="about-text">Precision@K、Recall、Lift</span>）取代人工逐案审核——
@@ -94,7 +96,9 @@ lang: "zh"
   <div class="entry">
     <div class="entry-title">数据科学实习生</div>
     <div class="entry-details">东来生物科技 | 2024 年 6 月 – 2024 年 9 月 | 香槟市（远程）</div>
-    <div class="entry-content">
+    <p class="entry-summary">为 1 万+ 客户做购买分群与营销组合建模，价格/促销 A/B 测试带来中个位数转化率提升。</p>
+    <button type="button" class="entry-toggle" data-entry-id="entry_donglai_zh">展开详情 <i class="fa-solid fa-chevron-down"></i></button>
+    <div id="entry_donglai_zh" class="entry-content">
       <p>
         对 <span class="about-text">1 万+ 客户</span> 做购买行为分群（RFM + 复购倾向模型，
         <span class="about-text">ROC-AUC 0.78</span>），并搭建了覆盖 5 个渠道的周度营销组合模型——
@@ -111,7 +115,9 @@ lang: "zh"
   <div class="entry">
     <div class="entry-title">数据分析实习生 — 机构金融</div>
     <div class="entry-details">浙商证券 | 2023 年 5 月 – 2023 年 9 月 | 杭州</div>
-    <div class="entry-content">
+    <p class="entry-summary">标准化 5 万+ 条财务记录的对账逻辑，为 20+ 私募项目构建 alpha 信号与风险模型。</p>
+    <button type="button" class="entry-toggle" data-entry-id="entry_zheshang_zh">展开详情 <i class="fa-solid fa-chevron-down"></i></button>
+    <div id="entry_zheshang_zh" class="entry-content">
       <p>
         为 5 万+ 条财务记录标准化了 <span class="about-text">15+ 字段的 SQL 对账逻辑</span>——
         人工工作量减少 <span class="about-text">约 70%</span>——并针对 20+ 个私募股权项目
@@ -129,7 +135,9 @@ lang: "zh"
   <div class="entry">
     <div class="entry-title">首席数据科学家 — 公平增长项目</div>
     <div class="entry-details">Innovative Bloom 基金会 | 2019 年 5 月 – 2024 年 6 月 | 上海</div>
-    <div class="entry-content">
+    <p class="entry-summary">搭建 6 年纵向数据库，用 PSM + DiD 评估干预效果，高风险流失率下降约 19%。</p>
+    <button type="button" class="entry-toggle" data-entry-id="entry_bloom_zh">展开详情 <i class="fa-solid fa-chevron-down"></i></button>
+    <div id="entry_bloom_zh" class="entry-content">
       <p>
         五年时间，从给中国农村留守儿童支教的志愿者，做到负责基金会的数据工作。
         搭建了 <span class="about-text">6 年的纵向 SQL/R 数据库</span>（1,200+ 参与者），
@@ -152,7 +160,9 @@ lang: "zh"
   <div class="entry">
     <div class="entry-title">研究员 — 教育不平等与代际贫困</div>
     <div class="entry-details">UIUC | 2023 年 1 月 – 2025 年 2 月</div>
-    <div class="entry-content">
+    <p class="entry-summary">用回归 + PSM 分离教育经费差异与师生比对代际流动性的影响，产出面向政策制定者的分析。</p>
+    <button type="button" class="entry-toggle" data-entry-id="entry_edu_inequality_zh">展开详情 <i class="fa-solid fa-chevron-down"></i></button>
+    <div id="entry_edu_inequality_zh" class="entry-content">
       <p>
         这个项目源于在 Innovative Bloom 基金会那几年的观察——
         我想知道亲眼见过的那些资源差距，在数据里是不是真的成立。
@@ -169,7 +179,9 @@ lang: "zh"
   <div class="entry">
     <div class="entry-title">研究助理，Elizabeth T. Powers 教授</div>
     <div class="entry-details">UIUC | 2024 年 1 月 – 2025 年 4 月</div>
-    <div class="entry-content">
+    <p class="entry-summary">用 DiD 与工具变量估计儿童保育补贴的因果效应，搭建 R Shiny 政策模拟工具。</p>
+    <button type="button" class="entry-toggle" data-entry-id="entry_powers_zh">展开详情 <i class="fa-solid fa-chevron-down"></i></button>
+    <div id="entry_powers_zh" class="entry-content">
       <p>
         用 <span class="about-text">双重差分（DiD）与工具变量（IV）</span>
         估计儿童保育补贴对就业、家庭收入与儿童福利的因果效应——
@@ -186,7 +198,9 @@ lang: "zh"
   <div class="entry">
     <div class="entry-title">研究员 — 公共卫生危机下的关键药物可及性</div>
     <div class="entry-details">UIUC | 2023 年 4 月 – 2023 年 12 月</div>
-    <div class="entry-content">
+    <p class="entry-summary">用准实验设计与预测模型标记短缺高风险人群，产出资源分配决策看板。</p>
+    <button type="button" class="entry-toggle" data-entry-id="entry_medicines_zh">展开详情 <i class="fa-solid fa-chevron-down"></i></button>
+    <div id="entry_medicines_zh" class="entry-content">
       <p>
         我的祖母在 COVID 期间因为没能及时获得药物和床位去世。
         这件事推动我去研究医疗系统为什么会在危机中失灵，以及数据能不能提前预判这种情况。
@@ -230,5 +244,25 @@ lang: "zh"
   <a href="mailto:cheng.w@columbia.edu" class="email-btn">发送邮件</a>
 </div>
 
+<script>
+function toggleEntry(id) {
+  var content = document.getElementById(id);
+  var btn = document.querySelector('.entry-toggle[data-entry-id="' + id + '"]');
+  var isOpen = content.classList.toggle('is-open');
+  if (btn) {
+    btn.classList.toggle('is-open', isOpen);
+    btn.innerHTML = isOpen
+      ? '收起 <i class="fa-solid fa-chevron-up"></i>'
+      : '展开详情 <i class="fa-solid fa-chevron-down"></i>';
+  }
+}
+document.addEventListener('DOMContentLoaded', function () {
+  Array.prototype.slice.call(document.querySelectorAll('.entry-toggle')).forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      toggleEntry(btn.getAttribute('data-entry-id'));
+    });
+  });
+});
+</script>
 <script src="{{ site.baseurl }}/assets/js/interactions.js"></script>
 
