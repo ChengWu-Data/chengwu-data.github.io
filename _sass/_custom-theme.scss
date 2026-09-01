@@ -125,16 +125,6 @@
   margin-bottom: 0.6rem;
 }
 
-/* Browsers without :has() support (very old Safari/Firefox) simply keep
-   each entry's own left border as the rail instead of one continuous
-   line — same information, slightly less seamless. Progressive
-   enhancement, not a broken fallback. */
-@supports not selector(:has(a)) {
-  .entry {
-    border-left-color: var(--cw-purple-border);
-  }
-}
-
 .entry-content ul {
   padding-left: 1.1rem;
 }
