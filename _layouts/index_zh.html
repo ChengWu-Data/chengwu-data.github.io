@@ -77,15 +77,22 @@
 
   <!-- 数据侦探犬：从右下角跑出来，点一下开始挖 -->
   <div class="cw-corner-dog" id="cw-corner-dog">
-    <a class="cw-dig-reveal" id="cw-dig-reveal" href="#" aria-hidden="true" tabindex="-1">
-      <span class="cw-dig-reveal-item" id="cw-dig-reveal-item">
-        <img class="cw-dig-reveal-img" id="cw-dig-reveal-img" src="" alt="" />
-        <span class="cw-dig-reveal-text" id="cw-dig-reveal-text"></span>
-      </span>
-    </a>
+    <button type="button" class="cw-dig-item" id="cw-dig-item" aria-label="点一下看清楚一点">
+      <img class="cw-dig-item-img" id="cw-dig-item-img" src="" alt="" />
+      <span class="cw-dig-item-text" id="cw-dig-item-text"></span>
+    </button>
     <button type="button" class="cw-dog-dig" id="cw-dog-dig" aria-label="点一下小狗，挖点东西出来">
       <img class="cw-dog-dig-img" id="cw-dog-dig-img" src="{{ site.baseurl }}/assets/images/dog/dog-idle.png" alt="" />
     </button>
+  </div>
+
+  <!-- 放大查看挖到的东西 -->
+  <div class="cw-dig-zoom" id="cw-dig-zoom" aria-hidden="true">
+    <button type="button" class="cw-dig-zoom-backdrop" id="cw-dig-zoom-backdrop" aria-label="关闭"></button>
+    <div class="cw-dig-zoom-card">
+      <img class="cw-dig-zoom-img" id="cw-dig-zoom-img" src="" alt="" />
+      <p class="cw-dig-zoom-text" id="cw-dig-zoom-text"></p>
+    </div>
   </div>
 
   <script src="{{ site.baseurl }}/assets/js/interactions.js"></script>
