@@ -17,13 +17,6 @@ author_profile: true
     </a>
   </div>
 
-  <!-- Highlights -->
-  <div class="cv-highlights">
-    <div class="cw-stat"><b>4</b><span>PROFESSIONAL ROLES</span></div>
-    <div class="cw-stat"><b>6</b><span>RESEARCH &amp; APPLIED PROJECTS</span></div>
-    <div class="cw-stat"><b>2</b><span>DEGREES</span></div>
-  </div>
-
   <!-- PDF Preview -->
   <div class="iframe-wrapper">
     <canvas id="pdf-viewer"></canvas>
