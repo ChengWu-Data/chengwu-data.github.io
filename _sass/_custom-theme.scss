@@ -440,27 +440,6 @@
   color: var(--cw-purple);
 }
 
-/* Highlights strip above the PDF — reuses .cw-stat (same look as the
-   Home/About hero stats) so the CV page picks up the same visual language
-   instead of jumping straight to a bare embed. */
-.cv-highlights {
-  display: flex;
-  gap: 2.5rem;
-  flex-wrap: wrap;
-  padding: 0.25rem 0 1.4rem;
-  margin-bottom: 1.25rem;
-  border-bottom: 1px solid var(--cw-purple-border);
-}
-
-@media (max-width: 640px) {
-  .cv-highlights {
-    gap: 1.5rem;
-    justify-content: center;
-    text-align: center;
-    padding-bottom: 1.1rem;
-  }
-}
-
 .iframe-wrapper {
   overflow: hidden;
   text-align: center;
