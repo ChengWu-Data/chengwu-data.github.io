@@ -68,9 +68,44 @@
     updateResultCount(totalCount);
   }
 
+  /*
+   * Deep-link support: the About page links out to specific projects
+   * (e.g. #card-project_fx). On arrival here we scroll to that card,
+   * open its details panel, and pulse it briefly so it's obvious which
+   * one the link meant — rather than leaving the visitor to scan the
+   * whole list for it.
+   */
+  function focusLinkedCard() {
+    var hash = window.location.hash;
+    if (!hash || hash.indexOf('#card-') !== 0) return;
+
+    var card = document.getElementById(hash.slice(1));
+    if (!card) return;
+
+    var detailsId = card.getAttribute('data-details-id');
+    var details = detailsId ? document.getElementById(detailsId) : null;
+    if (details && (details.style.display === '' || details.style.display === 'none')) {
+      details.style.display = 'block';
+      details.style.opacity = 1;
+    }
+
+    // Let layout settle (details panel opening can shift page height)
+    // before scrolling, so the card actually lands in view.
+    setTimeout(function () {
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 60);
+
+    card.classList.add('is-highlighted');
+    setTimeout(function () {
+      card.classList.remove('is-highlighted');
+    }, 3300);
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     Array.prototype.slice
       .call(document.querySelectorAll('.cw-toolbar[data-role="project-filter"]'))
       .forEach(setup);
+
+    focusLinkedCard();
   });
 })();

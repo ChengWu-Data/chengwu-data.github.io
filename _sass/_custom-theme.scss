@@ -835,3 +835,139 @@
     transition: none !important;
   }
 }
+
+/* -----------------------------------------------------------------------
+   Research Experience subsections (UIUC vs. Columbia) + Columbia
+   project-link cards that point out to the full write-up on /projects/.
+   ----------------------------------------------------------------------- */
+.research-subhead {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin: 2rem 0 1.3rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cw-muted);
+}
+
+.research-subhead:first-child {
+  margin-top: 0;
+}
+
+.research-subhead::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--cw-purple-border);
+}
+
+.project-link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-link-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.1rem 1.2rem;
+  border-radius: var(--cw-radius-sm);
+  border: 1px solid var(--cw-purple-border);
+  background: var(--cw-purple-soft);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.project-link-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--cw-shadow-sm);
+  border-color: var(--cw-purple);
+}
+
+.project-link-kicker {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cw-purple);
+}
+
+.project-link-title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--cw-ink);
+}
+
+.project-link-desc {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--cw-body-text);
+}
+
+.project-link-cta {
+  margin-top: 0.15rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--cw-purple-deep);
+}
+
+.project-link-cta i {
+  font-size: 0.7em;
+  margin-left: 0.15rem;
+  transition: transform 0.2s ease;
+}
+
+.project-link-card:hover .project-link-cta i {
+  transform: translateX(3px);
+}
+
+/* -----------------------------------------------------------------------
+   Projects page: a "featured" first card + the pulse used to highlight
+   a card jumped to from an About-page link (#card-project_xxx).
+   ----------------------------------------------------------------------- */
+.project-card--featured {
+  position: relative;
+  border-color: var(--cw-purple);
+}
+
+.project-card--featured .project-kicker {
+  color: var(--cw-purple);
+}
+
+@media (min-width: 860px) {
+  .project-card--featured {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    align-items: stretch;
+    gap: 2rem;
+    padding: 1.75rem;
+  }
+
+  .project-card--featured .project-image {
+    width: 100%;
+    height: 100%;
+    min-height: 260px;
+    max-height: none;
+  }
+}
+
+@keyframes cw-highlight-pulse {
+  0%, 100% { box-shadow: var(--cw-shadow-sm); }
+  30% { box-shadow: 0 0 0 4px rgba(109, 65, 149, 0.28), var(--cw-shadow-md); }
+}
+
+.project-card.is-highlighted {
+  animation: cw-highlight-pulse 1.6s ease-out 2;
+  border-color: var(--cw-purple);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card.is-highlighted {
+    animation: none;
+    box-shadow: 0 0 0 3px rgba(109, 65, 149, 0.3);
+  }
+}
