@@ -1048,7 +1048,11 @@
    sits in this same small form permanently. */
 .cw-corner-dog.is-peek,
 .cw-corner-dog--peek-only {
-  right: -44px;
+  /* The peek art is already drawn cut off at its own right edge (that's
+     what makes it read as "peeking in"), so the box sits flush with the
+     viewport edge rather than pushed further off-screen — otherwise the
+     visible slice lands on the transparent margin instead of the dog. */
+  right: 0;
   bottom: 40px;
 }
 
@@ -1343,7 +1347,7 @@
 
   .cw-corner-dog.is-peek,
   .cw-corner-dog--peek-only {
-    right: -34px;
+    right: 0;
     bottom: 30px;
   }
 
