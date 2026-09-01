@@ -18,6 +18,13 @@ lang: "zh"
     </a>
   </div>
 
+  <!-- 亮点摘要 -->
+  <div class="cv-highlights">
+    <div class="cw-stat"><b>4</b><span>职业经历</span></div>
+    <div class="cw-stat"><b>6</b><span>科研 &amp; 应用项目</span></div>
+    <div class="cw-stat"><b>2</b><span>学位</span></div>
+  </div>
+
   <!-- PDF 预览 -->
   <div class="iframe-wrapper">
     <canvas id="pdf-viewer"></canvas>

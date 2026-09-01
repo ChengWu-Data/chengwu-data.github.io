@@ -141,6 +141,64 @@
   margin-bottom: 0.75rem;
 }
 
+/* Collapsed-by-default entries (About page Professional/Research Experience) —
+   title + .entry-summary are always visible; the full .entry-content sits
+   behind a .entry-toggle button, mirroring the Projects page "View Details"
+   pattern. Education entries don't use .entry-content, so they're unaffected. */
+.entry-summary {
+  color: var(--cw-body-text);
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.entry-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--cw-purple);
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.entry-toggle:hover {
+  color: var(--cw-purple-dark);
+}
+
+.entry-toggle i {
+  font-size: 0.68em;
+  transition: transform 0.2s ease;
+}
+
+.entry-toggle.is-open i {
+  transform: rotate(180deg);
+}
+
+.entry-content {
+  display: none;
+}
+
+.entry-content.is-open {
+  display: block;
+  animation: cw-entry-open 0.25s ease;
+}
+
+@keyframes cw-entry-open {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .entry-content.is-open {
+    animation: none;
+  }
+}
+
 .about-text {
   color: var(--cw-purple-deep);
   font-weight: 600;
@@ -380,6 +438,27 @@
 .cv-header i {
   font-size: 1.3rem;
   color: var(--cw-purple);
+}
+
+/* Highlights strip above the PDF — reuses .cw-stat (same look as the
+   Home/About hero stats) so the CV page picks up the same visual language
+   instead of jumping straight to a bare embed. */
+.cv-highlights {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  padding: 0.25rem 0 1.4rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--cw-purple-border);
+}
+
+@media (max-width: 640px) {
+  .cv-highlights {
+    gap: 1.5rem;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 1.1rem;
+  }
 }
 
 .iframe-wrapper {
