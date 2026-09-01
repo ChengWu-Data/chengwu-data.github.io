@@ -40,7 +40,7 @@ author_profile: true
   <img src="{{ site.baseurl }}/images/project_fx.jpg" alt="FX Project Image" class="project-image">
   
   <div class="project-content">
-    <div class="project-kicker">★ Featured · 01 · QUANT &amp; FINANCE</div>
+    <div class="project-kicker"><i class="fa-solid fa-chart-line"></i> ★ Featured · 01 · QUANT &amp; FINANCE</div>
     <div class="project-title">FX Trend Strategy using Exponential Smoothing</div>
     <p class="project-description">
       A fully reproducible quantitative research project analyzing USD/CAD trend persistence using dual exponential smoothing filters. 
@@ -126,7 +126,7 @@ author_profile: true
   <img src="{{ site.baseurl }}/images/MultiDocRAG_cover.jpg" alt="MultiDocRAG Cover Image" class="project-image">
   
   <div class="project-content">
-    <div class="project-kicker">02 · MACHINE LEARNING</div>
+    <div class="project-kicker"><i class="fa-solid fa-robot"></i> 02 · MACHINE LEARNING</div>
     <div class="project-title">MultiDocRAG</div>
     <p class="project-description">
       A full-stack retrieval-augmented generation (RAG) system designed to perform 
@@ -230,7 +230,7 @@ author_profile: true
   <img src="{{ site.baseurl }}/images/iris_recognition_cover.jpg" alt="Iris Recognition System Cover Image" class="project-image">
   
   <div class="project-content">
-    <div class="project-kicker">03 · MACHINE LEARNING</div>
+    <div class="project-kicker"><i class="fa-solid fa-robot"></i> 03 · MACHINE LEARNING</div>
     <div class="project-title">Iris Recognition System</div>
     <p class="project-description">
       A full computer vision and pattern recognition pipeline for <strong>iris-based biometric identification</strong>, 
@@ -334,7 +334,7 @@ author_profile: true
   <img src="{{ site.baseurl }}/images/project1.jpg" alt="Housing Project Image" class="project-image">
   
   <div class="project-content">
-    <div class="project-kicker">04 · MACHINE LEARNING</div>
+    <div class="project-kicker"><i class="fa-solid fa-robot"></i> 04 · MACHINE LEARNING</div>
     <div class="project-title">Housing Price Prediction: An Exploratory Analysis</div>
     <p class="project-description">
       Built a housing price prediction pipeline using exploratory data analysis, feature engineering, and regression/ML models including Ridge, LASSO, Random Forest, and Group LASSO. 
@@ -414,7 +414,7 @@ author_profile: true
 <div class="project-card" data-tags="causal" data-details-id="project2">
   <img src="{{ site.baseurl }}/images/project2.jpg" alt="Project Image" class="project-image">
   <div class="project-content">
-    <div class="project-kicker">05 · CAUSAL INFERENCE</div>
+    <div class="project-kicker"><i class="fa-solid fa-scale-balanced"></i> 05 · CAUSAL INFERENCE</div>
     <div class="project-title">Socioeconomic Drivers of Crime in San Francisco</div>
     <p class="project-description">
       Built a large-scale spatial econometrics pipeline linking 900k+ SF police incident records with ACS socioeconomic panel data. 
@@ -502,7 +502,7 @@ author_profile: true
 <div class="project-card" data-tags="other" data-details-id="project3">
   <img src="{{ site.baseurl }}/images/project3.jpg" alt="Ikebana Site Image" class="project-image">
   <div class="project-content">
-    <div class="project-kicker">06 · WEB &amp; DESIGN</div>
+    <div class="project-kicker"><i class="fa-solid fa-palette"></i> 06 · WEB &amp; DESIGN</div>
     <div class="project-title">Ikebana Portfolio — Immersive Front-End Microsite</div>
     <p class="project-description">
       A handcrafted, single-page microsite that turns my Ikebana course portfolio into an immersive digital experience. 

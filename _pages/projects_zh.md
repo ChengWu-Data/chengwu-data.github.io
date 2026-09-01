@@ -41,7 +41,7 @@ lang: "zh"
   <img src="{{ site.baseurl }}/images/project_fx.jpg" alt="FX Project Image" class="project-image">
   
   <div class="project-content">
-    <div class="project-kicker">★ 精选 · 01 · 量化 / 金融</div>
+    <div class="project-kicker"><i class="fa-solid fa-chart-line"></i> ★ 精选 · 01 · 量化 / 金融</div>
     <div class="project-title">基于指数平滑的外汇趋势交易策略（USD/CAD）</div>
     <p class="project-description">
       一个<strong>完全可复现的量化研究项目</strong>，围绕 USD/CAD 汇率趋势持续性，构建基于双指数平滑（Dual ES）的完整预测与交易流水线：
@@ -132,7 +132,7 @@ lang: "zh"
   <img src="{{ site.baseurl }}/images/iris_recognition_cover.jpg" alt="虹膜识别系统项目封面图" class="project-image">
   
   <div class="project-content">
-    <div class="project-kicker">02 · 机器学习</div>
+    <div class="project-kicker"><i class="fa-solid fa-robot"></i> 02 · 机器学习</div>
     <div class="project-title">端到端虹膜识别系统</div>
     <p class="project-description">
       一个基于经典论文方法实现的<strong>完整计算机视觉与模式识别项目</strong>，作为<strong>哥伦比亚大学课程项目</strong>完成。
@@ -232,7 +232,7 @@ lang: "zh"
   <img src="{{ site.baseurl }}/images/MultiDocRAG_cover.jpg" alt="MultiDocRAG Cover Image" class="project-image">
   
   <div class="project-content">
-    <div class="project-kicker">03 · 机器学习</div>
+    <div class="project-kicker"><i class="fa-solid fa-robot"></i> 03 · 机器学习</div>
     <div class="project-title">MultiDocRAG：多文档检索增强推理系统</div>
     <p class="project-description">
       一个面向<strong>多文档场景</strong>的全栈检索增强生成（RAG）系统，可对多份上传 PDF 进行跨文档推理。
@@ -328,7 +328,7 @@ lang: "zh"
   <img src="{{ site.baseurl }}/images/project1.jpg" alt="Housing Project Image" class="project-image">
   
   <div class="project-content">
-    <div class="project-kicker">04 · 机器学习</div>
+    <div class="project-kicker"><i class="fa-solid fa-robot"></i> 04 · 机器学习</div>
     <div class="project-title">房价预测：探索性分析与可解释建模</div>
     <p class="project-description">
       基于 Ames 房价数据构建完整预测流水线：从探索性数据分析、特征工程，到岭回归、LASSO、随机森林、Group LASSO 等多种模型。
@@ -408,7 +408,7 @@ lang: "zh"
 <div class="project-card" data-tags="causal" data-details-id="project2">
   <img src="{{ site.baseurl }}/images/project2.jpg" alt="Project Image" class="project-image">
   <div class="project-content">
-    <div class="project-kicker">05 · 因果推断</div>
+    <div class="project-kicker"><i class="fa-solid fa-scale-balanced"></i> 05 · 因果推断</div>
     <div class="project-title">旧金山犯罪率的社会经济驱动因素分析</div>
     <p class="project-description">
       构建覆盖 90 万+ 警情记录与 ACS 社会经济数据的大规模空间计量经济学分析流水线，将 SF 警方案件数据与普查局分区面板数据进行整合。
@@ -488,7 +488,7 @@ lang: "zh"
 <div class="project-card" data-tags="other" data-details-id="project3">
   <img src="{{ site.baseurl }}/images/project3.jpg" alt="Ikebana Site Image" class="project-image">
   <div class="project-content">
-    <div class="project-kicker">06 · 前端 / 设计</div>
+    <div class="project-kicker"><i class="fa-solid fa-palette"></i> 06 · 前端 / 设计</div>
     <div class="project-title">Ikebana Portfolio — 沉浸式前端作品集微站</div>
     <p class="project-description">
       一个完全手写的单页微型网站，将日式插花课程作品集转化为一个沉浸式数字体验。

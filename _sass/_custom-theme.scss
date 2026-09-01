@@ -66,11 +66,42 @@
   font-size: 0.9em;
 }
 
-/* Experience / education / research entries, laid out like a light timeline */
+/* Experience / education / research entries — an actual timeline: a dot
+   marker per entry on the rail, with the rail itself running continuously
+   behind them (via the container's ::before) so it reads as one line
+   rather than N disconnected borders. */
+.section-container:has(> .entry) {
+  position: relative;
+}
+
+.section-container:has(> .entry)::before {
+  content: "";
+  position: absolute;
+  left: 2.05rem;
+  top: 2.9rem;
+  bottom: 1.75rem;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--cw-purple-border), var(--cw-purple-border) 92%, transparent);
+}
+
 .entry {
+  position: relative;
   margin-bottom: 2.1rem;
-  padding-left: 1rem;
-  border-left: 2px solid var(--cw-purple-border);
+  padding-left: 1.4rem;
+  border-left: 2px solid transparent;
+}
+
+.entry::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 0.35rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--cw-purple);
+  box-shadow: 0 0 0 3px #fff;
 }
 
 .entry:last-child {
@@ -87,10 +118,21 @@
 .entry-details {
   color: var(--cw-muted);
   font-style: normal;
-  font-weight: 500;
-  font-size: 0.85rem;
-  letter-spacing: 0.01em;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   margin-bottom: 0.6rem;
+}
+
+/* Browsers without :has() support (very old Safari/Firefox) simply keep
+   each entry's own left border as the rail instead of one continuous
+   line — same information, slightly less seamless. Progressive
+   enhancement, not a broken fallback. */
+@supports not selector(:has(a)) {
+  .entry {
+    border-left-color: var(--cw-purple-border);
+  }
 }
 
 .entry-content ul {
@@ -546,12 +588,26 @@
 
 /* Small numbered kicker + tag chips on each project card */
 .project-kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
   font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.06em;
   color: var(--cw-purple);
   margin-bottom: 0.4rem;
+}
+
+.project-kicker i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--cw-purple-soft);
+  font-size: 0.7rem;
 }
 
 .project-stats {
@@ -687,17 +743,63 @@
 }
 
 .cw-home-main {
+  position: relative;
   flex-grow: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 3rem 1.5rem;
+  overflow: hidden;
+}
+
+/* Decorative dot-grid, on its own layer behind the hero content — a mask
+   on .cw-home-main itself would mask the content too, not just its
+   background, so this lives on a dedicated ::before instead. */
+.cw-home-main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: radial-gradient(rgba(109, 65, 149, 0.22) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+  background-position: center;
+  -webkit-mask-image: radial-gradient(60% 70% at 50% 45%, transparent 40%, #000 85%);
+  mask-image: radial-gradient(60% 70% at 50% 45%, transparent 40%, #000 85%);
 }
 
 .cw-home-hero {
+  position: relative;
+  z-index: 1;
   max-width: 640px;
   width: 100%;
   text-align: center;
+}
+
+/* Staggered entrance — the hero is above the fold, so this runs on load
+   rather than on scroll (see .cw-reveal for the scroll-triggered version
+   used elsewhere). Progressive enhancement: every child is already at its
+   final opacity/position without JS or with reduced motion. */
+@keyframes cw-hero-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.cw-home-hero > * {
+  animation: cw-hero-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.cw-home-hero > *:nth-child(1) { animation-delay: 0s; }
+.cw-home-hero > *:nth-child(2) { animation-delay: 0.08s; }
+.cw-home-hero > *:nth-child(3) { animation-delay: 0.15s; }
+.cw-home-hero > *:nth-child(4) { animation-delay: 0.22s; }
+.cw-home-hero > *:nth-child(5) { animation-delay: 0.3s; }
+.cw-home-hero > *:nth-child(6) { animation-delay: 0.38s; }
+.cw-home-hero > *:nth-child(7) { animation-delay: 0.44s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cw-home-hero > * {
+    animation: none;
+  }
 }
 
 .cw-home-hero .avatar {
