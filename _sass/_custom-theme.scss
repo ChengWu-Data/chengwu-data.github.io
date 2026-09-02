@@ -37,7 +37,7 @@
 .cv-container,
 .project-card,
 .project-details {
-  background: #fff;
+  background: var(--cw-surface);
   border: 1px solid var(--cw-purple-border);
   border-radius: var(--cw-radius-md);
   box-shadow: var(--cw-shadow-sm);
@@ -99,9 +99,9 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #fff;
+  background: var(--cw-surface);
   border: 2px solid var(--cw-purple);
-  box-shadow: 0 0 0 3px #fff;
+  box-shadow: 0 0 0 3px var(--cw-surface);
 }
 
 .entry:last-child {
@@ -272,8 +272,8 @@
 .email-btn:hover,
 .html-btn:hover,
 .cv-download-btn:hover {
-  background: var(--cw-purple-dark);
-  border-color: var(--cw-purple-dark);
+  background: var(--cw-purple-hover);
+  border-color: var(--cw-purple-hover);
   transform: translateY(-1px);
   box-shadow: var(--cw-shadow-btn);
 }
@@ -572,7 +572,7 @@
 
 .cw-search {
   width: 100%;
-  background: #fff;
+  background: var(--cw-surface);
   border: 1px solid var(--cw-purple-border);
   border-radius: 10px;
   padding: 0.65rem 1rem 0.65rem 2.35rem;
@@ -599,7 +599,7 @@
   font-weight: 600;
   padding: 0.5rem 0.95rem;
   border-radius: 999px;
-  background: #fff;
+  background: var(--cw-surface);
   border: 1px solid var(--cw-purple-border);
   color: var(--cw-purple-deep);
   cursor: pointer;
@@ -621,7 +621,7 @@
   text-align: center;
   padding: 3rem 1rem;
   color: var(--cw-muted);
-  background: #fff;
+  background: var(--cw-surface);
   border: 1px dashed var(--cw-purple-border);
   border-radius: var(--cw-radius-md);
 }
@@ -855,7 +855,7 @@
   width: 108px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #fff;
+  border: 3px solid var(--cw-surface);
   box-shadow: var(--cw-shadow-md);
   margin-bottom: 1.5rem;
 }
@@ -1163,7 +1163,7 @@
   bottom: 244px;
   max-width: 190px;
   padding: 0.6rem 0.85rem;
-  background: #fff;
+  background: var(--cw-surface);
   border: 1px solid var(--cw-purple-border);
   border-radius: var(--cw-radius-md) var(--cw-radius-md) var(--cw-radius-md) 4px;
   box-shadow: var(--cw-shadow-md);
@@ -1234,7 +1234,7 @@
   width: 100%;
   max-width: 280px;
   padding: 1.5rem 1.5rem 1.75rem;
-  background: #fff;
+  background: var(--cw-surface);
   border-radius: var(--cw-radius-md);
   box-shadow: var(--cw-shadow-md);
   transform: scale(0.9);
@@ -1439,7 +1439,7 @@
   border-radius: 50%;
   text-decoration: none;
   color: var(--cw-purple-deep);
-  background: #fff;
+  background: var(--cw-surface);
   border: 1px solid var(--cw-purple-border);
   font-size: 1rem;
   transition: all 0.15s ease;
@@ -1462,7 +1462,7 @@
   border: 1.5px solid var(--cw-purple);
   font-size: 0.72rem;
   box-shadow: var(--cw-shadow-sm);
-  background: #fff;
+  background: var(--cw-surface);
 }
 
 .cw-lang-toggle a {
@@ -1659,5 +1659,70 @@
   .project-card.is-highlighted {
     animation: none;
     box-shadow: 0 0 0 3px rgba(109, 65, 149, 0.3);
+  }
+}
+
+/* -----------------------------------------------------------------------
+   Dark mode toggle
+   ----------------------------------------------------------------------- */
+.masthead__inner-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.cw-theme-toggle {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid var(--cw-purple-border);
+  border-radius: 50%;
+  background: var(--cw-surface);
+  color: var(--cw-purple);
+  cursor: pointer;
+  transition: transform 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.cw-theme-toggle:hover {
+  transform: rotate(-10deg) scale(1.06);
+  border-color: var(--cw-purple);
+}
+
+.cw-theme-toggle:focus-visible {
+  outline: 2px solid var(--cw-purple);
+  outline-offset: 2px;
+}
+
+.cw-theme-toggle-icon {
+  font-size: 14px;
+}
+
+.cw-theme-toggle-icon--moon {
+  display: none;
+}
+
+/* Explicit dark (the toggle was clicked at some point) */
+[data-theme="dark"] .cw-theme-toggle-icon--sun {
+  display: none;
+}
+
+[data-theme="dark"] .cw-theme-toggle-icon--moon {
+  display: inline-block;
+}
+
+/* No explicit choice yet — icon still matches whatever the OS preference
+   is currently rendering. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .cw-theme-toggle-icon--sun {
+    display: none;
+  }
+
+  :root:not([data-theme="light"]) .cw-theme-toggle-icon--moon {
+    display: inline-block;
   }
 }

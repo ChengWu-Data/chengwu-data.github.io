@@ -19,14 +19,18 @@
         <ul class="hidden-links hidden"></ul>
       </nav>
     </div>
+    <button type="button" class="cw-theme-toggle" id="cw-theme-toggle" aria-label="切换深色模式">
+      <i class="fas fa-sun cw-theme-toggle-icon cw-theme-toggle-icon--sun" aria-hidden="true"></i>
+      <i class="fas fa-moon cw-theme-toggle-icon cw-theme-toggle-icon--moon" aria-hidden="true"></i>
+    </button>
   </div>
 </div>
 
 <style>
 /* 导航栏整体布局 */
 .masthead {
-  background: #f3e8fd;  /* 让背景颜色和整体风格一致 */
-  border-bottom: 1px solid #e0c9fa;
+  background: var(--cw-surface);
+  border-bottom: 1px solid var(--cw-page-border);
   padding: 10px 20px;
 }
 
@@ -58,12 +62,12 @@
 .masthead__menu-item a {
   text-decoration: none;
   font-weight: 500;
-  color: #4b2a66;
+  color: var(--cw-purple-dark);
   transition: color 0.2s;
 }
 
 .masthead__menu-item a:hover {
-  color: #2f1a42;
+  color: var(--cw-purple-deep);
 }
 
 /* 适配小屏幕，防止导航栏溢出 */
