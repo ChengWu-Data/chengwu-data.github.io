@@ -790,6 +790,21 @@
   color: var(--cw-purple);
 }
 
+.cw-home-nav .links .cw-theme-toggle {
+  margin-left: 1.4rem;
+  vertical-align: middle;
+}
+
+@media (max-width: 600px) {
+  .cw-home-nav .links a {
+    margin-left: 0.9rem;
+  }
+
+  .cw-home-nav .links .cw-theme-toggle {
+    margin-left: 0.9rem;
+  }
+}
+
 .cw-home-main {
   position: relative;
   flex-grow: 1;
@@ -1672,6 +1687,19 @@
   gap: 0.5rem;
 }
 
+/* .masthead__menu used to be a plain block element that filled the full
+   width of .masthead__inner-wrap, which is what the greedy-nav script
+   measures against to decide whether links need to collapse into the
+   "..." dropdown. Turning the wrapper into a flex row (above) made this
+   shrink to fit its own content instead, so greedy-nav's math broke and
+   the dropdown button started showing (and colliding with the toggle)
+   even when every link still fit. flex: 1 restores the "fill the
+   remaining space" sizing greedy-nav expects. */
+.masthead__menu {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 .cw-theme-toggle {
   flex: none;
   display: inline-flex;
@@ -1698,8 +1726,14 @@
   outline-offset: 2px;
 }
 
+/* Plain inline SVG rather than a Font Awesome glyph: the site's bundled
+   FA subset doesn't include fa-sun/fa-moon, so those rendered as an
+   unstyled fallback glyph instead of an icon. SVG + currentColor needs
+   no icon font and always renders. */
 .cw-theme-toggle-icon {
-  font-size: 14px;
+  display: block;
+  width: 16px;
+  height: 16px;
 }
 
 .cw-theme-toggle-icon--moon {
@@ -1712,7 +1746,7 @@
 }
 
 [data-theme="dark"] .cw-theme-toggle-icon--moon {
-  display: inline-block;
+  display: block;
 }
 
 /* No explicit choice yet — icon still matches whatever the OS preference
@@ -1723,6 +1757,6 @@
   }
 
   :root:not([data-theme="light"]) .cw-theme-toggle-icon--moon {
-    display: inline-block;
+    display: block;
   }
 }

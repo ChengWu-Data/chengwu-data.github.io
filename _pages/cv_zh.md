@@ -50,4 +50,3 @@ lang: "zh"
     });
   });
 </script>
-<script src="{{ site.baseurl }}/assets/js/interactions.js"></script>
