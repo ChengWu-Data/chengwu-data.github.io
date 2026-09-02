@@ -199,7 +199,7 @@
     en: {
       bone: {
         weight: 38,
-        dogImg: 'dog-idle.png',
+        dogImg: 'dog-found.png',
         icon: 'tag-bone.png',
         entries: [
           { short: '25% less review', full: 'My mom cut review workload ~25% across 7 systems.' },
@@ -212,7 +212,7 @@
       },
       gift: {
         weight: 20,
-        dogImg: 'dog-idle.png',
+        dogImg: 'dog-found.png',
         icon: 'tag-gift.png',
         entries: [
           { short: 'FX', lead: 'My mom built an FX trend strategy.', linkText: 'Take a look →', href: '/projects/#card-project_fx' },
@@ -235,7 +235,7 @@
     zh: {
       bone: {
         weight: 38,
-        dogImg: 'dog-idle.png',
+        dogImg: 'dog-found.png',
         icon: 'tag-bone.png',
         entries: [
           { short: '审核-25%', full: '我妈妈帮 7 个系统把审核量降了约 25%。' },
@@ -248,7 +248,7 @@
       },
       gift: {
         weight: 20,
-        dogImg: 'dog-idle.png',
+        dogImg: 'dog-found.png',
         icon: 'tag-gift.png',
         entries: [
           { short: 'FX', lead: '我妈妈做过一个外汇趋势交易策略。', linkText: '看看 →', href: '/zh/projects/#card-project_fx' },
@@ -357,6 +357,82 @@
     var currentIcon = null;
     var idleTimer = null;
     var tiltTimer = null;
+    var breathTimer = null;
+    var resultBreathTimer = null;
+
+    // A quiet "breathing" loop for the full-size dog while he's just
+    // standing there — mouth closed, then panting for a while, back to
+    // closed, repeat — so he's not a single frozen frame the whole time
+    // he's waiting for a click. Runs only while nothing else owns his
+    // image (not mid-dig, not showing a dug-up result, not peeked) and
+    // never for prefers-reduced-motion. Most pants use the two subtle
+    // mouth-open frames; every so often (~30%) he flashes the bigger
+    // tongue-out "found" pose instead, for an actual "sticks his tongue
+    // out now and then" beat rather than every pant reading the same as
+    // the last one. Randomized hold times keep it from reading as a
+    // mechanical loop.
+    var DOG_IDLE_PANT = ['dog-idle-open-1.png', 'dog-idle-open-2.png'];
+    var DOG_IDLE_TONGUE_OUT_CHANCE = 0.3;
+
+    function stopIdleBreathing() {
+      if (breathTimer) {
+        clearTimeout(breathTimer);
+        breathTimer = null;
+      }
+    }
+
+    function scheduleBreath(open) {
+      if (!open) {
+        breathTimer = setTimeout(function () {
+          dogImg.src = base + 'dog-idle.png';
+          scheduleBreath(true);
+        }, 2200 + Math.random() * 2000); // mouth-closed hold: ~2.2–4.2s
+        return;
+      }
+      var tongueOut = Math.random() < DOG_IDLE_TONGUE_OUT_CHANCE;
+      var delay = tongueOut
+        ? 650 + Math.random() * 500    // tongue-out flourish, held briefly
+        : 900 + Math.random() * 1100;  // plain panting hold: ~0.9–2.0s
+      breathTimer = setTimeout(function () {
+        dogImg.src = tongueOut
+          ? base + 'dog-found.png'
+          : base + DOG_IDLE_PANT[Math.floor(Math.random() * DOG_IDLE_PANT.length)];
+        scheduleBreath(false);
+      }, delay);
+    }
+
+    function startIdleBreathing() {
+      if (reduceMotion || breathTimer) return;
+      dogImg.src = base + 'dog-idle.png';
+      scheduleBreath(true);
+    }
+
+    // Same idea, but for the "found" result (bone/gift) once it's on
+    // screen: a quick alternation between the full tongue-out grin and
+    // a lighter pant frame, so an excited result also keeps moving
+    // instead of sitting as one static picture for the whole RESULT_MS
+    // it's shown. Faster cadence than idle breathing since this is an
+    // excited beat, not a restful one.
+    var DOG_FOUND_PANT = 'dog-idle-open-1.png';
+
+    function stopResultBreathing() {
+      if (resultBreathTimer) {
+        clearTimeout(resultBreathTimer);
+        resultBreathTimer = null;
+      }
+    }
+
+    function scheduleResultBreath(pant) {
+      resultBreathTimer = setTimeout(function () {
+        dogImg.src = pant ? base + DOG_FOUND_PANT : base + 'dog-found.png';
+        scheduleResultBreath(!pant);
+      }, pant ? 550 + Math.random() * 400 : 750 + Math.random() * 500);
+    }
+
+    function startResultBreathing() {
+      if (reduceMotion || resultBreathTimer) return;
+      scheduleResultBreath(true);
+    }
 
     // The "tap to see what he found" hint only needs to be seen once
     // per visitor — after that it's just noise. Remembered across
@@ -377,6 +453,7 @@
       idleTimer = setTimeout(function () {
         idleTimer = null;
         if (!busy && !zoom.classList.contains('is-open')) {
+          stopIdleBreathing();
           clearResults();
           corner.classList.add('is-peek');
         }
@@ -451,6 +528,20 @@
       itemImg.src = currentIcon;
       dogImg.src = base + pool.dogImg;
 
+      // Neither result outcome is a single frozen frame: a happy find
+      // gets a quick excited pant alternation (startResultBreathing);
+      // an empty one gets a slow scale "breath" since there's only one
+      // sad-pose frame today — swap in a second dog-sad-2.png and drive
+      // it through startResultBreathing()-style alternation instead of
+      // this class once that art exists.
+      stopResultBreathing();
+      dogImg.classList.remove('is-sad-breathe');
+      if (pool.dogImg === 'dog-found.png') {
+        startResultBreathing();
+      } else if (pool.dogImg === 'dog-sad.png' && !reduceMotion) {
+        dogImg.classList.add('is-sad-breathe');
+      }
+
       item.classList.remove('is-visible');
       hint.classList.remove('is-visible');
       void item.offsetWidth; // restart the land animation even on repeat clicks
@@ -513,6 +604,8 @@
         tiltTimer = null;
       }
       closeZoom();
+      stopResultBreathing();
+      dogImg.classList.remove('is-sad-breathe');
       dogImg.src = base + 'dog-idle.png';
       currentEntry = null;
     }
@@ -528,7 +621,10 @@
         corner.classList.remove('is-peek');
         item.classList.remove('is-visible');
         bubble.classList.remove('is-visible');
+        stopResultBreathing();
+        dogImg.classList.remove('is-sad-breathe');
         armIdleTimer();
+        startIdleBreathing();
         return;
       }
 
@@ -549,6 +645,9 @@
         return;
       }
 
+      stopIdleBreathing();
+      stopResultBreathing();
+      dogImg.classList.remove('is-sad-breathe');
       busy = true;
       bubble.classList.remove('is-visible');
       dogBtn.classList.remove('is-thinking');
@@ -570,6 +669,7 @@
     });
 
     armIdleTimer();
+    startIdleBreathing();
   }
 
   // Every page besides home carries only the small peeking form —

@@ -944,6 +944,20 @@
   transform: scale(1.08) rotate(-4deg);
 }
 
+/* Stand-in "breathing" for the empty-dig result: there's only one
+   dog-sad.png frame today, so this is a slow scale pulse rather than a
+   real two-image swap. Once a second sad-pose frame exists, drive it
+   the same way as the found-result pant alternation in interactions.js
+   and drop this rule. */
+.cw-dog-dig-img.is-sad-breathe {
+  animation: cw-dog-sad-breathe 2.6s ease-in-out infinite;
+}
+
+@keyframes cw-dog-sad-breathe {
+  0%, 100% { transform: scale(1) translateY(0); }
+  50% { transform: scale(1.02) translateY(-1px); }
+}
+
 @keyframes cw-corner-dog-run-in {
   0% { transform: translate(252px, 173px) scale(0.7) rotate(8deg); opacity: 0; }
   55% { transform: translate(-13px, -9px) scale(1.05) rotate(-4deg); opacity: 1; }
@@ -1338,6 +1352,7 @@
   .cw-corner-dog,
   .cw-dog-dig,
   .cw-dog-dig-img,
+  .cw-dog-dig-img.is-sad-breathe,
   .cw-dig-item.is-visible,
   .cw-dig-item[data-item="can"].is-visible,
   .cw-dig-hint,
