@@ -230,5 +230,4 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 </script>
-<script src="{{ site.baseurl }}/assets/js/interactions.js"></script>
 

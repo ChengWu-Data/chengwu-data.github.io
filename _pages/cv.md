@@ -50,4 +50,3 @@ author_profile: true
     });
   });
 </script>
-<script src="{{ site.baseurl }}/assets/js/interactions.js"></script>

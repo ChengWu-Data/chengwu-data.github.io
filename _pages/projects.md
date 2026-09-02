@@ -598,4 +598,3 @@ function toggleDetails(id) {
 }
 </script>
 <script src="{{ site.baseurl }}/assets/js/project-filters.js"></script>
-<script src="{{ site.baseurl }}/assets/js/interactions.js"></script>
