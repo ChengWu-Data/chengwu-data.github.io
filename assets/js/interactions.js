@@ -650,14 +650,14 @@
     });
   }
 
-  // Home-page opening animation: a brief first-visit sequence where a
-  // wall of "raw data" gets cleaned down to a handful of points, those
-  // points form a scattered cloud with a fitted S-curve, then scatter
-  // out onto the real hero stat numbers as they count up. The overlay
-  // markup is display:none by default (see _sass/_intro.scss) and an
-  // early inline script in the layout is the only thing that turns it
-  // on (first visit only, respects prefers-reduced-motion) — this
-  // function only runs the sequencing once that script has already
+  // Home-page opening animation: a brief sequence, played on every load
+  // of this page, where a wall of "raw data" gets cleaned down to a
+  // handful of points, those points form a scattered cloud with a fitted
+  // S-curve, then scatter out onto the real hero stat numbers as they
+  // count up. The overlay markup is display:none by default (see
+  // _sass/_intro.scss) and an early inline script in the layout is the
+  // only thing that turns it on (respecting prefers-reduced-motion) —
+  // this function only runs the sequencing once that script has already
   // decided to show it.
   //
   // The final "numbers land and count up" moment reuses the site's
@@ -686,10 +686,6 @@
       el.dataset.cwDone = '1'; // pre-claim so the scroll-reveal system leaves it alone
       el.textContent = '0';
     });
-
-    function markSeen() {
-      try { window.localStorage.setItem('cw-intro-seen', '1'); } catch (e) {}
-    }
 
     function gridDims() {
       var w = window.innerWidth;
@@ -816,7 +812,6 @@
     function finish() {
       overlay.style.pointerEvents = 'none';
       overlay.style.display = 'none';
-      markSeen();
     }
 
     function skip() {
