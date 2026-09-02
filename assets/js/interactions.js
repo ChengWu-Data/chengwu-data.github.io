@@ -199,7 +199,7 @@
     en: {
       bone: {
         weight: 38,
-        dogImg: 'dog-idle.png',
+        dogImg: 'dog-found.png',
         icon: 'tag-bone.png',
         entries: [
           { short: '25% less review', full: 'My mom cut review workload ~25% across 7 systems.' },
@@ -212,7 +212,7 @@
       },
       gift: {
         weight: 20,
-        dogImg: 'dog-idle.png',
+        dogImg: 'dog-found.png',
         icon: 'tag-gift.png',
         entries: [
           { short: 'FX', lead: 'My mom built an FX trend strategy.', linkText: 'Take a look →', href: '/projects/#card-project_fx' },
@@ -235,7 +235,7 @@
     zh: {
       bone: {
         weight: 38,
-        dogImg: 'dog-idle.png',
+        dogImg: 'dog-found.png',
         icon: 'tag-bone.png',
         entries: [
           { short: '审核-25%', full: '我妈妈帮 7 个系统把审核量降了约 25%。' },
@@ -248,7 +248,7 @@
       },
       gift: {
         weight: 20,
-        dogImg: 'dog-idle.png',
+        dogImg: 'dog-found.png',
         icon: 'tag-gift.png',
         entries: [
           { short: 'FX', lead: '我妈妈做过一个外汇趋势交易策略。', linkText: '看看 →', href: '/zh/projects/#card-project_fx' },
@@ -357,6 +357,42 @@
     var currentIcon = null;
     var idleTimer = null;
     var tiltTimer = null;
+    var breathTimer = null;
+
+    // A quiet "breathing" loop for the full-size dog while he's just
+    // standing there — mouth closed, then panting for a while, back to
+    // closed, repeat — so he's not a single frozen frame the whole time
+    // he's waiting for a click. Runs only while nothing else owns his
+    // image (not mid-dig, not showing a dug-up result, not peeked) and
+    // never for prefers-reduced-motion. Randomized hold times and a
+    // random pick between the two panting frames keep it from reading
+    // as a mechanical loop.
+    var DOG_BREATH_OPEN = ['dog-idle-open-1.png', 'dog-idle-open-2.png'];
+
+    function stopIdleBreathing() {
+      if (breathTimer) {
+        clearTimeout(breathTimer);
+        breathTimer = null;
+      }
+    }
+
+    function scheduleBreath(open) {
+      var delay = open
+        ? 900 + Math.random() * 1100   // panting hold: ~0.9–2.0s
+        : 2200 + Math.random() * 2000; // mouth-closed hold: ~2.2–4.2s
+      breathTimer = setTimeout(function () {
+        dogImg.src = open
+          ? base + DOG_BREATH_OPEN[Math.floor(Math.random() * DOG_BREATH_OPEN.length)]
+          : base + 'dog-idle.png';
+        scheduleBreath(!open);
+      }, delay);
+    }
+
+    function startIdleBreathing() {
+      if (reduceMotion || breathTimer) return;
+      dogImg.src = base + 'dog-idle.png';
+      scheduleBreath(true);
+    }
 
     // The "tap to see what he found" hint only needs to be seen once
     // per visitor — after that it's just noise. Remembered across
@@ -377,6 +413,7 @@
       idleTimer = setTimeout(function () {
         idleTimer = null;
         if (!busy && !zoom.classList.contains('is-open')) {
+          stopIdleBreathing();
           clearResults();
           corner.classList.add('is-peek');
         }
@@ -529,6 +566,7 @@
         item.classList.remove('is-visible');
         bubble.classList.remove('is-visible');
         armIdleTimer();
+        startIdleBreathing();
         return;
       }
 
@@ -549,6 +587,7 @@
         return;
       }
 
+      stopIdleBreathing();
       busy = true;
       bubble.classList.remove('is-visible');
       dogBtn.classList.remove('is-thinking');
@@ -570,6 +609,7 @@
     });
 
     armIdleTimer();
+    startIdleBreathing();
   }
 
   // Every page besides home carries only the small peeking form —
