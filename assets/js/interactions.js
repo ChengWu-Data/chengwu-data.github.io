@@ -624,9 +624,36 @@
     });
   }
 
+  // Dark mode toggle in the masthead. The actual theme values live in
+  // CSS (data-theme attribute + a prefers-color-scheme fallback); this
+  // just flips between an explicit "light" and "dark" and remembers it
+  // for next time. A separate inline script in <head> re-applies the
+  // saved choice before first paint, so there's no flash on load.
+  function setupThemeToggle() {
+    var btn = document.getElementById('cw-theme-toggle');
+    if (!btn) return;
+    var STORAGE_KEY = 'cw-theme';
+
+    function currentTheme() {
+      var explicit = document.documentElement.getAttribute('data-theme');
+      if (explicit === 'light' || explicit === 'dark') return explicit;
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      return prefersDark ? 'dark' : 'light';
+    }
+
+    btn.addEventListener('click', function () {
+      var next = currentTheme() === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try {
+        window.localStorage.setItem(STORAGE_KEY, next);
+      } catch (e) {}
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     setupDogDig();
     setupDogPeek();
+    setupThemeToggle();
 
     var targets = [];
 

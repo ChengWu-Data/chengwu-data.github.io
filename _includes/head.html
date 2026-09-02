@@ -1,5 +1,20 @@
 <meta charset="utf-8">
 
+<!-- Dark mode: apply a saved preference before first paint, so the page
+     never flashes light-then-dark (or vice versa) on load. No saved
+     preference means no attribute here — the stylesheet itself falls
+     back to prefers-color-scheme in that case. -->
+<script>
+  (function () {
+    try {
+      var saved = window.localStorage.getItem('cw-theme');
+      if (saved === 'light' || saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', saved);
+      }
+    } catch (e) {}
+  })();
+</script>
+
 {% include seo.html %}
 
 <meta name="HandheldFriendly" content="True">
