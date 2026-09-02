@@ -650,10 +650,248 @@
     });
   }
 
+  // Home-page opening animation: a brief first-visit sequence where a
+  // wall of "raw data" gets cleaned down to a handful of points, those
+  // points form a scattered cloud with a fitted S-curve, then scatter
+  // out onto the real hero stat numbers as they count up. The overlay
+  // markup is display:none by default (see _sass/_intro.scss) and an
+  // early inline script in the layout is the only thing that turns it
+  // on (first visit only, respects prefers-reduced-motion) — this
+  // function only runs the sequencing once that script has already
+  // decided to show it.
+  //
+  // The final "numbers land and count up" moment reuses the site's
+  // same countUp() used for the normal scroll-into-view reveal, so
+  // there's only one counting implementation. The stat elements are
+  // pre-claimed (dataset.cwDone) so that reveal doesn't also fire while
+  // the intro is still playing.
+  function setupHomeIntro() {
+    var overlay = document.getElementById('cw-intro-overlay');
+    if (!overlay || overlay.style.display !== 'flex') return;
+
+    var statEls = Array.prototype.slice.call(document.querySelectorAll('.cw-stats .cw-stat b'));
+    if (!statEls.length) {
+      overlay.style.display = 'none';
+      return;
+    }
+
+    overlay.dataset.cwIntroStarted = '1';
+
+    var titlebar = overlay.querySelector('.cw-intro-titlebar');
+    var gridArea = overlay.querySelector('.cw-intro-grid-area');
+    var grid = document.getElementById('cw-intro-grid');
+
+    var originalText = statEls.map(function (el) { return el.textContent; });
+    statEls.forEach(function (el) {
+      el.dataset.cwDone = '1'; // pre-claim so the scroll-reveal system leaves it alone
+      el.textContent = '0';
+    });
+
+    function markSeen() {
+      try { window.localStorage.setItem('cw-intro-seen', '1'); } catch (e) {}
+    }
+
+    function gridDims() {
+      var w = window.innerWidth;
+      if (w < 480) return { cols: 7, rows: 14, keep: 16 };
+      if (w < 900) return { cols: 11, rows: 13, keep: 20 };
+      return { cols: 17, rows: 12, keep: 24 };
+    }
+
+    function randNum() {
+      var r = Math.random();
+      if (r < 0.3) return (Math.random() * 10).toFixed(2);
+      if (r < 0.6) return String(Math.floor(Math.random() * 900) + 10);
+      return String(Math.floor(Math.random() * 90000) / 100);
+    }
+
+    var dims = gridDims();
+    var COLS = dims.cols, ROWS = dims.rows, N_CELLS = COLS * ROWS, N_KEEP = dims.keep;
+
+    function buildGrid() {
+      grid.innerHTML = '';
+      grid.style.gridTemplateColumns = 'repeat(' + COLS + ', 1fr)';
+      var keepIdx = {};
+      while (Object.keys(keepIdx).length < N_KEEP) {
+        keepIdx[Math.floor(Math.random() * N_CELLS)] = true;
+      }
+      var cells = [];
+      for (var i = 0; i < N_CELLS; i++) {
+        var row = Math.floor(i / COLS);
+        var c = document.createElement('div');
+        c.className = 'cw-intro-cell' + (row % 2 === 1 ? ' cw-intro-band' : '');
+        c.textContent = randNum();
+        c.dataset.keep = keepIdx[i] ? '1' : '0';
+        c.dataset.row = row;
+        grid.appendChild(c);
+        cells.push(c);
+      }
+      return cells;
+    }
+
+    // Logistic S-curve: reads as a real fitted trend rather than a plain
+    // straight line — steep rise through the middle, easing at each end.
+    function sig(t) { return 1 / (1 + Math.exp(-11 * (t - 0.5))); }
+
+    function curveGeometry() {
+      var cx = window.innerWidth / 2, cy = window.innerHeight / 2 - 10;
+      var w = Math.min(240, window.innerWidth * 0.42);
+      return { cx: cx, cy: cy, w: w, h: 70 };
+    }
+
+    var timers = [];
+    var odots = [];
+    var fitLineSvg = null, fitPath = null;
+    function clearTimers() { timers.forEach(clearTimeout); timers = []; }
+
+    function drawFitLine(g) {
+      if (fitLineSvg) fitLineSvg.remove();
+      var svgNS = 'http://www.w3.org/2000/svg';
+      fitLineSvg = document.createElementNS(svgNS, 'svg');
+      fitLineSvg.setAttribute('width', '100%');
+      fitLineSvg.setAttribute('height', '100%');
+      fitLineSvg.style.position = 'fixed';
+      fitLineSvg.style.inset = 0;
+      fitLineSvg.style.zIndex = 59;
+      fitLineSvg.style.pointerEvents = 'none';
+      fitPath = document.createElementNS(svgNS, 'path');
+      fitPath.setAttribute('class', 'cw-intro-fit-line');
+      var d = '';
+      var STEPS = 28;
+      for (var i = 0; i <= STEPS; i++) {
+        var t = i / STEPS;
+        var x = g.cx - g.w / 2 + t * g.w;
+        var y = g.cy + g.h / 2 - sig(t) * g.h;
+        d += (i === 0 ? 'M ' : 'L ') + x.toFixed(1) + ' ' + y.toFixed(1) + ' ';
+      }
+      fitPath.setAttribute('d', d.trim());
+      fitLineSvg.appendChild(fitPath);
+      overlay.appendChild(fitLineSvg);
+      var len = fitPath.getTotalLength();
+      fitPath.style.strokeDasharray = len;
+      fitPath.style.strokeDashoffset = len;
+      void fitPath.getBoundingClientRect();
+      fitPath.style.transition = 'stroke-dashoffset 0.45s ease';
+      fitPath.style.strokeDashoffset = 0;
+    }
+
+    function stage2Scatter() {
+      var g = curveGeometry();
+      odots.forEach(function (d, i) {
+        var t = odots.length > 1 ? i / (odots.length - 1) : 0.5;
+        var x = g.cx - g.w / 2 + t * g.w;
+        var y = g.cy + g.h / 2 - sig(t) * g.h + (Math.random() - 0.5) * 12;
+        d.style.transition = 'left 0.5s cubic-bezier(.3,.8,.3,1) ' + (i * 5) + 'ms, top 0.5s cubic-bezier(.3,.8,.3,1) ' + (i * 5) + 'ms';
+        d.style.left = x + 'px';
+        d.style.top = y + 'px';
+      });
+      timers.push(setTimeout(function () { drawFitLine(g); }, 160));
+    }
+
+    function stage3Land() {
+      if (fitPath) fitPath.style.opacity = 0;
+      var groups = statEls.map(function () { return []; });
+      odots.forEach(function (d, i) { groups[i % groups.length].push(d); });
+      statEls.forEach(function (el, gi) {
+        var br = el.getBoundingClientRect();
+        var cx = br.left + br.width / 2, cy = br.top + br.height / 2;
+        groups[gi].forEach(function (d, k) {
+          var x = cx + (Math.random() - 0.5) * 16;
+          var y = cy + (Math.random() - 0.5) * 12;
+          d.style.transition = 'left 0.45s cubic-bezier(.3,.7,.4,1) ' + (k * 5) + 'ms, top 0.45s cubic-bezier(.3,.7,.4,1) ' + (k * 5) + 'ms, opacity 0.3s ease ' + (260 + k * 5) + 'ms';
+          d.style.left = x + 'px';
+          d.style.top = y + 'px';
+          d.style.opacity = 0;
+        });
+        el.textContent = originalText[gi];
+        delete el.dataset.cwDone;
+        countUp(el);
+      });
+
+      overlay.style.transition = 'opacity 0.45s ease';
+      overlay.style.opacity = 0;
+      timers.push(setTimeout(finish, 470));
+    }
+
+    function finish() {
+      overlay.style.pointerEvents = 'none';
+      overlay.style.display = 'none';
+      markSeen();
+    }
+
+    function skip() {
+      clearTimers();
+      statEls.forEach(function (el, i) {
+        el.textContent = originalText[i];
+        delete el.dataset.cwDone;
+        el.dataset.cwDone = '1'; // already at final value, nothing left to animate
+      });
+      odots.forEach(function (d) { d.remove(); });
+      odots = [];
+      if (fitLineSvg) { fitLineSvg.remove(); fitLineSvg = null; }
+      overlay.style.transition = 'none';
+      overlay.style.opacity = 1;
+      finish();
+    }
+
+    overlay.addEventListener('click', skip);
+    document.addEventListener('keydown', function onEsc(e) {
+      if (e.key !== 'Escape') return;
+      document.removeEventListener('keydown', onEsc);
+      if (overlay.style.display !== 'none') skip();
+    });
+
+    var cells = buildGrid();
+    var oldBar = gridArea.querySelector('.cw-intro-sweep');
+    if (oldBar) oldBar.remove();
+    var bar = document.createElement('div');
+    bar.className = 'cw-intro-sweep';
+    gridArea.appendChild(bar);
+
+    var sweepMs = 700;
+    var rowMs = sweepMs / ROWS;
+    for (var r = 0; r < ROWS; r++) {
+      (function (rowIndex) {
+        timers.push(setTimeout(function () {
+          cells.forEach(function (c) {
+            if (parseInt(c.dataset.row, 10) !== rowIndex) return;
+            if (c.dataset.keep === '1') {
+              c.classList.add('cw-intro-keep');
+              var rect = c.getBoundingClientRect();
+              timers.push(setTimeout(function () {
+                var d = document.createElement('div');
+                d.className = 'cw-intro-odot';
+                d.style.left = (rect.left + rect.width / 2) + 'px';
+                d.style.top = (rect.top + rect.height / 2) + 'px';
+                overlay.appendChild(d);
+                odots.push(d);
+                requestAnimationFrame(function () {
+                  d.style.transition = 'opacity 0.2s ease';
+                  d.style.opacity = 0.95;
+                });
+                c.classList.add('cw-intro-gone');
+              }, 100));
+            } else {
+              c.classList.add('cw-intro-flag');
+              timers.push(setTimeout(function () { c.classList.add('cw-intro-gone'); }, 90));
+            }
+          });
+        }, rowIndex * rowMs));
+      })(r);
+    }
+
+    var stage2At = sweepMs + 150;
+    timers.push(setTimeout(stage2Scatter, stage2At));
+
+    var stage3At = stage2At + 580;
+    timers.push(setTimeout(stage3Land, stage3At));
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     setupDogDig();
     setupDogPeek();
     setupThemeToggle();
+    setupHomeIntro();
 
     var targets = [];
 
