@@ -9,7 +9,7 @@ author_profile: true
   <h1>Data &amp; business analyst, <em>Columbia MS in Data Science</em></h1>
   <p class="cw-sub">I’m Cheng Wu, finishing an M.S. in Data Science at Columbia, with an econometrics and quantitative economics background from UIUC. Most of what I do comes down to the same move: take a messy, high-stakes decision and find the smallest model that actually changes it.</p>
   <div class="cw-stats">
-    <div class="cw-stat"><b>4</b><span>PROFESSIONAL ROLES</span></div>
+    <div class="cw-stat"><b>5</b><span>PROFESSIONAL ROLES</span></div>
     <div class="cw-stat"><b>6</b><span>RESEARCH &amp; APPLIED PROJECTS</span></div>
     <div class="cw-stat"><b>2</b><span>DEGREES</span></div>
   </div>
@@ -65,6 +65,21 @@ author_profile: true
 
 <div class="section-container">
   <h2 class="section-header"><i class="fas fa-briefcase"></i> Professional Experience</h2>
+
+<div class="entry">
+  <div class="entry-title">Data Analytics Consultant</div>
+  <div class="entry-details">Intrinio | September 2026 – Present | New York, NY</div>
+  <p class="entry-summary">Built renewal and risk-segmentation workflows for a financial data company, now used by its sales and customer-success teams.</p>
+  <button type="button" class="entry-toggle" data-entry-id="entry_intrinio">Read more <i class="fa-solid fa-chevron-down"></i></button>
+  <div id="entry_intrinio" class="entry-content">
+    <p>
+      Built <span class="about-text">renewal-propensity and risk-scoring models</span> to flag which customers were likely to renew, lapse, or need a closer look, and used the results to segment accounts by <span class="about-text">value and risk</span> for prioritization.
+    </p>
+    <p>
+      Packaged the analysis into <span class="about-text">Streamlit and Power BI dashboards</span> that the sales and customer-success teams use directly, and worked with leadership to turn the findings into renewal-revenue recommendations.
+    </p>
+  </div>
+</div>
 
 <div class="entry">
   <div class="entry-title">Compliance Risk Analyst Intern</div>
