@@ -12,7 +12,7 @@ author_profile: true
     <h1>
       <i class="fa-solid fa-file-lines"></i> Curriculum Vitae
     </h1>
-    <a href="{{ site.baseurl }}/assets/resumes v_final.pdf" class="cv-download-btn" download="Cheng Wu's CV.pdf">
+    <a href="{{ site.baseurl }}/assets/Cheng_Wu_Resume.pdf" class="cv-download-btn" download="Cheng Wu Resume.pdf">
       <i class="fa-solid fa-download"></i> Download CV (PDF)
     </a>
   </div>
@@ -28,7 +28,7 @@ author_profile: true
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    var url = "{{ site.baseurl }}/assets/resumes v_final.pdf"; // PDF 文件路径
+    var url = "{{ site.baseurl }}/assets/Cheng_Wu_Resume.pdf"; // PDF 文件路径
 
     var loadingTask = pdfjsLib.getDocument(url);
     loadingTask.promise.then(function(pdf) {
