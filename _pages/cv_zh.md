@@ -13,7 +13,7 @@ lang: "zh"
     <h1>
       <i class="fa-solid fa-file-lines"></i> 个人简历
     </h1>
-    <a href="{{ site.baseurl }}/assets/resumes zh.pdf" class="cv-download-btn" download="吴骋的简历.pdf">
+    <a href="{{ site.baseurl }}/assets/Cheng_Wu_Resume_ZH.pdf" class="cv-download-btn" download="吴骋简历.pdf">
       <i class="fa-solid fa-download"></i> 下载简历（PDF）
     </a>
   </div>
@@ -28,7 +28,7 @@ lang: "zh"
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    var url = "{{ site.baseurl }}/assets/resumes zh.pdf"; // 本地 PDF 地址
+    var url = "{{ site.baseurl }}/assets/Cheng_Wu_Resume_ZH.pdf"; // 本地 PDF 地址
 
     var loadingTask = pdfjsLib.getDocument(url);
     loadingTask.promise.then(function(pdf) {
