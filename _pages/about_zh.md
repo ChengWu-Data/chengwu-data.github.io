@@ -90,7 +90,7 @@ lang: "zh"
   </div>
 
   <div class="entry">
-    <div class="entry-title">合规风控分析实习生</div>
+    <div class="entry-title">合规实习生，风险分析</div>
     <div class="entry-details">Tarte Cosmetics | 2025 年 10 月 – 2026 年 5 月 | 纽约</div>
     <p class="entry-summary">搭建跨 7 个系统的风险优先级排序流程——低价值审核量降低约 25%，重复问题减少约 22%。</p>
     <button type="button" class="entry-toggle" data-entry-id="entry_tarte_zh">展开详情 <i class="fa-solid fa-chevron-down"></i></button>
