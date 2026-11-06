@@ -82,7 +82,7 @@ author_profile: true
 </div>
 
 <div class="entry">
-  <div class="entry-title">Compliance Risk Analyst Intern</div>
+  <div class="entry-title">Compliance Intern, Risk Analytics</div>
   <div class="entry-details">Tarte Cosmetics | October 2025 – May 2026 | New York, NY</div>
   <p class="entry-summary">Built a risk-prioritization workflow across 7 systems — cut low-yield review volume ~25%, repeat issues ~22%.</p>
   <button type="button" class="entry-toggle" data-entry-id="entry_tarte">Read more <i class="fa-solid fa-chevron-down"></i></button>
