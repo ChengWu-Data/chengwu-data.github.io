@@ -10,7 +10,7 @@ lang: "zh"
   <h1>数据与商业分析师，<em>哥伦比亚大学数据科学硕士</em></h1>
   <p class="cw-sub">我是吴骋，正在哥伦比亚大学攻读数据科学硕士，本科在伊利诺伊大学厄巴纳-香槟分校主修计量经济学与数量经济学。我做的事说到底都是同一件：把一个混乱、有真实代价的决策——该标记哪个案例、该测哪个价格、先帮哪个家庭——拆解成一个真正能改变结果的最小模型。</p>
   <div class="cw-stats">
-    <div class="cw-stat"><b>4</b><span>职业经历</span></div>
+    <div class="cw-stat"><b>5</b><span>职业经历</span></div>
     <div class="cw-stat"><b>6</b><span>科研 &amp; 应用项目</span></div>
     <div class="cw-stat"><b>2</b><span>学位</span></div>
   </div>
@@ -73,6 +73,21 @@ lang: "zh"
 
 <div class="section-container">
   <h2 class="section-header"><i class="fas fa-briefcase"></i> 职业经历</h2>
+
+  <div class="entry">
+    <div class="entry-title">数据分析顾问</div>
+    <div class="entry-details">Intrinio | 2026 年 9 月 – 至今 | 纽约</div>
+    <p class="entry-summary">为一家金融数据公司搭建续约与风险分层工作流，现在由销售和客户成功团队在用。</p>
+    <button type="button" class="entry-toggle" data-entry-id="entry_intrinio_zh">展开详情 <i class="fa-solid fa-chevron-down"></i></button>
+    <div id="entry_intrinio_zh" class="entry-content">
+      <p>
+        搭建了<span class="about-text">续约倾向与风险评分模型</span>，用来识别哪些客户可能续约、流失或需要重点关注，并据此按<span class="about-text">价值与风险</span>对客户分层排序。
+      </p>
+      <p>
+        把分析结果做成<span class="about-text">Streamlit 和 Power BI 看板</span>，供销售和客户成功团队直接使用，并与管理层一起把发现转化为续约收入方面的建议。
+      </p>
+    </div>
+  </div>
 
   <div class="entry">
     <div class="entry-title">合规风控分析实习生</div>
