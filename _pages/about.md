@@ -7,7 +7,7 @@ author_profile: true
 <div class="cw-hero">
   <span class="cw-eyebrow">ABOUT</span>
   <h1>Data &amp; business analyst, <em>Columbia MS in Data Science</em></h1>
-  <p class="cw-sub">I’m Cheng Wu, finishing an M.S. in Data Science at Columbia, with an econometrics and quantitative economics background from UIUC. Most of what I do comes down to the same move: take a messy, high-stakes decision and find the smallest model that actually changes it.</p>
+  <p class="cw-sub">I’m Thea Wu, finishing an M.S. in Data Science at Columbia, with an econometrics and quantitative economics background from UIUC. Most of what I do comes down to the same move: take a messy, high-stakes decision and find the smallest model that actually changes it.</p>
   <div class="cw-stats">
     <div class="cw-stat"><b>5</b><span>PROFESSIONAL ROLES</span></div>
     <div class="cw-stat"><b>6</b><span>RESEARCH &amp; APPLIED PROJECTS</span></div>

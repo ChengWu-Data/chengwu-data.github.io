@@ -1,6 +1,6 @@
 ---
 layout: home
-title: "ChengW's Homepage"
+title: "Thea Wu's Homepage"
 permalink: /
 ---
 

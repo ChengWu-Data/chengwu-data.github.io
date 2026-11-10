@@ -7,7 +7,7 @@
 
 # Site Settings
 baseurl: ""
-title                    : "Cheng Wu | Data Science at Columbia University"
+title                    : "Thea Wu | Data Science at Columbia University"
 description              : ""
 repository               : "ChengWu-Data/chengwu-data.github.io"
 google_scholar_stats_use_cdn : true
@@ -22,7 +22,7 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 
 # Site Author
 author:
-  name             : "Cheng Wu"
+  name             : "Thea Wu"
   avatar           : "/images/avatar.png"
   bio              : "Columbia Engineering"
   location         : "NY, USA"
