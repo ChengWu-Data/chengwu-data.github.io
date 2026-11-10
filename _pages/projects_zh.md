@@ -12,8 +12,8 @@ lang: "zh"
   <h1>把复杂数据<em>变成清楚的决策</em></h1>
   <p class="cw-sub">量化研究与应用机器学习项目，横跨市场、金融与社会影响领域——和我在分析师工作中关注的方向一致，这里是它们完整、可复现的项目版本。</p>
   <div class="cw-stats">
-    <div class="cw-stat"><b>6</b><span>项目</span></div>
-    <div class="cw-stat"><b>4</b><span>领域</span></div>
+    <div class="cw-stat"><b>7</b><span>项目</span></div>
+    <div class="cw-stat"><b>5</b><span>领域</span></div>
     <div class="cw-stat"><b>6</b><span>GITHUB 仓库</span></div>
   </div>
 </div>
@@ -27,6 +27,7 @@ lang: "zh"
   </div>
   <div class="cw-chips">
     <button type="button" class="cw-chip is-active" data-tag="all">全部</button>
+    <button type="button" class="cw-chip" data-tag="product">产品 / 工具</button>
     <button type="button" class="cw-chip" data-tag="quant">量化 / 金融</button>
     <button type="button" class="cw-chip" data-tag="ml">机器学习</button>
     <button type="button" class="cw-chip" data-tag="causal">因果推断</button>
@@ -36,12 +37,31 @@ lang: "zh"
 
 <div class="cw-result-count" data-template="显示 {n} / 共 {total} 个项目" aria-live="polite"></div>
 
+<!-- Project: SponsorScope -->
+<div class="project-card project-card--featured" id="card-project_sponsorscope" data-tags="product">
+  <img src="{{ site.baseurl }}/images/sponsorscope/cover.png" alt="SponsorScope 判定结果：跳过，并高亮了岗位描述中不提供签证担保的原句" class="project-image">
+
+  <div class="project-content">
+    <div class="project-kicker"><i class="fa-solid fa-magnifying-glass"></i> ★ 精选 · 01 · 产品 / 工具</div>
+    <div class="project-title">SponsorScope：岗位签证担保体检工具</div>
+    <p class="project-description">
+      我自己每天在用的免费工具。粘贴一份岗位描述，或一次扫描几十家公司的招聘页，它会找出排除需要签证担保者的原句，
+      按你的经验年限和薪资底线判断，并高亮每个判定依据的原文。前期研究了 36 篇求职者帖子，并在 77 家从未见过的公司、324 条人工标注的句子上做了盲测。
+      体现了我在<strong>用户研究、产品取舍、评估设计和把工具真正做出来上线</strong>上的能力。
+    </p>
+    <div class="button-row">
+      <a href="{{ site.baseurl }}/sponsorscope/" class="html-btn"><i class="fa-solid fa-play"></i> 在线试用</a>
+      <a href="{{ site.baseurl }}/projects/sponsorscope/" class="github-btn"><i class="fa-solid fa-book-open"></i> 案例详情（英文）</a>
+    </div>
+  </div>
+</div>
+
 <!-- Project 0: Exponential Smoothing FX Trend Strategy -->
-<div class="project-card project-card--featured" id="card-project_fx" data-tags="quant" data-details-id="project_fx">
+<div class="project-card" id="card-project_fx" data-tags="quant" data-details-id="project_fx">
   <img src="{{ site.baseurl }}/images/project_fx.jpg" alt="FX Project Image" class="project-image">
   
   <div class="project-content">
-    <div class="project-kicker"><i class="fa-solid fa-chart-line"></i> ★ 精选 · 01 · 量化 / 金融</div>
+    <div class="project-kicker"><i class="fa-solid fa-chart-line"></i> 02 · 量化 / 金融</div>
     <div class="project-title">基于指数平滑的外汇趋势交易策略（USD/CAD）</div>
     <p class="project-description">
       一个<strong>完全可复现的量化研究项目</strong>，围绕 USD/CAD 汇率趋势持续性，构建基于双指数平滑（Dual ES）的完整预测与交易流水线：
@@ -132,7 +152,7 @@ lang: "zh"
   <img src="{{ site.baseurl }}/images/iris_recognition_cover.jpg" alt="虹膜识别系统项目封面图" class="project-image">
   
   <div class="project-content">
-    <div class="project-kicker"><i class="fa-solid fa-robot"></i> 02 · 机器学习</div>
+    <div class="project-kicker"><i class="fa-solid fa-robot"></i> 03 · 机器学习</div>
     <div class="project-title">端到端虹膜识别系统</div>
     <p class="project-description">
       一个基于经典论文方法实现的<strong>完整计算机视觉与模式识别项目</strong>，作为<strong>哥伦比亚大学课程项目</strong>完成。
@@ -232,7 +252,7 @@ lang: "zh"
   <img src="{{ site.baseurl }}/images/MultiDocRAG_cover.jpg" alt="MultiDocRAG Cover Image" class="project-image">
   
   <div class="project-content">
-    <div class="project-kicker"><i class="fa-solid fa-robot"></i> 03 · 机器学习</div>
+    <div class="project-kicker"><i class="fa-solid fa-robot"></i> 04 · 机器学习</div>
     <div class="project-title">MultiDocRAG：多文档检索增强推理系统</div>
     <p class="project-description">
       一个面向<strong>多文档场景</strong>的全栈检索增强生成（RAG）系统，可对多份上传 PDF 进行跨文档推理。
@@ -328,7 +348,7 @@ lang: "zh"
   <img src="{{ site.baseurl }}/images/project1.jpg" alt="Housing Project Image" class="project-image">
   
   <div class="project-content">
-    <div class="project-kicker"><i class="fa-solid fa-robot"></i> 04 · 机器学习</div>
+    <div class="project-kicker"><i class="fa-solid fa-robot"></i> 05 · 机器学习</div>
     <div class="project-title">房价预测：探索性分析与可解释建模</div>
     <p class="project-description">
       基于 Ames 房价数据构建完整预测流水线：从探索性数据分析、特征工程，到岭回归、LASSO、随机森林、Group LASSO 等多种模型。
@@ -408,7 +428,7 @@ lang: "zh"
 <div class="project-card" data-tags="causal" data-details-id="project2">
   <img src="{{ site.baseurl }}/images/project2.jpg" alt="Project Image" class="project-image">
   <div class="project-content">
-    <div class="project-kicker"><i class="fa-solid fa-scale-balanced"></i> 05 · 因果推断</div>
+    <div class="project-kicker"><i class="fa-solid fa-scale-balanced"></i> 06 · 因果推断</div>
     <div class="project-title">旧金山犯罪率的社会经济驱动因素分析</div>
     <p class="project-description">
       构建覆盖 90 万+ 警情记录与 ACS 社会经济数据的大规模空间计量经济学分析流水线，将 SF 警方案件数据与普查局分区面板数据进行整合。
@@ -488,7 +508,7 @@ lang: "zh"
 <div class="project-card" data-tags="other" data-details-id="project3">
   <img src="{{ site.baseurl }}/images/project3.jpg" alt="Ikebana Site Image" class="project-image">
   <div class="project-content">
-    <div class="project-kicker"><i class="fa-solid fa-palette"></i> 06 · 前端 / 设计</div>
+    <div class="project-kicker"><i class="fa-solid fa-palette"></i> 07 · 前端 / 设计</div>
     <div class="project-title">Ikebana Portfolio — 沉浸式前端作品集微站</div>
     <p class="project-description">
       一个完全手写的单页微型网站，将日式插花课程作品集转化为一个沉浸式数字体验。

@@ -11,8 +11,8 @@ author_profile: true
   <h1>Projects that turn data into <em>decisions</em></h1>
   <p class="cw-sub">Quantitative research and applied ML across markets, finance, and social impact — the same focus areas from my analyst work, built out here as full, reproducible projects with real results.</p>
   <div class="cw-stats">
-    <div class="cw-stat"><b>6</b><span>PROJECTS</span></div>
-    <div class="cw-stat"><b>4</b><span>DOMAINS</span></div>
+    <div class="cw-stat"><b>7</b><span>PROJECTS</span></div>
+    <div class="cw-stat"><b>5</b><span>DOMAINS</span></div>
     <div class="cw-stat"><b>6</b><span>GITHUB REPOS</span></div>
   </div>
 </div>
@@ -26,6 +26,7 @@ author_profile: true
   </div>
   <div class="cw-chips">
     <button type="button" class="cw-chip is-active" data-tag="all">All</button>
+    <button type="button" class="cw-chip" data-tag="product">Product &amp; Tools</button>
     <button type="button" class="cw-chip" data-tag="quant">Quant &amp; Finance</button>
     <button type="button" class="cw-chip" data-tag="ml">Machine Learning</button>
     <button type="button" class="cw-chip" data-tag="causal">Causal Inference</button>
@@ -35,12 +36,47 @@ author_profile: true
 
 <div class="cw-result-count" data-template="Showing {n} of {total} projects" aria-live="polite"></div>
 
+<!-- Project: SponsorScope -->
+<div class="project-card project-card--featured" id="card-project_sponsorscope" data-tags="product">
+  <img src="{{ site.baseurl }}/images/sponsorscope/cover.png" alt="SponsorScope verdict: Skip, with the sentence that rules out visa sponsorship highlighted in the job posting" class="project-image">
+
+  <div class="project-content">
+    <div class="project-kicker"><i class="fa-solid fa-magnifying-glass"></i> ★ Featured · 01 · PRODUCT &amp; TOOLS</div>
+    <div class="project-title">SponsorScope: job-posting checker for visa sponsorship</div>
+    <p class="project-description">
+      A free tool I built and use daily. Paste a posting, or scan dozens of company job boards at once, and it finds the sentences
+      that rule out candidates who need sponsorship, checks experience and pay against your limits, and highlights the exact words behind
+      each verdict. Grounded in research on 36 job-seeker posts and tested blind on 324 hand-labeled sentences from 77 companies it had never seen.
+      It shows my work in <strong>product discovery, decision trade-offs, evaluation design, and shipping a usable tool</strong>.
+    </p>
+
+    <div class="metric-chart">
+      <div class="metric-chart-row">
+        <span class="metric-chart-label">Say it</span>
+        <div class="metric-chart-track"><div class="metric-chart-bar" style="width:7.3%"></div></div>
+        <span class="metric-chart-value">10</span>
+      </div>
+      <div class="metric-chart-row">
+        <span class="metric-chart-label">Silent</span>
+        <div class="metric-chart-track"><div class="metric-chart-bar metric-chart-bar--accent" style="width:92.7%"></div></div>
+        <span class="metric-chart-value">127</span>
+      </div>
+      <div class="metric-chart-caption">Of 137 analyst postings sampled, how many state a sponsorship policy</div>
+    </div>
+
+    <div class="button-row">
+      <a href="{{ site.baseurl }}/sponsorscope/" class="html-btn"><i class="fa-solid fa-play"></i> Try it live</a>
+      <a href="{{ site.baseurl }}/projects/sponsorscope/" class="github-btn"><i class="fa-solid fa-book-open"></i> Case study</a>
+    </div>
+  </div>
+</div>
+
 <!-- Project 0: Exponential Smoothing FX Trend Strategy -->
-<div class="project-card project-card--featured" id="card-project_fx" data-tags="quant" data-details-id="project_fx">
+<div class="project-card" id="card-project_fx" data-tags="quant" data-details-id="project_fx">
   <img src="{{ site.baseurl }}/images/project_fx.jpg" alt="FX Project Image" class="project-image">
   
   <div class="project-content">
-    <div class="project-kicker"><i class="fa-solid fa-chart-line"></i> ★ Featured · 01 · QUANT &amp; FINANCE</div>
+    <div class="project-kicker"><i class="fa-solid fa-chart-line"></i> 02 · QUANT &amp; FINANCE</div>
     <div class="project-title">FX Trend Strategy using Exponential Smoothing</div>
     <p class="project-description">
       A fully reproducible quantitative research project analyzing USD/CAD trend persistence using dual exponential smoothing filters. 
@@ -126,7 +162,7 @@ author_profile: true
   <img src="{{ site.baseurl }}/images/MultiDocRAG_cover.jpg" alt="MultiDocRAG Cover Image" class="project-image">
   
   <div class="project-content">
-    <div class="project-kicker"><i class="fa-solid fa-robot"></i> 02 · MACHINE LEARNING</div>
+    <div class="project-kicker"><i class="fa-solid fa-robot"></i> 03 · MACHINE LEARNING</div>
     <div class="project-title">MultiDocRAG</div>
     <p class="project-description">
       A full-stack retrieval-augmented generation (RAG) system designed to perform 
@@ -230,7 +266,7 @@ author_profile: true
   <img src="{{ site.baseurl }}/images/iris_recognition_cover.jpg" alt="Iris Recognition System Cover Image" class="project-image">
   
   <div class="project-content">
-    <div class="project-kicker"><i class="fa-solid fa-robot"></i> 03 · MACHINE LEARNING</div>
+    <div class="project-kicker"><i class="fa-solid fa-robot"></i> 04 · MACHINE LEARNING</div>
     <div class="project-title">Iris Recognition System</div>
     <p class="project-description">
       A full computer vision and pattern recognition pipeline for <strong>iris-based biometric identification</strong>, 
@@ -334,7 +370,7 @@ author_profile: true
   <img src="{{ site.baseurl }}/images/project1.jpg" alt="Housing Project Image" class="project-image">
   
   <div class="project-content">
-    <div class="project-kicker"><i class="fa-solid fa-robot"></i> 04 · MACHINE LEARNING</div>
+    <div class="project-kicker"><i class="fa-solid fa-robot"></i> 05 · MACHINE LEARNING</div>
     <div class="project-title">Housing Price Prediction: An Exploratory Analysis</div>
     <p class="project-description">
       Built a housing price prediction pipeline using exploratory data analysis, feature engineering, and regression/ML models including Ridge, LASSO, Random Forest, and Group LASSO. 
@@ -414,7 +450,7 @@ author_profile: true
 <div class="project-card" data-tags="causal" data-details-id="project2">
   <img src="{{ site.baseurl }}/images/project2.jpg" alt="Project Image" class="project-image">
   <div class="project-content">
-    <div class="project-kicker"><i class="fa-solid fa-scale-balanced"></i> 05 · CAUSAL INFERENCE</div>
+    <div class="project-kicker"><i class="fa-solid fa-scale-balanced"></i> 06 · CAUSAL INFERENCE</div>
     <div class="project-title">Socioeconomic Drivers of Crime in San Francisco</div>
     <p class="project-description">
       Built a large-scale spatial econometrics pipeline linking 900k+ SF police incident records with ACS socioeconomic panel data. 
@@ -502,7 +538,7 @@ author_profile: true
 <div class="project-card" data-tags="other" data-details-id="project3">
   <img src="{{ site.baseurl }}/images/project3.jpg" alt="Ikebana Site Image" class="project-image">
   <div class="project-content">
-    <div class="project-kicker"><i class="fa-solid fa-palette"></i> 06 · WEB &amp; DESIGN</div>
+    <div class="project-kicker"><i class="fa-solid fa-palette"></i> 07 · WEB &amp; DESIGN</div>
     <div class="project-title">Ikebana Portfolio — Immersive Front-End Microsite</div>
     <p class="project-description">
       A handcrafted, single-page microsite that turns my Ikebana course portfolio into an immersive digital experience. 
