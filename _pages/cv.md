@@ -12,7 +12,7 @@ author_profile: true
     <h1>
       <i class="fa-solid fa-file-lines"></i> Curriculum Vitae
     </h1>
-    <a href="{{ site.baseurl }}/assets/Cheng_Wu_Resume.pdf" class="cv-download-btn" download="Cheng Wu Resume.pdf">
+    <a href="{{ site.baseurl }}/assets/Cheng_Wu_Resume.pdf" class="cv-download-btn" download="TheaW.pdf">
       <i class="fa-solid fa-download"></i> Download CV (PDF)
     </a>
   </div>
