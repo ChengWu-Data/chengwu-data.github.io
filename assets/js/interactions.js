@@ -986,15 +986,17 @@
      rig (the "head turns with your cursor" effect some sites build by
      generating a rotating video from a photo) — no AI video generation
      involved, just the existing avatar photo reacting to the cursor
-     with a subtle 3D tilt, so the hero feels a little alive without any
-     new art. Desktop/mouse only: a touch device never fires mousemove,
-     so it's naturally inert there. Skipped entirely under reduced motion. */
+     with a 3D tilt + lift + a shifting purple glow, so it's clearly
+     visible even on a flat, non-photographic avatar. Desktop/mouse
+     only: a touch device never fires mousemove, so it's naturally
+     inert there. Skipped entirely under reduced motion. */
   (function () {
     if (reduceMotion) return;
     var avatar = document.querySelector('.cw-home-hero .avatar');
     if (!avatar) return;
 
-    var MAX_TILT = 12; // degrees
+    var MAX_TILT = 22; // degrees
+    var MAX_SHADOW = 16; // px offset at full tilt
     var EASE = 0.12;
     var targetX = 0, targetY = 0, curX = 0, curY = 0;
     var raf = null;
@@ -1004,7 +1006,16 @@
     function render() {
       curX += (targetX - curX) * EASE;
       curY += (targetY - curY) * EASE;
-      avatar.style.transform = 'perspective(600px) rotateX(' + curX.toFixed(2) + 'deg) rotateY(' + curY.toFixed(2) + 'deg)';
+      var mag = Math.min(1, Math.sqrt(curX * curX + curY * curY) / MAX_TILT);
+      var scale = 1 + mag * 0.08;
+      avatar.style.transform = 'perspective(500px) rotateX(' + curX.toFixed(2) + 'deg) rotateY(' + curY.toFixed(2) + 'deg) scale(' + scale.toFixed(3) + ')';
+      if (mag < 0.02) {
+        avatar.style.filter = '';
+      } else {
+        var shadowX = (-curY / MAX_TILT) * MAX_SHADOW;
+        var shadowY = (curX / MAX_TILT) * MAX_SHADOW + 6;
+        avatar.style.filter = 'drop-shadow(' + shadowX.toFixed(1) + 'px ' + shadowY.toFixed(1) + 'px ' + (10 + mag * 10).toFixed(0) + 'px rgba(109, 65, 149, ' + (0.25 + mag * 0.25).toFixed(2) + '))';
+      }
       if (Math.abs(targetX - curX) > 0.05 || Math.abs(targetY - curY) > 0.05) {
         raf = requestAnimationFrame(render);
       } else {
