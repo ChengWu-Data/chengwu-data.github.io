@@ -49,7 +49,7 @@ author_profile: true
 <div class="ssc" markdown="0">
 
 <h1>SponsorScope: reading the fine print so job seekers don't have to</h1>
-<p class="lede">International students lose weeks to roles they could never be hired for. The reason is usually written in one sentence near the bottom of the posting, and no job board lets you filter on it. I built a free tool that finds that sentence, checks experience and pay against your own limits, and shows the exact words behind every verdict.</p>
+<p class="lede">International students lose weeks to roles they could never be hired for. The reason is usually written in one sentence near the bottom of the posting, and no job board lets you filter on it. I built a free tool that finds that sentence, checks experience and pay against your own limits, adds the company's H-1B filings from Department of Labor data, and shows the exact words behind every verdict.</p>
 
 <div class="ssc-actions">
   <a class="ssc-btn is-primary" href="{{ site.baseurl }}/sponsorscope/">Try it live</a>
@@ -60,6 +60,7 @@ author_profile: true
   <div><b>10 of 137</b><span>analyst-type postings I sampled said anything about visa sponsorship in the job description</span></div>
   <div><b>566</b><span>real posting sentences hand-labeled across 140 company job boards</span></div>
   <div><b>100%</b><span>precision on "Skip" in the final blind test: it never told someone to skip a role that was open to them</span></div>
+  <div><b>529,852</b><span>certified H-1B filings from 59,928 employers built into every check, July 2025 to June 2026</span></div>
 </div>
 
 <figure>
@@ -118,6 +119,10 @@ author_profile: true
   <p>The scanner reads the public feeds that Greenhouse, Lever and Ashby publish for each company. It does not scrape LinkedIn and does not submit applications, which would break those sites' terms and remove the human judgment the tool is meant to support.</p>
 </div>
 <div class="ssc-decision">
+  <h3>Company data at the level of the role, matched to legal names</h3>
+  <p>Since most postings say nothing, the tool also reads 12 months of the Department of Labor's H-1B filing data. Two problems came up. First, companies file under legal names: Instacart files as Maplebear and Carta as eShares. I normalize names, match on the start of the legal name, keep a short list of known aliases, and always show "Filed as" so the user can check the match. Second, a company can sponsor engineers and no one else, which is what the job seekers kept warning about. So the tool reports filings for the posting's own role type, such as data and business analyst roles, and how many of those were at entry wage levels.</p>
+</div>
+<div class="ssc-decision">
   <h3>Flagging green-card market-test postings</h3>
   <p>Some postings are written to satisfy the PERM green-card process for someone already in the job. They use legal phrasing such as "experience in the job offered" and "or foreign equivalent". The tool flags these as "Ask first" so people don't count on them.</p>
 </div>
@@ -128,7 +133,11 @@ author_profile: true
   <img src="{{ site.baseurl }}/images/sponsorscope/scan.png" alt="Scan results table with verdict tags, roles, pay, years of experience and the reason for each verdict." loading="lazy">
   <figcaption>A scan across three company boards. Roles that rule you out are hidden by default; the reason column says why.</figcaption>
 </figure>
-<p>Verdicts follow your own limits, saved in your browser: whether you need sponsorship, the most years of experience you will apply for, and a base-pay floor.</p>
+<figure>
+  <img src="{{ site.baseurl }}/images/sponsorscope/h1b.png" alt="H-1B filings panel for Datadog: 87 certified filings from July 2025 to June 2026, the most-filed titles with median pay, and the legal name used." loading="lazy">
+  <figcaption>Every check shows the company's certified H-1B filings for the last 12 months, the titles it filed most, and the legal name the match came from.</figcaption>
+</figure>
+<p>Verdicts follow your own limits, saved in your browser: whether you need sponsorship, the most years of experience you will apply for, a base-pay floor, and whether to skip companies with no H-1B filings in the last year.</p>
 
 <h2>Results</h2>
 <p>I pulled sentences from public job boards and labeled each one by hand: blocks a visa holder, needs a check, or irrelevant. I wrote the rules against one set, then tested twice on companies the rules had never seen, labeling each test set before running the tool on it.</p>
@@ -147,19 +156,20 @@ author_profile: true
   <li><strong>Test 1</strong> showed that any mention of ITAR was being read as a citizenship rule, so compliance jobs that only <em>work with</em> export controls were wrongly skipped. The rule now needs "U.S. person" or citizen wording in the same sentence.</li>
   <li><strong>Test 2</strong> showed misses on short lines such as "US Citizen or Green Card Holder". Those patterns are now covered and kept as regression tests. After both fixes the engine scores 97–98% on both test sets, though those sets are no longer blind.</li>
 </ul>
-<p>The biggest finding was outside the classifier. Only 10 of 137 analyst-type postings I sampled said anything about sponsorship in the description, so text alone can't settle most cases. That is why every verdict also links to the company's H-1B filings.</p>
+<p>The biggest finding was outside the classifier. Only 10 of 137 analyst-type postings I sampled said anything about sponsorship in the description, so text alone can't settle most cases. That is why I added the filing data. Of the 76 preset companies, 73 filed at least one H-1B in the last 12 months, and 61 filed for analyst, strategy, risk or GTM roles, the kinds of roles I apply for.</p>
+<p>The filing data is split into 926 small files by the first letters of the company name, so a check usually downloads a few kilobytes instead of 13 MB. Name matching was checked against 4,000 real filings: the browser and the Python build script produce the same result for every one.</p>
 <p class="note">I use SponsorScope for my own daily search. I will add usage numbers here once I have shared it more widely.</p>
 
 <h2>What I'd do next</h2>
 <ul>
-  <li>Load the Department of Labor's public H-1B (LCA) disclosure data, so each result shows filings for that company and job title directly.</li>
-  <li>Run the scan on a schedule and send new matches each morning.</li>
+  <li>Run the scan on a schedule and send new matches each morning, written straight into my tracker.</li>
+  <li>Cover companies that use Workday and similar systems, which includes most large banks, by running the scan on a server.</li>
   <li>Let users mark roles where sponsorship was confirmed or refused, filling the gap that postings leave.</li>
   <li>Offer a version to university career centers, whose international students ask this question every day.</li>
 </ul>
 
 <h2>How I built it</h2>
-<p>I defined the problem, did the research, designed the rules and the verdict logic, built and labeled the test sets, and ran the evaluation. I wrote the code with Claude Code as an AI pair programmer. The tool is plain HTML, CSS and JavaScript with no server; the rules and the evaluation scripts are in the <a href="https://github.com/ChengWu-Data/chengwu-data.github.io/tree/main/sponsorscope">repository</a>.</p>
+<p>I defined the problem, did the research, designed the rules and the verdict logic, built and labeled the test sets, and ran the evaluation. I wrote the code with Claude Code as an AI pair programmer. The tool is plain HTML, CSS and JavaScript with no server. The H-1B data is rebuilt by a Python script from the Department of Labor's public files. The rules, the data build and the evaluation scripts are in the <a href="https://github.com/ChengWu-Data/chengwu-data.github.io/tree/main/sponsorscope">repository</a>.</p>
 <p class="note">SponsorScope reads what a posting says. It is not legal or immigration advice.</p>
 
 </div>

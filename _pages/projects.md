@@ -37,8 +37,8 @@ author_profile: true
 <div class="cw-result-count" data-template="Showing {n} of {total} projects" aria-live="polite"></div>
 
 <!-- Project: SponsorScope -->
-<div class="project-card project-card--featured" id="card-project_sponsorscope" data-tags="product">
-  <img src="{{ site.baseurl }}/images/sponsorscope/cover.png" alt="SponsorScope verdict: Skip, with the sentence that rules out visa sponsorship highlighted in the job posting" class="project-image">
+<div class="project-card project-card--featured" id="card-project_sponsorscope" data-tags="product" style="display:block">
+  <img src="{{ site.baseurl }}/images/sponsorscope/cover-art.jpg" style="width:100%;height:auto;aspect-ratio:1672/941;margin-bottom:1.25rem;display:block" alt="Illustration: an Australian Shepherd at a desk reviewing a job posting in SponsorScope, with the verdict Skip and the no-sponsorship sentence highlighted" class="project-image">
 
   <div class="project-content">
     <div class="project-kicker"><i class="fa-solid fa-magnifying-glass"></i> ★ Featured · 01 · PRODUCT &amp; TOOLS</div>
@@ -46,7 +46,7 @@ author_profile: true
     <p class="project-description">
       A free tool I built and use daily. Paste a posting, or scan dozens of company job boards at once, and it finds the sentences
       that rule out candidates who need sponsorship, checks experience and pay against your limits, and highlights the exact words behind
-      each verdict. Grounded in research on 36 job-seeker posts and tested blind on 324 hand-labeled sentences from 77 companies it had never seen.
+      each verdict, alongside the company's H-1B filings from 12 months of Department of Labor data (529,852 filings). Grounded in research on 36 job-seeker posts and tested blind on 324 hand-labeled sentences from 77 companies it had never seen.
       It shows my work in <strong>product discovery, decision trade-offs, evaluation design, and shipping a usable tool</strong>.
     </p>
 

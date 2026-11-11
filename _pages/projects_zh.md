@@ -38,15 +38,15 @@ lang: "zh"
 <div class="cw-result-count" data-template="显示 {n} / 共 {total} 个项目" aria-live="polite"></div>
 
 <!-- Project: SponsorScope -->
-<div class="project-card project-card--featured" id="card-project_sponsorscope" data-tags="product">
-  <img src="{{ site.baseurl }}/images/sponsorscope/cover.png" alt="SponsorScope 判定结果：跳过，并高亮了岗位描述中不提供签证担保的原句" class="project-image">
+<div class="project-card project-card--featured" id="card-project_sponsorscope" data-tags="product" style="display:block">
+  <img src="{{ site.baseurl }}/images/sponsorscope/cover-art.jpg" style="width:100%;height:auto;aspect-ratio:1672/941;margin-bottom:1.25rem;display:block" alt="插画：一只澳牧坐在桌前用 SponsorScope 检查岗位，屏幕上判定为跳过，并高亮了不提供签证担保的原句" class="project-image">
 
   <div class="project-content">
     <div class="project-kicker"><i class="fa-solid fa-magnifying-glass"></i> ★ 精选 · 01 · 产品 / 工具</div>
     <div class="project-title">SponsorScope：岗位签证担保体检工具</div>
     <p class="project-description">
       我自己每天在用的免费工具。粘贴一份岗位描述，或一次扫描几十家公司的招聘页，它会找出排除需要签证担保者的原句，
-      按你的经验年限和薪资底线判断，并高亮每个判定依据的原文。前期研究了 36 篇求职者帖子，并在 77 家从未见过的公司、324 条人工标注的句子上做了盲测。
+      按你的经验年限和薪资底线判断，并高亮每个判定依据的原文，同时显示这家公司过去 12 个月的 H-1B 申请记录（来自美国劳工部 52.9 万条数据）。前期研究了 36 篇求职者帖子，并在 77 家从未见过的公司、324 条人工标注的句子上做了盲测。
       体现了我在<strong>用户研究、产品取舍、评估设计和把工具真正做出来上线</strong>上的能力。
     </p>
     <div class="button-row">
