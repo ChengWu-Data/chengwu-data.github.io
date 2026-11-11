@@ -29,6 +29,9 @@
     perm_posting: "Phrases like “experience in the job offered” and “foreign equivalent” are typical of green-card labor-certification ads, which are usually written for someone already in the job. Apply only if it is a strong fit, and do not count on it.",
     sponsorship_offered: "The posting says sponsorship is possible. Confirm it covers this level and location before you commit time.",
     everify: "The employer uses E-Verify, which every STEM OPT employer must.",
+    no_h1b: "The Department of Labor shows no certified H-1B filings under this company name in the last 12 months. If it files under a different legal name, enter that name below.",
+    h1b_not_role: "The company does sponsor, but last year none of its filings were for this kind of role. Worth asking the recruiter directly.",
+    h1b_ok: "Counts come from certified H-1B labor condition applications filed with the Department of Labor.",
     years_over: "The posting's stated minimum is above your limit.",
     years_ok: "Within your experience limit.",
     pay_below: "Even the top of the stated range is under your pay floor.",
@@ -46,11 +49,50 @@
            '<a href="https://h1bdata.info/index.php?em=' + c + '&job=' + t + '&city=&year=all+years" target="_blank" rel="noopener">H1BData for this title</a>';
   }
 
+
+  // ---------- H-1B filings (Department of Labor LCA data) ----------
+  var H1B_PERIOD = "Jul 2025 to Jun 2026";
+  var LEVEL_ORDER = { skip: 0, ask: 1, good: 2, info: 3 };
+  function roleCount(rec, title) { return rec ? (rec.f[LCA.familyOf(title)] || 0) : 0; }
+  function withH1b(r, rec, title) {
+    if (!rec) return r;
+    var fam = LCA.familyOf(title || ""), fc = rec.f[fam] || 0, lab = LCA.LABEL[fam], f;
+    if (rec.n === 0) f = { code: "no_h1b", level: profile.requireH1b && profile.needsSponsorship ? "skip" : "ask", title: "No H-1B filings in the last 12 months", evidence: [] };
+    else if (fam !== "other" && fc === 0) f = { code: "h1b_not_role", level: "info", title: "Files H-1Bs, but none for " + lab + " roles last year", evidence: [] };
+    else f = { code: "h1b_ok", level: "good", title: rec.n + " H-1B filings last year" + (fam !== "other" ? ", " + fc + " for " + lab + " roles" : ""), evidence: [] };
+    var findings = r.findings.filter(function (x) { return !/^(no_h1b|h1b_)/.test(x.code); }).concat([f]);
+    findings.sort(function (a, b) { return LEVEL_ORDER[a.level] - LEVEL_ORDER[b.level]; });
+    var lv = findings.map(function (x) { return x.level; });
+    var verdict = lv.indexOf("skip") >= 0 ? "skip" : lv.indexOf("ask") >= 0 ? "ask" : "apply";
+    var headline = SS.headline(verdict, findings, r.sponsorship);
+    if (verdict === "apply" && r.sponsorship === "silent" && rec.n > 0) headline = "Nothing in this posting rules you out, and the company filed " + rec.n + " H-1Bs last year" + (fam !== "other" ? " (" + fc + " for " + lab + " roles)" : "") + ".";
+    return Object.assign({}, r, { findings: findings, verdict: verdict, headline: headline });
+  }
+  function h1bFact(rec, state, title, company) {
+    var links = h1bLinks(company, title);
+    var input = '<label class="h1b-other">Files under another legal name? <input type="text" class="h1b-co" placeholder="e.g. Maplebear for Instacart" aria-label="Legal company name for H-1B lookup"></label>';
+    if (state === "loading") return '<p class="h1b-sum muted">Checking Department of Labor filings…</p>';
+    if (state === "none") return '<p class="h1b-sum muted">Add the company name to see its H-1B filings.</p><label class="h1b-other">Company <input type="text" class="h1b-co" placeholder="Company name" aria-label="Company name for H-1B lookup"></label>';
+    if (!rec) return '<p class="h1b-sum muted">Couldn\u2019t load the filing data. Check it here instead:</p><p class="h1b-links">' + links + "</p>";
+    if (rec.n === 0) return '<p class="h1b-sum"><b>No certified H-1B filings</b> under this name, ' + H1B_PERIOD + ".</p>" + input + '<p class="h1b-links">' + links + "</p>";
+    var fam = LCA.familyOf(title || ""), fc = rec.f[fam] || 0, ent = rec.lv[fam] || 0;
+    var html = '<p class="h1b-sum"><b>' + rec.n.toLocaleString("en-US") + "</b> certified H-1B filings, " + H1B_PERIOD + ".";
+    if (fam !== "other") html += " <b>" + fc + "</b> for " + LCA.LABEL[fam] + " roles" + (fc ? ", " + ent + " at entry wage levels (I\u2013II)" : "") + ".";
+    html += "</p>";
+    if (rec.titles.length) html += '<ul class="h1b-titles">' + rec.titles.slice(0, 3).map(function (t) {
+      return "<li>" + esc(t.title) + ' <span class="muted">' + t.n + " filing" + (t.n > 1 ? "s" : "") + (t.wage ? ", " + k(t.wage) : "") + "</span></li>";
+    }).join("") + "</ul>";
+    html += '<p class="h1b-names muted">Filed as ' + rec.names.map(esc).join("; ") + "</p>" + input + '<p class="h1b-links">' + links + "</p>";
+    return html;
+  }
+
   // ---------- limits ----------
   function renderLimits() {
     $("lim-sponsor").textContent = profile.needsSponsorship ? "Needs sponsorship" : "No sponsorship needed";
     $("lim-years").textContent = "Up to " + profile.maxYears + " years asked";
     $("lim-pay").textContent = profile.salaryFloor > 0 ? "Base pay from " + k(profile.salaryFloor) : "Any pay";
+    $("lim-h1b").textContent = profile.requireH1b ? "Company files H-1Bs" : "Any company";
+    $("f-h1b").checked = !!profile.requireH1b;
     $("f-sponsor").checked = !!profile.needsSponsorship;
     $("f-years").value = profile.maxYears;
     $("f-years-hard").value = profile.yearsHard ? "1" : "0";
@@ -69,12 +111,13 @@
       maxYears: Math.max(0, parseInt($("f-years").value || "0", 10)),
       yearsHard: $("f-years-hard").value === "1",
       salaryFloor: Math.max(0, parseInt($("f-pay").value || "0", 10)),
-      salaryHard: $("f-pay-hard").value === "1"
+      salaryHard: $("f-pay-hard").value === "1",
+      requireH1b: $("f-h1b").checked
     };
     save("profile", profile); renderLimits();
     $("limits-form").hidden = true; $("edit-limits").setAttribute("aria-expanded", "false");
     if (lastCheck) runCheck(lastCheck.text, lastCheck.meta);
-    if (scanJobs.length) { scanJobs.forEach(function (j) { j.r = SS.analyze(j.text, profile); }); renderScan(); }
+    if (scanJobs.length) { scanJobs.forEach(function (j) { j.r = withH1b(SS.analyze(j.text, profile), j.h1b, j.title); }); renderScan(); }
   });
   $("reset-limits").addEventListener("click", function () {
     profile = Object.assign({}, SS.DEFAULT_PROFILE); save("profile", profile); renderLimits();
@@ -157,7 +200,7 @@
     return out + esc(r.text.slice(pos));
   }
 
-  function renderVerdict(r, meta, target) {
+  function renderVerdict(r, meta, target, rec, state, onCompany) {
     var company = (meta && meta.company) || "";
     var title = (meta && meta.title) || "";
     var html = '<div class="verdict v-' + r.verdict + '"><div class="verdict-word">' + WORD[r.verdict] + "</div>" +
@@ -168,14 +211,12 @@
       "<div><dt>Sponsorship</dt><dd>" + SPONSOR_FACT[r.sponsorship] + "</dd></div>" +
       "<div><dt>Experience asked</dt><dd>" + yearsText(r.years) + "</dd></div>" +
       "<div><dt>Base pay</dt><dd>" + payText(r.pay) + "</dd></div>" +
-      '<div class="fact-h1b"><dt>H-1B filing history</dt><dd>' +
-        (company ? h1bLinks(company, title) : '<span class="h1b-inline"><input type="text" class="h1b-co" placeholder="Company name" aria-label="Company name for H-1B lookup"><span class="h1b-links"></span></span>') +
-      "</dd></div></dl>";
-    var shown = r.findings.filter(function (f) { return f.code !== "years_ok" && f.code !== "pay_ok"; });
+      '<div class="fact-h1b"><dt>H-1B filings' + (company ? " for " + esc(company) : "") + '</dt><dd>' + h1bFact(rec, state, title, company) + "</dd></div></dl>";
+    var shown = r.findings.filter(function (f) { return f.code !== "years_ok" && f.code !== "pay_ok" && f.code !== "h1b_ok"; });
     if (shown.length) {
       html += '<ul class="finding-list">' + shown.map(function (f) {
         var ev = f.evidence.slice(0, 2).map(function (e) { return "<q>" + esc(e.text.length > 240 ? e.text.slice(0, 237) + "…" : e.text) + "</q>"; }).join("");
-        return '<li class="f-' + LEVEL_CLASS[f.level] + '"><strong>' + esc(f.title) + "</strong><p>" + EXPLAIN[f.code] + "</p>" + ev + "</li>";
+        return '<li class="f-' + LEVEL_CLASS[f.level] + '"><strong>' + esc(f.title) + "</strong><p>" + (EXPLAIN[f.code] || "") + "</p>" + ev + "</li>";
       }).join("") + "</ul>";
     }
     if (r.verdict !== "skip" && profile.needsSponsorship && (r.sponsorship === "unclear" || r.sponsorship === "silent")) {
@@ -185,7 +226,7 @@
     }
     target.innerHTML = html;
     var co = target.querySelector(".h1b-co");
-    if (co) co.addEventListener("input", function () { target.querySelector(".h1b-links").innerHTML = co.value.trim() ? h1bLinks(co.value.trim(), title) : ""; });
+    if (co && onCompany) co.addEventListener("change", function () { if (co.value.trim()) onCompany(co.value.trim()); });
     var cp = target.querySelector(".copy-ask");
     if (cp) cp.addEventListener("click", function () { copy(target.querySelector("blockquote").textContent, cp, "Copied"); });
   }
@@ -197,7 +238,23 @@
     var r = SS.analyze(text, profile);
     var res = $("result");
     res.hidden = false;
-    renderVerdict(r, meta || {}, $("verdict-zone"));
+    meta = Object.assign({}, meta || {});
+    if (!meta.title) {
+      var first = (r.text.split("\n").filter(function (l) { return l.trim(); })[0] || "").trim();
+      if (first && first.length <= 90 && !/[.!?]$/.test(first)) meta.title = first;
+    }
+    var zone = $("verdict-zone");
+    var show = function (company, query) {
+      var m = Object.assign({}, meta, { company: company });
+      if (!company) { renderVerdict(r, m, zone, null, "none", show); return; }
+      renderVerdict(r, m, zone, null, "loading", show);
+      var token = (lastCheck.token = {});
+      LCA.lookup(query || company).then(function (rec) {
+        if (lastCheck.token !== token) return;
+        renderVerdict(withH1b(r, rec, m.title), m, zone, rec, "done", show);
+      });
+    };
+    show(meta.company, meta.h1bQuery);
     $("posting-text").innerHTML = renderPosting(r);
     $("check-msg").textContent = "";
     $("verdict-zone").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
@@ -213,7 +270,7 @@
     }
     if (link) {
       $("check-msg").textContent = "Fetching the posting…"; $("check-btn").disabled = true;
-      fetchOne(link).then(function (j) { runCheck(j.text, j); })
+      fetchOne(link).then(function (j) { j.h1bQuery = aliasFor(link.slug) || j.company; runCheck(j.text, j); })
         .catch(function (err) { $("check-msg").textContent = "Couldn’t load that posting (" + err.message + "). Copy its text and paste it instead."; })
         .then(function () { $("check-btn").disabled = false; });
       return;
@@ -227,8 +284,14 @@
     silent: "Data Analyst, Growth\nRemote (US)\n\nYou will design A/B tests, size opportunities, and turn messy event data into decisions.\n\nRequirements\n• 2-4 years of experience in product or marketing analytics.\n• Experience with experimentation and causal inference.\n\nCompensation: $100K - $130K. We participate in E-Verify."
   };
   Array.prototype.forEach.call(document.querySelectorAll("[data-example]"), function (b) {
-    b.addEventListener("click", function () { $("jd").value = EXAMPLES[b.dataset.example]; runCheck($("jd").value, { title: "Example posting" }); });
+    b.addEventListener("click", function () { $("jd").value = EXAMPLES[b.dataset.example]; runCheck($("jd").value, {}); });
   });
+
+  function aliasFor(slug) {
+    var hit = null;
+    window.SS_BOARDS.forEach(function (g) { g.items.forEach(function (b) { if (b[1] === slug) hit = b[4] || b[2]; }); });
+    return hit;
+  }
 
   // ---------- scan job boards ----------
   var custom = load("customBoards", []);
@@ -301,6 +364,7 @@
     var queue = boards.slice();
     function worker() {
       var b = queue.shift(); if (!b) return Promise.resolve();
+      var mine = [];
       return fetchBoard(b[0], b[1], b[2]).then(function (jobs) {
         jobs.forEach(function (j) {
           var t = j.title.toLowerCase();
@@ -309,12 +373,15 @@
           if (since && j.posted && j.posted < since) return;
           if (usOnly && !isUS(j)) return;
           // One row per role: the same title posted in several cities is merged.
-          var dup = scanJobs.filter(function (x) { return x.company === j.company && x.title === j.title; })[0];
-          if (dup) { if (j.location && dup.location.indexOf(j.location) < 0) dup.location += "; " + j.location; return; }
-          j.r = SS.analyze(j.text, profile);
+          var dup = mine.filter(function (x) { return x.company === j.company && x.title === j.title; })[0];
+          if (dup) { if (j.location && dup.locs.indexOf(j.location) < 0) dup.locs.push(j.location); return; }
+          j.locs = j.location ? [j.location] : [];
           j.isNew = !seen[j.id];
-          scanJobs.push(j);
+          mine.push(j);
         });
+        return mine.length ? LCA.lookup(b[4] || b[2]) : null;
+      }).then(function (rec) {
+        mine.forEach(function (j) { j.h1b = rec; j.r = withH1b(SS.analyze(j.text, profile), rec, j.title); scanJobs.push(j); });
       }).catch(function () { failed.push(b[2]); }).then(function () { done++; tick(); renderScan(); return worker(); });
     }
     Promise.all([worker(), worker(), worker(), worker(), worker(), worker()]).then(function () {
@@ -333,18 +400,22 @@
     Object.keys(counts).forEach(function (v) { $("n-" + v).textContent = counts[v]; });
     $("scan-results").hidden = !scanJobs.length;
     var rows = scanJobs.filter(function (j) { return showing[j.r.verdict]; })
-      .sort(function (a, b) { return ORDER[a.r.verdict] - ORDER[b.r.verdict] || (b.isNew - a.isNew) || (b.posted - a.posted); });
+      .sort(function (a, b) {
+        return ORDER[a.r.verdict] - ORDER[b.r.verdict] || roleCount(b.h1b, b.title) - roleCount(a.h1b, a.title) ||
+          ((b.h1b && b.h1b.n) || 0) - ((a.h1b && a.h1b.n) || 0) || (b.isNew - a.isNew) || (b.posted - a.posted);
+      });
     $("jobs").querySelector("tbody").innerHTML = rows.map(function (j) {
       var why = j.r.findings.filter(function (f) { return f.level === j.r.verdict || (j.r.verdict === "apply" && f.level === "good" && /sponsor/.test(f.code)); })[0];
       var reason = why ? why.title : (j.r.sponsorship === "silent" ? "Silent on sponsorship" : "");
       var d = j.posted ? new Date(j.posted).toLocaleDateString("en-US", { month: "short", day: "numeric" }) : "";
       return '<tr class="row-' + j.r.verdict + '"><td><span class="tag t-' + j.r.verdict + '">' + WORD[j.r.verdict] + "</span></td>" +
         '<td class="role"><a href="' + esc(j.url) + '" target="_blank" rel="noopener">' + esc(j.title) + "</a>" + (j.isNew ? ' <span class="new">new</span>' : "") +
-        '<span class="sub">' + esc(j.company) + (j.location ? ", " + esc(j.location) : "") + (d ? ". Posted " + d : "") + "</span></td>" +
+        '<span class="sub">' + esc(j.company) + (j.locs && j.locs.length ? ", " + esc(j.locs[0]) + (j.locs.length > 1 ? " +" + (j.locs.length - 1) + " more" : "") : "") + (d ? ". Posted " + d : "") + "</span></td>" +
         "<td>" + (j.r.pay ? payText(j.r.pay) : '<span class="muted">—</span>') + "</td>" +
         "<td>" + (j.r.years ? j.r.years.min + "+" : '<span class="muted">—</span>') + "</td>" +
+        "<td>" + (j.h1b ? "<b>" + j.h1b.n.toLocaleString("en-US") + '</b><span class="sub">' + (LCA.familyOf(j.title) === "other" ? "total" : roleCount(j.h1b, j.title) + " in role type") + "</span>" : '<span class="muted">—</span>') + "</td>" +
         '<td class="why">' + esc(reason) + ' <button type="button" class="link-btn details" data-id="' + esc(j.id) + '">Details</button></td></tr>';
-    }).join("") || '<tr><td colspan="5" class="muted">Nothing in the selected groups. Turn on another filter above.</td></tr>';
+    }).join("") || '<tr><td colspan="6" class="muted">Nothing in the selected groups. Turn on another filter above.</td></tr>';
   }
   Array.prototype.forEach.call(document.querySelectorAll(".filter"), function (b) {
     b.setAttribute("aria-pressed", String(b.classList.contains("is-on")));
@@ -359,7 +430,7 @@
     var j = scanJobs.filter(function (x) { return x.id === btn.dataset.id; })[0]; if (!j) return;
     $("dlg-title").textContent = j.title;
     var body = $("dlg-body"); body.innerHTML = '<div class="dlg-verdict"></div><h3>The posting, marked up</h3><div class="posting-text"></div>';
-    renderVerdict(j.r, j, body.querySelector(".dlg-verdict"));
+    renderVerdict(j.r, j, body.querySelector(".dlg-verdict"), j.h1b, j.h1b === undefined ? "none" : "done");
     body.querySelector(".posting-text").innerHTML = renderPosting(j.r);
     $("job-dialog").showModal();
   });
@@ -372,7 +443,8 @@
   }
   function note(j) {
     var top = j.r.findings.filter(function (f) { return f.level === j.r.verdict; })[0];
-    return "SponsorScope: " + WORD[j.r.verdict] + (top ? " (" + top.title + ")" : j.r.sponsorship === "silent" ? " (silent on sponsorship)" : "");
+    return "SponsorScope: " + WORD[j.r.verdict] + (top ? " (" + top.title + ")" : j.r.sponsorship === "silent" ? " (silent on sponsorship)" : "") +
+      (j.h1b ? ". H-1B filings last 12 mo: " + j.h1b.n + ", " + roleCount(j.h1b, j.title) + " this role type" : "");
   }
   var today = function () { var d = new Date(); return (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear(); };
   function copy(text, btn, done) {
@@ -385,7 +457,7 @@
     if (!rows.length) { $("export-msg").textContent = "Nothing to copy with the current filters."; return; }
     // Same columns as the tracker: Company, Title, Location, Link, Status, Date, Interview Stage, Interviewer, Notes, Week, Salary
     var tsv = rows.map(function (j) {
-      return [j.company, j.title, j.location, '=HYPERLINK("' + j.url.replace(/"/g, "") + '","link")', "", today(), "", "", note(j), "", j.r.pay ? payText(j.r.pay) : ""]
+      return [j.company, j.title, (j.locs || [j.location]).join("; "), '=HYPERLINK("' + j.url.replace(/"/g, "") + '","link")', "", today(), "", "", note(j), "", j.r.pay ? payText(j.r.pay) : ""]
         .map(function (c) { return String(c).replace(/[\t\n]/g, " "); }).join("\t");
     }).join("\n");
     copy(tsv, $("copy-sheet"), "Copied " + rows.length + " rows");
@@ -394,9 +466,9 @@
   $("dl-csv").addEventListener("click", function () {
     var rows = visibleRows();
     var q = function (c) { c = String(c == null ? "" : c); return /[",\n]/.test(c) ? '"' + c.replace(/"/g, '""') + '"' : c; };
-    var csv = ["Verdict,Company,Title,Location,Link,Base pay,Min years,Sponsorship,Note,Posted"].concat(rows.map(function (j) {
-      return [WORD[j.r.verdict], j.company, j.title, j.location, j.url, j.r.pay ? payText(j.r.pay) : "", j.r.years ? j.r.years.min : "",
-        SPONSOR_FACT[j.r.sponsorship], note(j), j.posted ? new Date(j.posted).toISOString().slice(0, 10) : ""].map(q).join(",");
+    var csv = ["Verdict,Company,Title,Location,Link,Base pay,Min years,Sponsorship,H-1B filings (12 mo),H-1B filings for this role type,Note,Posted"].concat(rows.map(function (j) {
+      return [WORD[j.r.verdict], j.company, j.title, (j.locs || [j.location]).join("; "), j.url, j.r.pay ? payText(j.r.pay) : "", j.r.years ? j.r.years.min : "",
+        SPONSOR_FACT[j.r.sponsorship], j.h1b ? j.h1b.n : "", j.h1b ? roleCount(j.h1b, j.title) : "", note(j), j.posted ? new Date(j.posted).toISOString().slice(0, 10) : ""].map(q).join(",");
     })).join("\n");
     var a = document.createElement("a");
     a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));

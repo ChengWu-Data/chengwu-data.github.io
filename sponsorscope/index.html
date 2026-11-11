@@ -29,7 +29,7 @@
 <main id="main">
   <section class="intro wrap">
     <h1>Read the fine print before you spend a week on interviews.</h1>
-    <p class="lede">Paste a job posting. SponsorScope finds the sentences that rule out candidates who need visa sponsorship, checks the experience and pay against your limits, and highlights the exact words it used.</p>
+    <p class="lede">Paste a job posting. SponsorScope finds the sentences that rule out candidates who need visa sponsorship, checks the experience and pay against your limits, shows the company's H-1B filings, and highlights the exact words it used.</p>
   </section>
 
   <section class="limits wrap" aria-labelledby="limits-h">
@@ -39,6 +39,7 @@
       <span class="pill" id="lim-sponsor"></span>
       <span class="pill" id="lim-years"></span>
       <span class="pill" id="lim-pay"></span>
+      <span class="pill" id="lim-h1b"></span>
       <button type="button" class="link-btn" id="edit-limits" aria-expanded="false" aria-controls="limits-form">Edit</button>
     </div>
     <form id="limits-form" class="limits-form" hidden>
@@ -55,6 +56,7 @@
       <label>When the whole pay range is below that
         <select id="f-pay-hard"><option value="1">Skip it</option><option value="0">Ask me</option></select>
       </label>
+      <label class="check"><input type="checkbox" id="f-h1b"> Skip companies with no H-1B filings in the last 12 months</label>
       <div class="form-actions">
         <button type="submit" class="btn">Save limits</button>
         <button type="button" class="link-btn" id="reset-limits">Reset to defaults</button>
@@ -146,7 +148,7 @@
           <p class="form-msg" id="export-msg" role="status" aria-live="polite"></p>
           <div class="table-wrap">
             <table class="jobs" id="jobs">
-              <thead><tr><th scope="col">Verdict</th><th scope="col">Role</th><th scope="col">Pay</th><th scope="col">Years</th><th scope="col">Why</th></tr></thead>
+              <thead><tr><th scope="col">Verdict</th><th scope="col">Role</th><th scope="col">Pay</th><th scope="col">Years</th><th scope="col">H-1B, 12 mo</th><th scope="col">Why</th></tr></thead>
               <tbody></tbody>
             </table>
           </div>
@@ -156,7 +158,7 @@
   </section>
 
   <footer class="foot wrap">
-    <p>SponsorScope reads what the posting says. It is not legal or immigration advice, and a posting that says nothing about sponsorship can still turn you down later, so check the company's H-1B history too. Built by <a href="https://chengwu-data.github.io/">Thea Wu</a>. Rules and test sets are <a href="https://github.com/ChengWu-Data/chengwu-data.github.io/tree/main/sponsorscope">on GitHub</a>.</p>
+    <p>SponsorScope reads what the posting says. H-1B counts are certified labor condition applications from the U.S. Department of Labor, July 2025 to June 2026. A company that filed H-1Bs can still turn down a candidate who needs one, so ask the recruiter early. Not legal or immigration advice. Built by <a href="https://chengwu-data.github.io/">Thea Wu</a>. Rules and test sets are <a href="https://github.com/ChengWu-Data/chengwu-data.github.io/tree/main/sponsorscope">on GitHub</a>.</p>
   </footer>
 </main>
 
@@ -169,6 +171,7 @@
 </dialog>
 
 <script src="engine.js"></script>
+<script src="lca.js"></script>
 <script src="boards.js"></script>
 <script src="app.js"></script>
 </body>

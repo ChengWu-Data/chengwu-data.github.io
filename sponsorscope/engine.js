@@ -20,7 +20,8 @@
     maxYears: 3,              // posting's minimum years must be <= this
     yearsHard: true,          // over the cap = skip (false = ask)
     salaryFloor: 85000,       // base pay floor in USD / year (0 = off)
-    salaryHard: true          // whole range below floor = skip (false = ask)
+    salaryHard: true,         // whole range below floor = skip (false = ask)
+    requireH1b: true          // company must have certified H-1B filings in the last 12 months
   };
 
   // ---------- text helpers ----------
@@ -338,6 +339,7 @@
   return {
     DEFAULT_PROFILE: DEFAULT_PROFILE,
     analyze: analyze,
+    headline: headline,
     htmlToText: htmlToText,
     sentences: sentences,
     parseYears: parseYears,

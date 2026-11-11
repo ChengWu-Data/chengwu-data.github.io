@@ -111,10 +111,14 @@ input[type=checkbox] { width: 18px; height: 18px; accent-color: var(--purple); f
 .facts dt { font-size: 13px; color: var(--muted); }
 .facts dd { margin: 2px 0 0; font-weight: 600; color: var(--ink); }
 .fact-h1b { grid-column: 1 / -1; }
-.fact-h1b dd { display: flex; flex-wrap: wrap; gap: 6px 16px; font-weight: 500; }
-.h1b-inline { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; width: 100%; }
-.h1b-inline input { max-width: 220px; padding: 6px 10px; }
-.h1b-links { display: flex; gap: 16px; }
+.fact-h1b dd { font-weight: 400; display: grid; gap: 8px; }
+.h1b-sum { margin: 0; color: var(--ink); }
+.h1b-sum b { font-weight: 700; }
+.h1b-titles { margin: 0; padding-left: 18px; font-size: 14px; }
+.h1b-names { margin: 0; font-size: 13px; }
+.h1b-links { margin: 0; display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 14px; }
+.h1b-other { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; font-weight: 400; color: var(--muted); }
+.h1b-other input { max-width: 240px; padding: 6px 10px; font-size: 14px; }
 
 .finding-list { list-style: none; padding: 0; margin: 0 0 24px; display: grid; gap: 14px; }
 .finding-list li { padding-left: 16px; border-left: 3px solid var(--rule); }
@@ -170,8 +174,9 @@ legend { font: 700 20px/1.2 var(--display); color: var(--ink); padding: 0; margi
 .jobs .role a { font-weight: 600; color: var(--ink); text-decoration: none; }
 .jobs .role a:hover { color: var(--purple); text-decoration: underline; }
 .jobs .sub { display: block; color: var(--muted); margin-top: 2px; }
-.jobs .why { min-width: 200px; }
-.jobs td:nth-child(3), .jobs td:nth-child(4) { white-space: nowrap; }
+.jobs .role { min-width: 210px; }
+.jobs .why { min-width: 140px; }
+.jobs td:nth-child(3), .jobs td:nth-child(4), .jobs td:nth-child(5) { white-space: nowrap; }
 .tag { display: inline-block; font-weight: 700; font-size: 13px; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
 .t-apply { background: var(--good-bg); color: var(--good); }
 .t-ask { background: var(--ask-bg); color: var(--ask); }
@@ -200,5 +205,6 @@ dialog::backdrop { background: rgba(34, 25, 46, .45); }
   .facts { grid-template-columns: 1fr; }
   .posting-text { padding: 16px; }
   .jobs th:nth-child(4), .jobs td:nth-child(4) { display: none; }
+  .jobs td:nth-child(5) .sub { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }

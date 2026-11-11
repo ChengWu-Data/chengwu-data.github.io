@@ -14,11 +14,23 @@ Every verdict highlights the sentence it came from.
 | `engine.js` | The rules. Works in the browser and in Node (`require("./engine.js")`). |
 | `app.js`, `app.css`, `index.html` | The page: check one posting, or scan company job boards. |
 | `boards.js` | Preset company job boards (Greenhouse, Lever, Ashby public feeds). |
+| `lca.js` | Looks up a company's certified H-1B filings. |
+| `data/build_lca.py` | Builds `data/lca/*.json` from the Department of Labor LCA disclosure files. |
 | `eval/` | Hand-labeled sentences, blind test sets and the scoring script. |
 
 No server, no API key, no build step. Job-board feeds are read directly
 from the browser; your limits and the list of roles you have already seen
 stay in your own browser storage.
+
+## Rebuild the H-1B data
+
+Download the latest `LCA_Disclosure_Data_FY*.xlsx` files from
+https://www.dol.gov/agencies/eta/foreign-labor/performance, then:
+
+```bash
+pip install python-calamine
+python3 data/build_lca.py LCA_Disclosure_Data_FY2025_Q4.xlsx LCA_Disclosure_Data_FY2026_Q3.xlsx
+```
 
 ## Test
 
