@@ -873,6 +873,7 @@
   border: 3px solid var(--cw-surface);
   box-shadow: var(--cw-shadow-md);
   margin-bottom: 1.5rem;
+  will-change: transform;
 }
 
 .cw-home-hero .cw-eyebrow {
