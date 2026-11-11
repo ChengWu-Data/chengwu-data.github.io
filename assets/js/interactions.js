@@ -982,6 +982,54 @@
     timers.push(setTimeout(stage3Land, stage3At));
   }
 
+  /* Hero avatar tilt: a lightweight stand-in for a full photo-to-video
+     rig (the "head turns with your cursor" effect some sites build by
+     generating a rotating video from a photo) — no AI video generation
+     involved, just the existing avatar photo reacting to the cursor
+     with a subtle 3D tilt, so the hero feels a little alive without any
+     new art. Desktop/mouse only: a touch device never fires mousemove,
+     so it's naturally inert there. Skipped entirely under reduced motion. */
+  (function () {
+    if (reduceMotion) return;
+    var avatar = document.querySelector('.cw-home-hero .avatar');
+    if (!avatar) return;
+
+    var MAX_TILT = 12; // degrees
+    var EASE = 0.12;
+    var targetX = 0, targetY = 0, curX = 0, curY = 0;
+    var raf = null;
+
+    function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+
+    function render() {
+      curX += (targetX - curX) * EASE;
+      curY += (targetY - curY) * EASE;
+      avatar.style.transform = 'perspective(600px) rotateX(' + curX.toFixed(2) + 'deg) rotateY(' + curY.toFixed(2) + 'deg)';
+      if (Math.abs(targetX - curX) > 0.05 || Math.abs(targetY - curY) > 0.05) {
+        raf = requestAnimationFrame(render);
+      } else {
+        raf = null;
+      }
+    }
+
+    function onMove(e) {
+      var dx = (e.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
+      var dy = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
+      targetY = clamp(dx * MAX_TILT, -MAX_TILT, MAX_TILT);
+      targetX = clamp(-dy * MAX_TILT, -MAX_TILT, MAX_TILT);
+      if (!raf) raf = requestAnimationFrame(render);
+    }
+
+    function onLeaveWindow() {
+      targetX = 0;
+      targetY = 0;
+      if (!raf) raf = requestAnimationFrame(render);
+    }
+
+    document.addEventListener('mousemove', onMove);
+    document.documentElement.addEventListener('mouseleave', onLeaveWindow);
+  })();
+
   document.addEventListener('DOMContentLoaded', function () {
     setupDogDig();
     setupDogPeek();
