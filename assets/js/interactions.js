@@ -1041,6 +1041,171 @@
     document.documentElement.addEventListener('mouseleave', onLeaveWindow);
   })();
 
+  /* Shared confetti burst — a small self-contained canvas particle
+     effect with no external library, used by both the CV-download
+     celebration and the keyboard easter egg below. The canvas overlay
+     is pointer-events:none and removes itself once every particle has
+     faded, so it never lingers or blocks clicks on anything underneath. */
+  function burstConfettiAt(x, y) {
+    if (reduceMotion) return;
+    var canvas = document.createElement('canvas');
+    canvas.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9999;';
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    document.body.appendChild(canvas);
+    var ctx = canvas.getContext('2d');
+    if (!ctx) { canvas.remove(); return; }
+
+    var colors = ['#6d4195', '#9b6fc4', '#f2c14e', '#4caf87', '#e85d75'];
+    var particles = [];
+    for (var i = 0; i < 60; i++) {
+      particles.push({
+        x: x, y: y,
+        vx: (Math.random() - 0.5) * 9,
+        vy: Math.random() * -9 - 3,
+        size: Math.random() * 6 + 4,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rot: Math.random() * 360,
+        vr: (Math.random() - 0.5) * 18,
+        life: 0
+      });
+    }
+
+    var gravity = 0.28;
+    function frame() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      var alive = false;
+      particles.forEach(function (p) {
+        p.life++;
+        var alpha = Math.max(0, 1 - p.life / 65);
+        if (alpha <= 0) return;
+        alive = true;
+        p.vy += gravity;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rot += p.vr;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rot * Math.PI) / 180);
+        ctx.globalAlpha = alpha;
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size / 2, -p.size / 4, p.size, p.size / 2);
+        ctx.restore();
+      });
+      if (alive) {
+        requestAnimationFrame(frame);
+      } else {
+        canvas.remove();
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  /* CV-download celebration: a one-off confetti burst from the button
+     itself when someone downloads the resume. Purely additive — the
+     click listener never calls preventDefault, so the actual download
+     (href + download attribute, already on the page) is untouched and
+     fires exactly as before even if confetti fails for any reason. */
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest && e.target.closest('.cv-download-btn');
+    if (!btn) return;
+    try {
+      var rect = btn.getBoundingClientRect();
+      burstConfettiAt(rect.left + rect.width / 2, rect.top + rect.height / 2);
+    } catch (err) { /* never let decoration break the real download */ }
+  });
+
+  /* Console easter egg: a one-time friendly banner for anyone who pops
+     open devtools (reviewers/engineers do this more than you'd think).
+     Pure console output — no DOM changes, so it cannot affect the page. */
+  (function () {
+    try {
+      var art = ' /\\_/\\ \n( o.o )\n > ^ < ';
+      console.log('%c' + art, 'color:#6d4195; font-family:monospace; font-size:13px; font-weight:bold;');
+      console.log('%cHi — thanks for taking a look under the hood. 👋', 'color:#6d4195; font-size:14px; font-weight:bold;');
+      console.log('%cThis site is built and maintained by Thea Wu (MS Data Science @ Columbia). Contact links are in the footer — always happy to talk data/analytics roles.', 'color:#3a2050; font-size:12px;');
+      console.log('%cPS: there\'s a keyboard easter egg hiding on this page somewhere. 🐾', 'color:#6b675f; font-size:11px; font-style:italic;');
+    } catch (e) {}
+  })();
+
+  /* Keyboard easter egg: the classic Konami code, or just typing
+     "woof", makes the corner dog do a happy little bounce + confetti.
+     Targets the dog's own <img> (#cw-dog-dig-img), never the dig/peek
+     state machine elsewhere in this file, so it can't interfere with
+     that logic — worst case if something's off, the bounce just
+     doesn't play. Invisible in "peek" mode since that image is
+     opacity:0 there (see _custom-theme.scss), so nothing visually
+     breaks on non-home pages either. */
+  (function () {
+    if (reduceMotion) return;
+    var KONAMI = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+    var codeBuffer = [];
+    var wordBuffer = '';
+
+    function triggerDogParty() {
+      var dogImg = document.getElementById('cw-dog-dig-img');
+      if (!dogImg || dogImg.classList.contains('cw-dog-party-bounce')) return;
+      dogImg.classList.add('cw-dog-party-bounce');
+      setTimeout(function () { dogImg.classList.remove('cw-dog-party-bounce'); }, 1300);
+      try {
+        burstConfettiAt(window.innerWidth - 90, window.innerHeight - 90);
+      } catch (e) {}
+    }
+
+    document.addEventListener('keydown', function (e) {
+      var tag = e.target && e.target.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+
+      codeBuffer.push(e.code);
+      if (codeBuffer.length > KONAMI.length) codeBuffer.shift();
+      if (codeBuffer.length === KONAMI.length && codeBuffer.every(function (c, i) { return c === KONAMI[i]; })) {
+        triggerDogParty();
+        codeBuffer = [];
+      }
+
+      if (e.key && e.key.length === 1) {
+        wordBuffer = (wordBuffer + e.key.toLowerCase()).slice(-4);
+        if (wordBuffer === 'woof') {
+          triggerDogParty();
+          wordBuffer = '';
+        }
+      }
+    });
+  })();
+
+  /* Retro flip-digit visitor counter: hits a free, keyless counting
+     API once per page load and renders the total as a row of digit
+     tiles with a one-time flip-in. Pure decoration — any failure
+     (offline, the third-party service being down, a CORS hiccup) is
+     swallowed and just leaves the widget hidden; nothing else on the
+     page depends on it. */
+  (function () {
+    var wrap = document.getElementById('cw-visitor-counter');
+    var digitsEl = document.getElementById('cw-vc-digits');
+    if (!wrap || !digitsEl) return;
+
+    function renderDigits(n) {
+      var str = String(n);
+      digitsEl.innerHTML = '';
+      for (var i = 0; i < str.length; i++) {
+        var d = document.createElement('span');
+        d.className = 'cw-vc-digit';
+        if (!reduceMotion) {
+          d.classList.add('cw-vc-digit-in');
+          d.style.animationDelay = (i * 0.06) + 's';
+        }
+        d.textContent = str[i];
+        digitsEl.appendChild(d);
+      }
+      wrap.classList.add('is-ready');
+    }
+
+    fetch('https://countapi.mileshilliard.com/api/v1/hit/chengwu-data-github-io-visits')
+      .then(function (res) { return res.ok ? res.json() : Promise.reject(res); })
+      .then(function (data) { renderDigits(data.value); })
+      .catch(function () { /* service unreachable — stay hidden, no error shown */ });
+  })();
+
   document.addEventListener('DOMContentLoaded', function () {
     setupDogDig();
     setupDogPeek();
