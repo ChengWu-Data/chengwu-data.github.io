@@ -1776,3 +1776,98 @@
     display: block;
   }
 }
+
+/* -----------------------------------------------------------------------
+   Fun extras: retro visitor counter, CV-download confetti target,
+   and the keyboard-easter-egg dog bounce. All purely additive — each
+   lives in its own class, touches nothing existing, and is inert
+   (hidden or a no-op) if its JS never runs.
+   ----------------------------------------------------------------------- */
+
+.cw-visitor-counter {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.cw-visitor-counter.is-ready {
+  opacity: 1;
+}
+
+.cw-vc-digits {
+  display: flex;
+  gap: 3px;
+}
+
+.cw-vc-digit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 28px;
+  padding: 0 4px;
+  background: var(--cw-purple-deep);
+  color: #fff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 4px;
+  box-shadow: var(--cw-shadow-sm);
+}
+
+.cw-vc-digit-in {
+  transform-origin: 50% 0%;
+  animation: cw-vc-flip-in 0.4s ease both;
+}
+
+@keyframes cw-vc-flip-in {
+  0% { transform: rotateX(-90deg); opacity: 0; }
+  100% { transform: rotateX(0deg); opacity: 1; }
+}
+
+.cw-vc-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: var(--cw-purple-deep);
+  opacity: 0.6;
+}
+
+@media (max-width: 640px) {
+  .cw-visitor-counter {
+    display: none;
+  }
+}
+
+/* Keyboard-easter-egg bounce target — see assets/js/interactions.js.
+   Scoped to the dog's own <img>, never the container, so it can't
+   collide with that element's page-load entrance animation. */
+.cw-dog-dig-img.cw-dog-party-bounce {
+  animation: cw-dog-party-bounce 0.6s ease-in-out 2;
+}
+
+@keyframes cw-dog-party-bounce {
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  25% { transform: translateY(-10px) rotate(-10deg) scale(1.08); }
+  50% { transform: translateY(0) rotate(8deg) scale(1.04); }
+  75% { transform: translateY(-6px) rotate(-6deg) scale(1.02); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cw-vc-digit-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .cw-dog-dig-img.cw-dog-party-bounce {
+    animation: none;
+  }
+}

@@ -126,6 +126,16 @@
     © {{ "now" | date: "%Y" }} Thea Wu
   </div>
 
+  <!-- Retro flip-digit visitor counter (bottom-left, clear of the dog
+       and language toggle which both live bottom-right). Starts hidden
+       (opacity:0) and only fades in once assets/js/interactions.js has
+       successfully fetched a count — see that file for the fallback
+       behavior if the counting service is ever unreachable. -->
+  <div class="cw-visitor-counter" id="cw-visitor-counter" aria-hidden="true">
+    <div class="cw-vc-digits" id="cw-vc-digits"></div>
+    <span class="cw-vc-label">VISITORS</span>
+  </div>
+
   <!-- Data Detective Dog: runs in from the bottom-right corner, click to dig.
        Idles into a small peek at the edge after 30s with no click. -->
   <div class="cw-corner-dog" id="cw-corner-dog">
