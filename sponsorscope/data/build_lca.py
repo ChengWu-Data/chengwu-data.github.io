@@ -23,6 +23,7 @@ Usage: python3 build_lca.py <folder containing the .xlsx files>
 import datetime, json, os, re, shutil, statistics, sys
 from collections import defaultdict, Counter
 from python_calamine import CalamineWorkbook
+import summarize
 
 SUFFIX = {"INC", "INCORPORATED", "LLC", "LLP", "LP", "LTD", "LIMITED", "CORP", "CORPORATION", "CO",
           "COMPANY", "PLC", "NA", "PC", "PLLC", "USA", "US", "HOLDINGS", "HOLDING", "GROUP", "THE"}
@@ -226,6 +227,7 @@ def main(folder):
     with open(os.path.join(out, "meta.json"), "w") as fh:
         json.dump(meta, fh, indent=1)
     print(json.dumps(meta, indent=1))
+    summarize.main(out)                             # the market-wide totals and leaderboards for the Sponsor data page
 
 
 if __name__ == "__main__":
