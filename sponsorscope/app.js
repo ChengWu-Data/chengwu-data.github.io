@@ -595,7 +595,7 @@
       '<button type="button" class="job-open" data-id="' + esc(m.id) + '" aria-current="' + (selected ? "true" : "false") + '">' +
         '<span class="job-line"><span class="tag t-' + m.verdict + '">' + WORD[m.verdict] + "</span>" +
           (mk ? '<span class="mk-badge mk-badge-' + mk + '">' + MARK_WORD[mk] + "</span>" : "") +
-          (m.isNew ? '<span class="new">new</span>' : "") + '<span class="job-when">' + esc(m.when) + "</span></span>" +
+          (m.isNew ? '<span class="new">new</span>' : "") + (m.repost ? '<span class="rp-badge" title="' + esc(m.repost) + '">Repost</span>' : "") + '<span class="job-when">' + esc(m.when) + "</span></span>" +
         '<span class="job-title">' + esc(m.title) + "</span>" +
         '<span class="job-co"><b>' + esc(m.company) + "</b>" + (m.where ? " · " + esc(m.where) : "") + "</span>" +
         '<span class="job-facts">' + m.facts.map(chip).join("") + (m.senior ? '<span class="fj-flag">Senior title, years not stated</span>' : "") + "</span>" +
@@ -610,6 +610,7 @@
     return '<div class="dt-head"><button type="button" class="link-btn dt-back">← All roles</button>' +
       '<h2 class="dt-title">' + esc(m.title) + "</h2>" +
       '<p class="dt-co"><b>' + esc(m.company) + "</b>" + (m.where ? " · " + esc(m.where) : "") + (m.when ? ' · <span class="muted">' + esc(m.when) + "</span>" : "") + "</p>" +
+      (m.repost ? '<p class="dt-repost"><b>Repost.</b> ' + esc(m.repost) + "</p>" : "") +
       '<p class="dt-chips">' + m.facts.map(chip).join("") + (m.dir ? '<span class="dir dir-t' + m.dir.tier + '">' + esc(m.dir.label) + "</span>" : "") +
         (m.skills && m.skills.length ? '<span class="dt-skills">' + m.skills.map(esc).join(" · ") + "</span>" : "") + "</p>" +
       '<div class="dt-actions"><a class="btn btn-primary" href="' + esc(m.url) + '" target="_blank" rel="noopener">Open posting ↗</a>' +
@@ -734,7 +735,7 @@
   // The scan runs on a schedule (scan/daily.js) and publishes its results to a branch of the repository.
   var FEED_BASE = window.SS_FEED_BASE || "https://raw.githubusercontent.com/ChengWu-Data/chengwu-data.github.io/sponsorscope-scan/";
   var feed = null, feedTextsP = null, selectedId = null, shownId = null, lastIds = [];
-  var feedShow = Object.assign({ hours: 24, view: "inbox", sort: "best", apply: true, ask: true, skip: false, nyc: true, remote: true, other: false, t1: true, t2: true, t3: false }, load("feed", {}));
+  var feedShow = Object.assign({ hours: 24, view: "inbox", sort: "best", apply: true, ask: true, skip: false, nyc: true, remote: true, other: false, t1: true, t2: true, t3: false, reposts: true }, load("feed", {}));
   feedShow.q = ""; feedShow.co = "";
   function wide() { return window.matchMedia("(min-width: 1101px)").matches; }
   function ago(ms) {
@@ -758,7 +759,7 @@
     if (v === "no") return mk === "n";
     return feedInWindow(j) && (v === "all" || !mk);
   }
-  function feedFacet(j) { return feedShow.view === "applied" || feedShow.view === "no" || (feedShow[j.verdict] && feedShow[LOC_GROUP[j.loc || "unknown"]] && feedShow[feedTier(j)]); }
+  function feedFacet(j) { return feedShow.view === "applied" || feedShow.view === "no" || (feedShow[j.verdict] && feedShow[LOC_GROUP[j.loc || "unknown"]] && feedShow[feedTier(j)] && (feedShow.reposts || !j.repost)); }
   function feedRows() {
     var by = {
       best: function (a, b) { return ORDER[a.verdict] - ORDER[b.verdict] || feedSenior(a) - feedSenior(b) || feedTier(a).localeCompare(feedTier(b)) || LOC_RANK[a.loc || "unknown"] - LOC_RANK[b.loc || "unknown"] || b.when - a.when; },
@@ -781,6 +782,7 @@
     return (models[j.id] = j._m = { id: j.id, verdict: j.verdict, title: j.title, company: j.company, locs: j.locs || [], where: whereText(j.locs), remote: j.remote,
       when: feedWhen(j), facts: factsOf(j.pay && { lo: j.pay[0], hi: j.pay[1] }, j.years && { min: j.years[0], max: j.years[1] }, j.mode, j.degree),
       skills: j.skills || [], why: j.why, dir: dir, url: safeUrl(j.url), senior: feedSenior(j), h1b: feedH1bShort(j),
+      repost: j.repost ? "This board first listed the same title on " + new Date(j.repost).toLocaleDateString("en-US", { month: "short", day: "numeric" }) + "; it came back under a new posting ID, so other job sites show it as new." : "",
       text: function () {
         return feedTexts().then(function (t) { if (!t[j.id]) throw new Error("no text"); return t[j.id]; });
       },
@@ -818,7 +820,7 @@
     syncControls();
     if (!feed) return;
     var q = feed.jobs.filter(feedQ), n = { inbox: 0, applied: 0, no: 0, all: 0 }, f = {};
-    ["apply", "ask", "skip", "nyc", "remote", "other", "t1", "t2", "t3"].forEach(function (k) { f[k] = 0; });
+    ["apply", "ask", "skip", "nyc", "remote", "other", "t1", "t2", "t3", "reposts"].forEach(function (k) { f[k] = 0; });
     q.forEach(function (j) {
       var mk = markOf(j.id), win = feedInWindow(j);
       if (win && !mk) n.inbox++;
@@ -828,7 +830,8 @@
       if (feedInView(j)) {
         var place = LOC_GROUP[j.loc || "unknown"], tier = feedTier(j);
         f[place]++; f[tier]++;
-        if (feedShow[place] && feedShow[tier]) f[j.verdict]++;
+        if (j.repost) f.reposts++;
+        if (feedShow[place] && feedShow[tier] && (feedShow.reposts || !j.repost)) f[j.verdict]++;
       }
     });
     Object.keys(n).forEach(function (k) { $("vn-" + k).textContent = n[k]; });

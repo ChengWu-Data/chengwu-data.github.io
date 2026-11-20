@@ -101,7 +101,7 @@
 
   function renderHero(feed, rejudging) {
     var now = Date.now(), jobs = feed.jobs, day = tally(jobs.filter(function (j) { return now - j.when <= DAY; })), week = tally(jobs);
-    var b = feed.boards || {};
+    var b = feed.boards || {}, reposts = jobs.filter(function (j) { return j.repost; }).length;
     $("ov-live").classList.toggle("is-old", now - feed.now > 26 * 36e5);
     $("ov-live-text").innerHTML = "Live · scanned " + ago(feed.now) + '<span class="live-more"> · ' + n(b.total - (b.failed || []).length) + " company job boards</span>";
     var worth = day.apply ? day.apply : week.apply, when = day.apply ? "today" : "this week";
@@ -114,14 +114,14 @@
     var stages = [
       { v: b.rows, k: "open roles read today", d: "on " + n(b.total) + " company job boards: Greenhouse, Lever, Ashby, SmartRecruiters and Workday" },
       b.fit ? { v: b.fit, k: "in the 19 business directions, in the U.S.", d: "titles like analyst, strategy, GTM, product ops and solutions; engineering and senior titles left out" } : null,
-      { v: week.all, k: "first seen in the last 7 days", d: "new to the board, not just reposted" },
+      { v: week.all, k: "first seen in the last 7 days", d: reposts ? n(reposts) + " of them reposts of a listing the board showed before" : "new posting IDs on each board" },
       { v: week.apply, k: "clear your limits this week", d: week.ask ? "and " + n(week.ask) + " more to ask the recruiter about first" : "" },
       { v: day.apply, k: "new in the last 24 hours", d: "worth applying to today", hot: true, of: "of this week’s" }
     ].filter(Boolean);
     $("funnel").innerHTML = stages.map(function (s, i) {
       var prev = i ? stages[i - 1].v : 0, share = prev ? Math.max(0.5, Math.round(s.v / prev * 1000) / 10) : 100;
       return '<li class="fn' + (s.hot ? " fn-hot" : "") + '"><div class="fn-top"><b class="num" data-n="' + (s.v || 0) + '">0</b><span class="fn-k">' + esc(s.k) + "</span></div>" +
-        (i ? '<div class="fn-bar" role="img" aria-label="' + share + '% of the step above"><i style="--w:' + Math.min(100, share) + '%"></i></div><span class="fn-share">' + (share < 1 ? "under 1" : share) + "% " + (s.of || "of the step above") + "</span>" : "") +
+        (i && prev >= s.v ? '<div class="fn-bar" role="img" aria-label="' + share + '% of the step above"><i style="--w:' + Math.min(100, share) + '%"></i></div><span class="fn-share">' + (share < 1 ? "under 1" : share) + "% " + (s.of || "of the step above") + "</span>" : "") +
         (s.d ? '<span class="fn-d">' + esc(s.d) + "</span>" : "") + "</li>";
     }).join("");
     Array.prototype.forEach.call($("funnel").querySelectorAll(".num"), function (el) { countUp(el, Number(el.dataset.n)); });

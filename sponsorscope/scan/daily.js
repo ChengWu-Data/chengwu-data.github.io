@@ -15,6 +15,8 @@
  *
  * "New" means new to the board: a role counts from the moment this scan
  * first sees it, or from the board's own posted date when that is recent.
+ * A new posting whose title the same board already showed in the last 60 days,
+ * under another posting ID, is marked as a repost of that older listing.
  *
  * Usage: node daily.js --out <folder> [--only greenhouse,lever,ashby,smartrecruiters,workday] [--match <company regex>]
  * No dependencies; needs Node 18 or newer for fetch.
@@ -169,6 +171,13 @@ async function listWorkday(b, st) {
   return { rows: rows, complete: complete };
 }
 
+// ---------- reposts ----------
+// Boards often take a role down and post it again under a new ID, which every job site then shows
+// as new. The scan remembers each board's titles for KEEP_DAYS: titleKey -> [first seen, last seen].
+function titleKey(boardKey, title) {
+  return boardKey + "|" + String(title || "").toLowerCase().replace(/\(.*?\)/g, " ").replace(/[^a-z0-9]+/g, " ").trim();
+}
+
 // ---------- one board ----------
 async function scanBoard(b, state, prev, out) {
   const st = state.boards[b.key] || {};
@@ -184,6 +193,7 @@ async function scanBoard(b, state, prev, out) {
     fit++;
     seenIds[row.id] = 1;
     let job = row, mark = state.ids[row.id];
+    const tk = titleKey(b.key, row.title), seenTitle = state.titles[tk];
     if (!mark) {
       // First sighting. A site that shows no date in its list is asked for the posting itself.
       if (!row.posted && row.load) { try { job = await row.load(); } catch (e) { return; } }
@@ -194,8 +204,12 @@ async function scanBoard(b, state, prev, out) {
       const posted = job.posted || 0, coarse = b.ats === "workday";
       const when = posted ? (known && coarse && NOW - posted < 2.5 * DAY ? NOW : posted) : (known ? NOW : NOW - (FEED_DAYS + 1) * DAY);
       mark = state.ids[row.id] = [Math.min(when, NOW), NOW];
+      // Seen on an earlier run under another ID: a repost. (The same title twice in one run is one
+      // role listed in several cities, which is merged below.)
+      if (known && seenTitle && seenTitle[1] < NOW) mark[2] = seenTitle[0];
     }
     mark[1] = NOW;
+    state.titles[tk] = [seenTitle ? Math.min(seenTitle[0], mark[0]) : mark[0], NOW];
     if (NOW - mark[0] > FEED_DAYS * DAY) return;
     if (!job.text) {
       const was = prev.byId[row.id] || {};
@@ -204,10 +218,16 @@ async function scanBoard(b, state, prev, out) {
     }
     if (job.foreign || !job.text) return;
     job.when = mark[0];
+    if (mark[2]) job.repost = mark[2];
     // One entry per role: the same title in several cities is merged.
     const dup = byTitle[job.title];
     const locs = job.locs || (job.location ? [job.location] : []);
-    if (dup) { locs.forEach((l) => { if (dup.locs.indexOf(l) < 0) dup.locs.push(l); }); dup.when = Math.max(dup.when, job.when); dup.remote = dup.remote || job.remote; return; }
+    if (dup) {
+      locs.forEach((l) => { if (dup.locs.indexOf(l) < 0) dup.locs.push(l); });
+      dup.when = Math.max(dup.when, job.when); dup.remote = dup.remote || job.remote;
+      if (job.repost && (!dup.repost || job.repost < dup.repost)) dup.repost = job.repost;
+      return;
+    }
     job.locs = locs;
     byTitle[job.title] = job;
   });
@@ -224,7 +244,7 @@ function carryOver(b, prev, seenIds, rec, out) {
     if (e.board !== b.key || seenIds[e.id] || NOW - e.when > FEED_DAYS * DAY || !prev.texts[e.id]) return;
     if (!Roles.classify(e.title) || Core.excluded(e.title)) return;      // the title rules may have changed since it was kept
     if (out.jobs.some((x) => x.board === b.key && x.title === e.title)) return;
-    out.jobs.push(entry({ id: e.id, title: e.title, company: e.company, url: e.url, locs: e.locs, remote: e.remote, posted: e.posted, when: e.when, text: prev.texts[e.id] }, b, rec));
+    out.jobs.push(entry({ id: e.id, title: e.title, company: e.company, url: e.url, locs: e.locs, remote: e.remote, posted: e.posted, when: e.when, repost: e.repost, text: prev.texts[e.id] }, b, rec));
     out.texts[e.id] = prev.texts[e.id];
   });
 }
@@ -235,7 +255,7 @@ function entry(job, b, rec) {
   return {
     id: job.id, board: b.key, source: b.ats, company: job.company || b.name, title: job.title, url: job.url,
     locs: job.locs, loc: Roles.locClass(job.locs, job.remote), remote: !!job.remote, dir: dir ? dir.id : "",
-    when: job.when, posted: job.posted || 0,
+    when: job.when, posted: job.posted || 0, repost: job.repost || 0,
     verdict: r.verdict, why: Core.reason(r), codes: Core.codes(r), sponsorship: r.sponsorship,
     pay: r.pay ? [r.pay.lo, r.pay.hi] : null, years: r.years ? [r.years.min, r.years.max || null] : null,
     h1b: facts ? Object.assign(facts, { perm: rec.pm[2] }) : null,
@@ -251,13 +271,13 @@ function nyDay(ms) { return new Date(ms).toLocaleDateString("en-CA", { timeZone:
 function history(h, jobs, read, fit, boardsOk) {
   h = h && h.days ? h : { v: 1, days: {} };
   const fresh = {};
-  for (let d = 0; d < FEED_DAYS; d++) fresh[nyDay(NOW - d * DAY)] = { all: 0, apply: 0, ask: 0, skip: 0 };
-  jobs.forEach(function (j) { const c = fresh[nyDay(j.when)]; if (c) { c.all++; c[j.verdict]++; } });
+  for (let d = 0; d < FEED_DAYS; d++) fresh[nyDay(NOW - d * DAY)] = { all: 0, apply: 0, ask: 0, skip: 0, reposts: 0 };
+  jobs.forEach(function (j) { const c = fresh[nyDay(j.when)]; if (c) { c.all++; c[j.verdict]++; if (j.repost) c.reposts++; } });
   const oldest = nyDay(NOW - (FEED_DAYS - 1) * DAY);
   Object.keys(fresh).forEach(function (d) {
     // The oldest day in the window is only partly covered by a 7-day feed; keep a fuller earlier count.
     const was = h.days[d] || {};
-    const c = d === oldest && was.all > fresh[d].all ? { all: was.all, apply: was.apply, ask: was.ask, skip: was.skip } : fresh[d];
+    const c = d === oldest && was.all > fresh[d].all ? { all: was.all, apply: was.apply, ask: was.ask, skip: was.skip, reposts: was.reposts || 0 } : fresh[d];
     h.days[d] = Object.assign({}, was, c);
   });
   const today = h.days[nyDay(NOW)];
@@ -273,6 +293,14 @@ function readJSON(file, fallback) { try { return JSON.parse(fs.readFileSync(path
 (async function main() {
   fs.mkdirSync(OUT, { recursive: true });
   const state = readJSON("state.json", { v: 1, ids: {}, boards: {} });
+  if (!state.titles) {
+    // First run with repost tracking: start the title memory from the roles already in the feed.
+    state.titles = {};
+    readJSON("latest.json", { jobs: [] }).jobs.forEach(function (e) {
+      const k = titleKey(e.board, e.title), was = state.titles[k];
+      state.titles[k] = [was ? Math.min(was[0], e.when) : e.when, state.updated || e.when];
+    });
+  }
   const last = readJSON("latest.json", { jobs: [] });
   const prev = { jobs: last.jobs || [], texts: readJSON("texts.json", {}), byId: {} };
   prev.jobs.forEach((e) => { prev.byId[e.id] = e; });
@@ -303,11 +331,12 @@ function readJSON(file, fallback) { try { return JSON.parse(fs.readFileSync(path
   });
 
   Object.keys(state.ids).forEach((id) => { if (NOW - state.ids[id][1] > KEEP_DAYS * DAY) delete state.ids[id]; });
+  Object.keys(state.titles).forEach((k) => { if (NOW - state.titles[k][1] > KEEP_DAYS * DAY) delete state.titles[k]; });
   state.updated = NOW;
   out.jobs.sort((a, b) => b.when - a.when || a.company.localeCompare(b.company));
   const meta = (await LCA.meta()) || {};
   const day = out.jobs.filter((j) => NOW - j.when <= DAY);
-  const count = (list) => ({ all: list.length, apply: list.filter((j) => j.verdict === "apply").length, ask: list.filter((j) => j.verdict === "ask").length, skip: list.filter((j) => j.verdict === "skip").length });
+  const count = (list) => ({ all: list.length, apply: list.filter((j) => j.verdict === "apply").length, ask: list.filter((j) => j.verdict === "ask").length, skip: list.filter((j) => j.verdict === "skip").length, reposts: list.filter((j) => j.repost).length });
   const latest = {
     v: 1, generated: new Date(NOW).toISOString(), now: NOW, days: FEED_DAYS,
     profile: { needsSponsorship: PROFILE.needsSponsorship, salaryFloor: PROFILE.salaryFloor, maxYears: PROFILE.maxYears, yearsGrace: PROFILE.yearsGrace, requireH1b: PROFILE.requireH1b },
