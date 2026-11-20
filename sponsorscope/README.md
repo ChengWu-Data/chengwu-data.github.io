@@ -42,7 +42,9 @@ branch: `latest.json` (roles first seen in the last 7 days), `texts.json`
 page reads the first two from that branch, so nothing is committed to `main`.
 
 A role is "new" from the moment the scan first sees it on a board, or from
-the board's own posted date when that is recent. Workday sites are read in
+the board's own posted date when that is recent. A new posting whose title the
+same board already showed in the last 60 days, under another posting ID, is
+marked as a repost; the page labels it and can hide reposts. Workday sites are read in
 full once a week; on other runs reading stops once a newest-first site
 reaches roles older than three days.
 

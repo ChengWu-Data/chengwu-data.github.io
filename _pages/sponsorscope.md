@@ -2,7 +2,7 @@
 layout: default
 permalink: /projects/sponsorscope/
 title: "SponsorScope case study"
-excerpt: "A job inbox that reads tens of thousands of open roles from 228 company boards, finds the sentence that rules out visa holders, and shows the proof. How I researched, built and tested it."
+excerpt: "A product case study: how I found, framed, prioritized and shipped a free daily job feed that rules out the roles that can't hire international students, with the evidence behind every call."
 author_profile: true
 ---
 
@@ -67,47 +67,54 @@ author_profile: true
 .ssc-pair { margin: 1.25rem 0; display: grid; grid-template-columns: 1.2fr 1fr; gap: 1rem; align-items: start; }
 .ssc-pair img { width: 100%; height: auto; }
 @media (max-width: 640px) { .ssc-pair { grid-template-columns: 1fr; } }
+.ssc-jtbd { margin: 1rem 0 1.5rem; padding: 1.25rem 1.4rem; background: var(--soft); border-radius: 12px; border-left: 4px solid var(--purple); }
+.ssc-jtbd p { margin: 0; font-size: 1.15rem; line-height: 1.55; color: var(--ink); max-width: none; }
+.ssc-jtbd .ssc-jtbd-k { font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--purple); margin-bottom: .4rem; }
+.ssc-two { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.ssc-two ul { padding-left: 1.1rem; margin: .4rem 0 0; }
+@media (max-width: 640px) { .ssc-two { grid-template-columns: 1fr; } }
 </style>
 
 <div class="ssc" markdown="0">
 
-<p class="kicker">Case study · Product and operations · November 2026</p>
-<h1>SponsorScope: a job inbox that rules out the roles that can't hire me</h1>
-<p class="lede">International students lose weeks to jobs they could never be offered. The reason is usually one sentence near the bottom of the posting, and no job board lets you filter on it. I built a free tool that reads tens of thousands of open roles from 228 company job boards, finds that sentence, checks pay and experience against my own limits, adds the company's H-1B filing history, and shows the exact words behind every verdict.</p>
+<p class="kicker">Product case study · 0 to 1 · November 2026</p>
+<h1>SponsorScope: a daily job feed that rules out the roles that can't hire international students</h1>
+<p class="lede">International students lose weeks to interviews for jobs they could never be offered. The deciding fact is usually one sentence near the bottom of a posting, and no job board lets you filter on it. I found the problem in my own search, validated it with research, and shipped a free product that reads about 40,000 open roles three times a day, rules out the ones that can't hire you, and shows the evidence behind every call.</p>
 
 <div class="ssc-actions">
   <a class="ssc-btn is-primary" href="{{ site.baseurl }}/sponsorscope/">Try it live</a>
-  <a class="ssc-btn" href="https://github.com/ChengWu-Data/chengwu-data.github.io/tree/main/sponsorscope">Code and test sets</a>
+  <a class="ssc-btn" href="https://github.com/ChengWu-Data/chengwu-data.github.io/tree/main/sponsorscope">Code, rules and test sets</a>
 </div>
 
 <dl class="ssc-glance">
-  <div><dt>My role</dt><dd>Sole owner: problem, user research, product decisions, rules, evaluation and data pipeline</dd></div>
-  <div><dt>Built with</dt><dd>JavaScript, Node, Python, GitHub Actions. Code written with Claude Code at my direction</dd></div>
-  <div><dt>Timeline</dt><dd>November 2026. In daily use for my own job search</dd></div>
-  <div><dt>Users</dt><dd>Free, no sign-up, runs in the browser</dd></div>
+  <div><dt>My role</dt><dd>Sole product owner: discovery, problem framing, spec, prioritization, evaluation design, launch. I built it with Claude Code as my engineering partner.</dd></div>
+  <div><dt>Users</dt><dd>International students on F-1 OPT who will need H-1B sponsorship. I am user zero and use it every day.</dd></div>
+  <div><dt>Timeline</dt><dd>November 2026, six releases in under two weeks</dd></div>
+  <div><dt>Cost to run</dt><dd>$0. A static site plus scheduled GitHub Actions; no server, no accounts.</dd></div>
 </dl>
 
 <ul class="ssc-tldr">
-  <li><b>Problem.</b> Most postings say nothing about sponsorship, and the answer often comes in the final round or after an offer.</li>
-  <li><b>What I found.</b> I read 36 job-seeker posts and counted: the late, expensive surprise is the pain, and people who landed offers applied to hundreds of roles. So the tool had to make volume cheap and rule out early.</li>
-  <li><b>What I built.</b> A daily scan of company job boards, a rule engine that cites the sentence behind each verdict, and a lookup over 1.6 million certified H-1B filings.</li>
-  <li><b>Proof.</b> 566 hand-labeled sentences in three test sets, two of them blind, and independent re-counts of the filing data from the Department of Labor's raw files.</li>
+  <li><b>Problem.</b> Most postings never say whether they sponsor visas, so students find out in the final round or after an offer.</li>
+  <li><b>Insight.</b> The people who got offers applied to 400 to 965 roles. The job isn't to apply less; it's to make ruling roles out cheap, early and trustworthy.</li>
+  <li><b>Bet.</b> Read every posting for the sentence that rules you out, and when the posting is silent, answer with the company's own filing record for that kind of role.</li>
+  <li><b>Shipped.</b> A daily feed from 228 company job boards, a one-click check for any posting (including on LinkedIn), a market view of 1.6 million H-1B filings, and repost detection.</li>
+  <li><b>Evidence.</b> Two blind tests on companies the rules had never seen (84% and 89% accuracy), each turned into a fix; an independent re-count of the filing data; every verdict cites its source sentence.</li>
 </ul>
 
 <div class="ssc-facts">
-  <div><b>228</b><span>company job boards read by the daily scan, 74 of them Workday sites</span></div>
-  <div><b>1,603,208</b><span>certified H-1B filings from 110,060 employers, October 2023 to September 2026</span></div>
-  <div><b>566</b><span>real posting sentences I labeled by hand across 140 job boards</span></div>
-  <div><b>10 of 137</b><span>analyst-type postings I sampled said anything about sponsorship, so text alone could never be enough</span></div>
+  <div><b>228</b><span>company job boards read three times a day, 74 of them Workday sites</span></div>
+  <div><b>~40,000</b><span>open roles read per scan, narrowed to about 4,300 in 19 business directions</span></div>
+  <div><b>1.6M</b><span>certified H-1B filings from 110,060 employers behind the sponsorship history</span></div>
+  <div><b>68%</b><span>of a week's new roles said nothing about sponsorship, which is why the posting alone is never enough</span></div>
 </div>
 
 <figure>
-  <img src="{{ site.baseurl }}/images/sponsorscope/workspace.png" alt="SponsorScope New roles page: filters on the left, a list of new roles with Apply, Ask first and Skip verdicts in the middle, and a detail pane on the right with the selected role's verdict, pay, years asked and the company's H-1B history." loading="lazy">
-  <figcaption>The New roles page on real postings from the daily scan: filters, the list, and the full read of the selected role.</figcaption>
+  <img src="{{ site.baseurl }}/images/sponsorscope/today.jpg" alt="SponsorScope Today page: a headline reading 42,850 open roles, 73 worth applying to today, and a funnel from open roles read, to roles in the business directions, to roles first seen this week, to roles that clear your limits, to new roles in the last 24 hours." loading="lazy">
+  <figcaption>The first screen. Every number is computed from that day's scan; this one is from November 19, 2026.</figcaption>
 </figure>
 
-<h2>The problem</h2>
-<p>I am an international student on the path from OPT to H-1B. For every posting I read the whole description, look for sponsorship language, then look up the company's filings by hand. The sentence that matters can sit in one line of legal text, or not be there at all.</p>
+<h2>1. The problem</h2>
+<p>I am an international student on the path from OPT to H-1B, and so is a large share of my class. For every role, the routine is the same: read the whole posting for visa language, then look up the company's filings by hand. The sentence that matters is often one line of legal text at the bottom, or it isn't there at all.</p>
 <ol class="ssc-journey">
   <li>Find a role on a job board</li>
   <li>Read the full posting for visa language</li>
@@ -116,124 +123,166 @@ author_profile: true
   <li class="pain">Interview for weeks<small>Sponsorship often comes up only here</small></li>
   <li class="pain">Offer, or an offer withdrawn over sponsorship</li>
 </ol>
-<p>The real job is not finding roles. It is ruling them out early and with confidence.</p>
+<p>The two possible mistakes have very different costs. Applying to a role that turns out to be closed to you costs a week of interviews and a lot of hope. Skipping a role that was open to you costs a real offer. A good product has to treat those errors differently, and has to say when it doesn't know.</p>
 
-<h2>What I learned from job seekers</h2>
-<p>I didn't have time for interviews, so I read 36 public posts by international job seekers on Xiaohongshu (RedNote), comment threads included, tagged each by pain point, and counted. Twelve were from people still searching, nine from people who had landed offers, and eight were lead-generation posts trading "sponsor lists" for followers.</p>
+<h2>2. Discovery</h2>
+<h3>Round one: what job seekers say</h3>
+<p>I had no time for interviews in the middle of my own search, so I read 36 public posts by international job seekers on Xiaohongshu (RedNote), including comment threads, tagged each by pain point, and counted. Twelve came from people still searching, nine from people who had landed offers, and eight were lead-generation posts trading "sponsor lists" for followers.</p>
 <div class="ssc-insights">
+  <div><h3>The worst cost comes late</h3><p>10 of 36 posts described reaching the final round, or signing an offer, before sponsorship ended it.</p><p class="changed">Decision: the verdict answers "is this worth a week of interviews?", and an unclear posting gets "Ask first" with a question ready to send to the recruiter.</p></div>
+  <div><h3>Company-level data isn't enough</h3><p>Every how-to post taught the same manual routine and warned that one company can sponsor one team and refuse another.</p><p class="changed">Decision: show filings for the posting's own kind of role, not just the company total.</p></div>
+  <div><h3>People who landed offers applied more, not less</h3><p>They reported 400 to 965 applications; one got a single interview from about 800. My first idea, a tool that helps people apply to fewer roles, was wrong.</p><p class="changed">Decision: make high volume cheap. A daily feed across many boards replaced "apply less".</p></div>
+  <div><h3>The information is being sold</h3><p>8 of 36 posts offered a sponsor list in exchange for a comment or a follow, each with dozens of replies asking for it.</p><p class="changed">Decision: free, no sign-up, and every verdict shows its source.</p></div>
+</div>
+<h3>Round two: what's broken in the tools people already use</h3>
+<p>After launch I read forum threads on Reddit, Blind and Hacker News, and app reviews, about LinkedIn and Indeed job search. Three complaints came up again and again, and each one became work:</p>
+<table>
+  <thead><tr><th>What people complained about</th><th>What I did</th></tr></thead>
+  <tbody>
+    <tr><td>"Last 24 hours" is mostly old roles posted again, and there is no way to hide them</td><td>Repost detection: a new posting whose title the same board listed in the last 60 days is labeled, and can be hidden</td></tr>
+    <tr><td>No way to filter by visa sponsorship, even with a paid plan</td><td>The core verdict, plus the company's filing record for that kind of role</td></tr>
+    <tr><td>Results that ignore the person's situation, including roles their visa status rules out</td><td>Every role judged against the viewer's own limits: sponsorship, years asked, pay floor</td></tr>
+  </tbody>
+</table>
+<p>The research also told me what not to build. The most-requested LinkedIn fix, a reliable applicant count, needs data that company job boards don't publish, so it stayed off the list.</p>
+
+<h2>3. Framing</h2>
+<div class="ssc-jtbd">
+  <p class="ssc-jtbd-k">Job to be done</p>
+  <p>When a new role appears, help me decide in seconds whether it is worth applying to, so I never lose a final round to a sentence I could have read on day one.</p>
+</div>
+<div class="ssc-two">
   <div>
-    <h3>The worst cost comes late, not early</h3>
-    <p>10 of 36 posts described reaching the final round, or signing an offer, before sponsorship ended it.</p>
-    <p class="changed">Design change: the verdict answers "is this worth a week of interviews?", and an unclear posting gets "Ask first" with a ready-to-send recruiter question.</p>
+    <h3>Goals</h3>
+    <ul>
+      <li>Rule roles out early, with the evidence on screen.</li>
+      <li>Make high volume cheap: every day's new roles, already judged.</li>
+      <li>Never wrongly tell someone to skip a role that was open to them.</li>
+      <li>Fill the gap when a posting is silent, with real filing data.</li>
+    </ul>
   </div>
   <div>
-    <h3>Company-level data is not enough</h3>
-    <p>Every how-to post taught the same manual routine: search H-1B filings, then check whether the company sponsors this kind of title. Several noted that one company can sponsor one team and refuse another.</p>
-    <p class="changed">Design change: read the specific posting, then show filings for that company and that role type.</p>
-  </div>
-  <div>
-    <h3>People who landed offers applied more, not less</h3>
-    <p>Landed posts reported 400 to 965 applications, and one person got a single interview from about 800. My first idea was a tool that helps people apply to fewer roles. The research said otherwise.</p>
-    <p class="changed">Design change: the goal became making high volume cheap. A daily scan across many job boards replaced "apply less".</p>
-  </div>
-  <div>
-    <h3>The information is being sold</h3>
-    <p>8 of 36 posts offered a "sponsor list" in exchange for a comment or a follow, and each had dozens of replies asking for it.</p>
-    <p class="changed">Design change: free, no sign-up, and every verdict shows its source sentence.</p>
+    <h3>Non-goals</h3>
+    <ul>
+      <li>Auto-applying. The tool supports judgment; it doesn't replace it.</li>
+      <li>Scraping LinkedIn or any site's terms-protected pages.</li>
+      <li>Legal or immigration advice.</li>
+      <li>Accounts, or collecting anything about the people who use it.</li>
+    </ul>
   </div>
 </div>
 
-<h2>How I framed it: a funnel with a qualification step</h2>
-<p>Once the research said volume matters, I treated the job search like a pipeline and asked what each stage needs. The mapping below is the product spec I worked from.</p>
+<h2>4. How I defined success</h2>
+<p>The product has no accounts and no analytics, by design, so I chose metrics I could measure honestly from the system itself, and I say plainly which one I can't measure yet.</p>
 <div class="table-scroll">
 <table>
-  <thead><tr><th>Funnel stage</th><th>What it needs</th><th>What SponsorScope does</th></tr></thead>
+  <thead><tr><th>Type</th><th>Metric</th><th>Target</th><th>Where it stands</th></tr></thead>
   <tbody>
-    <tr><td>Find leads</td><td>Wide coverage, fresh every day</td><td>Reads 228 job boards on a schedule and lists what is new in the last 24 hours, 3 days or 7 days</td></tr>
-    <tr><td>Qualify</td><td>Rule out early, with a reason</td><td>Apply, Ask first or Skip, judged against my limits, with the source sentence marked</td></tr>
-    <tr><td>Research the account</td><td>Signal beyond the posting</td><td>Three years of the company's H-1B and green-card filings, for this role type, not just the company</td></tr>
-    <tr><td>Prepare</td><td>Know what the process looks like</td><td>One-click searches for the company's interview process and questions</td></tr>
-    <tr><td>Hand off and track</td><td>No retyping</td><td>Copy rows in my tracker's column order; mark roles Applied or Not interested</td></tr>
+    <tr><td>North star</td><td>Roles worth applying to, surfaced within 24 hours of first appearing</td><td>Every scan</td><td>73 on November 19; 283 in that week</td></tr>
+    <tr><td>Guardrail</td><td>Precision of "Skip" on blind test sets (a wrong Skip costs a real opportunity)</td><td>95% or more</td><td>83.1% and 100% on first blind scores; 99% and 100% after the fixes each test exposed</td></tr>
+    <tr><td>Quality</td><td>Sentence-level accuracy on companies the rules had never seen</td><td>Rises with each test</td><td>84.3%, then 89.1%</td></tr>
+    <tr><td>Coverage</td><td>Job boards read successfully per scan</td><td>All of them</td><td>228 of 228</td></tr>
+    <tr><td>Trust</td><td>Verdicts that cite the sentence or filing record behind them</td><td>100%</td><td>100%, by construction</td></tr>
+    <tr><td>Adoption</td><td>Weekly users, and roles marked Applied</td><td>To set after launch</td><td>Not measured yet. Next step: an opt-in way to share outcomes</td></tr>
   </tbody>
 </table>
 </div>
 
-<h2>Key decisions and trade-offs</h2>
-<div class="ssc-decision">
-  <h3>Rules I can explain, not a language model</h3>
-  <dl>
-    <dt>Chose</dt><dd>Readable rules that point to the exact sentence. The tool runs in the browser and is free for anyone.</dd>
-    <dt>Rejected</dt><dd>A model call per posting. It covers more phrasings, but needs an API key and a server, costs money per check, and can state a verdict without a reason.</dd>
-    <dt>Cost</dt><dd>Coverage. I measured it instead of assuming it (see Results).</dd>
-  </dl>
+<h2>5. What I built, in what order, and why</h2>
+<p>Each release answered the biggest remaining pain with the least new machinery. I wrote down what I deferred and why, so "no" was a decision rather than a gap.</p>
+<div class="table-scroll">
+<table>
+  <thead><tr><th>Release</th><th>What shipped</th><th>Why then</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Check one posting: verdict, highlighted evidence, pay and years against your limits</td><td>Proves the core judgment works before scaling it</td></tr>
+    <tr><td>2</td><td>Sponsorship history from Department of Labor filings, by role type</td><td>Most postings are silent, so the posting alone can't answer the question</td></tr>
+    <tr><td>3</td><td>Daily scan of 228 boards, including Workday, published three times a day</td><td>Research said volume wins; checking one posting at a time doesn't scale</td></tr>
+    <tr><td>4</td><td>An inbox: filters, Applied and Not interested marks, interview prep links, read any link</td><td>Daily use showed the bottleneck had moved from judging roles to working through them</td></tr>
+    <tr><td>5</td><td>Today overview, market data on all filings, judging with the viewer's own limits, a bookmarklet for any job page</td><td>Make it useful to people who aren't me, and make the value obvious in five seconds</td></tr>
+    <tr><td>6</td><td>Repost detection</td><td>The most common complaint about LinkedIn and Indeed in round-two research</td></tr>
+  </tbody>
+</table>
 </div>
-<div class="ssc-decision">
-  <h3>A wrong "Skip" costs more than a wrong "Apply"</h3>
-  <dl>
-    <dt>Chose</dt><dd>Track precision on "Skip" separately, and send anything ambiguous to "Ask first" instead of forcing a yes or no.</dd>
-    <dt>Why</dt><dd>Telling someone to skip a role that was open to them loses a real opportunity; a wrong "Apply" costs one application. It is the threshold trade-off I worked on at Tarte, where I tuned a compliance alert threshold to cut alert volume by about 25% while keeping every material exception in the top-priority tier.</dd>
-  </dl>
-</div>
-<div class="ssc-decision">
-  <h3>Company data at the level of the role</h3>
-  <dl>
-    <dt>Chose</dt><dd>Read three years of Department of Labor filings and report the posting's own role type: how many filings, how many brought in a new hire instead of extending one, how many were at entry wage levels.</dd>
-    <dt>Problem</dt><dd>Companies file under legal names. Instacart files as Maplebear and Carta as eShares. I normalize names, keep a short alias list, and always show "Filed as" so the match can be checked.</dd>
-    <dt>Why</dt><dd>A company can sponsor engineers and no one else, which is what job seekers kept warning about.</dd>
-  </dl>
-</div>
-<div class="ssc-decision">
-  <h3>"New" means first seen by my scan</h3>
-  <dl>
-    <dt>Chose</dt><dd>Record the moment the scan first sees a role, and use the posted date only when a board gives a precise one.</dd>
-    <dt>Why</dt><dd>Workday publishes dates only to the day, so "posted today" can mean any hour. A "last 24 hours" list that quietly included day-old roles would defeat the point.</dd>
-    <dt>Cost</dt><dd>The first run has no history, so unseen boards without dates start outside the feed.</dd>
-  </dl>
-</div>
-<div class="ssc-decision">
-  <h3>Judge against my limits, not one verdict for everyone</h3>
-  <dl>
-    <dt>Chose</dt><dd>Limits you set and keep in your browser: whether you need sponsorship, the most years you will apply for, a base-pay floor, and whether to skip companies with no H-1B filings. The daily list uses defaults; opening a role re-judges it with yours.</dd>
-    <dt>Why</dt><dd>"Three years is fine, four is worth asking about" is a personal rule. Baking mine into the data would make the tool useful to exactly one person.</dd>
-  </dl>
-</div>
-<div class="ssc-decision">
-  <h3>Public feeds only, no scraping, no auto-apply</h3>
-  <dl>
-    <dt>Chose</dt><dd>The scan reads the public feeds that Greenhouse, Lever, Ashby and SmartRecruiters publish, and the same job-listing endpoints that companies' own Workday careers pages call. It does not scrape LinkedIn and never submits an application.</dd>
-    <dt>Why</dt><dd>Scraping would break those sites' terms, and auto-apply removes the human judgment the tool exists to support.</dd>
-  </dl>
-</div>
+<p><b>Deliberately not built:</b> an LLM verdict for every posting (cost, a server, and answers without evidence), auto-apply (removes the judgment the tool exists to support), LinkedIn scraping (against its terms; the bookmarklet reads only the page a person already has open), applicant counts (no source data), and resume matching (valuable, but after the core verdict was proven).</p>
 
-<h2>The product</h2>
-<p>Three modes, one engine.</p>
-<ul>
-  <li><strong>New roles</strong> is the first page: filters on the left, the list in the middle, the selected role on the right. Each role carries its verdict, base pay, years asked, skills, work mode and the company's filing history. I can mark roles Applied or Not interested, and every role has an Interview prep menu that opens searches for that company and role on Glassdoor, Reddit and Blind.</li>
-  <li><strong>Check a posting</strong> takes pasted text or a job link from almost any careers site.</li>
-  <li><strong>Scan boards</strong> pulls every open role from 144 preset companies, or any board I add, live, through the same check.</li>
-</ul>
-<div class="ssc-pair">
+<h2>6. The product</h2>
 <figure>
-  <img src="{{ site.baseurl }}/images/sponsorscope/verdict-skip.png" alt="A verdict of Skip for an example posting, with the sentence that says the company will not sponsor visas highlighted in red." loading="lazy">
-  <figcaption>A verdict with its evidence. Red marks the sentence that rules you out; green marks the pay and experience lines that fit.</figcaption>
+  <img src="{{ site.baseurl }}/images/sponsorscope/workspace.jpg" alt="New roles page: filters on the left, a list of roles with Apply, Ask first and Skip verdicts in the middle, and the selected role on the right with its verdict, pay, years asked, role direction and the company's H-1B record." loading="lazy">
+  <figcaption>The daily inbox. Each role carries its verdict, pay, years asked and the company's filings for that kind of role. Keyboard shortcuts, marks and a copy-to-spreadsheet button support working through dozens of roles a day.</figcaption>
+</figure>
+<figure style="max-width:560px">
+  <img src="{{ site.baseurl }}/images/sponsorscope/verdict-skip.png" alt="A Skip verdict for an example posting, with the sentence that says the company will not sponsor visas highlighted in red." loading="lazy">
+  <figcaption>Check any posting: paste a link or the text, or send it from LinkedIn with the bookmarklet. Red marks the sentence that rules you out.</figcaption>
 </figure>
 <figure>
-  <img src="{{ site.baseurl }}/images/sponsorscope/h1b.png" alt="Sponsorship history panel: certified H-1B filings by year, filings for this role type, how many brought in a new hire, and the titles the company filed for." loading="lazy">
-  <figcaption>The company's sponsorship history for the role type, with the legal name it was matched to.</figcaption>
+  <img src="{{ site.baseurl }}/images/sponsorscope/data-lookup.jpg" alt="Company lookup for Capital One Services: 1,124 H-1B filings in the last 12 months, the share that brought in new hires, New York area worksites, green-card cases, and a table of filings by kind of role." loading="lazy">
+  <figcaption>Any employer's record, by kind of role, matched to its legal name: Instacart files as Maplebear, Carta as eShares.</figcaption>
 </figure>
+<figure>
+  <img src="{{ site.baseurl }}/images/sponsorscope/today-charts.jpg" alt="Charts: new roles per day by verdict, the reasons roles were ruled out, the companies with the most roles worth applying to this week, and three summary numbers." loading="lazy">
+  <figcaption>What the week looked like: new roles per day, why roles were ruled out, and where the roles worth applying to were.</figcaption>
+</figure>
+
+<h2>7. Key product decisions</h2>
+<div class="ssc-decision">
+  <h3>Rules I can explain, not a model call per posting</h3>
+  <dl><dt>Chose</dt><dd>Readable rules that point to the exact sentence, running free in the browser.</dd>
+  <dt>Rejected</dt><dd>An LLM verdict per posting: more phrasings covered, but it needs a server and an API key, costs money per check, and can state a verdict without a reason.</dd>
+  <dt>Cost</dt><dd>Coverage. I measured it with blind tests instead of assuming it.</dd></dl>
+</div>
+<div class="ssc-decision">
+  <h3>A wrong Skip costs more than a wrong Apply</h3>
+  <dl><dt>Chose</dt><dd>Three verdicts, Apply, Ask first and Skip, with Skip's precision tracked as its own guardrail.</dd>
+  <dt>Why</dt><dd>Forcing yes or no on unclear text would hide uncertainty. It's the same trade-off I worked on at Tarte, where I tuned a compliance alert threshold to cut alert volume by about 25% while keeping every material exception in the top-priority tier.</dd></dl>
+</div>
+<div class="ssc-decision">
+  <h3>Sponsorship history at the level of the role</h3>
+  <dl><dt>Chose</dt><dd>Three years of filings per employer, split by kind of role: how many, how many were new hires rather than extensions, how many at entry wage levels, how many in the New York area.</dd>
+  <dt>Problem</dt><dd>Companies file under legal names. I normalize names, keep a short alias list, and always show "Filed as" so the match can be checked.</dd></dl>
+</div>
+<div class="ssc-decision">
+  <h3>"New" means new to the board, and reposts are named</h3>
+  <dl><dt>Chose</dt><dd>Record when the scan first sees each posting, and remember each board's titles for 60 days so a role posted again under a new ID is labeled as a repost.</dd>
+  <dt>Why</dt><dd>Workday dates are day-precision and boards repost constantly; a "last 24 hours" list full of old roles defeats the point.</dd></dl>
+</div>
+<div class="ssc-decision">
+  <h3>Your limits, judged in your browser</h3>
+  <dl><dt>Chose</dt><dd>The scan judges with default limits; when a visitor's limits differ, every role is judged again in their browser from the posting text.</dd>
+  <dt>Trade-off</dt><dd>Privacy and zero cost over analytics: nothing about a visitor leaves the page, so I can't see how people use it. I checked the re-judging against the scan: with the default limits it reproduces all 796 verdicts of a week exactly.</dd></dl>
+</div>
+<div class="ssc-decision">
+  <h3>Meet people where they already search</h3>
+  <dl><dt>Chose</dt><dd>A bookmarklet: on a LinkedIn or company job page, one click sends that posting to SponsorScope.</dd>
+  <dt>Rejected</dt><dd>Scraping LinkedIn. The bookmarklet reads only the page the person already has open, in their own browser.</dd></dl>
 </div>
 
-<h3>How it runs</h3>
+<h2>8. Where it fits</h2>
+<p>Based on public product pages and forum reports, as of November 2026.</p>
+<div class="table-scroll">
+<table>
+  <thead><tr><th>The job seeker needs</th><th>LinkedIn, Indeed</th><th>H-1B lookup sites</th><th>Paid sponsor lists</th><th>SponsorScope</th></tr></thead>
+  <tbody>
+    <tr><td>The posting's own sponsorship sentence, found for you</td><td>No sponsorship filter</td><td>Not read from the posting</td><td>No</td><td>Yes, highlighted</td></tr>
+    <tr><td>The company's filings for this kind of role, next to the posting</td><td>No</td><td>By employer and title, on a separate site</td><td>Company names only</td><td>Yes, on the posting</td></tr>
+    <tr><td>Reposts told apart from new roles</td><td>Users report reposts shown as new</td><td>Not applicable</td><td>Not applicable</td><td>Yes</td></tr>
+    <tr><td>Judged against your own limits</td><td>Partly (pay, location)</td><td>No</td><td>No</td><td>Sponsorship, years, pay floor</td></tr>
+    <tr><td>Price</td><td>Free, or a paid plan</td><td>Free</td><td>Paid, or a follow</td><td>Free, no sign-up</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>9. How it works</h2>
 <ol class="ssc-flow">
-  <li><b>Job boards</b>A scheduled GitHub Actions job reads 228 boards, three times a day</li>
-  <li><b>Rule engine</b>The same code as the page: verdict, pay, years, skills, with the evidence sentence</li>
-  <li><b>Feed</b>Static files published to a branch; the page reads them, so there is no server</li>
-  <li><b>Filing data</b>1,066 small files built from Department of Labor spreadsheets; a check downloads one, usually under 100 KB</li>
-  <li><b>Quarterly refresh</b>A second job checks for each new quarter and refuses a rebuild that lost data</li>
+  <li><b>Job boards</b>Scheduled GitHub Actions read 228 boards three times a day</li>
+  <li><b>Rule engine</b>The same code as the page: verdict, pay, years, skills, evidence</li>
+  <li><b>Feed</b>Static files on a branch; reposts and history kept for 60 to 120 days</li>
+  <li><b>Filing data</b>1.6M filings in 1,066 small files; one lookup is usually under 100 KB</li>
+  <li><b>Refresh</b>A quarterly rebuild that refuses to publish data that shrank or broke</li>
 </ol>
+<p><b>How I worked.</b> I owned the spec, the rules, the test sets and the decision to ship; Claude Code wrote much of the code at my direction. I treated its output the way I would treat a new analyst's: nothing counted until it passed a blind test, matched an independent re-count, or held up on a real posting I read myself.</p>
 
-<h2>Results</h2>
-<p>I pulled sentences from public job boards and labeled each one by hand: blocks a visa holder, needs a check, or irrelevant. I wrote the rules against one set, then tested twice on companies the rules had never seen, labeling each test set before running the tool on it.</p>
+<h2>10. Quality</h2>
+<p>I labeled real posting sentences by hand (566 in all, from 140 job boards) as blocking, needing a check, or irrelevant, wrote the rules against one set, and tested twice on companies the rules had never seen, labeling each set before running the tool on it.</p>
 <div class="table-scroll">
 <table>
   <thead><tr><th>Run</th><th>Sentences</th><th>Accuracy</th><th>Skip precision</th><th>Skip recall</th></tr></thead>
@@ -244,37 +293,52 @@ author_profile: true
   </tbody>
 </table>
 </div>
-<p>The blind tests are the honest numbers, and each one changed the rules.</p>
 <ul>
-  <li><strong>Test 1</strong> showed that any mention of ITAR was being read as a citizenship rule, so compliance jobs that only <em>work with</em> export controls were wrongly skipped. The rule now needs "U.S. person" or citizen wording in the same sentence.</li>
-  <li><strong>Test 2</strong> showed misses on short lines such as "US Citizen or Green Card Holder". Those patterns are now covered and kept as regression tests. After both fixes the engine scores 97–98% on both sets, though they are no longer blind.</li>
-</ul>
-<h3>Checking it on real output, not only on test sets</h3>
-<ul>
-  <li><strong>Reading what it actually says.</strong> After the daily scan existed, I read postings from Workday sites and the evidence sentence behind each Skip. That found five misreads. "Visa sponsorship is not being offered" had been read as an offer; "indefinite right to work" was only a question mark; an "executive sponsor" was read as a visa rule; a pay-factors sentence was read as a security clearance; and an E-Verify sentence naming the SSA and DHS was read as sponsorship. Each fix has a regression test, and the evaluation scores did not move.</li>
-  <li><strong>Re-counting the data independently.</strong> For Stripe, Ramp and Capital One I counted H-1B filings straight from the Department of Labor's raw spreadsheets, without the tool's code. All three matched exactly. A fourth company was off by one filing.</li>
-  <li><strong>Refusing a bad refresh.</strong> The quarterly job rebuilds the data into a temporary folder and keeps the published data if the employer count or latest-year filings swing outside 0.7 to 1.4 times the old values, or if any period is incomplete. It also reports when the Department's site cannot be reached, instead of saying "nothing new".</li>
-</ul>
-<p>The biggest finding was outside the classifier. Only 10 of 137 analyst-type postings I sampled said anything about sponsorship, so text alone can't settle most cases. That is why I added the filing data. Of the 228 companies the tool now reads, 211 filed at least one H-1B in the last 12 months, and 171 filed for analyst, strategy, risk or GTM roles, the kinds of roles I apply for.</p>
-<p class="note">I use SponsorScope for my own daily search. I will add usage numbers here once I have shared it more widely.</p>
-
-<h2>What it can't do yet</h2>
-<ul>
-  <li><strong>The list filters by title.</strong> A role in one of my 19 directions can still turn out to be off-target once the description is read. Senior-sounding titles with no stated years are ranked lower and flagged.</li>
-  <li><strong>Workday coverage is partial.</strong> 74 Workday sites are connected; some large employers do not answer yet.</li>
-  <li><strong>A filing is a request, not an approval.</strong> Company history is evidence about the past, not a promise about this role, so "Apply" means "nothing rules you out", and the tool says to ask the recruiter early.</li>
+  <li><b>Each blind test changed the product.</b> Test 1 showed any mention of ITAR being read as a citizenship rule, so compliance roles that only work with export controls were wrongly skipped. Test 2 showed short lines such as "US Citizen or Green Card Holder" being missed. Both fixes are locked in with regression tests; I report the first blind scores because they are the honest ones.</li>
+  <li><b>Reading real output.</b> Reading Skip evidence on live Workday postings found five more misreads, such as "executive sponsor" read as a visa rule. Each fix has a regression test.</li>
+  <li><b>Checking the data.</b> I re-counted filings for Stripe, Ramp and Capital One straight from the Department of Labor's spreadsheets, without the tool's code; all three matched. The quarterly refresh refuses any rebuild where employers or filings move outside 0.7 to 1.4 times the old values.</li>
 </ul>
 
-<h2>What I'd do next</h2>
+<h2>11. What the data showed</h2>
+<p>Running the product produced findings that changed how I search, and that a team building for this audience would want to know. From the week ending November 19, 2026, and the filings from October 2023 to September 2026:</p>
+<div class="ssc-facts">
+  <div><b>42%</b><span>of ruled-out roles failed on years of experience, nearly as many as on sponsorship (46%). Seniority filtering matters as much as visa filtering.</span></div>
+  <div><b>80%</b><span>of the week's roles were at companies that filed H-1Bs for that kind of role last year, so silence in a posting is usually not a no.</span></div>
+  <div><b>49%</b><span>of last year's H-1B filings came from the top 1% of employers (583 companies).</span></div>
+  <div><b>52%</b><span>of business-role filings were for someone new to the company, the share that matters to a new graduate.</span></div>
+</div>
+<figure>
+  <img src="{{ site.baseurl }}/images/sponsorscope/data-board.jpg" alt="Top sponsors table for business roles: employer, filings in the last 12 months, the year before with change, share new to the company, share at entry level, and New York area filings." loading="lazy">
+  <figcaption>The Sponsor data page ranks employers by filings for analyst, strategy, product, GTM and other business roles, with the New York area and fastest-growing views one click away.</figcaption>
+</figure>
+
+<h2>12. What it can't do yet</h2>
 <ul>
-  <li><strong>Close the loop on results.</strong> Record which verdicts led to interviews, so I can see whether "Apply" roles actually convert better than "Ask first".</li>
-  <li>Write each morning's new matches straight into my tracker.</li>
-  <li>Let users mark roles where sponsorship was confirmed or refused, which fills the gap that postings leave.</li>
-  <li>Offer a version to university career centers, whose international students ask this question every day.</li>
+  <li><b>Titles first.</b> The feed keeps roles by title, so some turn out off-target once the description is read.</li>
+  <li><b>Partial coverage.</b> 74 Workday sites are connected; many large employers aren't yet.</li>
+  <li><b>A filing is a request, not an approval.</b> Company history is evidence about the past, so "Apply" means nothing rules you out, and the tool still says to ask the recruiter early.</li>
+  <li><b>No adoption data.</b> Without analytics, I know it works for me and is accurate on test sets, not yet how many people rely on it.</li>
 </ul>
 
-<h2>How I built it</h2>
-<p>I defined the problem, did the research, wrote the product spec, designed the rules and verdict logic, labeled the test sets, ran the evaluation, and checked the live output. I wrote the code with Claude Code as a pair programmer, and I treated its output the way I would an analyst's: nothing counted until it matched a blind test, an independent re-count, or a real posting I had read myself. The page is plain HTML, CSS and JavaScript with no server. The daily scan is a Node script on a GitHub Actions schedule; the filing data is rebuilt by a Python script from the Department of Labor's public files. The rules, the data build and the evaluation scripts are in the <a href="https://github.com/ChengWu-Data/chengwu-data.github.io/tree/main/sponsorscope">repository</a>.</p>
-<p class="note">SponsorScope reads what a posting says. It is not legal or immigration advice.</p>
+<h2>13. What I'd do next</h2>
+<div class="table-scroll">
+<table>
+  <thead><tr><th>Next</th><th>Hypothesis</th><th>How I'd know</th></tr></thead>
+  <tbody>
+    <tr><td>Close the loop on outcomes</td><td>Roles marked Apply turn into interviews more often than Ask first</td><td>Interview rate by verdict, from roles marked Applied</td></tr>
+    <tr><td>Pay estimate from filings</td><td>When a posting lists no pay, the company's filed wages for that kind of role help people decide</td><td>Share of no-pay roles that get an estimate; whether people still open them</td></tr>
+    <tr><td>Track whether a role is still open</td><td>Knowing a posting came down saves follow-ups on dead roles</td><td>Applied roles later taken down, and when</td></tr>
+    <tr><td>Opt-in sharing and distribution</td><td>Career centers and student communities are the fastest way to reach this audience</td><td>Weekly users and returning users, with consent</td></tr>
+  </tbody>
+</table>
+</div>
 
+<h2>14. What I learned</h2>
+<ul>
+  <li><b>The research changed the product more than any feature did.</b> I started out building "apply less" and shipped "make volume cheap", because nine people who had landed offers told me what actually worked.</li>
+  <li><b>Most of the hard problems were in the data, not the model.</b> Legal names, day-precision dates and reposts took more care than the classifier, and they decide whether people trust it.</li>
+  <li><b>I'd measure earlier.</b> Privacy by default was right for this audience, but I would design an opt-in outcome signal from release one, so adoption isn't the one metric I can't report.</li>
+</ul>
+
+<p class="note">SponsorScope reads what a posting says. It is not legal or immigration advice. The rules, data build and evaluation scripts are in the <a href="https://github.com/ChengWu-Data/chengwu-data.github.io/tree/main/sponsorscope">repository</a>.</p>
 </div>
