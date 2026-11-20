@@ -15,11 +15,14 @@ Every verdict highlights the sentence it came from.
 | `roles.js` | Role directions (which kind of job a title is, in three priority tiers) and location groups. |
 | `lca.js` | Looks up a company's sponsorship history: H-1B filings by year, by role type, new hires vs extensions, NYC-area worksites, green-card cases. |
 | `core.js` | What the page and the daily scan share: reading each job board's format, the U.S. location check, folding filing history into the verdict, the short skills summary. |
-| `app.js`, `app.css`, `index.html` | The page: new roles from the daily scan, check one posting, or scan company job boards now. |
+| `app.js`, `app.css`, `index.html` | The page: new roles from the daily scan, check one posting, or scan company job boards now. When your limits differ from the scan's, every role is judged again in the browser. |
+| `overview.js` | The Today tab: the day's funnel, new roles per day, why roles are ruled out, where the Apply roles are, and the bookmarklet. |
+| `data.js` | The Sponsor data tab: market-wide filing totals and leaderboards, and a lookup for any employer. |
 | `boards.js` | Preset company job boards (Greenhouse, Lever, Ashby public feeds). |
 | `scan/daily.js` | The daily scan. Runs in GitHub Actions, reads every board, and publishes the new roles. |
 | `scan/boards-daily.json` | Boards only the daily scan reads: Workday sites and large SmartRecruiters boards. |
 | `data/build_lca.py` | Builds `data/lca/*.json` from the Department of Labor LCA and PERM disclosure files. |
+| `data/summarize.py` | Builds `data/lca/summary.json` (totals and leaderboards for the Sponsor data tab) from those files; `build_lca.py` runs it. |
 | `data/refresh.py` | Checks for a newer quarter of that data, downloads it and runs the build. |
 | `eval/` | Hand-labeled sentences, blind test sets and the scoring script. |
 
@@ -32,9 +35,10 @@ have already seen stay in your own browser storage.
 `.github/workflows/sponsorscope-scan.yaml` runs `scan/daily.js` three times a
 day. It reads every board in `boards.js` and `scan/boards-daily.json`, keeps
 the roles whose title fits a role direction, judges each one with the same
-rules as the page, and force-pushes three files to the `sponsorscope-scan`
+rules as the page, and force-pushes its files to the `sponsorscope-scan`
 branch: `latest.json` (roles first seen in the last 7 days), `texts.json`
-(their posting text) and `state.json` (when each role was first seen). The
+(their posting text), `state.json` (when each role was first seen) and
+`history.json` (new roles per day by verdict, kept for 120 days). The
 page reads the first two from that branch, so nothing is committed to `main`.
 
 A role is "new" from the moment the scan first sees it on a board, or from

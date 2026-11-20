@@ -68,23 +68,37 @@
 
   // ---------- the company's filing history, folded into the verdict ----------
   var LEVEL_ORDER = { skip: 0, ask: 1, good: 2, info: 3 };
-  function withH1b(r, rec, title, profile) {
-    if (!rec) return r;
-    var ro = LCA.role(rec, title), lab = ro.label, named = ro.fam !== "other", f, extra = [];
-    var before = rec.y[0] + rec.y[1];
-    if (rec.n === 0 && !before) f = { code: "no_h1b", level: profile.requireH1b && profile.needsSponsorship ? "skip" : "ask", title: "No H-1B filings in the last three years", evidence: [] };
-    else if (rec.n === 0) f = { code: "h1b_stopped", level: profile.needsSponsorship ? "ask" : "info", title: "No H-1B filings in the last 12 months (" + num(rec.y[1]) + " the year before)", evidence: [] };
-    else if (named && ro.n === 0) f = { code: "h1b_not_role", level: "info", title: "Files H-1Bs, but none for " + lab + " roles last year" + (ro.prev + ro.prev2 ? " (" + (ro.prev + ro.prev2) + " in the two years before)" : ""), evidence: [] };
-    else f = { code: "h1b_ok", level: "good", title: num(rec.n) + " H-1B filings last year" + (named ? ", " + ro.n + " for " + lab + " roles" : ""), evidence: [] };
-    if (named && ro.n > 0 && ro.fresh + ro.transfer === 0) extra.push({ code: "h1b_renewals", level: "info", title: "All " + ro.n + " " + lab + " filings last year were extensions, not new hires", evidence: [] });
-    if (rec.n > 0 && rec.y[1] >= 10 && rec.n <= rec.y[1] / 2) extra.push({ code: "h1b_falling", level: "info", title: "H-1B filings fell from " + num(rec.y[1]) + " to " + num(rec.n) + " in a year", evidence: [] });
+  // The few numbers the verdict needs from a company's record, for one job title. The daily scan
+  // stores these with each role, so the page can judge a role again with other limits without
+  // downloading the company's filing data.
+  function h1bFacts(rec, title) {
+    if (!rec) return null;
+    var ro = LCA.role(rec, title);
+    return { n: rec.n, prev: rec.y[1], prev2: rec.y[0], fam: ro.fam === "other" ? "" : ro.label,
+      role: ro.n, rolePrior: ro.prev + ro.prev2, roleNew: ro.fresh + ro.transfer };
+  }
+  function foldH1b(r, h, profile) {
+    if (!h) return r;
+    var lab = h.fam, named = !!h.fam, f, extra = [];
+    var before = (h.prev || 0) + (h.prev2 || 0);
+    if (h.n === 0 && !before) f = { code: "no_h1b", level: profile.requireH1b && profile.needsSponsorship ? "skip" : "ask", title: "No H-1B filings in the last three years", evidence: [] };
+    else if (h.n === 0) f = { code: "h1b_stopped", level: profile.needsSponsorship ? "ask" : "info", title: "No H-1B filings in the last 12 months (" + num(h.prev) + " the year before)", evidence: [] };
+    else if (named && h.role === 0) f = { code: "h1b_not_role", level: "info", title: "Files H-1Bs, but none for " + lab + " roles last year" + (h.rolePrior ? " (" + h.rolePrior + " in the two years before)" : ""), evidence: [] };
+    else f = { code: "h1b_ok", level: "good", title: num(h.n) + " H-1B filings last year" + (named ? ", " + h.role + " for " + lab + " roles" : ""), evidence: [] };
+    if (named && h.role > 0 && h.roleNew === 0) extra.push({ code: "h1b_renewals", level: "info", title: "All " + h.role + " " + lab + " filings last year were extensions, not new hires", evidence: [] });
+    if (h.n > 0 && h.prev >= 10 && h.n <= h.prev / 2) extra.push({ code: "h1b_falling", level: "info", title: "H-1B filings fell from " + num(h.prev) + " to " + num(h.n) + " in a year", evidence: [] });
     var findings = r.findings.filter(function (x) { return !/^(no_h1b|h1b_)/.test(x.code); }).concat([f], extra);
     findings.sort(function (a, b) { return LEVEL_ORDER[a.level] - LEVEL_ORDER[b.level]; });
     var lv = findings.map(function (x) { return x.level; });
     var verdict = lv.indexOf("skip") >= 0 ? "skip" : lv.indexOf("ask") >= 0 ? "ask" : "apply";
     var headline = SS.headline(verdict, findings, r.sponsorship);
-    if (verdict === "apply" && r.sponsorship === "silent" && rec.n > 0) headline = "Nothing in this posting rules you out, and the company filed " + num(rec.n) + " H-1Bs last year" + (named ? " (" + ro.n + " for " + lab + " roles, " + (ro.fresh + ro.transfer) + " of them new hires)" : "") + ".";
+    if (verdict === "apply" && r.sponsorship === "silent" && h.n > 0) headline = "Nothing in this posting rules you out, and the company filed " + num(h.n) + " H-1Bs last year" + (named ? " (" + h.role + " for " + lab + " roles, " + h.roleNew + " of them new hires)" : "") + ".";
     return Object.assign({}, r, { findings: findings, verdict: verdict, headline: headline });
+  }
+  function withH1b(r, rec, title, profile) { return rec ? foldH1b(r, h1bFacts(rec, title), profile) : r; }
+  // The codes behind a verdict: what ruled the role out, or what needs a check.
+  function codes(r) {
+    return r.findings.filter(function (f) { return f.level === "skip" || f.level === "ask"; }).map(function (f) { return f.code; });
   }
   // The one line a results row shows as its reason.
   function reason(r) {
@@ -120,6 +134,6 @@
     return { skills: skills.slice(0, 8), mode: mode, degree: degree };
   }
 
-  return { DEFAULTS: DEFAULTS, normalize: normalize, isUS: isUS, excluded: excluded, withH1b: withH1b, reason: reason,
+  return { DEFAULTS: DEFAULTS, normalize: normalize, isUS: isUS, excluded: excluded, withH1b: withH1b, h1bFacts: h1bFacts, foldH1b: foldH1b, codes: codes, reason: reason,
     summarize: summarize, num: num };
 });

@@ -11,6 +11,7 @@
  *   latest.json   roles first seen in the last 7 days, newest first
  *   texts.json    the posting text of those roles, for the Details view
  *   state.json    when each role was first seen, so tomorrow's run knows what is new
+ *   history.json  new roles per day by verdict, and how many open roles each day's scan read
  *
  * "New" means new to the board: a role counts from the moment this scan
  * first sees it, or from the board's own posted date when that is recent.
@@ -176,9 +177,11 @@ async function scanBoard(b, state, prev, out) {
   const rec = await LCA.lookup(b.query);
   const byTitle = {};
   const seenIds = {};
+  let fit = 0;
   await pool(res.rows, 3, async function (row) {
     const dir = Roles.classify(row.title);
     if (!dir || Core.excluded(row.title) || !Core.isUS(row)) return;
+    fit++;
     seenIds[row.id] = 1;
     let job = row, mark = state.ids[row.id];
     if (!mark) {
@@ -213,7 +216,7 @@ async function scanBoard(b, state, prev, out) {
   // A board read only in part (or a role this run did not reach) keeps yesterday's entries until they age out.
   if (!res.complete) carryOver(b, prev, seenIds, rec, out);
   state.boards[b.key] = Object.assign(st, { first: st.first || NOW, last: NOW });
-  return res.rows.length;
+  return { read: res.rows.length, fit: fit };
 }
 
 function carryOver(b, prev, seenIds, rec, out) {
@@ -228,16 +231,40 @@ function carryOver(b, prev, seenIds, rec, out) {
 
 function entry(job, b, rec) {
   const r = Core.withH1b(SS.analyze(job.text, PROFILE), rec, job.title, PROFILE);
-  const dir = Roles.classify(job.title), ro = LCA.role(rec, job.title), sum = Core.summarize(job.text);
+  const dir = Roles.classify(job.title), facts = Core.h1bFacts(rec, job.title), sum = Core.summarize(job.text);
   return {
     id: job.id, board: b.key, source: b.ats, company: job.company || b.name, title: job.title, url: job.url,
     locs: job.locs, loc: Roles.locClass(job.locs, job.remote), remote: !!job.remote, dir: dir ? dir.id : "",
     when: job.when, posted: job.posted || 0,
-    verdict: r.verdict, why: Core.reason(r), sponsorship: r.sponsorship,
+    verdict: r.verdict, why: Core.reason(r), codes: Core.codes(r), sponsorship: r.sponsorship,
     pay: r.pay ? [r.pay.lo, r.pay.hi] : null, years: r.years ? [r.years.min, r.years.max || null] : null,
-    h1b: rec ? { n: rec.n, prev: rec.y[1], role: ro.n, roleNew: ro.fresh + ro.transfer, fam: ro.fam === "other" ? "" : ro.label, perm: rec.pm[2] } : null,
+    h1b: facts ? Object.assign(facts, { perm: rec.pm[2] }) : null,
     query: b.query, skills: sum.skills, mode: sum.mode, degree: sum.degree
   };
+}
+
+// ---------- history ----------
+// New roles per New York calendar day, by verdict. The last seven days are recounted from the feed on
+// every run (a role's day is when it was first seen); older days keep what was recorded then.
+const HISTORY_DAYS = 120;
+function nyDay(ms) { return new Date(ms).toLocaleDateString("en-CA", { timeZone: "America/New_York" }); }
+function history(h, jobs, read, fit, boardsOk) {
+  h = h && h.days ? h : { v: 1, days: {} };
+  const fresh = {};
+  for (let d = 0; d < FEED_DAYS; d++) fresh[nyDay(NOW - d * DAY)] = { all: 0, apply: 0, ask: 0, skip: 0 };
+  jobs.forEach(function (j) { const c = fresh[nyDay(j.when)]; if (c) { c.all++; c[j.verdict]++; } });
+  const oldest = nyDay(NOW - (FEED_DAYS - 1) * DAY);
+  Object.keys(fresh).forEach(function (d) {
+    // The oldest day in the window is only partly covered by a 7-day feed; keep a fuller earlier count.
+    const was = h.days[d] || {};
+    const c = d === oldest && was.all > fresh[d].all ? { all: was.all, apply: was.apply, ask: was.ask, skip: was.skip } : fresh[d];
+    h.days[d] = Object.assign({}, was, c);
+  });
+  const today = h.days[nyDay(NOW)];
+  today.read = Math.max(today.read || 0, read); today.fit = Math.max(today.fit || 0, fit); today.boards = Math.max(today.boards || 0, boardsOk);
+  const keep = Object.keys(h.days).sort().slice(-HISTORY_DAYS), days = {};
+  keep.forEach((d) => { days[d] = h.days[d]; });
+  return { v: 1, updated: NOW, days: days };
 }
 
 // ---------- run ----------
@@ -250,14 +277,14 @@ function readJSON(file, fallback) { try { return JSON.parse(fs.readFileSync(path
   const prev = { jobs: last.jobs || [], texts: readJSON("texts.json", {}), byId: {} };
   prev.jobs.forEach((e) => { prev.byId[e.id] = e; });
   const boards = loadBoards(), out = { jobs: [], texts: {} }, failed = [];
-  let rowsRead = 0;
+  let rowsRead = 0, rowsFit = 0;
 
   await pool(boards, 6, async function (b) {
     const t0 = Date.now(), before = out.jobs.length;
     try {
       const n = await scanBoard(b, state, prev, out);
-      rowsRead += n;
-      console.log("  " + b.name + " (" + b.ats + "): " + n + " open roles, " + (Date.now() - t0) + " ms");
+      rowsRead += n.read; rowsFit += n.fit;
+      console.log("  " + b.name + " (" + b.ats + "): " + n.read + " open roles, " + n.fit + " in a direction, " + (Date.now() - t0) + " ms");
     } catch (e) {
       failed.push(b.name);
       console.log("  ! " + b.name + " (" + b.ats + "): " + e.message + ", " + (Date.now() - t0) + " ms");
@@ -284,12 +311,13 @@ function readJSON(file, fallback) { try { return JSON.parse(fs.readFileSync(path
   const latest = {
     v: 1, generated: new Date(NOW).toISOString(), now: NOW, days: FEED_DAYS,
     profile: { needsSponsorship: PROFILE.needsSponsorship, salaryFloor: PROFILE.salaryFloor, maxYears: PROFILE.maxYears, yearsGrace: PROFILE.yearsGrace, requireH1b: PROFILE.requireH1b },
-    h1bPeriod: meta.period || "", boards: { total: boards.length, failed: failed.sort(), rows: rowsRead },
+    h1bPeriod: meta.period || "", boards: { total: boards.length, failed: failed.sort(), rows: rowsRead, fit: rowsFit },
     counts: { day: count(day), week: count(out.jobs) }, jobs: out.jobs
   };
   fs.writeFileSync(path.join(OUT, "latest.json"), JSON.stringify(latest));
   fs.writeFileSync(path.join(OUT, "texts.json"), JSON.stringify(out.texts));
   fs.writeFileSync(path.join(OUT, "state.json"), JSON.stringify(state));
+  if (!ONLY && !MATCH) fs.writeFileSync(path.join(OUT, "history.json"), JSON.stringify(history(readJSON("history.json", null), out.jobs, rowsRead, rowsFit, boards.length - failed.length)));
 
   const line = "Read " + (boards.length - failed.length) + " of " + boards.length + " job boards (" + rowsRead.toLocaleString("en-US") + " open roles). " +
     "In the last 24 hours: " + day.length + " new roles in your directions (" + latest.counts.day.apply + " apply, " + latest.counts.day.ask + " ask first, " + latest.counts.day.skip + " skip). " +

@@ -244,11 +244,15 @@
     $("f-pay").value = profile.salaryFloor;
     $("f-pay-hard").value = profile.salaryHard ? "1" : "0";
   }
-  $("edit-limits").addEventListener("click", function () {
-    var f = $("limits-form"), open = f.hidden;
-    f.hidden = !open; this.setAttribute("aria-expanded", String(open));
-    if (open) $("f-years").focus();
-  });
+  function openLimits() {
+    renderLimits();
+    var d = $("limits-dialog");
+    if (d.showModal) d.showModal(); else d.setAttribute("open", "");
+    $("f-years").focus();
+  }
+  function closeLimits() { var d = $("limits-dialog"); if (d.close) d.close(); else d.removeAttribute("open"); }
+  $("edit-limits").addEventListener("click", openLimits);
+  $("limits-cancel").addEventListener("click", closeLimits);
   $("limits-form").addEventListener("submit", function (e) {
     e.preventDefault();
     profile = {
@@ -261,25 +265,32 @@
       requireH1b: $("f-h1b").checked,
       v: 2
     };
-    save("profile", profile); renderLimits();
-    $("limits-form").hidden = true; $("edit-limits").setAttribute("aria-expanded", "false");
-    if (lastCheck) runCheck(lastCheck.text, lastCheck.meta);
-    if (scanJobs.length) { scanJobs.forEach(function (j) { j.r = withH1b(SS.analyze(j.text, profile), j.h1b, j.title); }); renderScan(); }
-    renderFeed(true);
+    limitsChanged();
   });
   $("reset-limits").addEventListener("click", function () {
-    profile = Object.assign({}, APP_DEFAULTS); save("profile", profile); renderLimits();
+    profile = Object.assign({}, APP_DEFAULTS); limitsChanged();
   });
+  function limitsChanged() {
+    save("profile", profile); renderLimits(); closeLimits();
+    if (lastCheck) runCheck(lastCheck.text, lastCheck.meta, true);
+    if (scanJobs.length) { scanJobs.forEach(function (j) { j.r = withH1b(SS.analyze(j.text, profile), j.h1b, j.title); }); renderScan(); }
+    rejudgeFeed();
+  }
 
   // ---------- tabs ----------
-  var tabs = [$("tab-new"), $("tab-check"), $("tab-scan")];
+  var tabs = [$("tab-overview"), $("tab-new"), $("tab-check"), $("tab-data"), $("tab-scan")];
+  var HASH = { "tab-overview": "overview", "tab-new": "new", "tab-check": "check", "tab-data": "data", "tab-scan": "scan" };
   function selectTab(t) {
     tabs.forEach(function (x) {
       var on = x === t;
       x.setAttribute("aria-selected", String(on)); x.tabIndex = on ? 0 : -1;
       $(x.getAttribute("aria-controls")).hidden = !on;
     });
-    save("tab3", t.id);
+    // Your limits only matter where postings are judged.
+    $("limits").hidden = t.id === "tab-overview" || t.id === "tab-data";
+    save("tab4", t.id);
+    try { history.replaceState(null, "", "#" + HASH[t.id]); } catch (e) { /* ignore */ }
+    document.dispatchEvent(new CustomEvent("ss:tab", { detail: t.id }));
   }
   tabs.forEach(function (t, i) {
     t.addEventListener("click", function () { selectTab(t); });
@@ -371,7 +382,7 @@
 
   // ---------- check one posting ----------
   var lastCheck = null;
-  function runCheck(text, meta) {
+  function runCheck(text, meta, quiet) {
     lastCheck = { text: text, meta: meta || {} };
     var r = SS.analyze(text, profile);
     var res = $("result");
@@ -395,8 +406,8 @@
     };
     show(meta.company, meta.h1bQuery);
     $("posting-text").innerHTML = renderPosting(r);
-    $("check-msg").textContent = "";
-    $("verdict-zone").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+    if (!quiet) $("check-msg").textContent = "";
+    if (!quiet) $("verdict-zone").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
   }
   function readAny(url) {
     $("check-msg").textContent = "Reading the page…"; $("check-btn").disabled = true;
@@ -724,7 +735,7 @@
   var FEED_BASE = window.SS_FEED_BASE || "https://raw.githubusercontent.com/ChengWu-Data/chengwu-data.github.io/sponsorscope-scan/";
   var feed = null, feedTextsP = null, selectedId = null, shownId = null, lastIds = [];
   var feedShow = Object.assign({ hours: 24, view: "inbox", sort: "best", apply: true, ask: true, skip: false, nyc: true, remote: true, other: false, t1: true, t2: true, t3: false }, load("feed", {}));
-  feedShow.q = "";
+  feedShow.q = ""; feedShow.co = "";
   function wide() { return window.matchMedia("(min-width: 1101px)").matches; }
   function ago(ms) {
     var h = (Date.now() - ms) / 36e5;
@@ -739,7 +750,7 @@
   function feedWhen(j) { return (j.posted && Math.abs(j.posted - j.when) < 1000 ? "Posted " : "First seen ") + ago(j.when); }
   function feedInWindow(j) { return Date.now() - j.when <= feedShow.hours * 36e5; }
   function feedHay(j) { return j._h || (j._h = [j.title, j.company, (j.skills || []).join(" "), (j.locs || []).join(" "), j.why].join(" ").toLowerCase()); }
-  function feedQ(j) { var q = feedShow.q.toLowerCase().split(/\s+/).filter(Boolean); return q.every(function (w) { return feedHay(j).indexOf(w) >= 0; }); }
+  function feedQ(j) { if (feedShow.co && j.company !== feedShow.co) return false; var q = feedShow.q.toLowerCase().split(/\s+/).filter(Boolean); return q.every(function (w) { return feedHay(j).indexOf(w) >= 0; }); }
   // Which view a role belongs to: your unmarked list, what you applied to, what you passed on, or all of them.
   function feedInView(j) {
     var mk = markOf(j.id), v = feedShow.view;
@@ -771,8 +782,7 @@
       when: feedWhen(j), facts: factsOf(j.pay && { lo: j.pay[0], hi: j.pay[1] }, j.years && { min: j.years[0], max: j.years[1] }, j.mode, j.degree),
       skills: j.skills || [], why: j.why, dir: dir, url: safeUrl(j.url), senior: feedSenior(j), h1b: feedH1bShort(j),
       text: function () {
-        feedTextsP = feedTextsP || fetch(FEED_BASE + "texts.json", { cache: "no-cache" }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });
-        return feedTextsP.then(function (t) { if (!t[j.id]) throw new Error("no text"); return t[j.id]; }).catch(function (e) { feedTextsP = null; throw e; });
+        return feedTexts().then(function (t) { if (!t[j.id]) throw new Error("no text"); return t[j.id]; });
       },
       rec: function () { return LCA.lookup(j.query || j.company).catch(function () { return null; }); } });
   }
@@ -829,7 +839,7 @@
     var old = Date.now() - feed.now > 26 * 36e5;
     $("feed-meta").innerHTML = ago(feed.now) + " · " + (feed.boards.total - feed.boards.failed.length) + " job boards, " + num(feed.boards.rows) + " open roles read. " +
       "Listed with " + (p.needsSponsorship ? "sponsorship needed, " : "") + "base pay from " + k(p.salaryFloor) + ", up to " + p.maxYears + " years" + (p.yearsGrace ? " (" + (p.maxYears + 1) + " = ask)" : "") + "." +
-      (mine ? "" : ' <span class="feed-note">Your limits are different; the detail pane judges the posting with yours.</span>') +
+      (rejudging ? ' <span class="feed-note">Judging every role again with your limits…</span>' : feed.mine ? ' <span class="feed-note">Your limits are different, so every role here was judged again with yours.</span>' : mine ? "" : ' <span class="feed-note">Your limits are different; the detail pane judges each posting with yours.</span>') +
       (old ? ' <span class="feed-note">The scan runs three times a day; this one is over a day old, so the schedule may be paused.</span>' : "");
 
     var rows = feedRows(), prev = lastIds.indexOf(selectedId);
@@ -842,7 +852,7 @@
       var v = feedShow.view;
       $("feed-empty").innerHTML = "<p>" + (v === "applied" ? "Nothing marked Applied yet. Use the check mark on a role once you have applied."
         : v === "no" ? "Nothing marked Not interested yet."
-        : feedShow.q ? "No roles match “" + esc(feedShow.q) + "”."
+        : feedShow.q || feedShow.co ? "No roles match “" + esc(feedShow.q || feedShow.co) + "” with the current filters."
         : n.all ? "Nothing left in this list with the current filters. " + (n.all - n.inbox) + " role" + (n.all - n.inbox === 1 ? " is" : "s are") + " already marked; the rest are hidden by the filters on the left."
         : "No new roles in your directions in this window. Try a longer one.") + "</p>";
     }
@@ -853,11 +863,50 @@
     }
     showDetail(force === true);
   }
+  // ---------- judging the feed with your own limits ----------
+  // The scan judges every role with its default limits. When yours differ, each role is judged
+  // again here, from its posting text, with the same rules and the filing facts stored with it.
+  var FEED_KEYS = ["needsSponsorship", "salaryFloor", "maxYears", "yearsGrace", "requireH1b"];
+  var rejudging = false;
+  function sameAsFeed() {
+    var p = (feed && feed.profile) || {};
+    var hardDefault = profile.yearsHard !== false && profile.salaryHard !== false;
+    return hardDefault && FEED_KEYS.every(function (k) { return (p[k] || 0) == (profile[k] || 0); });
+  }
+  function feedTexts() {
+    feedTextsP = feedTextsP || fetch(FEED_BASE + "texts.json", { cache: "no-cache" }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });
+    return feedTextsP.catch(function (e) { feedTextsP = null; throw e; });
+  }
+  function resetModels() { feed.jobs.forEach(function (j) { delete j._m; delete j._h; }); models = {}; }
+  function rejudgeFeed() {
+    if (!feed) return Promise.resolve();
+    if (sameAsFeed()) {
+      feed.jobs.forEach(function (j) { if (j._o) Object.assign(j, j._o); });
+      feed.mine = false; resetModels(); renderFeed(true); emitFeed();
+      return Promise.resolve();
+    }
+    rejudging = true; emitFeed(); renderFeed();
+    return feedTexts().then(function (texts) {
+      feed.jobs.forEach(function (j) {
+        var text = texts[j.id]; if (!text) return;
+        var r = Core.foldH1b(SS.analyze(text, profile), j.h1b, profile);
+        Object.assign(j, { verdict: r.verdict, why: Core.reason(r), codes: Core.codes(r) });
+      });
+      feed.mine = true;
+    }).catch(function () { feed.rejudgeFailed = true; })
+      .then(function () { rejudging = false; resetModels(); renderFeed(true); emitFeed(); });
+  }
+  function emitFeed(err) {
+    document.dispatchEvent(new CustomEvent("ss:feed", { detail: { feed: feed, error: err || null, rejudging: rejudging } }));
+  }
   function loadFeed() {
     fetch(FEED_BASE + "latest.json", { cache: "no-cache" }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (j) {
       if (!j || !Array.isArray(j.jobs)) throw new Error("bad data");
-      feed = j; renderFeed();
+      feed = j;
+      feed.jobs.forEach(function (x) { x._o = { verdict: x.verdict, why: x.why, codes: x.codes }; });
+      if (sameAsFeed()) { renderFeed(); emitFeed(); } else rejudgeFeed();
     }).catch(function (err) {
+      emitFeed(err || new Error("could not be read"));
       var why = err && /^\d+$/.test(err.message) ? "HTTP " + err.message : "could not be read";
       $("feed-meta").textContent = "No scan results published yet (" + why + ").";
       $("feed-count").textContent = "";
@@ -880,7 +929,7 @@
   });
   $("feed-sort").value = feedShow.sort;
   $("feed-sort").addEventListener("change", function () { feedShow.sort = this.value; save("feed", feedShow); renderFeed(); });
-  $("feed-q").addEventListener("input", function () { feedShow.q = this.value.trim(); renderFeed(); });
+  $("feed-q").addEventListener("input", function () { feedShow.co = ""; feedShow.q = this.value.trim(); renderFeed(); });
   $("side-toggle").addEventListener("click", function () {
     var open = $("ws").classList.toggle("side-open"); this.setAttribute("aria-expanded", String(open));
   });
@@ -928,10 +977,42 @@
     if (!m || !m.periods) return;
     PERIOD = m.period; PERIODS = m.periods;
     $("foot-period").textContent = ", " + m.periods[0].split(" – ")[0] + " to " + m.period.split(" – ")[1];
-    if (lastCheck) runCheck(lastCheck.text, lastCheck.meta);
+    if (lastCheck) runCheck(lastCheck.text, lastCheck.meta, true);
   });
+  // What other scripts on the page (overview.js, data.js) can use.
+  window.SSApp = {
+    selectTab: function (id) { selectTab($(id)); window.scrollTo(0, 0); },
+    showRoles: function (company, hours) {
+      // One company's roles: the search box shows its name, the list matches the company exactly.
+      feedShow.co = company || ""; feedShow.q = ""; $("feed-q").value = company || "";
+      if (hours) { feedShow.hours = hours; save("feed", feedShow); }
+      if (company) { feedShow.view = "all"; feedShow.other = true; feedShow.t3 = true; }
+      selectTab($("tab-new")); renderFeed(); window.scrollTo(0, 0);
+    },
+    openLimits: openLimits,
+    profile: function () { return profile; },
+    isDefault: function () { return sameAsFeed(); },
+    feedBase: FEED_BASE,
+    checkText: function (text, meta) { selectTab($("tab-check")); $("jd").value = text; runCheck(text, meta || {}); }
+  };
+
   loadFeed();
-  var mode = (/[?&]mode=(scan|check|new)/.exec(location.search) || [])[1];
-  var startTab = mode ? "tab-" + mode : load("tab3", "tab-new");
-  if ($(startTab) && startTab !== "tab-new") selectTab($(startTab));
+  // A posting sent by the bookmarklet arrives as #check=<JSON> on the address.
+  var sent = null;
+  if (/^#check=/.test(location.hash)) {
+    try { sent = JSON.parse(decodeURIComponent(location.hash.slice(7))); } catch (e) { sent = null; }
+  }
+  var hashTab = { overview: "tab-overview", "new": "tab-new", check: "tab-check", data: "tab-data", scan: "tab-scan" }[location.hash.slice(1)];
+  var mode = (/[?&]mode=(scan|check|new|data|overview)/.exec(location.search) || [])[1];
+  var startTab = sent ? "tab-check" : hashTab || (mode ? "tab-" + mode : load("tab4", load("tab3", "tab-overview")));
+  selectTab($(startTab) || $("tab-overview"));
+  if (sent && sent.x) {
+    var meta = { title: String(sent.t || "").slice(0, 160), company: String(sent.c || "").slice(0, 120), url: /^https?:/.test(sent.u || "") ? sent.u : "" };
+    if (!meta.company && meta.url) { try { meta.company = hostCompany(meta.url) || ""; } catch (e) { /* ignore */ } }
+    var kn = meta.company && knownCompany(meta.company);
+    if (kn && kn.name.toLowerCase() === meta.company.toLowerCase()) meta.h1bQuery = kn.q;
+    $("jd").value = String(sent.x);
+    runCheck(String(sent.x), meta);
+    $("check-msg").textContent = "Checked the posting sent from " + (meta.url ? meta.url.replace(/^https?:\/\/(www\.)?/, "").split("/")[0] : "another page") + (meta.company ? ". Company: " + meta.company + "; change it under Sponsorship history if that is wrong." : ". Add the company name under Sponsorship history to see its filings.");
+  }
 })();

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SponsorScope — check a job posting before you apply</title>
+<title>SponsorScope — job roles checked for visa sponsorship, every day</title>
 <meta name="description" content="New roles from 200+ company job boards every day, each checked for visa sponsorship, pay and experience. Or paste a job posting or link and see, sentence by sentence, whether it rules you out.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,8 +20,10 @@
       SponsorScope
     </a>
     <div class="tabs" role="tablist" aria-label="Modes">
-      <button role="tab" id="tab-new" aria-controls="panel-new" aria-selected="true">New roles <span class="tab-count" id="tab-new-n"></span></button>
+      <button role="tab" id="tab-overview" aria-controls="panel-overview" aria-selected="true">Today</button>
+      <button role="tab" id="tab-new" aria-controls="panel-new" aria-selected="false" tabindex="-1">New roles <span class="tab-count" id="tab-new-n"></span></button>
       <button role="tab" id="tab-check" aria-controls="panel-check" aria-selected="false" tabindex="-1">Check a posting</button>
+      <button role="tab" id="tab-data" aria-controls="panel-data" aria-selected="false" tabindex="-1">Sponsor data</button>
       <button role="tab" id="tab-scan" aria-controls="panel-scan" aria-selected="false" tabindex="-1">Scan boards</button>
     </div>
     <nav class="top-links">
@@ -34,7 +36,7 @@
 <main id="main">
   <h1 class="sr-only">SponsorScope: new roles checked for visa sponsorship</h1>
 
-  <section class="limits wrap-wide" aria-labelledby="limits-h">
+  <section class="limits wrap-wide" id="limits" aria-labelledby="limits-h" hidden>
     <div class="limits-bar">
       <h2 id="limits-h" class="sr-only">Your limits</h2>
       <span class="limits-label">Judged with</span>
@@ -42,35 +44,130 @@
       <span class="pill" id="lim-years"></span>
       <span class="pill" id="lim-pay"></span>
       <span class="pill" id="lim-h1b"></span>
-      <button type="button" class="link-btn" id="edit-limits" aria-expanded="false" aria-controls="limits-form">Edit limits</button>
+      <button type="button" class="link-btn" id="edit-limits" aria-haspopup="dialog">Edit limits</button>
     </div>
-    <form id="limits-form" class="limits-form" hidden>
-      <label class="check"><input type="checkbox" id="f-sponsor"> I will need visa sponsorship (now or later)</label>
-      <label>Most years of experience I'll apply for
-        <input type="number" id="f-years" min="0" max="20" step="1">
-      </label>
-      <label>When a role asks for more
-        <select id="f-years-hard"><option value="1">Skip it</option><option value="0">Ask me</option></select>
-      </label>
-      <label>When a role asks for just one year more
-        <select id="f-years-grace"><option value="1">Ask me</option><option value="0">Treat it like any role over the limit</option></select>
-      </label>
-      <label>Lowest base pay I'll accept (USD / year, 0 = no limit)
-        <input type="number" id="f-pay" min="0" step="1000">
-      </label>
-      <label>When the whole pay range is below that
-        <select id="f-pay-hard"><option value="1">Skip it</option><option value="0">Ask me</option></select>
-      </label>
-      <label class="check"><input type="checkbox" id="f-h1b"> Skip companies with no H-1B filings in the last three years</label>
-      <div class="form-actions">
-        <button type="submit" class="btn">Save limits</button>
-        <button type="button" class="link-btn" id="reset-limits">Reset to defaults</button>
+  </section>
+
+  <!-- TODAY: WHAT THE SCAN FOUND -->
+  <section id="panel-overview" role="tabpanel" aria-labelledby="tab-overview" class="panel ov">
+    <div class="wrap-wide ov-hero">
+      <div class="ov-intro">
+        <p class="ov-live" id="ov-live"><span class="live-dot" aria-hidden="true"></span><span id="ov-live-text">Loading today’s scan…</span></p>
+        <h2 class="ov-h" id="ov-h">Every day, tens of thousands of open roles. A few worth your time.</h2>
+        <p class="ov-lede">SponsorScope reads company job boards three times a day, finds the sentence that rules out visa holders, checks pay and experience, and adds each company’s H-1B record for that kind of role. Every verdict shows the words behind it.</p>
+        <div class="ov-cta">
+          <button type="button" class="btn btn-primary btn-lg" data-go="tab-new">See today’s roles</button>
+          <button type="button" class="btn btn-lg" data-go="tab-check">Check a posting</button>
+        </div>
+        <p class="ov-limits" id="ov-limits"></p>
       </div>
-    </form>
+      <div class="ov-funnel card" id="ov-funnel" aria-label="From open roles to roles worth applying to">
+        <p class="card-k">Today’s funnel</p>
+        <ol class="funnel" id="funnel"></ol>
+      </div>
+    </div>
+
+    <div class="wrap-wide ov-grid">
+      <section class="card ov-trend" aria-labelledby="trend-h">
+        <div class="card-head">
+          <div>
+            <h3 id="trend-h">New roles per day</h3>
+            <p class="card-sub" id="trend-sub">Roles in the 19 directions, by the day the scan first saw them</p>
+          </div>
+          <div class="chart-legend" aria-hidden="true">
+            <span><i class="sw sw-apply"></i>Apply</span><span><i class="sw sw-ask"></i>Ask first</span><span><i class="sw sw-skip"></i>Skip</span>
+          </div>
+        </div>
+        <div class="chart" id="trend-chart"></div>
+        <div class="tip" id="trend-tip" role="tooltip" hidden></div>
+      </section>
+
+      <section class="card" aria-labelledby="why-h">
+        <h3 id="why-h">Why roles get ruled out</h3>
+        <p class="card-sub">Skip verdicts in the last 7 days, by the first reason found</p>
+        <ul class="hbars" id="why-bars"></ul>
+      </section>
+
+      <section class="card" aria-labelledby="where-h">
+        <h3 id="where-h">Where the Apply roles are</h3>
+        <p class="card-sub">Companies with the most roles that clear your limits this week</p>
+        <ol class="rank" id="where-list"></ol>
+      </section>
+
+      <section class="card ov-stats" aria-label="What the postings say">
+        <div class="stat"><b id="st-silent">–</b><span>of this week’s postings say nothing about sponsorship, so the filing record does the work</span></div>
+        <div class="stat"><b id="st-filers">–</b><span>of them are at companies that filed H-1Bs for that kind of role last year</span></div>
+        <div class="stat"><b id="st-pay">–</b><span>typical top of the listed base pay range for roles marked Apply</span></div>
+      </section>
+    </div>
+
+    <div class="wrap-wide ov-tools">
+      <a class="tool card" href="#check" data-go="tab-check">
+        <span class="tool-k">Check a posting</span>
+        <span class="tool-t">Paste a link from any careers site, or the text. See each sentence that matters, marked up.</span>
+      </a>
+      <div class="tool card">
+        <span class="tool-k">Check from any job page</span>
+        <span class="tool-t">Drag this button to your bookmarks bar, then click it on a LinkedIn or company job page.</span>
+        <a class="bm-btn" id="bm-link" href="#check" draggable="true">SponsorScope it</a>
+        <span class="tool-fine">It reads the page you are already looking at, in your own browser, and opens the check here. Nothing is sent anywhere else.</span>
+      </div>
+      <a class="tool card" href="#data" data-go="tab-data">
+        <span class="tool-k">Sponsor data</span>
+        <span class="tool-t">Who files H-1Bs for analyst, strategy, product and GTM roles, from 1.6 million Department of Labor filings. Look up any company.</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- SPONSOR DATA: THE FILINGS, MARKET-WIDE -->
+  <section id="panel-data" role="tabpanel" aria-labelledby="tab-data" class="panel dv" hidden>
+    <div class="wrap-wide">
+      <header class="dv-head">
+        <p class="eyebrow">U.S. Department of Labor filings</p>
+        <h2 class="dv-h" id="dv-h">Who sponsors, and for which roles</h2>
+        <p class="dv-lede" id="dv-lede">Certified H-1B labor condition applications and green-card (PERM) cases, rebuilt from the department’s quarterly disclosure files.</p>
+        <div class="kpis" id="dv-kpis"></div>
+      </header>
+
+      <section class="card dv-lookup" aria-labelledby="lk-h">
+        <h3 id="lk-h">Look up a company</h3>
+        <div class="lk-box">
+          <input type="search" id="lk-q" class="search lk-q" placeholder="Company name, e.g. Ramp, Capital One, Maplebear" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="lk-list" aria-autocomplete="list" aria-label="Company name">
+          <ul class="lk-list" id="lk-list" role="listbox" hidden></ul>
+        </div>
+        <div id="lk-out" class="lk-out"><p class="muted">Names match the legal name on the filings. Brands often file under another name: Instacart files as Maplebear, Carta as eShares.</p></div>
+      </section>
+
+      <div class="dv-grid">
+        <section class="card" aria-labelledby="fam-h">
+          <h3 id="fam-h">Filings by kind of role</h3>
+          <p class="card-sub" id="fam-sub">Last 12 months, business roles only</p>
+          <ul class="hbars" id="fam-bars"></ul>
+          <p class="card-note" id="fam-note"></p>
+        </section>
+        <section class="card" aria-labelledby="facts-h">
+          <h3 id="facts-h">What the filings say</h3>
+          <ul class="dv-facts" id="dv-facts"></ul>
+        </section>
+      </div>
+
+      <section class="card dv-board" aria-labelledby="lb-h">
+        <div class="card-head">
+          <div>
+            <h3 id="lb-h">Top sponsors</h3>
+            <p class="card-sub" id="lb-sub"></p>
+          </div>
+          <div class="tog-group" id="lb-view" role="group" aria-label="Ranking"></div>
+        </div>
+        <div class="chips" id="lb-fams" role="group" aria-label="Kind of role"></div>
+        <div class="table-wrap"><table class="lb" id="lb-table"></table></div>
+      </section>
+      <p class="dv-foot muted" id="dv-foot"></p>
+    </div>
   </section>
 
   <!-- NEW ROLES FROM THE DAILY SCAN -->
-  <section id="panel-new" role="tabpanel" aria-labelledby="tab-new" class="wrap-wide panel">
+  <section id="panel-new" role="tabpanel" aria-labelledby="tab-new" class="wrap-wide panel" hidden>
     <div class="ws" id="ws">
       <aside class="side" id="side" aria-label="Filters">
         <div class="side-block">
@@ -243,6 +340,37 @@
   </footer>
 </main>
 
+<dialog id="limits-dialog" class="limits-dialog" aria-labelledby="limits-dlg-h">
+  <div class="dlg-head">
+    <h2 id="limits-dlg-h">Your limits</h2>
+  </div>
+  <p class="muted dlg-sub">Every role is judged against these. They are saved in this browser only; the defaults are the ones the daily scan uses.</p>
+  <form id="limits-form" class="limits-form" method="dialog">
+      <label class="check"><input type="checkbox" id="f-sponsor"> I will need visa sponsorship (now or later)</label>
+      <label>Most years of experience I'll apply for
+        <input type="number" id="f-years" min="0" max="20" step="1">
+      </label>
+      <label>When a role asks for more
+        <select id="f-years-hard"><option value="1">Skip it</option><option value="0">Ask me</option></select>
+      </label>
+      <label>When a role asks for just one year more
+        <select id="f-years-grace"><option value="1">Ask me</option><option value="0">Treat it like any role over the limit</option></select>
+      </label>
+      <label>Lowest base pay I'll accept (USD / year, 0 = no limit)
+        <input type="number" id="f-pay" min="0" step="1000">
+      </label>
+      <label>When the whole pay range is below that
+        <select id="f-pay-hard"><option value="1">Skip it</option><option value="0">Ask me</option></select>
+      </label>
+      <label class="check"><input type="checkbox" id="f-h1b"> Skip companies with no H-1B filings in the last three years</label>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Save and judge again</button>
+        <button type="button" class="btn" id="limits-cancel">Cancel</button>
+        <button type="button" class="link-btn" id="reset-limits">Reset to the defaults</button>
+      </div>
+    </form>
+</dialog>
+
 <dialog id="job-dialog" aria-labelledby="dlg-title">
   <div class="dlg-head">
     <h2 id="dlg-title">Role details</h2>
@@ -257,5 +385,7 @@
 <script src="core.js"></script>
 <script src="boards.js"></script>
 <script src="app.js"></script>
+<script src="overview.js"></script>
+<script src="data.js"></script>
 </body>
 </html>
